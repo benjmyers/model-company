@@ -6,6 +6,7 @@ body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   position: relative;
   width: 960px;
+  background-color: #d6d5d4;
 }
 
 .axis text {
@@ -20,7 +21,7 @@ body {
 }
 
 .bar {
-  fill: blue;
+  fill: #478497;
   fill-opacity: .9;
 }
 
@@ -32,16 +33,18 @@ label {
   position: absolute;
   top: 10px;
   right: 10px;
+  display: none;
 }
 
 </style>
 <label><input type="checkbox"> Sort values</label>
 <script src="http://d3js.org/d3.v3.js"></script>
+<script src="http://underscorejs.org/underscore-min.js"></script>
 <script>
 
-var margin = {top: 20, right: 20, bottom: 30, left: 40},
+var margin = {top: 20, right: 20, bottom: 130, left: 40},
     width = 960 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
+    height = 600 - margin.top - margin.bottom;
 
 var formatPercent = d3.format("d");
 
@@ -59,8 +62,6 @@ var yAxis = d3.svg.axis()
     .scale(y)
     .ticks(10)
     .orient("left");
-    //.tickValues([0, 20, 50]);
-    //.tickFormat(formatPercent);
 
 var svg = d3.select("body").append("svg")
     .attr("width", width + margin.left + margin.right)
@@ -70,17 +71,24 @@ var svg = d3.select("body").append("svg")
 
 d3.csv("age.csv", function(error, data) {
 
-  data.forEach(function(d) {
-    d.Age = +parseInt(d.Age);
+  _.each(data, function(d) {
+    d.value = +parseInt(d.value);
   });
 
   x.domain(data.map(function(d) { return d.Name; }));
-  y.domain([0, d3.max(data, function(d) { return d.Age; })]);
+  y.domain([0, d3.max(data, function(d) { return d.value; })]);
 
   svg.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
-      .call(xAxis);
+      .call(xAxis)
+      .selectAll("text")
+      .style("text-anchor", "end")
+          .attr("dx", "-1.8em")
+          .attr("dy", ".15em")
+          .attr("transform", function(d) {
+              return "rotate(-90)" 
+          });
 
   svg.append("g")
       .attr("class", "y axis")
@@ -98,14 +106,14 @@ d3.csv("age.csv", function(error, data) {
       .attr("class", "bar")
       .attr("x", function(d) { return x(d.Name); })
       .attr("width", x.rangeBand())
-      .attr("y", function(d) { return y(d.Age); })
-      .attr("height", function(d) {console.log(y(d.Age)); return height - y(d.Age); });
+      .attr("y", function(d) { return y(d.value); })
+      .attr("height", function(d) { return height - y(d.value); });
 
-  d3.select("input").on("change", change);
+  // d3.select("input").on("change", change);
 
-  var sortTimeout = setTimeout(function() {
-    d3.select("input").property("checked", true).each(change);
-  }, 2000);
+  // var sortTimeout = setTimeout(function() {
+  //   d3.select("input").property("checked", true).each(change);
+  // }, 2000);
 
   function change() {
     clearTimeout(sortTimeout);
