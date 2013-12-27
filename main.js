@@ -9,6 +9,12 @@
     width = 960 - margin.left - margin.right,
     height = 600 - margin.top - margin.bottom;
 
+  var sets = {
+    age: {x: 'name', y: 'age'},
+    mess: {x: 'name', y: 'mess'},
+    height: {x: 'name', y: 'heightin'}
+  };
+
   var formatPercent = d3.format("d");
 
   var x = d3.scale.ordinal()
@@ -36,16 +42,16 @@
   d3.csv("data/formatted-messes.csv", function(error, data) {
 
     parseData(data);
-    render(data);
+    render(data, sets['height']);
 
   });
 
-  function render(data) {
+  function render(data, display) {
     x.domain(data.map(function(d) {
-      return d.Name;
+      return d[display.x];
     }));
     y.domain([0, d3.max(data, function(d) {
-      return d.age;
+      return d[display.y];
     })]);
 
     svg.append("g")
@@ -75,47 +81,47 @@
       .enter().append("rect")
       .attr("class", "bar")
       .attr("x", function(d) {
-        return x(d.Name);
+        return x(d[display.x]);
       })
       .attr("width", x.rangeBand())
       .attr("y", function(d) {
-        return y(d.age);
+        return y(d[display.y]);
       })
       .attr("height", function(d) {
-        return height - y(d.age);
+        return height - y(d[display.y]);
       });
 
-    //d3.select("input").on("change", change);
+    change(data, display, true);
 
-    // var sortTimeout = setTimeout(function() {
-    //   d3.select("input").property("checked", true).each(change);
-    // }, 2000);
-    clickListeners();
+    clickListeners(data, display);
+
   }
 
-  function clickListeners() {
+  function clickListeners(data) {
     d3.select("#age").on("change", function(e) {
-      console.log(e)
+      clear();
+      render(data, sets['age']);
     });
     d3.select("#mess").on("change", function() {
-      console.log(e)
+      clear();
+      render(data, sets['mess']);
     });
     d3.select("#height").on("change", function() {
-      console.log(e)
+      clear();
+      render(data, sets['height']);
     });
   }
 
-  function change() {
-    clearTimeout(sortTimeout);
+  function change(data, display, inOrder) {
 
     // Copy-on-write since tweens are evaluated after a delay.
-    var x0 = x.domain(data.sort(this.checked ? function(a, b) {
-        return b.age - a.age;
+    var x0 = x.domain(data.sort(inOrder ? function(a, b) {
+        return b[display.y] - a[display.y];
       } : function(a, b) {
-        return d3.ascending(a.Name, b.Name);
+        return d3.ascending(a[display.x], b[display.x]);
       })
       .map(function(d) {
-        return d.Name;
+        return d[display.x];
       }))
       .copy();
 
@@ -127,7 +133,7 @@
     transition.selectAll(".bar")
       .delay(delay)
       .attr("x", function(d) {
-        return x0(d.Name);
+        return x0(d[display.x]);
       });
 
     transition.select(".x.axis")
@@ -151,5 +157,11 @@
       d.age = +parseInt(d.age);
       d.heightin = +parseInt(d.heightin);
     });
+  }
+
+  function clear() {
+    d3.selectAll('.bar').remove();
+    d3.selectAll('.x.axis').remove();
+    d3.selectAll('.y.axis').remove();
   }
 })();

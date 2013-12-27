@@ -33,7 +33,7 @@ body {
   display: none;
 }
 
-label {
+.controls {
   display: block;
   float: right;
 }
