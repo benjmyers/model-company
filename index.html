@@ -13,6 +13,10 @@ body {
   font: 10px sans-serif;
 }
 
+.x.axis text {
+  text-anchor: end !important;
+}
+
 .axis path,
 .axis line {
   fill: none;
@@ -33,11 +37,11 @@ label {
   position: absolute;
   top: 10px;
   right: 10px;
-  display: none;
+  display: block;
 }
 
 </style>
-<label><input type="checkbox"> Sort values</label>
+<label><input type="checkbox"> Sort ages</label>
 <script src="http://d3js.org/d3.v3.js"></script>
 <script src="http://underscorejs.org/underscore-min.js"></script>
 <script>
@@ -60,7 +64,7 @@ var xAxis = d3.svg.axis()
 
 var yAxis = d3.svg.axis()
     .scale(y)
-    .ticks(10)
+    .ticks(5)
     .orient("left");
 
 var svg = d3.select("body").append("svg")
@@ -69,14 +73,12 @@ var svg = d3.select("body").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-d3.csv("age.csv", function(error, data) {
+d3.csv("formatted-messes.csv", function(error, data) {
 
-  _.each(data, function(d) {
-    d.value = +parseInt(d.value);
-  });
+  parseData(data);
 
   x.domain(data.map(function(d) { return d.Name; }));
-  y.domain([0, d3.max(data, function(d) { return d.value; })]);
+  y.domain([0, d3.max(data, function(d) { return d.age; })]);
 
   svg.append("g")
       .attr("class", "x axis")
@@ -106,22 +108,22 @@ d3.csv("age.csv", function(error, data) {
       .attr("class", "bar")
       .attr("x", function(d) { return x(d.Name); })
       .attr("width", x.rangeBand())
-      .attr("y", function(d) { return y(d.value); })
-      .attr("height", function(d) { return height - y(d.value); });
+      .attr("y", function(d) { return y(d.age); })
+      .attr("height", function(d) { return height - y(d.age); });
 
-  // d3.select("input").on("change", change);
+   d3.select("input").on("change", change);
 
-  // var sortTimeout = setTimeout(function() {
-  //   d3.select("input").property("checked", true).each(change);
-  // }, 2000);
+  var sortTimeout = setTimeout(function() {
+    d3.select("input").property("checked", true).each(change);
+  }, 2000);
 
   function change() {
     clearTimeout(sortTimeout);
 
     // Copy-on-write since tweens are evaluated after a delay.
     var x0 = x.domain(data.sort(this.checked
-        ? function(a, b) { return b.frequency - a.frequency; }
-        : function(a, b) { return d3.ascending(a.letter, b.letter); })
+        ? function(a, b) { return b.age - a.age; }
+        : function(a, b) { return d3.ascending(a.Name, b.Name); })
         .map(function(d) { return d.Name; }))
         .copy();
 
@@ -136,6 +138,23 @@ d3.csv("age.csv", function(error, data) {
         .call(xAxis)
       .selectAll("g")
         .delay(delay);
+  }
+
+  function parseData(data) {
+    _.each(data, function(d) {
+      // Dates are 100 years off, correct
+      var dateIn = new Date(d.datein);
+      var dateOut = new Date(d.dateout);
+      var correctedIn = dateIn.getFullYear()-100;
+      var correctedOut = dateOut.getFullYear()-100;
+      var cDateIn = dateIn.setFullYear(correctedIn);
+      var cDateOut = dateOut.setFullYear(correctedOut);
+      d.datein = new Date(cDateIn).toDateString();
+      d.dateout = new Date(cDateOut).toDateString();
+      d.mess = +parseInt(d.mess);
+      d.age = +parseInt(d.age);
+      d.heightin = +parseInt(d.heightin);
+    });
   }
 });
 </script>
