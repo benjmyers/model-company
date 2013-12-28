@@ -42,29 +42,36 @@
   d3.csv("data/formatted-messes.csv", function(error, data) {
 
     parseData(data);
-    render(data, sets['height']);
+    render(data, 'age');
 
   });
 
-  function render(data, display) {
+  function render(data, attr) {
+    var display = sets[attr];
     x.domain(data.map(function(d) {
       return d[display.x];
     }));
-    y.domain([0, d3.max(data, function(d) {
+    var min = d3.min(data, function(d) {
+      if(d[display.y])
+        return d[display.y];
+      else
+        return undefined;
+    });
+    var max = d3.max(data, function(d) {
       return d[display.y];
-    })]);
+    });
+
+    y.domain([min-1, max]);
 
     svg.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
       .call(xAxis)
       .selectAll("text")
-      .style("text-anchor", "end")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 0)
       .attr("dx", "-1.8em")
-      .attr("dy", ".15em")
-      .attr("transform", function(d) {
-        return "rotate(-90)"
-      });
+      .style("text-anchor", "end");
 
     svg.append("g")
       .attr("class", "y axis")
@@ -74,7 +81,7 @@
       .attr("y", 6)
       .attr("dy", ".71em")
       .style("text-anchor", "end")
-      .text("Age");
+      .text(attr);
 
     svg.selectAll(".bar")
       .data(data)
@@ -89,7 +96,8 @@
       })
       .attr("height", function(d) {
         return height - y(d[display.y]);
-      });
+      })
+      .on('click', barClick);
 
     change(data, display, true);
 
@@ -97,18 +105,22 @@
 
   }
 
+  function barClick(e) {
+    console.log(e);
+  }
+
   function clickListeners(data) {
     d3.select("#age").on("change", function(e) {
       clear();
-      render(data, sets['age']);
+      render(data, 'age');
     });
     d3.select("#mess").on("change", function() {
       clear();
-      render(data, sets['mess']);
+      render(data, 'mess');
     });
     d3.select("#height").on("change", function() {
       clear();
-      render(data, sets['height']);
+      render(data, 'height');
     });
   }
 
@@ -127,7 +139,7 @@
 
     var transition = svg.transition().duration(750),
       delay = function(d, i) {
-        return i * 50;
+        return i * 10;
       };
 
     transition.selectAll(".bar")
