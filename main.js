@@ -92,14 +92,15 @@
       })
       .attr("width", x.rangeBand())
       .attr("y", function(d) {
-        return y(d[display.y]);
+        return height;
       })
       .attr("height", function(d) {
-        return height - y(d[display.y]);
+        return 0;
       })
       .on('click', barClick);
 
-    change(data, display, true);
+    fadeIn(data, display, true);
+    //change(data, display, true);
 
     clickListeners(data, display);
 
@@ -111,17 +112,55 @@
 
   function clickListeners(data) {
     d3.select("#age").on("change", function(e) {
+      fadeOut();
       clear();
       render(data, 'age');
     });
     d3.select("#mess").on("change", function() {
+      fadeOut();
       clear();
       render(data, 'mess');
     });
     d3.select("#height").on("change", function() {
+      fadeOut();
       clear();
       render(data, 'height');
     });
+    // d3.select('#order').on("click", function() {
+    //   change(data, display, true);
+    // });
+  }
+
+  function fadeIn(data, display, inOrder) {
+    var transition = svg.transition().duration(750),
+      delay = function(d, i) {
+        return i * 10;
+      };
+
+    transition.selectAll(".bar")
+      .delay(delay)
+      .attr("y", function(d) {
+        return y(d[display.y]);
+      })
+      .attr("height", function(d) {
+        return height - y(d[display.y]);
+      })
+  }
+
+  function fadeOut() {
+    var transition = svg.transition().duration(750),
+      delay = function(d, i) {
+        return i * 10;
+      };
+
+    transition.selectAll(".bar")
+      .delay(delay)
+      .attr("y", function(d) {
+        return height;
+      })
+      .attr("height", function(d) {
+        return 0;
+      })
   }
 
   function change(data, display, inOrder) {
@@ -172,7 +211,6 @@
   }
 
   function clear() {
-    d3.selectAll('.bar').remove();
     d3.selectAll('.x.axis').remove();
     d3.selectAll('.y.axis').remove();
   }
