@@ -3,28 +3,21 @@
 <head>
   <meta charset="utf-8">
   <title>Model Company</title>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"/>
   <link rel="stylesheet" href="css/app.css"/>
 </head>
 <body>
-  <ul class="menu">
-    <li><a href="#/view1">view1</a></li>
-    <li><a href="#/view2">view2</a></li>
-  </ul>
 
-<!--   <div ng-view></div>
- -->
- <chart></chart>
-
-<div class="container">
-  <div class="controls">
-    <form>
-    <input id="age" type="radio" name="attrs" value="Age" checked='checked'>Age <br>
-    <input id="mess" type="radio" name="attrs" value="Mess">Mess <br>
-    <input id="height" type="radio" name="attrs" value="Height">Height
-  </form>
-  <button id="order">Sort</button>
+  <div class="header">
+    <h1>Model Company</h1>
+    <p>An uncommon look at the common Civil War solider.</p>
+    <div class="footer">
+      Created by <a href="http://meredithmmyers.com" target="_blank">Meredith Myers</a>
+    </div>
   </div>
-</div>
+
+  <div ng-view></div>
+
 
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>

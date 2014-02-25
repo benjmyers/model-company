@@ -2,7 +2,6 @@
 
 /* Directives */
 
-
 angular.module('modelCo.directives', []).
   directive('appVersion', ['version', function(version) {
     return function(scope, elm, attrs) {
@@ -11,7 +10,7 @@ angular.module('modelCo.directives', []).
   }]).
   directive('chart', ['d3Service', function(d3Service) {
     return {
-      restrict: 'EA',
+      restrict: 'A',
       scope: {},
       link: function(scope, element, attrs) {
         d3Service.d3().then(function(d3) {
