@@ -2,11 +2,10 @@
 
 <div class="container">
   <div class="controls">
-    <form>
-    <input id="age" type="radio" name="attrs" value="Age" checked='checked'>Age <br>
-    <input id="mess" type="radio" name="attrs" value="Mess">Mess <br>
-    <input id="height" type="radio" name="attrs" value="Height">Height
-  </form>
+     <form>
+    <input ng-click="age()" type="radio" name="attrs" value="Age" checked='checked'>Age <br>
+    <input ng-click="height()" type="radio" name="attrs" value="Height">Height
+  </form> 
   <button id="order">Sort</button>
   </div>
 </div>
