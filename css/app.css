@@ -1,7 +1,8 @@
 /* app css stylesheet */
 
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
   position: relative;
   background-color: #d6d5d4;
 }
@@ -16,17 +17,24 @@ body {
   padding-left: 15px;
 }
 
+.header.h1 {
+  font-weight: 400;
+}
+
 .footer {
   position: absolute;
   bottom: 0;
 }
-.container {
+
+chart {
   height: 100%;
   width: 100%;
 }
 
 .axis text {
-  font: 10px sans-serif;
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  font-size: 9px;
 }
 
 .x.axis text {
@@ -47,11 +55,6 @@ body {
 
 .x.axis path {
   display: none;
-}
-
-.controls {
-  display: block;
-  float: right;
 }
 
 .menu {

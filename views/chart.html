@@ -1,11 +1,20 @@
-<chart data="data"></chart>
+<div class="header">
+  <h1>Model Company</h1>
+  <p>An uncommon look at the common Civil War solider.</p>
 
-<div class="container">
   <div class="controls">
-     <form>
-    <input ng-click="setDisplay('age')" type="radio" name="attrs" value="Age" checked='checked'>Age <br>
-    <input ng-click="setDisplay('height')" type="radio" name="attrs" value="Height">Height
-  </form> 
-  <button btn ng-click="changeOrder()">Sort</button>
+    <form>
+      <input ng-click="setDisplay('age')" type="radio" name="attrs" value="Age" checked='checked'>Age <br>
+      <input ng-click="setDisplay('height')" type="radio" name="attrs" value="Height">Height
+    </form> 
+  <button class="btn btn-default" ng-click="changeOrder()">Sort</button>
+  </div>
+
+  <div class="footer">
+    Created by <a href="http://meredithmmyers.com" target="_blank">Meredith Myers</a>
   </div>
 </div>
+<div class="container">
+</div>
+<chart data="data"></chart>
+
