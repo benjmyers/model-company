@@ -5,6 +5,7 @@
 angular.module('modelCo.controllers', []).
   controller('ChartCtrl', ['$scope', '$http', function($scope, $http) {
     $scope.data;
+    $scope.displayValue;
     d3.csv("data/formatted-messes.csv", function(error, data) {
       $scope.parseData(data);
       $scope.data = data;
@@ -27,9 +28,10 @@ angular.module('modelCo.controllers', []).
       });
     }
     $scope.setDisplay = function(displayValue) {
+      $scope.displayValue = displayValue;
       $scope.$broadcast('updateDisplayValue', displayValue)
     }
     $scope.changeOrder = function() {
-      $scope.$broadcast('changeOrder');
+      $scope.$broadcast('changeOrder', $scope.displayValue);
     }
 }]);

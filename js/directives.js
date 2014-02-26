@@ -18,22 +18,20 @@ directive('chart', ['d3Service',
         data: "="
       },
       link: function(scope, element, attrs) {
-        var displayValue = 'age';
         // watch for data changes and re-render
         scope.$watch('data', function(newVals, oldVals) {
           if(newVals)
-            return render(newVals, displayValue);
+            return render(newVals, 'age');
           else
             return;
         }, false);
 
         // watch for displayed value
         scope.$on('updateDisplayValue', function(ev, displayValue){
-          displayValue = displayValue;
           render(scope.data, displayValue);
         });
 
-        scope.$on('changeOrder', function(ev){
+        scope.$on('changeOrder', function(ev, displayValue){
           change(scope.data, displayValue, true);
         });
 
