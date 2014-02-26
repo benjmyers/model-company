@@ -4,10 +4,11 @@
 
 angular.module('modelCo.controllers', []).
   controller('ChartCtrl', ['$scope', '$http', function($scope, $http) {
+    $scope.data;
     d3.csv("data/formatted-messes.csv", function(error, data) {
       $scope.parseData(data);
       $scope.data = data;
-      $scope.$apply();
+      $scope.$digest();
     });
     $scope.parseData = function(data) {
       _.each(data, function(d) {
@@ -25,11 +26,7 @@ angular.module('modelCo.controllers', []).
         d.heightin = +parseInt(d.heightin);
       });
     }
-    $scope.age = function() {
-      console.log($scope.data)
-      console.log("set age")
-    }
-    $scope.height = function() {
-      console.log("set height")
+    $scope.setDisplay = function(displayValue) {
+      $scope.$broadcast('updateDisplayValue', displayValue)
     }
 }]);

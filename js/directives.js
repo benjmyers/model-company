@@ -18,6 +18,7 @@ directive('chart', ['d3Service',
         data: "="
       },
       link: function(scope, element, attrs) {
+
         // watch for data changes and re-render
         scope.$watch('data', function(newVals, oldVals) {
           if(newVals)
@@ -26,14 +27,20 @@ directive('chart', ['d3Service',
             return;
         }, false);
 
+        // watch for displayed value
+        scope.$on('updateDisplayValue', function(ev, displayValue){
+          render(scope.data, displayValue);
+        });
+
+        // set up SVG
         var margin = {
           top: 20,
           right: 20,
           bottom: 130,
           left: 40
         },
-          width = 960 - margin.left - margin.right,
-          height = 600 - margin.top - margin.bottom;
+        width = 960 - margin.left - margin.right,
+        height = 600 - margin.top - margin.bottom;
 
         var sets = {
           age: {
@@ -74,7 +81,7 @@ directive('chart', ['d3Service',
           .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
         function render(data, attr) {
-          console.log(data)
+          clear();
           var display = sets[attr];
           x.domain(data.map(function(d) {
             return d[display.x];
@@ -136,27 +143,6 @@ directive('chart', ['d3Service',
 
         function barClick(e) {
           console.log(e);
-        }
-
-        function clickListeners(data) {
-          d3.select("#age").on("change", function(e) {
-            fadeOut();
-            clear();
-            render(data, 'age');
-          });
-          d3.select("#mess").on("change", function() {
-            fadeOut();
-            clear();
-            render(data, 'mess');
-          });
-          d3.select("#height").on("change", function() {
-            fadeOut();
-            clear();
-            render(data, 'height');
-          });
-          // d3.select('#order').on("click", function() {
-          //   change(data, display, true);
-          // });
         }
 
         function fadeIn(data, display, inOrder) {
