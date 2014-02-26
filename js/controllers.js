@@ -29,4 +29,7 @@ angular.module('modelCo.controllers', []).
     $scope.setDisplay = function(displayValue) {
       $scope.$broadcast('updateDisplayValue', displayValue)
     }
+    $scope.changeOrder = function() {
+      $scope.$broadcast('changeOrder');
+    }
 }]);

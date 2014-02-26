@@ -18,18 +18,23 @@ directive('chart', ['d3Service',
         data: "="
       },
       link: function(scope, element, attrs) {
-
+        var displayValue = 'age';
         // watch for data changes and re-render
         scope.$watch('data', function(newVals, oldVals) {
           if(newVals)
-            return render(newVals, 'age');
+            return render(newVals, displayValue);
           else
             return;
         }, false);
 
         // watch for displayed value
         scope.$on('updateDisplayValue', function(ev, displayValue){
+          displayValue = displayValue;
           render(scope.data, displayValue);
+        });
+
+        scope.$on('changeOrder', function(ev){
+          change(scope.data, displayValue, true);
         });
 
         // set up SVG
@@ -131,18 +136,9 @@ directive('chart', ['d3Service',
             })
             .attr("height", function(d) {
               return 0;
-            })
-            .on('click', barClick);
+            });
 
           fadeIn(data, display, true);
-          //change(data, display, true);
-
-          clickListeners(data, display);
-
-        }
-
-        function barClick(e) {
-          console.log(e);
         }
 
         function fadeIn(data, display, inOrder) {
@@ -177,8 +173,8 @@ directive('chart', ['d3Service',
             })
         }
 
-        function change(data, display, inOrder) {
-
+        function change(data, attr, inOrder) {
+          var display = sets[attr];
           // Copy-on-write since tweens are evaluated after a delay.
           var x0 = x.domain(data.sort(inOrder ? function(a, b) {
               return b[display.y] - a[display.y];
@@ -206,9 +202,6 @@ directive('chart', ['d3Service',
             .selectAll("g")
             .delay(delay);
         }
-
-
-
         function clear() {
           d3.selectAll('.x.axis').remove();
           d3.selectAll('.y.axis').remove();
