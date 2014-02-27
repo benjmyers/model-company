@@ -50,7 +50,7 @@ directive('chart', ['d3Service',
           left: 40
         },
         width = 960 - margin.left - margin.right,
-        height = 600 - margin.top - margin.bottom;
+        height = 550 - margin.top - margin.bottom;
 
         var sets = scope.sets;
 
@@ -73,7 +73,7 @@ directive('chart', ['d3Service',
           .tickSize(0,0)
           .orient("left");
 
-        var svg = d3.select(".container").append("svg")
+        var svg = d3.select(".chart-container").append("svg")
           .attr("width", width + margin.left + margin.right)
           .attr("height", height + margin.top + margin.bottom)
           .append("g")
@@ -83,6 +83,7 @@ directive('chart', ['d3Service',
           clear();
           clearBars();
           var display;
+          var rotateXlabels = true;
           if(individuals){
             data = data.individuals;
             display = sets[attr];
@@ -104,6 +105,8 @@ directive('chart', ['d3Service',
             data = data.categories[attr];
             x.domain(data.x);
             y.domain([0, d3.max(data.y)]);
+            if(_.size(data.x) < 7)
+              rotateXlabels = false;
           }
 
           svg.append("g")
@@ -112,20 +115,20 @@ directive('chart', ['d3Service',
             .call(xAxis)
             .selectAll("text")
             .attr("transform", function(){
-              if(individuals)
+              if(rotateXlabels)
                 return "rotate(-90)";
               else
                 return "";
             })
             .attr("y", 0)
             .attr("dx", function(){
-              if(individuals)
+              if(rotateXlabels)
                 return "-1.2em";
               else
                 return ".5em"
             })
             .attr("dy", function(){
-              if(individuals)
+              if(rotateXlabels)
                 return ".3em";
               else
                 return "1.5em";

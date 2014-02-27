@@ -10,15 +10,21 @@ angular.module('modelCo.controllers', []).
     $scope.sets = {
       age: {
         x: 'name',
-        y: 'age'
+        y: 'age',
+        key: 'age',
+        dispkey: 'Age'
       },
       mess: {
         x: 'name',
-        y: 'mess'
+        y: 'mess',
+        key: 'mess',
+        dispkey: 'Mess'
       },
       height: {
         x: 'name',
-        y: 'height'
+        y: 'height',
+        key: 'height',
+        dispkey: 'Height'
       },
     };
     d3.csv("data/formatted-messes.csv", function(error, data) {
@@ -28,23 +34,32 @@ angular.module('modelCo.controllers', []).
         'individuals': data,
         'categories' : categories
       }
+      $scope.order();
       $scope.$digest();
     });
+    $scope.order = function() {
+      _.each(Object.keys($scope.data.categories), function(key) {
+        var set = $scope.data.categories[key];
+        var mergeSet = _.sortBy(_.zip(set.y, set.x), function(n) {return n[1]});
+        set.x = _.map(mergeSet, function(e) {return e[1]});
+        set.y = _.map(mergeSet, function(e) {return e[0]});
+      });
+    }
     $scope.makeCategories = function(data) {
       var categories = {
-        datein: {x: [], y: []},
-        dateout: {x: [], y: []},
-        mess: {x: [], y: []},
-        cause: {x: [], y: []},
-        age: {x: [], y: []},
-        height: {x: [], y: []},
-        complexion: {x: [], y: []},
-        eyes: {x: [], y: []},
-        hair: {x: [], y: []},
-        occupation: {x: [], y: []},
-        home: {x: [], y: []}
+        mess: {x: [], y: [], dispkey: "Mess", key: "mess"},
+        datein: {x: [], y: [], dispkey: "Enlistment", key: "datein"},
+        dateout: {x: [], y: [], dispkey: "Date of exit", key: "dateout"},
+        cause: {x: [], y: [], dispkey: "Exit Reason", key: "cause"},
+        age: {x: [], y: [], dispkey: "Age", key: "age"},
+        height: {x: [], y: [], dispkey: "Height", key: "height"},
+        complexion: {x: [], y: [], dispkey: "Complexion", key: "complexion"},
+        eyes: {x: [], y: [], dispkey: "Eye Color", key: "eyes"},
+        hair: {x: [], y: [], dispkey: "Hair Color", key: "hair"},
+        occupation: {x: [], y: [], dispkey: "Occupation", key: "occupation"},
+        home: {x: [], y: [], dispkey: "Home", key: "home"}
       };
-      $scope.categories = Object.keys(categories);
+      $scope.categories = categories;
       _.each(data, function(d) {
         _.each(Object.keys(categories), function(key){
           var item = d[key];
@@ -92,12 +107,12 @@ angular.module('modelCo.controllers', []).
         if(Object.keys($scope.sets).indexOf($scope.displayValue) === -1)
           $scope.setDisplay('age');
         $scope.displayMode = true;
-        $scope.categories = Object.keys($scope.sets);
+        $scope.categories = $scope.sets;
         $scope.$broadcast('changeDisplay', true, $scope.displayValue);
       }
       else {
         $scope.displayMode = false;
-        $scope.categories = Object.keys($scope.data.categories);
+        $scope.categories = $scope.data.categories;
         $scope.$broadcast('changeDisplay', false, $scope.displayValue);
       }
     }
