@@ -15,9 +15,11 @@ directive('chart', ['d3Service',
     return {
       restrict: 'E',
       scope: {
-        data: "="
+        data: "=",
+        sets: "="
       },
       link: function(scope, element, attrs) {
+        var individuals = false;
         // watch for data changes and re-render
         scope.$watch('data', function(newVals, oldVals) {
           if(newVals)
@@ -32,7 +34,12 @@ directive('chart', ['d3Service',
         });
 
         scope.$on('changeOrder', function(ev, displayValue){
-          change(scope.data, displayValue, true);
+          change(scope.data, displayValue);
+        });
+
+        scope.$on('changeDisplay', function(ev, display, displayValue){
+          individuals = display;
+          render(scope.data, displayValue)
         });
 
         // set up SVG
@@ -43,22 +50,9 @@ directive('chart', ['d3Service',
           left: 40
         },
         width = 960 - margin.left - margin.right,
-        height = 600 - margin.top - margin.bottom;
+        height = 550 - margin.top - margin.bottom;
 
-        var sets = {
-          age: {
-            x: 'name',
-            y: 'age'
-          },
-          mess: {
-            x: 'name',
-            y: 'mess'
-          },
-          height: {
-            x: 'name',
-            y: 'heightin'
-          }
-        };
+        var sets = scope.sets;
 
         var formatPercent = d3.format("d");
 
@@ -70,14 +64,16 @@ directive('chart', ['d3Service',
 
         var xAxis = d3.svg.axis()
           .scale(x)
+          .tickSize(0,0)
           .orient("bottom");
 
         var yAxis = d3.svg.axis()
           .scale(y)
           .ticks(5)
+          .tickSize(0,0)
           .orient("left");
 
-        var svg = d3.select(".container").append("svg")
+        var svg = d3.select(".chart-container").append("svg")
           .attr("width", width + margin.left + margin.right)
           .attr("height", height + margin.top + margin.bottom)
           .append("g")
@@ -85,30 +81,58 @@ directive('chart', ['d3Service',
 
         function render(data, attr) {
           clear();
-          var display = sets[attr];
-          x.domain(data.map(function(d) {
-            return d[display.x];
-          }));
-          var min = d3.min(data, function(d) {
-            if (d[display.y])
+          clearBars();
+          var display;
+          var rotateXlabels = true;
+          if(individuals){
+            data = data.individuals;
+            display = sets[attr];
+            x.domain(data.map(function(d) {
+              return d[display.x];
+            }));
+            var min = d3.min(data, function(d) {
+              if (d[display.y])
+                return d[display.y];
+              else
+                return undefined;
+            });
+            var max = d3.max(data, function(d) {
               return d[display.y];
-            else
-              return undefined;
-          });
-          var max = d3.max(data, function(d) {
-            return d[display.y];
-          });
-
-          y.domain([min - 1, max]);
+            });
+            y.domain([min - 1, max]);
+          }
+          else {
+            data = data.categories[attr];
+            x.domain(data.x);
+            y.domain([0, d3.max(data.y)]);
+            if(_.size(data.x) < 7)
+              rotateXlabels = false;
+          }
 
           svg.append("g")
             .attr("class", "x axis")
             .attr("transform", "translate(0," + height + ")")
             .call(xAxis)
             .selectAll("text")
-            .attr("transform", "rotate(-90)")
+            .attr("transform", function(){
+              if(rotateXlabels)
+                return "rotate(-90)";
+              else
+                return "";
+            })
             .attr("y", 0)
-            .attr("dx", "-1.8em")
+            .attr("dx", function(){
+              if(rotateXlabels)
+                return "-1.2em";
+              else
+                return ".5em"
+            })
+            .attr("dy", function(){
+              if(rotateXlabels)
+                return ".3em";
+              else
+                return "1.5em";
+            })
             .style("text-anchor", "end");
 
           svg.append("g")
@@ -116,17 +140,38 @@ directive('chart', ['d3Service',
             .call(yAxis)
             .append("text")
             .attr("transform", "rotate(-90)")
-            .attr("y", 6)
-            .attr("dy", ".71em")
+            .attr("y", 0)
+            .attr("x", -height/2)
+            .attr("dy", "-3em")
             .style("text-anchor", "end")
-            .text(attr);
+            .text(function() {
+              if(individuals)
+                return attr;
+              else
+                return "Soldiers"
+            });
+
+          svg.selectAll("line.horizontalGrid")
+          .data(y.ticks(5)).enter()
+            .append("line")
+              .attr({
+                "class":"horizontalGrid",
+                "x1" : margin.right/2,
+                "x2" : width,
+                "y1" : function(d){ return y(d);},
+                "y2" : function(d){ return y(d);}
+              });
 
           svg.selectAll(".bar")
-            .data(data)
+            .data(data.y || data)
             .enter().append("rect")
             .attr("class", "bar")
-            .attr("x", function(d) {
-              return x(d[display.x]);
+            .attr("x", function(d, index) {
+
+              if(individuals)
+                return x(d[display.x]);
+              else
+                return x(data.x[index]);
             })
             .attr("width", x.rangeBand())
             .attr("y", function(d) {
@@ -136,7 +181,10 @@ directive('chart', ['d3Service',
               return 0;
             });
 
-          fadeIn(data, display, true);
+          // hide the domain paths because ugly
+          d3.selectAll('path.domain').remove();
+
+          fadeIn(data, display || {}, true);
         }
 
         function fadeIn(data, display, inOrder) {
@@ -148,10 +196,10 @@ directive('chart', ['d3Service',
           transition.selectAll(".bar")
             .delay(delay)
             .attr("y", function(d) {
-              return y(d[display.y]);
+              return y(d[display.y] || d);
             })
             .attr("height", function(d) {
-              return height - y(d[display.y]);
+              return height - y(d[display.y] || d);
             })
         }
 
@@ -171,16 +219,29 @@ directive('chart', ['d3Service',
             })
         }
 
-        function change(data, attr, inOrder) {
-          var display = sets[attr];
+        function change(data, attr) {
+          var display;
+          var sortSet;
+          if(individuals){
+            sortSet = data.individuals;
+            display = sets[attr];
+          }
+          else {
+            data = data.categories[attr];
+            sortSet = _.sortBy(_.zip(data.y, data.x), function(n){return n[0]});
+          }
           // Copy-on-write since tweens are evaluated after a delay.
-          var x0 = x.domain(data.sort(inOrder ? function(a, b) {
-              return b[display.y] - a[display.y];
-            } : function(a, b) {
-              return d3.ascending(a[display.x], b[display.x]);
+          var x0 = x.domain(sortSet.sort(function(a, b) {
+              if(individuals)
+                return b[display.y] - a[display.y];
+              else
+                return b[0] - a[0];
             })
             .map(function(d) {
-              return d[display.x];
+              if(individuals)
+                return d[display.x];
+              else
+                return d[1];
             }))
             .copy();
 
@@ -191,8 +252,11 @@ directive('chart', ['d3Service',
 
           transition.selectAll(".bar")
             .delay(delay)
-            .attr("x", function(d) {
-              return x0(d[display.x]);
+            .attr("x", function(d, index) {
+              if(individuals)
+                return x0(d[display.x]);
+              else
+                return x0(data.x[index])
             });
 
           transition.select(".x.axis")
@@ -203,6 +267,10 @@ directive('chart', ['d3Service',
         function clear() {
           d3.selectAll('.x.axis').remove();
           d3.selectAll('.y.axis').remove();
+        }
+        function clearBars() {
+          d3.selectAll('.bar').remove();
+          d3.selectAll('line.horizontalGrid').remove();
         }
       }
     }

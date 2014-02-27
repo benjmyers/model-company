@@ -4,7 +4,7 @@ body {
   font-family: 'Lato', sans-serif;
   font-weight: 300;
   position: relative;
-  background-color: #d6d5d4;
+  background-color: #eaebf8;
 }
 
 /* Header */
@@ -19,26 +19,45 @@ body {
 
 .header.h1 {
   font-weight: 400;
+  font-size: 42px;
 }
 
 .footer {
   position: absolute;
   bottom: 0;
+  font-size: 12px;
 }
 
-chart {
-  height: 100%;
-  width: 100%;
+/*.navyblue {
+  color: #181c49;
+}*/
+
+/* Graph */
+.chart-container {
+  display: inline-block;
+  width: 80%;
+  margin-top: 3%;
+}
+
+.chart-container svg {
+  margin-left: 2%;
 }
 
 .axis text {
   font-family: 'Lato', sans-serif;
   font-weight: 300;
-  font-size: 9px;
+  font-size: 10px;
 }
 
 .x.axis text {
   text-anchor: end !important;
+}
+
+line.horizontalGrid {
+  fill: none;
+  shape-rendering: crispEdges;
+  stroke : #c2c2c2;
+  stroke-width : 1px;
 }
 
 .axis path,
@@ -55,6 +74,18 @@ chart {
 
 .x.axis path {
   display: none;
+}
+
+/* Controls */
+.controls {
+  margin-top: 18%;
+}
+.controls form {
+  padding: 10px;
+}
+
+.controls form input {
+  margin-right: 5px;
 }
 
 .menu {

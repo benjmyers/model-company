@@ -1,20 +1,26 @@
 <div class="header">
-  <h1>Model Company</h1>
-  <p>An uncommon look at the common Civil War solider.</p>
+  <h1 class="navyblue">Model Company</h1>
+  <p class="navyblue">An uncommon look at the common Civil War solider.</p>
 
   <div class="controls">
+    <div class="group">
+      <button ng-click="toggle('ind')" ng-class="displayMode ? 'btn btn-default disabled' : 'btn btn-default'">Individuals</button>
+      <button ng-click="toggle('cat')" ng-class="displayMode ? 'btn btn-default' : 'btn btn-default disabled'">Categories</button>
+    </div>
+
     <form>
-      <input ng-click="setDisplay('age')" type="radio" name="attrs" value="Age" checked='checked'>Age <br>
-      <input ng-click="setDisplay('height')" type="radio" name="attrs" value="Height">Height
+    <div ng-repeat="cat in categories">
+      <input ng-click="setDisplay(cat.key)" type="radio" name="attrs" value="{{cat.key}}">{{cat.dispkey}} <br>
+      </div>
     </form> 
   <button class="btn btn-default" ng-click="changeOrder()">Sort</button>
   </div>
 
-  <div class="footer">
-    Created by <a href="http://meredithmmyers.com" target="_blank">Meredith Myers</a>
+  <div class="footer navyblue">
+    Created by <a href="http://meredithmmyers.com" target="_blank">Meredith Myers</a><br>
+    An<a href="https://github.com/meredithmmyers/model-company" target="_blank"> open source </a>project
   </div>
 </div>
-<div class="container">
-</div>
-<chart data="data"></chart>
+<div class="chart-container"></div>
+<chart data="data" sets="sets"></chart>
 
