@@ -7,6 +7,20 @@ angular.module('modelCo.controllers', []).
     $scope.data;
     $scope.displayValue = 'age';
     $scope.displayMode = false;
+    $scope.sets = {
+      age: {
+        x: 'name',
+        y: 'age'
+      },
+      mess: {
+        x: 'name',
+        y: 'mess'
+      },
+      height: {
+        x: 'name',
+        y: 'height'
+      },
+    };
     d3.csv("data/formatted-messes.csv", function(error, data) {
       $scope.parseData(data);
       var categories = $scope.makeCategories(data);
@@ -30,6 +44,7 @@ angular.module('modelCo.controllers', []).
         occupation: {x: [], y: []},
         home: {x: [], y: []}
       };
+      $scope.categories = Object.keys(categories);
       _.each(data, function(d) {
         _.each(Object.keys(categories), function(key){
           var item = d[key];
@@ -74,11 +89,15 @@ angular.module('modelCo.controllers', []).
     }
     $scope.toggle = function(attr) {
       if(attr === 'ind') {
+        if(Object.keys($scope.sets).indexOf($scope.displayValue) === -1)
+          $scope.setDisplay('age');
         $scope.displayMode = true;
+        $scope.categories = Object.keys($scope.sets);
         $scope.$broadcast('changeDisplay', true, $scope.displayValue);
       }
       else {
         $scope.displayMode = false;
+        $scope.categories = Object.keys($scope.data.categories);
         $scope.$broadcast('changeDisplay', false, $scope.displayValue);
       }
     }

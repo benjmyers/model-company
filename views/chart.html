@@ -9,8 +9,9 @@
     </div>
 
     <form>
-      <input ng-click="setDisplay('age')" type="radio" name="attrs" value="Age" checked='checked'>Age <br>
-      <input ng-click="setDisplay('height')" type="radio" name="attrs" value="Height">Height
+    <div ng-repeat="cat in categories">
+      <input ng-click="setDisplay(cat)" type="radio" name="attrs" value="{{cat}}">{{cat}} <br>
+      </div>
     </form> 
   <button class="btn btn-default" ng-click="changeOrder()">Sort</button>
   </div>
@@ -21,5 +22,5 @@
 </div>
 <div class="container">
 </div>
-<chart data="data"></chart>
+<chart data="data" sets="sets"></chart>
 

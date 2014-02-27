@@ -15,7 +15,8 @@ directive('chart', ['d3Service',
     return {
       restrict: 'E',
       scope: {
-        data: "=" 
+        data: "=",
+        sets: "="
       },
       link: function(scope, element, attrs) {
         var individuals = false;
@@ -51,20 +52,7 @@ directive('chart', ['d3Service',
         width = 960 - margin.left - margin.right,
         height = 600 - margin.top - margin.bottom;
 
-        var sets = {
-          age: {
-            x: 'name',
-            y: 'age'
-          },
-          mess: {
-            x: 'name',
-            y: 'mess'
-          },
-          height: {
-            x: 'name',
-            y: 'height'
-          }
-        };
+        var sets = scope.sets;
 
         var formatPercent = d3.format("d");
 
