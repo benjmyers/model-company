@@ -21,7 +21,7 @@ directive('chart', ['d3Service',
         // watch for data changes and re-render
         scope.$watch('data', function(newVals, oldVals) {
           if(newVals)
-            return renderCategory(newVals.categories, 'age');
+            return render(newVals.categories, 'home', false);
           else
             return;
         }, false);
@@ -83,68 +83,31 @@ directive('chart', ['d3Service',
           .append("g")
           .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-        function renderCategory(data, cat) {
-
+        function render(data, attr, individuals) {
           clear();
-          var data = data[cat];
-          x.domain(data.x);
-          y.domain([0, d3.max(data.y)]);
-
-          svg.append("g")
-            .attr("class", "x axis")
-            .attr("transform", "translate(0," + height + ")")
-            .call(xAxis)
-            .selectAll("text")
-            .attr("transform", "rotate(-90)")
-            .attr("y", 0)
-            .attr("dx", "-1.8em")
-            .style("text-anchor", "end");
-
-          svg.append("g")
-            .attr("class", "y axis")
-            .call(yAxis)
-            .append("text")
-            .attr("transform", "rotate(-90)")
-            .attr("y", 6)
-            .attr("dy", ".71em")
-            .style("text-anchor", "end")
-            .text("Number of soldiers");
-
-          svg.selectAll(".bar")
-            .data(data.y)
-            .enter().append("rect")
-            .attr("class", "bar")
-            .attr("x", function(d, index) {
-              return x(data.x[index]);
-            })
-            .attr("width", x.rangeBand())
-            .attr("y", function(d) {
-              return height;
-            })
-            .attr("height", function(d) {
-              return 0;
-            })
-
-          fadeIn(data, {}, true);
-        }
-
-        function render(data, attr) {
-          clear();
-          var display = sets[attr];
-          x.domain(data.map(function(d) {
-            return d[display.x];
-          }));
-          var min = d3.min(data, function(d) {
-            if (d[display.y])
+          var display;
+          if(individuals){
+            display = sets[attr];
+            
+            x.domain(data.map(function(d) {
+              return d[display.x];
+            }));
+            var min = d3.min(data, function(d) {
+              if (d[display.y])
+                return d[display.y];
+              else
+                return undefined;
+            });
+            var max = d3.max(data, function(d) {
               return d[display.y];
-            else
-              return undefined;
-          });
-          var max = d3.max(data, function(d) {
-            return d[display.y];
-          });
-
-          y.domain([min - 1, max]);
+            });
+            y.domain([min - 1, max]);
+          }
+          else {
+            data = data[attr];
+            x.domain(data.x);
+            y.domain([0, d3.max(data.y)]);
+          }
 
           svg.append("g")
             .attr("class", "x axis")
@@ -167,11 +130,14 @@ directive('chart', ['d3Service',
             .text(attr);
 
           svg.selectAll(".bar")
-            .data(data)
+            .data(data.y || data)
             .enter().append("rect")
             .attr("class", "bar")
-            .attr("x", function(d) {
-              return x(d[display.x]);
+            .attr("x", function(d, index) {
+              if(individuals)
+                return x(d[display.x]);
+              else
+                return x(data.x[index]);
             })
             .attr("width", x.rangeBand())
             .attr("y", function(d) {
@@ -181,7 +147,7 @@ directive('chart', ['d3Service',
               return 0;
             });
 
-          fadeIn(data, display, true);
+          fadeIn(data, display || {}, true);
         }
 
         function fadeIn(data, display, inOrder) {
