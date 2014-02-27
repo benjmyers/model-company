@@ -3,6 +3,11 @@
   <p>An uncommon look at the common Civil War solider.</p>
 
   <div class="controls">
+    <div class="btn-group">
+      <button ng-click="toggle('ind')" ng-class="displayMode ? 'btn disabled' : 'btn'">Individuals</button>
+      <button ng-click="toggle('cat')" ng-class="displayMode ? 'btn' : 'btn disabled'">Categories</button>
+    </div>
+
     <form>
       <input ng-click="setDisplay('age')" type="radio" name="attrs" value="Age" checked='checked'>Age <br>
       <input ng-click="setDisplay('height')" type="radio" name="attrs" value="Height">Height

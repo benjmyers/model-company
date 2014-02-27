@@ -15,24 +15,30 @@ directive('chart', ['d3Service',
     return {
       restrict: 'E',
       scope: {
-        data: "="
+        data: "=" 
       },
       link: function(scope, element, attrs) {
+        var individuals = false;
         // watch for data changes and re-render
         scope.$watch('data', function(newVals, oldVals) {
           if(newVals)
-            return render(newVals.categories, 'home', false);
+            return render(newVals, 'age');
           else
             return;
         }, false);
 
         // watch for displayed value
         scope.$on('updateDisplayValue', function(ev, displayValue){
-          render(scope.data.categories, displayValue);
+          render(scope.data, displayValue);
         });
 
         scope.$on('changeOrder', function(ev, displayValue){
           change(scope.data.individuals, displayValue, true);
+        });
+
+        scope.$on('changeDisplay', function(ev, display, displayValue){
+          individuals = display;
+          render(scope.data, displayValue)
         });
 
         // set up SVG
@@ -56,7 +62,7 @@ directive('chart', ['d3Service',
           },
           height: {
             x: 'name',
-            y: 'heightin'
+            y: 'height'
           }
         };
 
@@ -83,12 +89,13 @@ directive('chart', ['d3Service',
           .append("g")
           .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-        function render(data, attr, individuals) {
+        function render(data, attr) {
           clear();
+          clearBars();
           var display;
           if(individuals){
+            data = data.individuals;
             display = sets[attr];
-            
             x.domain(data.map(function(d) {
               return d[display.x];
             }));
@@ -104,7 +111,7 @@ directive('chart', ['d3Service',
             y.domain([min - 1, max]);
           }
           else {
-            data = data[attr];
+            data = data.categories[attr];
             x.domain(data.x);
             y.domain([0, d3.max(data.y)]);
           }
@@ -214,6 +221,9 @@ directive('chart', ['d3Service',
         function clear() {
           d3.selectAll('.x.axis').remove();
           d3.selectAll('.y.axis').remove();
+        }
+        function clearBars() {
+          d3.selectAll('.bar').remove();
         }
       }
     }

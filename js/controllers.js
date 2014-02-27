@@ -5,7 +5,8 @@
 angular.module('modelCo.controllers', []).
   controller('ChartCtrl', ['$scope', '$http', function($scope, $http) {
     $scope.data;
-    $scope.displayValue;
+    $scope.displayValue = 'age';
+    $scope.displayMode = false;
     d3.csv("data/formatted-messes.csv", function(error, data) {
       $scope.parseData(data);
       var categories = $scope.makeCategories(data);
@@ -61,7 +62,7 @@ angular.module('modelCo.controllers', []).
         // parse integer attrs
         d.mess = +parseInt(d.mess);
         d.age = +parseInt(d.age);
-        d.heightin = +parseInt(d.heightin);
+        d.height = +parseInt(d.heightin);
       });
     }
     $scope.setDisplay = function(displayValue) {
@@ -70,5 +71,15 @@ angular.module('modelCo.controllers', []).
     }
     $scope.changeOrder = function() {
       $scope.$broadcast('changeOrder', $scope.displayValue);
+    }
+    $scope.toggle = function(attr) {
+      if(attr === 'ind') {
+        $scope.displayMode = true;
+        $scope.$broadcast('changeDisplay', true, $scope.displayValue);
+      }
+      else {
+        $scope.displayMode = false;
+        $scope.$broadcast('changeDisplay', false, $scope.displayValue);
+      }
     }
 }]);
