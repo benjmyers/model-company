@@ -111,9 +111,25 @@ directive('chart', ['d3Service',
             .attr("transform", "translate(0," + height + ")")
             .call(xAxis)
             .selectAll("text")
-            .attr("transform", "rotate(-90)")
+            .attr("transform", function(){
+              if(individuals)
+                return "rotate(-90)";
+              else
+                return "";
+            })
             .attr("y", 0)
-            .attr("dx", "-1.8em")
+            .attr("dx", function(){
+              if(individuals)
+                return "-1.2em";
+              else
+                return ".5em"
+            })
+            .attr("dy", function(){
+              if(individuals)
+                return ".3em";
+              else
+                return "1.5em";
+            })
             .style("text-anchor", "end");
 
           svg.append("g")
@@ -122,16 +138,22 @@ directive('chart', ['d3Service',
             .append("text")
             .attr("transform", "rotate(-90)")
             .attr("y", 0)
-            .attr("dy", ".71em")
+            .attr("x", -height/2)
+            .attr("dy", "-3em")
             .style("text-anchor", "end")
-            .text(attr);
+            .text(function() {
+              if(individuals)
+                return attr;
+              else
+                return "Soldiers"
+            });
 
           svg.selectAll("line.horizontalGrid")
           .data(y.ticks(5)).enter()
             .append("line")
               .attr({
                 "class":"horizontalGrid",
-                "x1" : margin.right,
+                "x1" : margin.right/2,
                 "x2" : width,
                 "y1" : function(d){ return y(d);},
                 "y2" : function(d){ return y(d);}
