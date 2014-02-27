@@ -21,18 +21,18 @@ directive('chart', ['d3Service',
         // watch for data changes and re-render
         scope.$watch('data', function(newVals, oldVals) {
           if(newVals)
-            return render(newVals, 'age');
+            return renderCategory(newVals.categories, 'age');
           else
             return;
         }, false);
 
         // watch for displayed value
         scope.$on('updateDisplayValue', function(ev, displayValue){
-          render(scope.data, displayValue);
+          render(scope.data.categories, displayValue);
         });
 
         scope.$on('changeOrder', function(ev, displayValue){
-          change(scope.data, displayValue, true);
+          change(scope.data.individuals, displayValue, true);
         });
 
         // set up SVG
@@ -82,6 +82,63 @@ directive('chart', ['d3Service',
           .attr("height", height + margin.top + margin.bottom)
           .append("g")
           .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+        function renderCategory(data, cat) {
+
+          clear();
+          var data = data[cat];
+          console.log(data)
+          x.domain(data.x);
+          // var min = d3.min(data, function(d) {
+          //   console.log(d)
+          //   if (d[display.y])
+          //     return d[display.y];
+          //   else
+          //     return undefined;
+          // });
+          // var max = d3.max(data, function(d) {
+          //   return d[display.y];
+          // });
+
+          y.domain([0, d3.max(data.y)]);
+
+          svg.append("g")
+            .attr("class", "x axis")
+            .attr("transform", "translate(0," + height + ")")
+            .call(xAxis)
+            .selectAll("text")
+            .attr("transform", "rotate(-90)")
+            .attr("y", 0)
+            .attr("dx", "-1.8em")
+            .style("text-anchor", "end");
+
+          svg.append("g")
+            .attr("class", "y axis")
+            .call(yAxis)
+            .append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("y", 6)
+            .attr("dy", ".71em")
+            .style("text-anchor", "end")
+            .text(cat);
+
+          svg.selectAll(".bar")
+            .data(data.y)
+            .enter().append("rect")
+            .attr("class", "bar")
+            .attr("x", function(d, index) {
+              return x(data.x[index]);
+            })
+            .attr("width", x.rangeBand())
+            .attr("y", function(d) {
+              return y(d);
+            })
+            .attr("height", function(d) {
+              return height - y(d);
+            })
+
+          //fadeIn(data, display, true);
+        }
 
         function render(data, attr) {
           clear();
