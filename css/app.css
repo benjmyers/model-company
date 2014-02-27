@@ -8,7 +8,6 @@ body {
 }
 
 /* Header */
-
 .header {
   display: inline-block;
   float: left;
@@ -28,9 +27,9 @@ body {
   font-size: 12px;
 }
 
-/*.navyblue {
+.navyblue {
   color: #181c49;
-}*/
+}
 
 /* Graph */
 .chart-container {
@@ -46,7 +45,8 @@ body {
 .axis text {
   font-family: 'Lato', sans-serif;
   font-weight: 300;
-  font-size: 10px;
+  font-size: 11px;
+  color: #181c49;
 }
 
 .x.axis text {
@@ -76,9 +76,14 @@ line.horizontalGrid {
   display: none;
 }
 
+.btn.btn-default {
+  color: #181c49;
+}
+
 /* Controls */
 .controls {
   margin-top: 18%;
+  color: #181c49;
 }
 .controls form {
   padding: 10px;

@@ -142,11 +142,11 @@ directive('chart', ['d3Service',
             .attr("transform", "rotate(-90)")
             .attr("y", 0)
             .attr("x", -height/2)
-            .attr("dy", "-3em")
+            .attr("dy", "-2.5em")
             .style("text-anchor", "end")
             .text(function() {
               if(individuals)
-                return attr;
+                return sets[attr].dispkey;
               else
                 return "Soldiers"
             });
