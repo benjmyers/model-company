@@ -34,7 +34,7 @@ directive('chart', ['d3Service',
         });
 
         scope.$on('changeOrder', function(ev, displayValue){
-          change(scope.data.individuals, displayValue, true);
+          change(scope.data, displayValue);
         });
 
         scope.$on('changeDisplay', function(ev, display, displayValue){
@@ -177,16 +177,29 @@ directive('chart', ['d3Service',
             })
         }
 
-        function change(data, attr, inOrder) {
-          var display = sets[attr];
+        function change(data, attr) {
+          var display;
+          var sortSet;
+          if(individuals){
+            sortSet = data.individuals;
+            display = sets[attr];
+          }
+          else {
+            data = data.categories[attr];
+            sortSet = _.sortBy(_.zip(data.y, data.x), function(n){return n[0]});
+          }
           // Copy-on-write since tweens are evaluated after a delay.
-          var x0 = x.domain(data.sort(inOrder ? function(a, b) {
-              return b[display.y] - a[display.y];
-            } : function(a, b) {
-              return d3.ascending(a[display.x], b[display.x]);
+          var x0 = x.domain(sortSet.sort(function(a, b) {
+              if(individuals)
+                return b[display.y] - a[display.y];
+              else
+                return b[0] - a[0];
             })
             .map(function(d) {
-              return d[display.x];
+              if(individuals)
+                return d[display.x];
+              else
+                return d[1];
             }))
             .copy();
 
@@ -197,8 +210,11 @@ directive('chart', ['d3Service',
 
           transition.selectAll(".bar")
             .delay(delay)
-            .attr("x", function(d) {
-              return x0(d[display.x]);
+            .attr("x", function(d, index) {
+              if(individuals)
+                return x0(d[display.x]);
+              else
+                return x0(data.x[index])
             });
 
           transition.select(".x.axis")
