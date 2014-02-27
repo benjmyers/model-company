@@ -64,11 +64,13 @@ directive('chart', ['d3Service',
 
         var xAxis = d3.svg.axis()
           .scale(x)
+          .tickSize(0,0)
           .orient("bottom");
 
         var yAxis = d3.svg.axis()
           .scale(y)
           .ticks(5)
+          .tickSize(0,0)
           .orient("left");
 
         var svg = d3.select(".container").append("svg")
@@ -119,16 +121,28 @@ directive('chart', ['d3Service',
             .call(yAxis)
             .append("text")
             .attr("transform", "rotate(-90)")
-            .attr("y", 6)
+            .attr("y", 0)
             .attr("dy", ".71em")
             .style("text-anchor", "end")
             .text(attr);
+
+          svg.selectAll("line.horizontalGrid")
+          .data(y.ticks(5)).enter()
+            .append("line")
+              .attr({
+                "class":"horizontalGrid",
+                "x1" : margin.right,
+                "x2" : width,
+                "y1" : function(d){ return y(d);},
+                "y2" : function(d){ return y(d);}
+              });
 
           svg.selectAll(".bar")
             .data(data.y || data)
             .enter().append("rect")
             .attr("class", "bar")
             .attr("x", function(d, index) {
+
               if(individuals)
                 return x(d[display.x]);
               else
@@ -141,6 +155,9 @@ directive('chart', ['d3Service',
             .attr("height", function(d) {
               return 0;
             });
+
+          // hide the domain paths because ugly
+          d3.selectAll('path.domain').remove();
 
           fadeIn(data, display || {}, true);
         }
@@ -228,6 +245,7 @@ directive('chart', ['d3Service',
         }
         function clearBars() {
           d3.selectAll('.bar').remove();
+          d3.selectAll('line.horizontalGrid').remove();
         }
       }
     }

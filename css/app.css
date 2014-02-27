@@ -45,6 +45,13 @@ chart {
   text-anchor: end !important;
 }
 
+line.horizontalGrid {
+  fill: none;
+  shape-rendering: crispEdges;
+  stroke : #c2c2c2;
+  stroke-width : 1px;
+}
+
 .axis path,
 .axis line {
   fill: none;
