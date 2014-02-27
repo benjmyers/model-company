@@ -87,19 +87,7 @@ directive('chart', ['d3Service',
 
           clear();
           var data = data[cat];
-          console.log(data)
           x.domain(data.x);
-          // var min = d3.min(data, function(d) {
-          //   console.log(d)
-          //   if (d[display.y])
-          //     return d[display.y];
-          //   else
-          //     return undefined;
-          // });
-          // var max = d3.max(data, function(d) {
-          //   return d[display.y];
-          // });
-
           y.domain([0, d3.max(data.y)]);
 
           svg.append("g")
@@ -120,7 +108,7 @@ directive('chart', ['d3Service',
             .attr("y", 6)
             .attr("dy", ".71em")
             .style("text-anchor", "end")
-            .text(cat);
+            .text("Number of soldiers");
 
           svg.selectAll(".bar")
             .data(data.y)
@@ -131,13 +119,13 @@ directive('chart', ['d3Service',
             })
             .attr("width", x.rangeBand())
             .attr("y", function(d) {
-              return y(d);
+              return height;
             })
             .attr("height", function(d) {
-              return height - y(d);
+              return 0;
             })
 
-          //fadeIn(data, display, true);
+          fadeIn(data, {}, true);
         }
 
         function render(data, attr) {
@@ -205,10 +193,10 @@ directive('chart', ['d3Service',
           transition.selectAll(".bar")
             .delay(delay)
             .attr("y", function(d) {
-              return y(d[display.y]);
+              return y(d[display.y] || d);
             })
             .attr("height", function(d) {
-              return height - y(d[display.y]);
+              return height - y(d[display.y] || d);
             })
         }
 
