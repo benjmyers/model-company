@@ -4,7 +4,7 @@ body {
   font-family: 'Lato', sans-serif;
   font-weight: 300;
   position: relative;
-  background-color: #eaebf8;
+  background-color: #f9f9f9;
 }
 
 /* Header */
@@ -26,10 +26,7 @@ body {
 .footer {
   position: fixed;
   bottom: 1%;
-}
-
-.navyblue {
-  color: #181c49;
+  font-size: .85em;
 }
 
 /* Graph */
