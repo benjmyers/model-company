@@ -103,17 +103,20 @@ angular.module('modelCo.controllers', []).
       $scope.$broadcast('changeOrder', $scope.displayValue);
     }
     $scope.toggle = function(attr) {
+      var df = false;
       if(attr === 'ind') {
-        if(Object.keys($scope.sets).indexOf($scope.displayValue) === -1)
+        if(Object.keys($scope.sets).indexOf($scope.displayValue) === -1) {
+          df = true;
           $scope.setDisplay('age');
+        }
         $scope.displayMode = true;
         $scope.categories = $scope.sets;
-        $scope.$broadcast('changeDisplay', true, $scope.displayValue);
+        $scope.$broadcast('changeDisplay', true, $scope.displayValue, df);
       }
       else {
         $scope.displayMode = false;
         $scope.categories = $scope.data.categories;
-        $scope.$broadcast('changeDisplay', false, $scope.displayValue);
+        $scope.$broadcast('changeDisplay', false, $scope.displayValue, df);
       }
     }
 }]);

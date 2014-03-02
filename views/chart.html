@@ -10,7 +10,7 @@
 
       <form>
       <div ng-repeat="cat in categories">
-        <input ng-click="setDisplay(cat.key)" type="radio" name="attrs" value="{{cat.key}}">{{cat.dispkey}} <br>
+        <input ng-click="setDisplay(cat.key)" type="radio" name="attrs" ng-class={{cat.key}}>{{cat.dispkey}} <br>
         </div>
       </form> 
     <button class="btn btn-default" ng-click="changeOrder()">Sort</button>

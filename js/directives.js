@@ -23,6 +23,7 @@ directive('chart', ['d3Service', '$window',
         var individuals = false;
         // watch for data changes and re-render
         scope.$watch('data', function(newVals, oldVals) {
+          setCheckbox();
           if(newVals)
             return render(newVals, 'age');
           else
@@ -38,9 +39,11 @@ directive('chart', ['d3Service', '$window',
           change(scope.data, displayValue);
         });
 
-        scope.$on('changeDisplay', function(ev, display, displayValue){
+        scope.$on('changeDisplay', function(ev, display, displayValue, df){
           individuals = display;
-          render(scope.data, displayValue)
+          render(scope.data, displayValue);
+          if(df)
+            setCheckbox();
         });
 
         var width, height, x, y, xAxis, yAxis, svg;
@@ -300,6 +303,9 @@ directive('chart', ['d3Service', '$window',
         function clearBars() {
           d3.selectAll('.bar').remove();
           d3.selectAll('line.horizontalGrid').remove();
+        }
+        function setCheckbox(attr) {
+          d3.select('input').property('checked',true);
         }
       }
     }
