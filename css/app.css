@@ -8,23 +8,24 @@ body {
 }
 
 /* Header */
-.header {
+.sidebar {
   display: inline-block;
   float: left;
-  width: 15%;
+  width: 20%;
   height: 100%;
-  padding-left: 15px;
+  padding-left: 1%;
+  padding-top: 1%;
+  min-width: 184px;
+  font-size: 1em;
 }
 
-.header-text {
-  font-weight: 700;
-  font-size: 42px;
+.logo-container {
+  width: 100%;
 }
 
 .footer {
-  position: absolute;
-  bottom: 0;
-  font-size: 12px;
+  position: fixed;
+  bottom: 1%;
 }
 
 .navyblue {
@@ -41,7 +42,7 @@ body {
 .axis text {
   font-family: 'Lato', sans-serif;
   font-weight: 300;
-  font-size: 11px;
+  font-size: 0.8em;
   color: #181c49;
 }
 
@@ -88,12 +89,4 @@ line.horizontalGrid {
 .controls form input {
   margin-right: 5px;
 }
-
-.menu {
-  list-style: none;
-  border-bottom: 0.1em solid black;
-  margin-bottom: 2em;
-  padding: 0 0 0.5em;
-}
-
 

@@ -47,7 +47,7 @@ directive('chart', ['d3Service', '$window',
         var margin = {
           top: 20,
           right: 20,
-          bottom: 130,
+          bottom: 200,
           left: 40
         };
         var sets = scope.sets;
@@ -58,13 +58,16 @@ directive('chart', ['d3Service', '$window',
 
           d3.select('svg').remove();
 
-          var tWidth = angular.element(window)[0].innerWidth;
+          // Get important screen dimensions. Since the chart is the full height 
+          // of the page, get window height. Width is dependent on bootstrap adusting
+          // the size of .chart-container to 80%, so get that dimension
           var tHeight = angular.element(window)[0].innerHeight;
+          tHeight-=tHeight*.1;
+          var tWidth = parseInt(d3.select('.chart-container').style("width").split("px")[0]);
 
           // set up SVG
-
-          width = tWidth - tWidth*0.15 - margin.right - margin.left,
-          height = tHeight - tHeight*0.25 - margin.top - margin.bottom;
+          width = tWidth - margin.right - margin.left,
+          height = tHeight - margin.top - margin.bottom;
 
           x = d3.scale.ordinal()
             .rangeRoundBands([0, width], .1, 0);
@@ -85,7 +88,7 @@ directive('chart', ['d3Service', '$window',
 
           svg = d3.select(".chart-container").append("svg")
             .attr("width", tWidth)
-            .attr("height", height + margin.top + margin.bottom)
+            .attr("height", tHeight)
             .append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
           }
