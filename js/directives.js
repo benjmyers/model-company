@@ -84,7 +84,7 @@ directive('chart', ['d3Service', '$window',
             .orient("left");
 
           svg = d3.select(".chart-container").append("svg")
-            .attr("width", "85%")
+            .attr("width", tWidth)
             .attr("height", height + margin.top + margin.bottom)
             .append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
