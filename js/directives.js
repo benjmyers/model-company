@@ -10,13 +10,14 @@ directive('appVersion', ['version',
     };
   }
 ]).
-directive('chart', ['d3Service',
-  function(d3Service) {
+directive('chart', ['d3Service', '$window',
+  function(d3Service, $window) {
     return {
       restrict: 'E',
       scope: {
         data: "=",
-        sets: "="
+        sets: "=", 
+        displayattr: "="
       },
       link: function(scope, element, attrs) {
         var individuals = false;
@@ -42,42 +43,67 @@ directive('chart', ['d3Service',
           render(scope.data, displayValue)
         });
 
-        // set up SVG
+        var width, height, x, y, xAxis, yAxis, svg;
         var margin = {
           top: 20,
           right: 20,
           bottom: 130,
           left: 40
-        },
-        width = 960 - margin.left - margin.right,
-        height = 550 - margin.top - margin.bottom;
-
+        };
         var sets = scope.sets;
 
         var formatPercent = d3.format("d");
 
-        var x = d3.scale.ordinal()
-          .rangeRoundBands([0, width], .1, 0);
+        function setup() {
 
-        var y = d3.scale.linear()
-          .rangeRound([height, 0]);
+          d3.select('svg').remove();
 
-        var xAxis = d3.svg.axis()
-          .scale(x)
-          .tickSize(0,0)
-          .orient("bottom");
+          var tWidth = angular.element(window)[0].innerWidth;
+          var tHeight = angular.element(window)[0].innerHeight;
 
-        var yAxis = d3.svg.axis()
-          .scale(y)
-          .ticks(5)
-          .tickSize(0,0)
-          .orient("left");
+          // set up SVG
 
-        var svg = d3.select(".chart-container").append("svg")
-          .attr("width", width + margin.left + margin.right)
-          .attr("height", height + margin.top + margin.bottom)
-          .append("g")
-          .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+          width = tWidth - tWidth*0.15 - margin.right - margin.left,
+          height = tHeight - tHeight*0.25 - margin.top - margin.bottom;
+
+          x = d3.scale.ordinal()
+            .rangeRoundBands([0, width], .1, 0);
+
+          y = d3.scale.linear()
+            .rangeRound([height, 0]);
+
+          xAxis = d3.svg.axis()
+            .scale(x)
+            .tickSize(0,0)
+            .orient("bottom");
+
+          yAxis = d3.svg.axis()
+            .scale(y)
+            .ticks(5)
+            .tickSize(0,0)
+            .orient("left");
+
+          svg = d3.select(".chart-container").append("svg")
+            .attr("width", "85%")
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+          }
+          setup();
+
+          // Browser onresize event
+          window.onresize = function() {
+            scope.$apply();
+          };
+           // Watch for resize event
+          scope.$watch(function() {
+            return angular.element(window)[0].innerWidth;
+          }, function() {
+            if(scope.data && scope.displayattr) {
+              setup();
+              render(scope.data, scope.displayattr);
+            }
+        });
 
         function render(data, attr) {
           clear();

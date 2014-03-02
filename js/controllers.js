@@ -5,7 +5,7 @@
 angular.module('modelCo.controllers', []).
   controller('ChartCtrl', ['$scope', '$http', function($scope, $http) {
     $scope.data;
-    $scope.displayValue = 'age';
+    $scope.displayValue = "age";
     $scope.displayMode = false;
     $scope.sets = {
       age: {
