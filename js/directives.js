@@ -219,14 +219,22 @@ directive('chart', ['d3Service', '$window',
            svg.append("line")
               .attr({
                 "class":"nat-average",
-                "x1" : x(scope.averages[attr])+x.rangeBand()/2,
-                "x2" : x(scope.averages[attr])+x.rangeBand()/2,
+                "x1" : x(Math.floor(scope.averages[attr]))+x.rangeBand()/2,
+                "x2" : x(Math.floor(scope.averages[attr]))+x.rangeBand()/2,
                 "y1" : 0,
                 "y2" : height
               });
           }
-          // Draw company average
 
+          // Draw company average
+          svg.append("line")
+            .attr({
+              "class": "company-average",
+              "x1" : x(Math.floor(scope.data.categories[attr].average[attr]))+x.rangeBand()/2,
+              "x2" : x(Math.floor(scope.data.categories[attr].average[attr]))+x.rangeBand()/2,
+              "y1" : 0,
+              "y2" : height
+            });
 
           // hide the domain paths because ugly
           d3.selectAll('path.domain').remove();
@@ -314,6 +322,7 @@ directive('chart', ['d3Service', '$window',
         function clear() {
           d3.selectAll('.x.axis').remove();
           d3.selectAll('.y.axis').remove();
+          d3.selectAll('line').remove();
         }
         function clearBars() {
           d3.selectAll('.bar').remove();

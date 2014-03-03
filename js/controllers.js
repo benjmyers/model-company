@@ -117,6 +117,7 @@ angular.module('modelCo.controllers', []).
         var cat = categories[key];
         cat['average'] = {};
         var total = _.reduce(cat.y, function(a, b){ return a + b; }, 0);
+        // Age and height should be overall averages
         if(key === 'age' || key === 'height'){
           var sum = 0;
           _.each(cat.x, function(xCat, index) {
