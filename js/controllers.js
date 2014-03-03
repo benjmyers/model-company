@@ -81,8 +81,8 @@ angular.module('modelCo.controllers', []).
     $scope.parseData = function(data) {
       _.each(data, function(d) {
         // Dates are 100 years off, correct
-        var dateIn = new Date(d.datein);
-        var dateOut = new Date(d.dateout);
+        var dateIn = new Date(d.datein.trim());
+        var dateOut = new Date(d.dateout.trim());
         var correctedIn = dateIn.getFullYear() - 100;
         var correctedOut = dateOut.getFullYear() - 100;
         var cDateIn = dateIn.setFullYear(correctedIn);
