@@ -126,4 +126,15 @@ line.horizontalGrid {
   width: 100%;
   text-align: center;
 }
+.messlist {
+  text-align: center;
+  font-size: 0.8em;
+}
+.soldiers {
+  text-align: center;
+  font-size: 0.8em;
+}
+.soldiers img {
+  height: 300px;
+}
 }
