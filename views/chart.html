@@ -6,6 +6,7 @@
       <div class="group">
         <button ng-click="toggle('ind')" ng-class="displayMode ? 'btn btn-default disabled' : 'btn btn-default'">Individuals</button>
         <button ng-click="toggle('cat')" ng-class="displayMode ? 'btn btn-default' : 'btn btn-default disabled'">Categories</button>
+        <button class="btn btn-default" ng-click="changeOrder()">Sort</button>
       </div>
 
       <form>
@@ -13,13 +14,12 @@
         <input ng-click="setDisplay(cat.key)" type="radio" name="attrs" ng-class={{cat.key}}>{{cat.dispkey}} <br>
         </div>
       </form> 
-    <button class="btn btn-default" ng-click="changeOrder()">Sort</button>
     </div>
   </div>
   <div class="footer">
-    Created by <a href="http://meredithmmyers.com" target="_blank">Meredith Myers</a><br>
-    Logo thanks to <a href="http://alissascheller.com" target="_blank">Alissa Scheller</a><br>
-    An<a href="https://github.com/meredithmmyers/model-company" target="_blank"> open source </a>project
+    <p>Created by <a href="http://meredithmmyers.com" target="_blank">Meredith Myers</a></p>
+    <p>Logo thanks to <a href="http://alissascheller.com" target="_blank">Alissa Scheller</a></p>
+    <p>An<a href="https://github.com/meredithmmyers/model-company" target="_blank"> open source </a>project</p>
   </div>
 </div>
 
