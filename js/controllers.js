@@ -64,7 +64,7 @@ angular.module('modelCo.controllers', []).
         _.each(Object.keys(categories), function(key){
           var item = d[key];
           if(typeof item === "string")
-            item = item.toLowerCase();
+            item = item.trim();
           var object = categories[key];
           var index = object.x.indexOf(item);
           if(index === -1) {
