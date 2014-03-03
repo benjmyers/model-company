@@ -12,5 +12,6 @@ angular.module('modelCo', [
 ]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/', {templateUrl: 'views/chart.html', controller: 'ChartCtrl'});
+  $routeProvider.when('/about', {templateUrl: 'views/about.html'})
   $routeProvider.otherwise({redirectTo: '/'});
 }]);

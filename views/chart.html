@@ -1,6 +1,6 @@
 <div class="sidebar">
   <div class="header">
-    <img ng-src="./img/ModelCompany_Logo.png" class="logo"/>
+    <a href="#/"><img ng-src="../img/ModelCompany_Logo.png" class="logo"/></a>
 
     <div class="controls">
       <div class="group">
@@ -17,7 +17,7 @@
     </div>
   </div>
   <div class="footer">
-    <button class="btn btn-default" ng-click="about()">About</button>
+    <a href="#/about">About</a>
     <p>Created by <a href="http://meredithmmyers.com" target="_blank">Meredith Myers</a></p>
     <p>Logo thanks to <a href="http://alissascheller.com" target="_blank">Alissa Scheller</a></p>
     <p>An<a href="https://github.com/meredithmmyers/model-company" target="_blank"> open source </a>project</p>
@@ -26,9 +26,5 @@
 
 <div class="chart-container" ng-hide="showAbout"></div>
 <chart data="data" sets="sets" displayattr="displayValue">
-<div class="about-container" ng-show="showAbout">
-  <h3>What is model company?</h3>
-
-</div>
 </chart>
 

@@ -115,6 +115,15 @@ line.horizontalGrid {
     display: inline-block;
     width: 75%;
     margin-top: 3%;
+    margin-left: 3%;
   }
+}
+/* About page */
+.about {
+  font-size: 1.2em;
+}
+.imageCtr {
+  width: 100%;
+  text-align: center;
 }
 }
