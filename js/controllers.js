@@ -7,6 +7,7 @@ angular.module('modelCo.controllers', []).
     $scope.data;
     $scope.displayValue = "age";
     $scope.displayMode = false;
+    $scope.showAbout = false;
     $scope.sets = {
       age: {
         x: 'name',
@@ -118,5 +119,8 @@ angular.module('modelCo.controllers', []).
         $scope.categories = $scope.data.categories;
         $scope.$broadcast('changeDisplay', false, $scope.displayValue, df);
       }
+    }
+    $scope.about = function() {
+      $scope.showAbout = !$scope.showAbout;
     }
 }]);
