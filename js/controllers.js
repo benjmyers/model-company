@@ -27,9 +27,43 @@ angular.module('modelCo.controllers', []).
         dispkey: 'Height'
       },
     };
+    $scope.averages = {
+      age: 25,
+      height: 68.5,
+      hair: {
+        black: .13,
+        dark: .25,
+        brown: .3,
+        light: .24,
+        sandy: .04,
+        red: .03,
+        gray: .01
+      },
+      eyes: {
+        blue: .45,
+        gray: .24,
+        hazel: .13,
+        dark: .1,
+        black: .08
+      },
+      complexion: {
+        light: .6,
+        dark: .33,
+        medium: .7
+      },
+      occupation: {
+        farmer: .48,
+        mechanic: .24,
+        laborer: .16,
+        commercial: .05,
+        professional: .03,
+        misc: .04
+      }
+    };
     d3.csv("data/formatted-messes.csv", function(error, data) {
       $scope.parseData(data);
       var categories = $scope.makeCategories(data);
+      $scope.calculateAverages(categories);
       $scope.data = {
         'individuals': data,
         'categories' : categories
@@ -77,6 +111,26 @@ angular.module('modelCo.controllers', []).
         })
       });
       return categories;
+    }
+    $scope.calculateAverages = function(categories) {
+      _.each(Object.keys(categories), function(key) {
+        var cat = categories[key];
+        cat['average'] = {};
+        var total = _.reduce(cat.y, function(a, b){ return a + b; }, 0);
+        if(key === 'age' || key === 'height'){
+          var sum = 0;
+          _.each(cat.x, function(xCat, index) {
+            sum += xCat*cat.y[index];
+          });
+          cat.average[key] = sum/total;
+        }
+        else {
+          _.each(cat.x, function(xCat, index) {
+            var avg = cat.y[index]/total;
+            cat.average[xCat] = avg;
+          });
+        }
+      });
     }
     $scope.parseData = function(data) {
       _.each(data, function(d) {

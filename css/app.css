@@ -93,6 +93,12 @@ line.horizontalGrid {
   stroke : #c2c2c2;
   stroke-width : 1px;
 }
+line.nat-average {
+  fill: none;
+  shape-rendering: crispEdges;
+  stroke : red;
+  stroke-width : 2px;
+}
 .axis path,
 .axis line {
   fill: none;
@@ -119,6 +125,9 @@ line.horizontalGrid {
   }
 }
 /* About page */
+.about-link {
+  clear: both;
+}
 .about {
   font-size: 1.2em;
 }

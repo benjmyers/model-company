@@ -17,7 +17,8 @@ directive('chart', ['d3Service', '$window',
       scope: {
         data: "=",
         sets: "=", 
-        displayattr: "="
+        displayattr: "=",
+        averages: "="
       },
       link: function(scope, element, attrs) {
         var individuals = false;
@@ -212,6 +213,20 @@ directive('chart', ['d3Service', '$window',
             .attr("height", function(d) {
               return 0;
             });
+
+          // Draw national average
+          if(scope.averages.hasOwnProperty(attr)){
+           svg.append("line")
+              .attr({
+                "class":"nat-average",
+                "x1" : x(scope.averages[attr])+x.rangeBand()/2,
+                "x2" : x(scope.averages[attr])+x.rangeBand()/2,
+                "y1" : 0,
+                "y2" : height
+              });
+          }
+          // Draw company average
+
 
           // hide the domain paths because ugly
           d3.selectAll('path.domain').remove();
