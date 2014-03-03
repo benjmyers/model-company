@@ -1,5 +1,5 @@
 /* app css stylesheet */
-
+@media (max-width: 990px) {
 body {
   font-family: 'Lato', sans-serif;
   font-weight: 300;
@@ -79,5 +79,6 @@ line.horizontalGrid {
 }
 .controls form input {
   margin-right: 5px;
+}
 }
 
