@@ -21,6 +21,15 @@ directive('chart', ['detectMobile', '$window',
         averages: "="
       },
       link: function(scope, element, attrs) {
+
+        if(detectMobile.get()){
+          var lnk = document.createElement('link');
+          lnk.type='text/css';
+          lnk.href='css/mobile.css';
+          lnk.rel='stylesheet';
+          document.getElementsByTagName('head')[0].appendChild(lnk);
+        }
+
         // The current display mode
         var individuals = false;
 
@@ -155,7 +164,7 @@ directive('chart', ['detectMobile', '$window',
             if(_.size(data.x) < 7)
               rotateXlabels = false;
           }
-          
+
           svg.append("g")
             .attr("class", "x axis")
             .attr("transform", "translate(0," + height + ")")
