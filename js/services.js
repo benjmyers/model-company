@@ -9,6 +9,33 @@ angular.module('modelCo.services', []).
   value('version', '0.1');
 
 angular.module('modelCo.d3', [])
+  .factory('detectMobile', function() {
+    var isMobile = {
+      Android: function() {
+          return navigator.userAgent.match(/Android/i);
+      },
+      BlackBerry: function() {
+          return navigator.userAgent.match(/BlackBerry/i);
+      },
+      iOS: function() {
+          return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+      },
+      Opera: function() {
+          return navigator.userAgent.match(/Opera Mini/i);
+      },
+      Windows: function() {
+          return navigator.userAgent.match(/IEMobile/i);
+      },
+      any: function() {
+          return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+      }
+    };
+    return {
+      get: function() {
+        return isMobile.any();
+      }
+    }
+  })
   .factory('d3Service', ['$document', '$q', '$rootScope',
     function($document, $q, $rootScope) {
       var d = $q.defer();

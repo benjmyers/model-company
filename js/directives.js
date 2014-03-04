@@ -10,8 +10,8 @@ directive('appVersion', ['version',
     };
   }
 ]).
-directive('chart', ['d3Service', '$window',
-  function(d3Service, $window) {
+directive('chart', ['detectMobile', '$window',
+  function(detectMobile, $window) {
     return {
       restrict: 'A',
       scope: {
@@ -155,8 +155,8 @@ directive('chart', ['d3Service', '$window',
             if(_.size(data.x) < 7)
               rotateXlabels = false;
           }
-          console.log(window.isMobile.any())
-          if(!window.isMobile.any() && !individuals) {
+          alert(detectMobile.get());
+          if(detectMobile.get() && !individuals) {
             svg.append("g")
               .attr("class", "x axis")
               .attr("transform", "translate(0," + height + ")")
