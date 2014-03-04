@@ -87,23 +87,21 @@ body {
 .x.axis text {
   text-anchor: end !important;
 }
+line text {
+  fill: none;
+  font-size: 2em;
+}
+line.appLine, line.nat-average, line.company-average {
+ fill: none;
+  shape-rendering: crispEdges;
+  stroke-width : 1px;  
+  stroke: orange;
+}
 line.horizontalGrid {
   fill: none;
   shape-rendering: crispEdges;
   stroke : #c2c2c2;
   stroke-width : 1px;
-}
-line.nat-average {
-  fill: none;
-  shape-rendering: crispEdges;
-  stroke : red;
-  stroke-width : 2px;
-}
-line.company-average {
-  fill: none;
-  shape-rendering: crispEdges;
-  stroke : green;
-  stroke-width : 2px; 
 }
 .axis path,
 .axis line {

@@ -56,8 +56,6 @@ directive('chart', ['d3Service', '$window',
         };
         var sets = scope.sets;
 
-        var formatPercent = d3.format("d");
-
         function setup() {
 
           d3.select('svg').remove();
@@ -200,7 +198,6 @@ directive('chart', ['d3Service', '$window',
             .enter().append("rect")
             .attr("class", "bar")
             .attr("x", function(d, index) {
-
               if(individuals)
                 return x(d[display.x]);
               else
@@ -213,28 +210,7 @@ directive('chart', ['d3Service', '$window',
             .attr("height", function(d) {
               return 0;
             });
-
-          // Draw national average
-          if(scope.averages.hasOwnProperty(attr)){
-           svg.append("line")
-              .attr({
-                "class":"nat-average",
-                "x1" : x(Math.floor(scope.averages[attr]))+x.rangeBand()/2,
-                "x2" : x(Math.floor(scope.averages[attr]))+x.rangeBand()/2,
-                "y1" : 0,
-                "y2" : height
-              });
-          }
-
-          // Draw company average
-          svg.append("line")
-            .attr({
-              "class": "company-average",
-              "x1" : x(Math.floor(scope.data.categories[attr].average[attr]))+x.rangeBand()/2,
-              "x2" : x(Math.floor(scope.data.categories[attr].average[attr]))+x.rangeBand()/2,
-              "y1" : 0,
-              "y2" : height
-            });
+          drawAverages(attr);
 
           // hide the domain paths because ugly
           d3.selectAll('path.domain').remove();
@@ -242,6 +218,84 @@ directive('chart', ['d3Service', '$window',
           fadeIn(data, display || {}, true);
         }
 
+        function drawAverages(attr) {
+          // Draw averages for age and height
+          if(attr === 'age' || attr === 'height'){
+            var nat = Math.floor(scope.averages[attr]);
+            var co = Math.floor(scope.data.categories[attr].average[attr]);
+            var offset = 0;
+            if (co === nat)
+              offset = 20;
+            var x1, y1, x2, y2;
+            if(individuals) {
+              x1 = 0;
+              x2 = width;
+              y1 = y(nat);
+              y2 = y(nat);
+            }
+            else {
+              x1 = x(nat)+x.rangeBand()/2;
+              x2 = x(nat)+x.rangeBand()/2;
+              y1 = 0;
+              y2 = height;
+            }
+            // draw national average
+            appendLine('nat-average',
+              x1, x2, y1, y2,
+              "National");
+
+            if(individuals) {
+              x1 = 0;
+              x2 = width;
+              y1 = y(co);
+              y2 = y(co);
+            }
+            else {
+              x1 =  x(co)+x.rangeBand()/2
+              x2 =  x(co)+x.rangeBand()/2;
+              y1 = 0;
+              y2 = height;
+            }
+            // Draw company average
+            appendLine('company-average',
+              x1, x2, y1, y2,
+              "Company");
+          }
+          /*else if(scope.averages.hasOwnProperty(attr)) {
+            // draw national averages
+            _.each(Object.keys(scope.averages[attr]), function(key) {
+              var catAttr = scope.data.categories[attr];
+              var natAvg = scope.averages[attr][key];
+              var coAvg = catAttr.y[catAttr.x.indexOf(key)]/catAttr.total;
+              //console.log(key+" "+natAvg+" "+coAvg+" "+y(natAvg*catAttr.total))
+              if(natAvg && coAvg) {
+                appendLine(key, 
+                  margin.left,
+                  width-margin.right, 
+                  y(natAvg*catAttr.total), 
+                  y(natAvg*catAttr.total),
+                  key);
+              }
+            });
+          }*/
+        }
+        function appendLine(className, x1, x2, y1, y2, label) {
+          svg.append("line")
+            .attr({
+              "class": "appLine "+className,
+              "x1" : x1,
+              "x2" : x2,
+              "y1" : y1,
+              "y2" : y2
+            });
+          svg.append("text")
+              .attr("class", "avgLine")
+              .attr("y", y1)
+              .attr("x", x1)
+              .attr("dy", "-0.2em")
+              .style("text-anchor", "beginning")
+              .text(label);   
+        }
         function fadeIn(data, display, inOrder) {
           var transition = svg.transition().duration(750),
             delay = function(d, i) {
@@ -323,6 +377,7 @@ directive('chart', ['d3Service', '$window',
           d3.selectAll('.x.axis').remove();
           d3.selectAll('.y.axis').remove();
           d3.selectAll('line').remove();
+          d3.selectAll('.avgLine').remove();
         }
         function clearBars() {
           d3.selectAll('.bar').remove();
