@@ -7,9 +7,10 @@ body {
   background-color: #f9f9f9;
 }
 /* Smartphones (portrait and landscape) ----------- */  
-@media only screen   
-and (min-width: 990px) {  
-  background-color: red;
+@media only screen {  
+  body {
+    background-color: red;
+  }
 }  
 /* Side display with header, options and footer */
 .sidebar {
