@@ -3,17 +3,22 @@ module.exports = function(config){
     basePath : '../',
 
     files : [
-      'app/lib/angular/angular.js',
-      'app/lib/angular/angular-*.js',
+      'lib/angular/angular.js',
+      'lib/angular/angular-*.js',
+      'node_modules/d3/d3.min.js',
+      'node_modules/underscore/underscore-min.js',
       'test/lib/angular/angular-mocks.js',
-      'app/js/**/*.js',
-      'test/unit/**/*.js'
+      'js/**/*.js',
+      'test/unit/**/*.js',
+      {pattern: 'data/*.csv', 
+       served: true,
+       included: false}
     ],
 
     exclude : [
-      'app/lib/angular/angular-loader.js',
-      'app/lib/angular/*.min.js',
-      'app/lib/angular/angular-scenario.js'
+      'lib/angular/angular-loader.js',
+      'lib/angular/*.min.js',
+      'lib/angular/angular-scenario.js'
     ],
 
     autoWatch : true,

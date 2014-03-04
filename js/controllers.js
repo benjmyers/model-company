@@ -3,7 +3,7 @@
 /* Controllers */
 
 angular.module('modelCo.controllers', []).
-  controller('ChartCtrl', ['$scope', '$http', function($scope, $http) {
+  controller('ChartCtrl', ['$scope', '$http', '$q', '$timeout', function($scope, $http, $q, $timeout) {
     $scope.data;
     $scope.displayValue = "age";
     $scope.displayMode = false;
@@ -60,17 +60,19 @@ angular.module('modelCo.controllers', []).
         misc: .04
       }
     };
-    d3.csv("data/formatted-messes.csv", function(error, data) {
-      $scope.parseData(data);
-      var categories = $scope.makeCategories(data);
-      $scope.calculateAverages(categories);
-      $scope.data = {
-        'individuals': data,
-        'categories' : categories
+    $scope.getData = function() {
+      var report = $q.defer();
+      var fileLoc = "data/formatted-messes.csv";
+      if(window.testing){
+        fileLoc = "base/data/formatted-messes.csv";
       }
-      $scope.order();
-      $scope.$digest();
-    });
+      $timeout(function() {
+        d3.csv(fileLoc, function(error, data) {
+          report.resolve(data);
+        });
+      }, 1000);
+      return report.promise;      
+    }
     $scope.order = function() {
       _.each(Object.keys($scope.data.categories), function(key) {
         var set = $scope.data.categories[key];
@@ -175,4 +177,15 @@ angular.module('modelCo.controllers', []).
         $scope.$broadcast('changeDisplay', false, $scope.displayValue, df);
       }
     }
+    $scope.getData().then(function(data){
+      $scope.parseData(data);
+      var categories = $scope.makeCategories(data);
+      $scope.calculateAverages(categories);
+      $scope.data = {
+        'individuals': data,
+        'categories' : categories
+      }
+      $scope.order();
+      $scope.$digest();
+    });
 }]);
