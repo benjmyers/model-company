@@ -259,7 +259,8 @@ directive('chart', ['d3Service', '$window',
             // Draw company average
             appendLine('company-average',
               x1, x2, y1, y2,
-              "Company");
+              "Company",
+              offset);
           }
           /*else if(scope.averages.hasOwnProperty(attr)) {
             // draw national averages
@@ -279,7 +280,9 @@ directive('chart', ['d3Service', '$window',
             });
           }*/
         }
-        function appendLine(className, x1, x2, y1, y2, label) {
+        function appendLine(className, x1, x2, y1, y2, label, offset) {
+          if(!offset)
+            var offset = 0;
           svg.append("line")
             .attr({
               "class": "appLine "+className,
@@ -290,7 +293,7 @@ directive('chart', ['d3Service', '$window',
             });
           svg.append("text")
               .attr("class", "avgLine")
-              .attr("y", y1)
+              .attr("y", y1+offset)
               .attr("x", x1)
               .attr("dy", "-0.2em")
               .style("text-anchor", "beginning")
