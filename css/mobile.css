@@ -1,3 +1,9 @@
-body {
-  background-color: red;
+.group-mobile {
+  display: block;
+}
+.group {
+  display: none;
+}
+.about-link {
+  display: none;
 }

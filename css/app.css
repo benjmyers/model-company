@@ -14,11 +14,11 @@ body {
   padding-top: 1%;
   font-size: 1em;
 }
-#individualsBtn, #categoriesBtn {
-  display: none;
-}
 .header {
   text-align: center;
+}
+.group-mobile {
+  display: none;
 }
 .footer {
   display: none;
@@ -43,9 +43,6 @@ body {
     padding-left: 1%;
     padding-top: 1%;
     font-size: 1em;
-  }
-  #individualsBtn, #categoriesBtn {
-    display: inline-block;
   }
   .header {
     text-align: inherit;

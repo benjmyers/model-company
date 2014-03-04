@@ -8,7 +8,10 @@
         <button ng-click="toggle('cat')" ng-class="displayMode ? 'btn btn-default' : 'btn btn-default disabled'" id="categoriesBtn">Categories</button>
         <button ng-click="changeOrder()" class="btn btn-default sortBtn" id="sortBtn">Sort</button>
       </div>
-
+      <div class="group-mobile">
+        <button ng-click="changeOrder()" class="btn btn-default sortBtn" id="sortBtn">Sort</button>
+        <a href="#/about">About</a>
+      </div>
       <form>
       <div ng-repeat="cat in categories">
         <input ng-click="setDisplay(cat.key)" type="radio" name="attrs" ng-class={{cat.key}}>{{cat.dispkey}} <br>
