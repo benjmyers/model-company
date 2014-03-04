@@ -155,25 +155,23 @@ directive('chart', ['detectMobile', '$window',
             if(_.size(data.x) < 7)
               rotateXlabels = false;
           }
-          alert(detectMobile.get());
-          if(detectMobile.get() && !individuals) {
-            svg.append("g")
-              .attr("class", "x axis")
-              .attr("transform", "translate(0," + height + ")")
-              .call(xAxis)
-              .selectAll("text")
-              .attr("transform", function(){
-                return (rotateXlabels) ? "rotate(-90)" : "";
-              })
-              .attr("y", 0)
-              .attr("dx", function(){
-                return (rotateXlabels) ? "-1.2em" : ".5em";
-              })
-              .attr("dy", function(){
-                return (rotateXlabels) ? ".3em" : "1.5em";
-              })
-              .style("text-anchor", "end");
-          }
+          
+          svg.append("g")
+            .attr("class", "x axis")
+            .attr("transform", "translate(0," + height + ")")
+            .call(xAxis)
+            .selectAll("text")
+            .attr("transform", function(){
+              return (rotateXlabels) ? "rotate(-90)" : "";
+            })
+            .attr("y", 0)
+            .attr("dx", function(){
+              return (rotateXlabels) ? "-1.2em" : ".5em";
+            })
+            .attr("dy", function(){
+              return (rotateXlabels) ? ".3em" : "1.5em";
+            })
+            .style("text-anchor", "end");
 
           svg.append("g")
             .attr("class", "y axis")

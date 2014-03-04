@@ -14,7 +14,7 @@ body {
   padding-top: 1%;
   font-size: 1em;
 }
-.sortBtn {
+#individualsBtn, #categoriesBtn {
   display: none;
 }
 .header {
@@ -34,7 +34,7 @@ body {
 .controls form input {
   margin-right: 5px;
 }
-@media (min-width: 990px) {
+@media (min-width: 440px) {
   .sidebar {
     display: inline-block;
     float: left;
@@ -44,7 +44,7 @@ body {
     padding-top: 1%;
     font-size: 1em;
   }
-  .sortBtn {
+  #individualsBtn, #categoriesBtn {
     display: inline-block;
   }
   .header {
@@ -117,7 +117,7 @@ line.horizontalGrid {
   color: #181c49;
 }
 
-@media (min-width: 990px) {
+@media (min-width: 400px) {
   .chart-container {
     display: inline-block;
     width: 75%;
