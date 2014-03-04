@@ -141,21 +141,27 @@ angular.module('modelCo.controllers', []).
         var cat = categories[key];
         cat['average'] = {};
         var total = _.reduce(cat.y, function(a, b){ return a + b; }, 0);
-        cat['total'] = total;
+        
         // Age and height should be overall averages
         if(key === 'age' || key === 'height'){
           var sum = 0;
           _.each(cat.x, function(xCat, index) {
-            sum += xCat*cat.y[index];
+            if(cat.y[index] === 0)
+              total -= 1;
+            else
+              sum += xCat*cat.y[index];
           });
           cat.average[key] = sum/total;
         }
         else {
           _.each(cat.x, function(xCat, index) {
-            var avg = cat.y[index]/total;
-            cat.average[xCat] = avg;
+            if(cat.y[index] === 0)
+              total -= 1;
+            else
+              cat.average[xCat] = cat.y[index]/total;
           });
         }
+        cat['total'] = total;
       });
     }
     // Orders categorical data of the form cat={x: [], y: []}

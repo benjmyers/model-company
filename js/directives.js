@@ -195,6 +195,15 @@ directive('chart', ['d3Service', '$window',
               .attr("y1", function(d){ return y(d) })
               .attr("y2", function(d){ return y(d) });
 
+          // Remove invalid values
+          if(individuals) {
+            if(attr === "height" || attr === "age") {
+              data = _.reject(data, function(d){
+                return d[attr] === 0;
+              });
+            }
+          }
+
           svg.selectAll(".bar")
             .data(data.y || data)
             .enter().append("rect")
@@ -206,7 +215,7 @@ directive('chart', ['d3Service', '$window',
             .attr("y", height)
             .attr("height", 0);
 
-          drawAverages(attr);
+          // drawAverages(attr);
 
           // hide the domain paths because ugly
           d3.selectAll('path.domain').remove();
