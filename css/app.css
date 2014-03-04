@@ -7,7 +7,7 @@ body {
   background-color: #f9f9f9;
 }
 /* Smartphones (portrait and landscape) ----------- */  
-@media only screen {  
+@media only screen and (max-width: 632px) {  
   body {
     background-color: red;
   }
