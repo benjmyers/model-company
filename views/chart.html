@@ -4,9 +4,9 @@
 
     <div class="controls">
       <div class="group">
-        <button ng-click="toggle('ind')" ng-class="displayMode ? 'btn btn-default disabled' : 'btn btn-default'">Individuals</button>
-        <button ng-click="toggle('cat')" ng-class="displayMode ? 'btn btn-default' : 'btn btn-default disabled'">Categories</button>
-        <button class="btn btn-default sortBtn" ng-click="changeOrder()">Sort</button>
+        <button ng-click="toggle('ind')" ng-class="displayMode ? 'btn btn-default disabled' : 'btn btn-default'" id="individualsBtn">Individuals</button>
+        <button ng-click="toggle('cat')" ng-class="displayMode ? 'btn btn-default' : 'btn btn-default disabled'" id="categoriesBtn">Categories</button>
+        <button ng-click="changeOrder()" class="btn btn-default sortBtn" id="sortBtn">Sort</button>
       </div>
 
       <form>
