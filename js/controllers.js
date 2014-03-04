@@ -4,9 +4,13 @@
 
 angular.module('modelCo.controllers', []).
   controller('ChartCtrl', ['$scope', '$http', '$q', '$timeout', function($scope, $http, $q, $timeout) {
+    // Holds all soldier data
     $scope.data;
+    // Currently displated attribute
     $scope.displayValue = "age";
+    // true = individuals, false = categories
     $scope.displayMode = false;
+    // Labels and keys for individual display attributes
     $scope.sets = {
       age: {
         x: 'name',
@@ -27,6 +31,7 @@ angular.module('modelCo.controllers', []).
         dispkey: 'Height'
       },
     };
+    // National average soldier attributes
     $scope.averages = {
       age: 25,
       height: 68.5,
@@ -60,6 +65,12 @@ angular.module('modelCo.controllers', []).
         misc: .04
       }
     };
+
+    /* --------------------------------- */
+    /* -------- Data Functions  --------*/
+    /* --------------------------------- */
+
+    // Returns all data from the soldier csv
     $scope.getData = function() {
       var report = $q.defer();
       var fileLoc = "data/formatted-messes.csv";
@@ -73,14 +84,25 @@ angular.module('modelCo.controllers', []).
       }, 1000);
       return report.promise;      
     }
-    $scope.order = function() {
-      _.each(Object.keys($scope.data.categories), function(key) {
-        var set = $scope.data.categories[key];
-        var mergeSet = _.sortBy(_.zip(set.y, set.x), function(n) {return n[1]});
-        set.x = _.map(mergeSet, function(e) {return e[1]});
-        set.y = _.map(mergeSet, function(e) {return e[0]});
+    // Iterages through each data point and performs necessary parsing and adjustments
+    $scope.parseData = function(data) {
+      _.each(data, function(d) {
+        // Dates are 100 years off, correct
+        var dateIn = new Date(d.datein.trim());
+        var dateOut = new Date(d.dateout.trim());
+        var correctedIn = dateIn.getFullYear() - 100;
+        var correctedOut = dateOut.getFullYear() - 100;
+        var cDateIn = dateIn.setFullYear(correctedIn);
+        var cDateOut = dateOut.setFullYear(correctedOut);
+        d.datein = new Date(cDateIn).toDateString();
+        d.dateout = new Date(cDateOut).toDateString();
+        // parse integer attrs
+        d.mess = +parseInt(d.mess);
+        d.age = +parseInt(d.age);
+        d.height = +parseInt(d.heightin);
       });
     }
+    // Creates the object containing categorical information
     $scope.makeCategories = function(data) {
       var categories = {
         mess: {x: [], y: [], dispkey: "Mess", key: "mess"},
@@ -107,13 +129,13 @@ angular.module('modelCo.controllers', []).
             object.x.push(item);
             object.y.push(1);
           }
-          else {
+          else
             object.y[index]++;
-          }
         })
       });
       return categories;
     }
+    // Calculates averages (overall for height & age, by category for all others)
     $scope.calculateAverages = function(categories) {
       _.each(Object.keys(categories), function(key) {
         var cat = categories[key];
@@ -136,23 +158,32 @@ angular.module('modelCo.controllers', []).
         }
       });
     }
-    $scope.parseData = function(data) {
-      _.each(data, function(d) {
-        // Dates are 100 years off, correct
-        var dateIn = new Date(d.datein.trim());
-        var dateOut = new Date(d.dateout.trim());
-        var correctedIn = dateIn.getFullYear() - 100;
-        var correctedOut = dateOut.getFullYear() - 100;
-        var cDateIn = dateIn.setFullYear(correctedIn);
-        var cDateOut = dateOut.setFullYear(correctedOut);
-        d.datein = new Date(cDateIn).toDateString();
-        d.dateout = new Date(cDateOut).toDateString();
-        // parse integer attrs
-        d.mess = +parseInt(d.mess);
-        d.age = +parseInt(d.age);
-        d.height = +parseInt(d.heightin);
+    // Orders categorical data of the form cat={x: [], y: []}
+    $scope.order = function() {
+      _.each(Object.keys($scope.data.categories), function(key) {
+        var set = $scope.data.categories[key];
+        var mergeSet = _.sortBy(_.zip(set.y, set.x), function(n) {return n[1]});
+        set.x = _.map(mergeSet, function(e) {return e[1]});
+        set.y = _.map(mergeSet, function(e) {return e[0]});
       });
     }
+
+    // Initiate load sequence
+    $scope.getData().then(function(data){
+      $scope.parseData(data);
+      var categories = $scope.makeCategories(data);
+      $scope.calculateAverages(categories);
+      $scope.data = {
+        'individuals': data,
+        'categories' : categories
+      }
+      $scope.order();
+    });
+
+    /* --------------------------------- */
+    /* -------- Event Functions  --------*/
+    /* --------------------------------- */
+
     $scope.setDisplay = function(displayValue) {
       $scope.displayValue = displayValue;
       $scope.$broadcast('updateDisplayValue', displayValue)
@@ -177,15 +208,4 @@ angular.module('modelCo.controllers', []).
         $scope.$broadcast('changeDisplay', false, $scope.displayValue, df);
       }
     }
-    $scope.getData().then(function(data){
-      $scope.parseData(data);
-      var categories = $scope.makeCategories(data);
-      $scope.calculateAverages(categories);
-      $scope.data = {
-        'individuals': data,
-        'categories' : categories
-      }
-      $scope.order();
-      $scope.$digest();
-    });
 }]);

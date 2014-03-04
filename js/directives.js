@@ -13,7 +13,7 @@ directive('appVersion', ['version',
 directive('chart', ['d3Service', '$window',
   function(d3Service, $window) {
     return {
-      restrict: 'E',
+      restrict: 'A',
       scope: {
         data: "=",
         sets: "=", 
@@ -21,8 +21,14 @@ directive('chart', ['d3Service', '$window',
         averages: "="
       },
       link: function(scope, element, attrs) {
+        // The current display mode
         var individuals = false;
-        // watch for data changes and re-render
+
+        /* --------------------------------- */
+        /* ------------- Events -------------*/
+        /* --------------------------------- */
+
+        // Watch for soldier data changes and re-render
         scope.$watch('data', function(newVals, oldVals) {
           setCheckbox();
           if(newVals)
@@ -31,21 +37,41 @@ directive('chart', ['d3Service', '$window',
             return;
         }, false);
 
-        // watch for displayed value
+        // Re render when the displayed attribute changes
         scope.$on('updateDisplayValue', function(ev, displayValue){
           render(scope.data, displayValue);
         });
 
+        // Order the categories from greatest to least
         scope.$on('changeOrder', function(ev, displayValue){
           change(scope.data, displayValue);
         });
 
+        // Change display mode (individuals, categories) and re render
         scope.$on('changeDisplay', function(ev, display, displayValue, df){
           individuals = display;
           render(scope.data, displayValue);
           if(df)
             setCheckbox();
         });
+
+        // Browser onresize event
+        window.onresize = function() {
+          scope.$apply();
+        };
+         // Watch for resize event & re render
+        scope.$watch(function() {
+          return angular.element(window)[0].innerWidth;
+        }, function() {
+          if(scope.data && scope.displayattr) {
+            setup();
+            render(scope.data, scope.displayattr);
+          }
+        });
+
+        /* --------------------------------- */
+        /* ---------- D3 Rendering ----------*/
+        /* --------------------------------- */
 
         var width, height, x, y, xAxis, yAxis, svg;
         var margin = {
@@ -54,10 +80,14 @@ directive('chart', ['d3Service', '$window',
           bottom: 200,
           left: 40
         };
+
+        // Grab labels and keys for individual display attributes
         var sets = scope.sets;
 
+        // Sets up the D3 graph
         function setup() {
 
+          // Remove the old SVG 
           d3.select('svg').remove();
 
           // Get important screen dimensions. Since the chart is the full height 
@@ -67,7 +97,7 @@ directive('chart', ['d3Service', '$window',
           tHeight-=tHeight*.1;
           var tWidth = parseInt(d3.select('.chart-container').style("width").split("px")[0]);
 
-          // set up SVG
+          // Set up SVG
           width = tWidth - margin.right - margin.left,
           height = tHeight - margin.top - margin.bottom;
 
@@ -94,22 +124,11 @@ directive('chart', ['d3Service', '$window',
             .append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
           }
+
+          // Kick off initial setup
           setup();
 
-          // Browser onresize event
-          window.onresize = function() {
-            scope.$apply();
-          };
-           // Watch for resize event
-          scope.$watch(function() {
-            return angular.element(window)[0].innerWidth;
-          }, function() {
-            if(scope.data && scope.displayattr) {
-              setup();
-              render(scope.data, scope.displayattr);
-            }
-        });
-
+        // Renders the D3 graph
         function render(data, attr) {
           clear();
           clearBars();
@@ -122,10 +141,7 @@ directive('chart', ['d3Service', '$window',
               return d[display.x];
             }));
             var min = d3.min(data, function(d) {
-              if (d[display.y])
-                return d[display.y];
-              else
-                return undefined;
+              return (d[display.y]) ? d[display.y] : undefined;
             });
             var max = d3.max(data, function(d) {
               return d[display.y];
@@ -146,23 +162,14 @@ directive('chart', ['d3Service', '$window',
             .call(xAxis)
             .selectAll("text")
             .attr("transform", function(){
-              if(rotateXlabels)
-                return "rotate(-90)";
-              else
-                return "";
+              return (rotateXlabels) ? "rotate(-90)" : "";
             })
             .attr("y", 0)
             .attr("dx", function(){
-              if(rotateXlabels)
-                return "-1.2em";
-              else
-                return ".5em"
+              return (rotateXlabels) ? "-1.2em" : ".5em";
             })
             .attr("dy", function(){
-              if(rotateXlabels)
-                return ".3em";
-              else
-                return "1.5em";
+              return (rotateXlabels) ? ".3em" : "1.5em";
             })
             .style("text-anchor", "end");
 
@@ -176,40 +183,29 @@ directive('chart', ['d3Service', '$window',
             .attr("dy", "-2.5em")
             .style("text-anchor", "end")
             .text(function() {
-              if(individuals)
-                return sets[attr].dispkey;
-              else
-                return "Soldiers"
+              return (individuals) ? sets[attr].dispkey : "Soldiers";
             });
 
           svg.selectAll("line.horizontalGrid")
           .data(y.ticks(5)).enter()
             .append("line")
-              .attr({
-                "class":"horizontalGrid",
-                "x1" : margin.right/2,
-                "x2" : width,
-                "y1" : function(d){ return y(d);},
-                "y2" : function(d){ return y(d);}
-              });
+              .attr("class","horizontalGrid")
+              .attr("x1", margin.right/2)
+              .attr("x2", width)
+              .attr("y1", function(d){ return y(d) })
+              .attr("y2", function(d){ return y(d) });
 
           svg.selectAll(".bar")
             .data(data.y || data)
             .enter().append("rect")
             .attr("class", "bar")
             .attr("x", function(d, index) {
-              if(individuals)
-                return x(d[display.x]);
-              else
-                return x(data.x[index]);
+              return (individuals) ? x(d[display.x]) : x(data.x[index]);
             })
             .attr("width", x.rangeBand())
-            .attr("y", function(d) {
-              return height;
-            })
-            .attr("height", function(d) {
-              return 0;
-            });
+            .attr("y", height)
+            .attr("height", 0);
+
           drawAverages(attr);
 
           // hide the domain paths because ugly
@@ -218,6 +214,7 @@ directive('chart', ['d3Service', '$window',
           fadeIn(data, display || {}, true);
         }
 
+        // Draws averages on the graph
         function drawAverages(attr) {
           // Draw averages for age and height
           if(attr === 'age' || attr === 'height'){
@@ -262,7 +259,8 @@ directive('chart', ['d3Service', '$window',
               "Company",
               offset);
           }
-          /*else if(scope.averages.hasOwnProperty(attr)) {
+          /* This requires more thought on how to properly display averages
+            else if(scope.averages.hasOwnProperty(attr)) {
             // draw national averages
             _.each(Object.keys(scope.averages[attr]), function(key) {
               var catAttr = scope.data.categories[attr];
@@ -280,6 +278,7 @@ directive('chart', ['d3Service', '$window',
             });
           }*/
         }
+        // Adds a line to the graph
         function appendLine(className, x1, x2, y1, y2, label, offset) {
           if(!offset)
             var offset = 0;
@@ -299,6 +298,7 @@ directive('chart', ['d3Service', '$window',
               .style("text-anchor", "beginning")
               .text(label);   
         }
+        // Fades in data via a transition
         function fadeIn(data, display, inOrder) {
           var transition = svg.transition().duration(750),
             delay = function(d, i) {
@@ -314,7 +314,7 @@ directive('chart', ['d3Service', '$window',
               return height - y(d[display.y] || d);
             })
         }
-
+        // Fades out data via a transition
         function fadeOut() {
           var transition = svg.transition().duration(750),
             delay = function(d, i) {
@@ -330,7 +330,7 @@ directive('chart', ['d3Service', '$window',
               return 0;
             })
         }
-
+        // Orders data display from greatest to least
         function change(data, attr) {
           var display;
           var sortSet;
@@ -344,16 +344,10 @@ directive('chart', ['d3Service', '$window',
           }
           // Copy-on-write since tweens are evaluated after a delay.
           var x0 = x.domain(sortSet.sort(function(a, b) {
-              if(individuals)
-                return b[display.y] - a[display.y];
-              else
-                return b[0] - a[0];
+              return (individuals) ? b[display.y] - a[display.y] : b[0] - a[0];
             })
             .map(function(d) {
-              if(individuals)
-                return d[display.x];
-              else
-                return d[1];
+              return (individuals) ? d[display.x] : d[1];
             }))
             .copy();
 
@@ -365,10 +359,7 @@ directive('chart', ['d3Service', '$window',
           transition.selectAll(".bar")
             .delay(delay)
             .attr("x", function(d, index) {
-              if(individuals)
-                return x0(d[display.x]);
-              else
-                return x0(data.x[index])
+              return (individuals) ? x0(d[display.x]) : x0(data.x[index]);
             });
 
           transition.select(".x.axis")
@@ -376,16 +367,19 @@ directive('chart', ['d3Service', '$window',
             .selectAll("g")
             .delay(delay);
         }
+        // Clears everything from the DOM
         function clear() {
           d3.selectAll('.x.axis').remove();
           d3.selectAll('.y.axis').remove();
           d3.selectAll('line').remove();
           d3.selectAll('.avgLine').remove();
         }
+        // Clears bars only from the DOM
         function clearBars() {
           d3.selectAll('.bar').remove();
           d3.selectAll('line.horizontalGrid').remove();
         }
+        // Sets a checkbox to checked
         function setCheckbox(attr) {
           d3.select('input').property('checked',true);
         }
