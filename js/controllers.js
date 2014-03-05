@@ -215,6 +215,6 @@ angular.module('modelCo.controllers', []).
       }
     }
     $scope.about = function() {
-      $location.path("#/about");
+      $location.path("/about");
     }
 }]);
