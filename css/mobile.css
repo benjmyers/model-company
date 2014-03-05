@@ -1,6 +1,9 @@
 .group-mobile {
   display: block;
 }
+.group-mobile button {
+  width: 25%;
+}
 .group {
   display: none;
 }

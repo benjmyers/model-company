@@ -3,7 +3,7 @@
 /* Controllers */
 
 angular.module('modelCo.controllers', []).
-  controller('ChartCtrl', ['$scope', '$http', '$q', '$timeout', function($scope, $http, $q, $timeout) {
+  controller('ChartCtrl', ['$scope', '$http', '$q', '$timeout', '$location', function($scope, $http, $q, $timeout, $location) {
     // Holds all soldier data
     $scope.data;
     // Currently displated attribute
@@ -213,5 +213,8 @@ angular.module('modelCo.controllers', []).
         $scope.categories = $scope.data.categories;
         $scope.$broadcast('changeDisplay', false, $scope.displayValue, df);
       }
+    }
+    $scope.about = function() {
+      $location.path("#/about");
     }
 }]);
