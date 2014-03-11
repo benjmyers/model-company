@@ -352,6 +352,7 @@ directive('chart', ['detectMobile', '$window',
         function change(data, attr) {
           var display;
           var sortSet;
+          var rotateXlabels = true;
           if(individuals){
             sortSet = data.individuals;
             display = sets[attr];
@@ -359,6 +360,8 @@ directive('chart', ['detectMobile', '$window',
           else {
             data = data.categories[attr];
             sortSet = _.sortBy(_.zip(data.y, data.x), function(n){return n[0]});
+            if(_.size(data.x) < 7)
+              rotateXlabels = false;
           }
           // Copy-on-write since tweens are evaluated after a delay.
           var x0 = x.domain(sortSet.sort(function(a, b) {
@@ -384,6 +387,17 @@ directive('chart', ['detectMobile', '$window',
             .call(xAxis)
             .selectAll("g")
             .delay(delay);
+
+          // Reapply label styling as it's removed during the transition
+          d3.selectAll(".x.axis text")
+            .attr("y", 0)
+            .attr("dx", function(){
+              return (rotateXlabels) ? "-1.2em" : ".5em";
+            })
+            .attr("dy", function(){
+              return (rotateXlabels) ? ".3em" : "1.5em";
+            })
+            .style("text-anchor", "end");
         }
         // Clears everything from the DOM
         function clear() {
