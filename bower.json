@@ -1,0 +1,10 @@
+{
+  "name": "model-company",
+  "ignore": [],
+  "dependencies": {
+    "d3": "latest",
+    "underscore": "latest",
+    "chartist": "latest"
+  },
+  "devDependencies": {}
+}
