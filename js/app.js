@@ -11,8 +11,21 @@ angular.module('modelCo', [
   'modelCo.d3'
 ]).
 config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/', {templateUrl: 'views/chart.html', controller: 'ChartCtrl'});
-  $routeProvider.when('/about', {templateUrl: 'views/about.html'})
-  $routeProvider.otherwise({redirectTo: '/'});
+    $routeProvider
+        .when('/', {
+            templateUrl: 'views/chart.html',
+            controller: 'ChartCtrl'
+        })
+        .when('/chartist', {
+            templateUrl: 'views/main.html',
+            controller: 'MainCtrl'
+        })
+        .when('/about', {
+            templateUrl: 'views/about.html'
+        })
+        .otherwise({
+            redirectTo: '/'
+        });
 }]);
+
 

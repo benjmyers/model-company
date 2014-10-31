@@ -2,7 +2,9 @@
 
 /* Controllers */
 
-angular.module('modelCo.controllers', []).
+angular.module('modelCo.controllers', []);
+
+angular.module('modelCo.controllers').
   controller('ChartCtrl', ['$scope', '$http', '$q', '$timeout', '$location', function($scope, $http, $q, $timeout, $location) {
     // Holds all soldier data
     $scope.data;

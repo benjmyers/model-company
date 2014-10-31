@@ -4,7 +4,8 @@
   "dependencies": {
     "d3": "latest",
     "underscore": "latest",
-    "chartist": "latest"
+    "chartist": "latest",
+    "bootstrap": "latest"
   },
   "devDependencies": {}
 }
