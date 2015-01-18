@@ -5,7 +5,8 @@
     "d3": "latest",
     "underscore": "latest",
     "chartist": "latest",
-    "bootstrap": "latest"
+    "bootstrap": "latest",
+    "nvd3-community": "1.7.x"
   },
   "devDependencies": {}
 }
