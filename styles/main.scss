@@ -1,5 +1,6 @@
 // bower:scss
 // endbower
+@import url(http://fonts.googleapis.com/css?family=Petit+Formal+Script);
 
 .browsehappy {
   margin: 0.2em 0;
@@ -12,6 +13,7 @@
 body {
   padding-top: 20px;
   padding-bottom: 20px;
+  font-size: 16px;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -25,6 +27,15 @@ body {
 /* Custom page header */
 .header {
   border-bottom: 1px solid #e5e5e5;
+  text-align: center;
+  .header-title {
+    font-family: "League Gothic", "Ariel", "san serif";
+    font-size: 4em;
+    text-transform: uppercase;
+  }
+  .header-sub {
+    font-family: "LindenHill";
+  }
 
   /* Make the masthead heading the same height as the navigation */
   h3 {

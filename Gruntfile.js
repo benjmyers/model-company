@@ -89,11 +89,11 @@ module.exports = function (grunt) {
                 '/views',
                 connect.static('./views')
               ),
+              connect().use(
+                '/styles',
+                connect.static('./styles')
+              ),
               connect.static('./'),
-             //connect.static('./scripts'),
-              // connect.static('./views'),
-              // connect.static('./styles'),
-              // connect.static('./data')
             ];
           }
         }
