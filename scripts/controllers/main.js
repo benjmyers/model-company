@@ -8,10 +8,19 @@
  * Controller of the modelCompanyApp
  */
 angular.module('modelCompanyApp')
-  .controller('MainCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('MainCtrl', function ($scope, $http) {
+    d3.csv('data/formatted-messes.csv', function(err, data) {
+      d3.csv('data/locations.csv', function(err, locations) {
+        _.each(data, function(d) {
+          var geocode = _.find(locations, function(e) { return e.town === d.home;});
+          console.log(geocode)
+          if (geocode) {
+            d.latitude = geocode.lat;
+            d.longitude = geocode.lon;
+          }
+        })
+        $scope.data = data;
+        $scope.$apply();
+      })
+    })
   });

@@ -1,6 +1,6 @@
 // bower:scss
 // endbower
-@import url(http://fonts.googleapis.com/css?family=Petit+Formal+Script);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300,700);
 
 .browsehappy {
   margin: 0.2em 0;
@@ -11,9 +11,8 @@
 
 /* Space out content a bit */
 body {
-  padding-top: 20px;
-  padding-bottom: 20px;
   font-size: 16px;
+  font-family: "Open Sans", "san serif", "Ariel";
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -44,6 +43,17 @@ body {
     line-height: 40px;
     padding-bottom: 19px;
   }
+}
+
+.section-header {
+  font-size: 2em;
+  font-family: "LindenHill";
+  width: 100%;
+  text-align: center;
+}
+#map {
+  height: 300px;
+  width: 400px;
 }
 
 /* Custom page footer */
@@ -80,7 +90,7 @@ body {
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   .container {
-    max-width: 730px;
+    max-width: 90%;
   }
 
   /* Remove the padding we set earlier */

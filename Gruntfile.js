@@ -86,6 +86,10 @@ module.exports = function (grunt) {
                 connect.static('./scripts')
               ),
               connect().use(
+                '/data',
+                connect.static('./data')
+              ),
+              connect().use(
                 '/views',
                 connect.static('./views')
               ),
