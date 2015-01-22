@@ -13,11 +13,12 @@ angular.module('modelCompanyApp')
       d3.csv('data/locations.csv', function(err, locations) {
         _.each(data, function(d) {
           var geocode = _.find(locations, function(e) { return e.town === d.home;});
-          console.log(geocode)
           if (geocode) {
             d.latitude = geocode.lat;
             d.longitude = geocode.lon;
           }
+          else
+            console.log(d.home)
         })
         $scope.data = data;
         $scope.$apply();

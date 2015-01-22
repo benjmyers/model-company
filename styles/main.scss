@@ -44,16 +44,30 @@ body {
     padding-bottom: 19px;
   }
 }
-
+.left, .right {
+  display: inline-block;
+}
+.left {
+  float: left;
+}
+.right {
+  float: right;
+}
 .section-header {
   font-size: 2em;
   font-family: "LindenHill";
   width: 100%;
   text-align: center;
 }
+
+/* RECRUITS */
+.recruits {
+  width: 64%;
+}
 #map {
   height: 300px;
   width: 400px;
+  margin: 1em 0;
 }
 
 /* Custom page footer */

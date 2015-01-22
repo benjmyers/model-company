@@ -18,16 +18,19 @@ directive('map', ['$window',
                 
                 // Create the map
                 map = L.map('map', {
-                    minZoom: 4,
-                    maxZoom: 17,
+                    minZoom: 5,
+                    maxZoom: 12,
                     zoomControl: false
                 }).setView([40.398036,-76.811517], 6);
 
                 // Add the tile layer. Alternative themes: 'terrain' and 'watercolor'.
-                var canvas = L.tileLayer.provider('Esri.WorldGrayCanvas');
+                // var canvas = L.tileLayer.provider('Esri.WorldGrayCanvas');
+                // L.esri.basemapLayer('ImageryLabels').addTo(map);
+                L.esri.basemapLayer('Gray').addTo(map);
+                L.esri.basemapLayer('GrayLabels').addTo(map);
 
                 // Add the tile layer
-                map.addLayer(canvas);
+                //map.addLayer(canvas);
 
                 // Draw the map
                 function draw(data) {
@@ -43,6 +46,7 @@ directive('map', ['$window',
                     // Create the heatmap
                     heat = L.heatLayer(latLngs, {
                         radius: 16,
+                        minOpacity: 0.3,
                         // gradient: {
                         //     0.4: '#1b5479',
                         //     0.65: '#d4e6f1',
@@ -50,8 +54,8 @@ directive('map', ['$window',
                         // }
                     });
 
-                    if (heatmapShowing)
-                        map.addLayer(heat);
+                    map.addLayer(heat);
+                    map.fitBounds(latLngs);
 
                 }
             }
