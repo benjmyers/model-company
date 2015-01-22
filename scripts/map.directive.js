@@ -23,14 +23,8 @@ directive('map', ['$window',
                     zoomControl: false
                 }).setView([40.398036,-76.811517], 6);
 
-                // Add the tile layer. Alternative themes: 'terrain' and 'watercolor'.
-                // var canvas = L.tileLayer.provider('Esri.WorldGrayCanvas');
-                // L.esri.basemapLayer('ImageryLabels').addTo(map);
                 L.esri.basemapLayer('Gray').addTo(map);
                 L.esri.basemapLayer('GrayLabels').addTo(map);
-
-                // Add the tile layer
-                //map.addLayer(canvas);
 
                 // Draw the map
                 function draw(data) {
@@ -47,11 +41,11 @@ directive('map', ['$window',
                     heat = L.heatLayer(latLngs, {
                         radius: 16,
                         minOpacity: 0.3,
-                        // gradient: {
-                        //     0.4: '#1b5479',
-                        //     0.65: '#d4e6f1',
-                        //     1: '#D35400'
-                        // }
+                        gradient: {
+                            0.4: '#4393c3',
+                            0.65: '#f4a582',
+                            1: '#b2182b'
+                        }
                     });
 
                     map.addLayer(heat);

@@ -17,8 +17,6 @@ angular.module('modelCompanyApp')
             d.latitude = geocode.lat;
             d.longitude = geocode.lon;
           }
-          else
-            console.log(d.home)
         })
         $scope.data = data;
         $scope.$apply();

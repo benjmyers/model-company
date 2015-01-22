@@ -97,6 +97,10 @@ module.exports = function (grunt) {
                 '/styles',
                 connect.static('./styles')
               ),
+              connect().use(
+                '/fonts',
+                connect.static('./fonts')
+              ),
               connect.static('./'),
             ];
           }
