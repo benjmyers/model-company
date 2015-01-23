@@ -5,7 +5,8 @@ directive('pie', ['$window',
             restrict: 'A',
             scope: {
                 data: "=",
-                attribute: "@"
+                attribute: "@",
+                format: "@"
             },
             link: function(scope, element, attrs) {
                 scope.$watch('data', function(newVal) {
@@ -14,19 +15,23 @@ directive('pie', ['$window',
                 });
 
                 function render(data) {
-                    var attrs = _.pluck(data, scope.attribute);
-                    var obj = {};
-                    _.each(attrs, function(a) {
-                        a = a.trim();
-                        (obj[a] === undefined) ? obj[a] = 0: obj[a] ++;
-                    });
-                    var set = [];
-                    _.each(obj, function(o, key) {
-                        set.push({
-                            'label': key,
-                            'value': o
+                    if (scope.format === "true") {
+                        var attrs = _.pluck(data, scope.attribute);
+                        var obj = {};
+                        _.each(attrs, function(a) {
+                            a = a.trim();
+                            (obj[a] === undefined) ? obj[a] = 1: obj[a] ++;
+                        });
+                        var set = [];
+                        _.each(obj, function(o, key) {
+                            set.push({
+                                'label': key,
+                                'value': o
+                            })
                         })
-                    })
+                        data = set;
+                    }
+                    data = _.sortBy(data, function(d) { return d.label; });
                     //Regular pie chart example
                     nv.addGraph(function() {
                      var chart = nv.models.pieChart()
@@ -47,16 +52,13 @@ directive('pie', ['$window',
                             '#d1e5f0',
                             '#b2182b',
                             '#2166ac'
-                            
-                            
-                            
                         ]);
 
-
                         d3.select("."+scope.attribute)
-                            .datum(set)
+                            .datum(data)
                             .transition().duration(350)
                             .call(chart);
+
                       return chart;
                     });
                 }
