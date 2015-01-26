@@ -26,7 +26,7 @@ directive('pie', ['$window',
                         .labelType("percent") //Configure what type of data to show in the label. Can be "key", "value" or "percent"
                         .donut(true)          //Turn on Donut mode. Makes pie chart look tasty!
                         .donutRatio(0.35)     //Configure how big you want the donut hole size to be.
-                        .tooltips(false)
+                        .tooltips(true)
                         .color([
                             '#d6604d',
                             '#4393c3',

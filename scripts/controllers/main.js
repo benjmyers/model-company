@@ -51,9 +51,13 @@ angular.module('modelCompanyApp')
         dataObj['hair'] = constructObj(data, 'hair');
         dataObj['complexion'] = constructObj(data, 'complexion');
         dataObj['age'] = constructObj(data, 'age');
-        dataObj['height'] = constructObj(data, 'heightin');//special
+        dataObj['height'] = constructObj(data, 'heightin');
         dataObj['occupation'] = constructObj(data, 'occupation');
-        console.log(dataObj);
+        dataObj['date_in'] = constructObj(data, 'datein');
+        dataObj['date_out'] = constructObj(data, 'dateout');
+        dataObj['out_reason'] = constructObj(data, 'cause');
+        dataObj['out_place'] = constructObj(data, 'place');
+        dataObj['data'] = data;
         $scope.companyData = dataObj;
         $scope.$apply();
       })
