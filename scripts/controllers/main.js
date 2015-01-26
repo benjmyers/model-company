@@ -12,7 +12,7 @@ angular.module('modelCompanyApp')
 
     $scope.nationalAverages = {
       'age': 25,
-      'height': "5'8",
+      'height': 68,
       'hair': [{'label': 'black', 'value': .13},
               {'label': 'dark', 'value': .25},
               {'label': 'brown', 'value': .3},
@@ -37,15 +37,43 @@ angular.module('modelCompanyApp')
     }
     d3.csv('data/formatted-messes.csv', function(err, data) {
       d3.csv('data/locations.csv', function(err, locations) {
+        var dataObj = {};
         _.each(data, function(d) {
+          // GeoCode homes
           var geocode = _.find(locations, function(e) { return e.town === d.home;});
           if (geocode) {
             d.latitude = geocode.lat;
             d.longitude = geocode.lon;
           }
         })
-        $scope.data = data;
+        // Eyes
+        dataObj['eyes'] = constructObj(data, 'eyes');
+        dataObj['hair'] = constructObj(data, 'hair');
+        dataObj['complexion'] = constructObj(data, 'complexion');
+        dataObj['age'] = constructObj(data, 'age');
+        dataObj['height'] = constructObj(data, 'heightin');//special
+        dataObj['occupation'] = constructObj(data, 'occupation');
+        console.log(dataObj);
+        $scope.companyData = dataObj;
         $scope.$apply();
       })
     })
+
+    function constructObj(data, attr) {
+        var attrs = _.pluck(data, attr);
+        var obj = {};
+        _.each(attrs, function(a) {
+            a = a.trim();
+            (obj[a] === undefined) ? obj[a] = 1: obj[a] ++;
+        });
+        var set = [];
+        _.each(obj, function(o, key) {
+            set.push({
+                'label': key,
+                'value': parseInt(o)
+            })
+        })
+        return set;
+    }
+
   });

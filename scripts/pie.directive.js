@@ -15,22 +15,6 @@ directive('pie', ['$window',
                 });
 
                 function render(data) {
-                    if (scope.format === "true") {
-                        var attrs = _.pluck(data, scope.attribute);
-                        var obj = {};
-                        _.each(attrs, function(a) {
-                            a = a.trim();
-                            (obj[a] === undefined) ? obj[a] = 1: obj[a] ++;
-                        });
-                        var set = [];
-                        _.each(obj, function(o, key) {
-                            set.push({
-                                'label': key,
-                                'value': o
-                            })
-                        })
-                        data = set;
-                    }
                     data = _.sortBy(data, function(d) { return d.label; });
                     //Regular pie chart example
                     nv.addGraph(function() {

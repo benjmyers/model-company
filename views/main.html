@@ -16,12 +16,12 @@
   <div class="text">
     <div class="left recruits"><p>    On enlistement, recruits were asked certain personal information - one of which was residence. Most of the members of Company D were from the various Townships of Dauphin County, Pennsylvania.</p>
     <p>In addition, they were asked for their occupation and, for identification purposes, their age, height, complexion, eye color, and hair color.</p></div>
-    <!-- <div map id="map" class="right" data="data"></div> -->
+    <!-- <div map id="map" class="right" data="companyData"></div> -->
   </div>
 <div class="visual">
     <div class="lbl">eye color</div>
     <div class="item">
-        <div pie data="data" attribute="eyes" format="true"></div>
+        <div pie data="companyData.eyes" attribute="eyes"></div>
         <svg class="pie eyes"></svg>
     </div>
     <div class="item">
@@ -32,7 +32,7 @@
 <div class="visual">
     <div class="lbl">hair color</div>
     <div class="item">
-        <div pie data="data" attribute="hair" format="true"></div>
+        <div pie data="companyData.hair" attribute="hair"></div>
         <svg class="pie hair"></svg>
     </div>
     <div class="item">
@@ -43,7 +43,7 @@
 <div class="visual">
     <div class="lbl">complexion</div>
     <div class="item">
-        <div pie data="data" attribute="complexion" format="true"></div>
+        <div pie data="companyData.complexion" attribute="complexion"></div>
         <svg class="pie complexion"></svg>
     </div>
     <div class="item">
@@ -54,15 +54,19 @@
 <div class="visual">
   <div class="item bar">
     <div class="lbl">age</div>
-    <div bar data="data" attribute="age" class="age" average="nationalAverages.age"></div>
+    <div bar data="companyData.age" attribute="age" class="age" average="nationalAverages.age"></div>
   </div>
   <div class="item bar">
     <div class="lbl">height</div>
-    <div bar data="data" attribute="heightft" class="heightft" average="nationalAverages.height"></div>
+    <div bar data="companyData.height" attribute="heightft" class="heightft" average="nationalAverages.height"></div>
   </div>
   <div class="item bar">
     <div class="lbl">occupation</div>
-    <div bar data="data" attribute="occupation" class="occupation"></div>
+    <div bar data="companyData.occupation" attribute="occupation" class="occupation" orientation="vertical"></div>
+  </div>
+  <div class="item bar">
+    <div class="lbl">occupation</div>
+    <div bar data="nationalAverages.occupation" attribute="nationalAverages.occupation" class="nationalAverages.occupation" orientation="vertical"></div>
   </div>
 </div>
 
