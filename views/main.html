@@ -21,7 +21,11 @@
 <div class="visual">
     <div class="lbl">eye color</div>
     <div class="item">
-        <div pie data="companyData.eyes" attribute="eyes"></div>
+        <div pie data="companyData.data" attribute="eyes" mess="1" format="true"></div>
+        <svg class="pie eyes1"></svg>
+    </div>
+    <div class="item">
+        <div pie data="companyData.data" attribute="eyes" format="true"></div>
         <svg class="pie eyes"></svg>
     </div>
     <div class="item">
@@ -32,7 +36,11 @@
 <div class="visual">
     <div class="lbl">hair color</div>
     <div class="item">
-        <div pie data="companyData.hair" attribute="hair"></div>
+        <div pie data="companyData.data" attribute="hair" mess="1" format="true"></div>
+        <svg class="pie hair1"></svg>
+    </div>
+    <div class="item">
+        <div pie data="companyData.data" attribute="hair" format="true"></div>
         <svg class="pie hair"></svg>
     </div>
     <div class="item">
@@ -75,21 +83,20 @@
         <div pie data="companyData.out_reason" attribute="out"></div>
         <svg class="pie out"></svg>
     </div>
-    <!-- <div class="item">
-        <div pie data="nationalAverages.complexion" attribute="national-avg-complexion"></div>
-        <svg class="pie national-avg-complexion"></svg>
-    </div> -->
-</div>
-<div class="visual">
-<!--     <div class="lbl">out date</div>
     <div class="item">
-        <div timeseries data="companyData.data" attribute="outdate"></div>
-        <svg class="pie outdate"></svg>
-    </div> -->
-    <!-- <div class="item">
         <div pie data="nationalAverages.complexion" attribute="national-avg-complexion"></div>
         <svg class="pie national-avg-complexion"></svg>
-    </div> -->
+    </div>
 </div>
+<!-- <div class="visual">
+    <div class="lbl">out date</div>
+    <div class="item">
+        <div timeseries data="companyData.data" attribute="dateout" format="true"></div>
+    </div>
+    <div class="item">
+        <div pie data="nationalAverages.complexion" attribute="national-avg-complexion"></div>
+        <svg class="pie national-avg-complexion"></svg>
+    </div>
+</div> -->
 
 </div>

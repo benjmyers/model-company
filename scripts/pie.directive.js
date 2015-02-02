@@ -6,6 +6,8 @@ directive('pie', ['$window',
             scope: {
                 data: "=",
                 attribute: "@",
+                format: "@",
+                mess: "@",
                 format: "@"
             },
             link: function(scope, element, attrs) {
@@ -15,6 +17,10 @@ directive('pie', ['$window',
                 });
 
                 function render(data) {
+
+                    if (scope.format === "true")
+                        data = constructObj(angular.copy(data), scope.attribute, scope.mess);
+
                     data = _.sortBy(data, function(d) { return d.label; });
                     //Regular pie chart example
                     nv.addGraph(function() {
@@ -37,8 +43,11 @@ directive('pie', ['$window',
                             '#b2182b',
                             '#2166ac'
                         ]);
-
-                        d3.select("."+scope.attribute)
+                        var classd = "."+scope.attribute;
+                        if (scope.mess)
+                            classd += scope.mess;
+                        
+                        d3.select(classd)
                             .datum(data)
                             .transition().duration(350)
                             .call(chart);
@@ -46,6 +55,26 @@ directive('pie', ['$window',
                       return chart;
                     });
                 }
+
+                function constructObj(data, attr, mess) {
+                    if (mess)
+                      data = _.reject(data, function(d) { console.log(d.mess !== mess); return d.mess !== mess; });
+                    var attrs = _.pluck(data, attr);
+                    var obj = {};
+                    _.each(attrs, function(a) {
+                        a = a.trim();
+                        (obj[a] === undefined) ? obj[a] = 1: obj[a] ++;
+                    });
+                    var set = [];
+                    _.each(obj, function(o, key) {
+                        set.push({
+                            'label': key,
+                            'value': parseInt(o)
+                        })
+                    })
+                    return set;
+                }
+
             }
         }
     }

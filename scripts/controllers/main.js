@@ -45,6 +45,11 @@ angular.module('modelCompanyApp')
             d.latitude = geocode.lat;
             d.longitude = geocode.lon;
           }
+          // Dates
+          if (d.dateout !== "NA") {
+            var date = moment(d.dateout.trim(), "MM/DD/YY");
+            d.dateout = date.valueOf();
+          }
         })
         // Eyes
         dataObj['eyes'] = constructObj(data, 'eyes');
@@ -54,7 +59,6 @@ angular.module('modelCompanyApp')
         dataObj['height'] = constructObj(data, 'heightin');
         dataObj['occupation'] = constructObj(data, 'occupation');
         dataObj['date_in'] = constructObj(data, 'datein');
-        dataObj['date_out'] = constructObj(data, 'dateout');
         dataObj['out_reason'] = constructObj(data, 'cause');
         dataObj['out_place'] = constructObj(data, 'place');
         dataObj['data'] = data;
@@ -63,7 +67,9 @@ angular.module('modelCompanyApp')
       })
     })
 
-    function constructObj(data, attr) {
+    function constructObj(data, attr, mess) {
+        if (mess)
+          data = _.reject(data, function(d) { return d.mess !== mess; });
         var attrs = _.pluck(data, attr);
         var obj = {};
         _.each(attrs, function(a) {
