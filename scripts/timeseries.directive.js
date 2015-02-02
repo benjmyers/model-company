@@ -6,7 +6,8 @@ directive('timeseries', ['$window',
             scope: {
                 data: "=",
                 attribute: "@",
-                format: "@"
+                format: "@",
+                mess: "@"
             },
             link: function(scope, element, attrs) {
                 scope.$watch('data', function(newVal) {
@@ -15,6 +16,9 @@ directive('timeseries', ['$window',
                 });
 
                 function render(data) {
+
+                    if (scope.format === "true")
+                        data = _.pluck(data, 'dateout');
 
                     var margin = {
                             top: 10,
@@ -42,7 +46,7 @@ directive('timeseries', ['$window',
                     // x.domain(d3.extent([padded.minDate, padded.maxDate]));
                     // y.domain(d3.extent([stop, start]));
                     x.domain(d3.extent(data.map(function(d) {
-                        console.log(new Date(d.dateout))
+                        console.log(new Date(d))
                         return d.dateout;
                     })));
                     y.domain([0, d3.max(data.map(function(d) {
@@ -72,7 +76,6 @@ directive('timeseries', ['$window',
                         .enter().append("circle")
                         .attr("class", "circ")
                         .attr("cx", function(d) {
-                            console.log(d.dateout)
                             return x(d.dateout);
                         })
                         .attr("cy", function(d, i) {
@@ -82,6 +85,23 @@ directive('timeseries', ['$window',
                             //console.log(new Date(d.value))
                         })
                         .attr("r", 7);
+                }
+                function constructObj(data, attr, mess) {
+                    if (mess)
+                      data = _.reject(data, function(d) { console.log(d.mess !== mess); return d.mess !== mess; });
+                    var attrs = _.pluck(data, attr);
+                    var obj = {};
+                    _.each(attrs, function(a) {
+                        (obj[a] === undefined) ? obj[a] = 1: obj[a] ++;
+                    });
+                    var set = [];
+                    _.each(obj, function(o, key) {
+                        set.push({
+                            'label': key,
+                            'value': parseInt(o)
+                        })
+                    })
+                    return set;
                 }
             }
         }
