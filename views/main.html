@@ -16,14 +16,14 @@
   <div class="text">
     <div class="left recruits"><p>    On enlistement, recruits were asked certain personal information - one of which was residence. Most of the members of Company D were from the various Townships of Dauphin County, Pennsylvania.</p>
     <p>In addition, they were asked for their occupation and, for identification purposes, their age, height, complexion, eye color, and hair color.</p></div>
-    <!-- <div map id="map" class="right" data="companyData"></div> -->
+    <div map id="map" class="right" data="companyData.data"></div>
   </div>
 <div class="visual">
     <div class="lbl">eye color</div>
-    <div class="item">
+   <!--  <div class="item">
         <div pie data="companyData.data" attribute="eyes" mess="1" format="true"></div>
         <svg class="pie eyes1"></svg>
-    </div>
+    </div> -->
     <div class="item">
         <div pie data="companyData.data" attribute="eyes" format="true"></div>
         <svg class="pie eyes"></svg>
@@ -35,10 +35,10 @@
 </div>
 <div class="visual">
     <div class="lbl">hair color</div>
-    <div class="item">
+    <!-- <div class="item">
         <div pie data="companyData.data" attribute="hair" mess="1" format="true"></div>
         <svg class="pie hair1"></svg>
-    </div>
+    </div> -->
     <div class="item">
         <div pie data="companyData.data" attribute="hair" format="true"></div>
         <svg class="pie hair"></svg>
@@ -88,15 +88,11 @@
         <svg class="pie national-avg-complexion"></svg>
     </div>
 </div>
-<!-- <div class="visual">
+<div class="visual">
     <div class="lbl">out date</div>
     <div class="item">
-        <div timeseries data="companyData.data" attribute="dateout" format="true"></div>
+        <div timeseries data="companyData.out_date" events="events" attribute="dateout" format="true"></div>
     </div>
-    <div class="item">
-        <div pie data="nationalAverages.complexion" attribute="national-avg-complexion"></div>
-        <svg class="pie national-avg-complexion"></svg>
-    </div>
-</div> -->
+</div>
 
 </div>

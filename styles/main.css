@@ -113,50 +113,67 @@ body {
   margin: 1%;
 }
 
+/* Time series */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\0000395}}
+.circ {
+  fill: #7792a8;
+  opacity: 0.8;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\0000399}}
+path.domain {
+  stroke: none;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003102}}
+.timeline-event {
+  stroke: #d0d5d5;
+}
+
 /* Custom page footer */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\0000396}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003107}}
 .footer {
   padding-top: 19px;
   color: #777;
   border-top: 1px solid #e5e5e5;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003102}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003113}}
 .container-narrow > hr {
   margin: 30px 0;
 }
 
 /* Main marketing message and sign up button */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003107}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003118}}
 .jumbotron {
   text-align: center;
   border-bottom: 1px solid #e5e5e5;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003111}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003122}}
 .jumbotron .btn {
   font-size: 21px;
   padding: 14px 24px;
 }
 
 /* Supporting marketing content */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003118}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003129}}
 .marketing {
   margin: 40px 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003121}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003132}}
 .marketing p + h4 {
   margin-top: 28px;
 }
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003128}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003139}}
   .container {
     max-width: 90%;
   }
 
   /* Remove the padding we set earlier */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003135}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003146}}
   .header,
   .marketing,
   .footer {
@@ -165,13 +182,13 @@ body {
   }
 
   /* Space out the masthead */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003140}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003151}}
   .header {
     margin-bottom: 30px;
   }
 
   /* Remove the bottom border on the jumbotron for visual effect */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003144}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003155}}
   .jumbotron {
     border-bottom: 0;
   }

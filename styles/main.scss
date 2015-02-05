@@ -91,6 +91,17 @@ body {
 .bar {
   margin: 1%;
 }
+/* Time series */
+.circ {
+  fill: $blue;
+  opacity: 0.8;
+}
+path.domain {
+  stroke: none;
+}
+.timeline-event {
+  stroke: lighten($asbestos, 30%);
+}
 
 /* Custom page footer */
 .footer {

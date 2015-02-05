@@ -35,6 +35,41 @@ angular.module('modelCompanyApp')
               {'label': 'professional', 'value': .03},
               {'label': 'misc', 'value': .04}]
     }
+    $scope.events = [{
+        'name': 'Winchester',
+        'date': '05/25/1862',
+        'type': 'battle'
+    }, {
+        'name': 'Cedar Mountain',
+        'date': '08/09/1862',
+        'type': 'battle'
+    },
+    {
+        'name': 'Antietam',
+        'date': '09/16/1862',
+        'type': 'battle'
+    }, {
+        'name': 'Chancellorsville',
+        'daterange': ['05/01/1863', '05/03/1863'],
+        'type': 'battle'
+    }, {
+        'name': 'Gettysburg',
+        'daterange': ['07/01/1863', '07/03/1863'],
+        'type': 'battle'
+    }, {
+        'name': 'Peachtree Creek',
+        'date': '07/20/1864',
+        'type': 'battle'
+    },{
+        'name': 'Expiration of 3 years enlistment',
+        'date': '09/18/1864',
+        'type': 'event'
+    },  {
+        'name': 'Muster Out',
+        'date': '07/16/1865',
+        'type': 'event'
+    }]
+
     d3.csv('data/formatted-messes.csv', function(err, data) {
       d3.csv('data/locations.csv', function(err, locations) {
         var dataObj = {};
@@ -46,10 +81,10 @@ angular.module('modelCompanyApp')
             d.longitude = geocode.lon;
           }
           // Dates
-          if (d.dateout !== "NA") {
-            var date = moment(d.dateout.trim(), "MM/DD/YY");
-            d.dateout = date.valueOf();
-          }
+          // if (d.dateout !== "NA") {
+          //   var date = moment(d.dateout.trim(), "MM/DD/YYYY");
+          //   d.dateout = date.valueOf();
+          // }
         })
         // Eyes
         dataObj['eyes'] = constructObj(data, 'eyes');
@@ -60,6 +95,7 @@ angular.module('modelCompanyApp')
         dataObj['occupation'] = constructObj(data, 'occupation');
         dataObj['date_in'] = constructObj(data, 'datein');
         dataObj['out_reason'] = constructObj(data, 'cause');
+        dataObj['out_date'] = constructObj(data, 'dateout');
         dataObj['out_place'] = constructObj(data, 'place');
         dataObj['data'] = data;
         $scope.companyData = dataObj;
