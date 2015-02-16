@@ -20,44 +20,20 @@
   </div>
 <div class="visual">
     <div class="lbl">eye color</div>
-   <!--  <div class="item">
-        <div pie data="companyData.data" attribute="eyes" mess="1" format="true"></div>
-        <svg class="pie eyes1"></svg>
-    </div> -->
     <div class="item">
-        <div pie data="companyData.data" attribute="eyes" format="true"></div>
-        <svg class="pie eyes"></svg>
-    </div>
-    <div class="item">
-        <div pie data="nationalAverages.eyes" attribute="national-avg-eyes"></div>
-        <svg class="pie national-avg-eyes"></svg>
+        <div horizontal-bar data="nationalAverages.eyes" attribute="national-avg-eyes" label="National"></div>
+        <div horizontal-bar data="companyData.eyes" attribute="eyes" label="Company"></div>
     </div>
 </div>
 <div class="visual">
     <div class="lbl">hair color</div>
-    <!-- <div class="item">
-        <div pie data="companyData.data" attribute="hair" mess="1" format="true"></div>
-        <svg class="pie hair1"></svg>
-    </div> -->
-    <div class="item">
-        <div pie data="companyData.data" attribute="hair" format="true"></div>
-        <svg class="pie hair"></svg>
-    </div>
-    <div class="item">
-        <div pie data="nationalAverages.hair" attribute="national-avg-hair"></div>
-        <svg class="pie national-avg-hair"></svg>
-    </div>
+    <div horizontal-bar data="nationalAverages.hair" attribute="national-avg-eyes" label="National"></div>
+    <div horizontal-bar data="companyData.hair" attribute="national-avg-eyes" label="Company"></div>
 </div>
 <div class="visual">
     <div class="lbl">complexion</div>
-    <div class="item">
-        <div pie data="companyData.complexion" attribute="complexion"></div>
-        <svg class="pie complexion"></svg>
-    </div>
-    <div class="item">
-        <div pie data="nationalAverages.complexion" attribute="national-avg-complexion"></div>
-        <svg class="pie national-avg-complexion"></svg>
-    </div>
+    <div horizontal-bar data="nationalAverages.complexion" label="National"></div>
+    <div horizontal-bar data="companyData.complexion" label="Company"></div>
 </div>
 <div class="visual">
   <div class="item bar">
@@ -79,14 +55,9 @@
 </div>
 <div class="visual">
     <div class="lbl">out method</div>
-    <div class="item">
-        <div pie data="companyData.out_reason" attribute="out"></div>
-        <svg class="pie out"></svg>
-    </div>
-    <div class="item">
-        <div pie data="nationalAverages.complexion" attribute="national-avg-complexion"></div>
-        <svg class="pie national-avg-complexion"></svg>
-    </div>
+    <!-- <div horizontal-bar data="nationalAverages.complexion" label="National"></div> -->
+    <div horizontal-bar data="companyData.out_reason" label="Company"></div>
+    <div horizontal-bar data="companyData.out_reason" label="Company" mess="1"></div>
 </div>
 <div class="visual">
     <div class="lbl">out date</div>

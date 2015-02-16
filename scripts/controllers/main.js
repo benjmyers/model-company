@@ -13,27 +13,27 @@ angular.module('modelCompanyApp')
     $scope.nationalAverages = {
       'age': 25,
       'height': 68,
-      'hair': [{'label': 'black', 'value': .13},
-              {'label': 'dark', 'value': .25},
-              {'label': 'brown', 'value': .3},
-              {'label': 'light', 'value': .24},
-              {'label': 'sandy', 'value': .04},
-              {'label': 'red', 'value': .03},
-              {'label': 'gray', 'value': .01}],
-      'eyes': [{'label': 'blue', 'value': .45},
-              {'label': 'gray', 'value': .24},
-              {'label': 'hazel', 'value': .13},
-              {'label': 'brown', 'value': .1},
-              {'label': 'black', 'value': .08}],
-      'complexion': [{'label': 'light', 'value': .6},
-              {'label': 'dark', 'value': .33},
-              {'label': 'medium', 'value': .7}],
-      'occupation': [{'label': 'farmer', 'value': .48},
-              {'label': 'mechanic', 'value': .24},
-              {'label': 'laborer', 'value': .16},
-              {'label': 'commercial', 'value': .05},
-              {'label': 'professional', 'value': .03},
-              {'label': 'misc', 'value': .04}]
+      'hair': [{'label': 'black', 'value': .13, 'percentage': 13},
+              {'label': 'dark', 'value': .25, 'percentage': 25},
+              {'label': 'brown', 'value': .3, 'percentage': 30},
+              {'label': 'light', 'value': .24, 'percentage': 24},
+              {'label': 'sandy', 'value': .04, 'percentage': 4},
+              {'label': 'red', 'value': .03, 'percentage': 3},
+              {'label': 'gray', 'value': .01, 'percentage': 1}],
+      'eyes': [{'label': 'blue', 'value': .45, 'percentage': 45},
+              {'label': 'gray', 'value': .24, 'percentage': 24},
+              {'label': 'hazel', 'value': .13, 'percentage': 13},
+              {'label': 'brown', 'value': .1, 'percentage': 10},
+              {'label': 'black', 'value': .08, 'percentage': 8}],
+      'complexion': [{'label': 'light', 'value': .6, 'percentage':  60},
+              {'label': 'dark', 'value': .33, 'percentage': 33},
+              {'label': 'medium', 'value': .7, 'percentage': 70}],
+      'occupation': [{'label': 'farmer', 'value': .48, 'percentage': 48},
+              {'label': 'mechanic', 'value': .24, 'percentage': 24},
+              {'label': 'laborer', 'value': .16, 'percentage': 16},
+              {'label': 'commercial', 'value': .05, 'percentage': 5},
+              {'label': 'professional', 'value': .03, 'percentage': 3},
+              {'label': 'misc', 'value': .04, 'percentage': 4}]
     }
     $scope.events = [{
         'name': 'Winchester',
@@ -114,9 +114,11 @@ angular.module('modelCompanyApp')
         });
         var set = [];
         _.each(obj, function(o, key) {
+            var per = Math.round((parseInt(o) / data.length) * 100);
             set.push({
                 'label': key,
-                'value': parseInt(o)
+                'value': parseInt(o),
+                'percentage': per
             })
         })
         return set;
