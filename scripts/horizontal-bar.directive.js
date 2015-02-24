@@ -12,19 +12,28 @@ directive('horizontalBar', ['$window',
                 mess: "@"
             },
             link: function(scope, element, attrs) {
-                var colors = {
-                    'gray': '#999999',
-                    'blue': '#67a9cf',
-                    'black': '#404040',
-                    'hazel': '#a6611a',
-                    'brown': '#8c510a', 
-                    'red': '#d6604d',
-                    'auburn': '#67001f',
-                    'light': '#f6e8c3',
-                    'sandy': '#f6e8c3'
-                }
 
-                var d3colors = d3.scale.category10();
+                // var d3colors = d3.scale.ordinal().range([
+                //                 '#b2182b',
+                //                 '#d6604d',
+                //                 '#f4a582',
+                //                 '#fddbc7',
+                //                 '#f7f7f7',
+                //                 '#d1e5f0',
+                //                 '#92c5de',
+                //                 '#4393c3',
+                //                 '#2166ac']);
+
+                var d3colors = d3.scale.ordinal().range([
+                            '#fff7fb',
+                            '#ece2f0',
+                            '#d0d1e6',
+                            '#a6bddb',
+                           '#67a9cf',
+                            '#3690c0',
+                            '#02818a',
+                            '#016c59',
+                            '#014636'])
 
                 scope.$watch('data', function(newVal) {
                     if (newVal)
@@ -83,8 +92,8 @@ directive('horizontalBar', ['$window',
                         })
                     item.append("rect")
                         .attr("class", "bar")
-                        .attr("fill", function(d) {
-                            return d3colors(d.label);//colors[d.label];
+                        .attr("fill", function(d, i) {
+                            return d3colors(i);
                         })
                         .attr("x", 0)
                         .attr("width", function(d) {

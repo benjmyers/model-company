@@ -102,6 +102,10 @@ path.domain {
 .timeline-event {
   stroke: lighten($asbestos, 30%);
 }
+.tick text {
+  font-size: 15px;
+  font-weight: 300;
+}
 
 /* Custom page footer */
 .footer {

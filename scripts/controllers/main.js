@@ -98,6 +98,7 @@ angular.module('modelCompanyApp')
         dataObj['out_date'] = constructObj(data, 'dateout');
         dataObj['out_place'] = constructObj(data, 'place');
         dataObj['data'] = data;
+        console.log(dataObj['occupation'])
         $scope.companyData = dataObj;
         $scope.$apply();
       })

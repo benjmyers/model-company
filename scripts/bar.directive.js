@@ -42,11 +42,11 @@ directive('bar', ['$window',
                             return d.label;
                         }));
                         y.domain([0, d3.max(data.map(function(d) {
-                            return d.value;
+                            return d.percentage;
                         }))]);
                     } else {
                         var elemWidth = 400 || element[0].clientWidth;
-                        var elemHeight = 400 || element[0].clientHeight;
+                        var elemHeight = 500 || element[0].clientHeight;
                         width = elemWidth - margin.left - margin.right;
                         height = elemHeight - margin.top - margin.bottom;
                         x = d3.scale.linear()
@@ -54,7 +54,7 @@ directive('bar', ['$window',
                         y = d3.scale.ordinal()
                             .rangeRoundBands([0, height], .1);
                         x.domain([0, d3.max(data.map(function(d) {
-                            return d.value;
+                            return d.percentage;
                         }))]);
                         y.domain(data.map(function(d) {
                             return d.label;
@@ -63,12 +63,13 @@ directive('bar', ['$window',
 
                     var xAxis = d3.svg.axis()
                         .scale(x)
-                        .orient("bottom");
+                        .orient("bottom")
+                        .ticks(6);
 
                     var yAxis = d3.svg.axis()
                         .scale(y)
                         .orient("left")
-                        // .ticks(5)
+                        .ticks(5)
                         // .tickFormat(d3.format("d"));
 
                     var svg = d3.select(element[0]).append("svg")
@@ -96,18 +97,18 @@ directive('bar', ['$window',
                         .data(data)
                         .enter().append("rect")
                         .attr("class", "bar")
-                        .attr("fill", '#4393c3')
+                        .attr("fill", '#7792a8')
                         .attr("x", function(d) {
                             return scope.orientation === "horizontal" ? x(d.label) : 0;
                         })
                         .attr("width", function(d) {
-                            return scope.orientation === "horizontal" ? x.rangeBand() : x(d.value);
+                            return scope.orientation === "horizontal" ? x.rangeBand() : x(d.percentage);
                         })
                         .attr("y", function(d) {
-                            return scope.orientation === "horizontal" ? y(d.value) : y(d.label);
+                            return scope.orientation === "horizontal" ? y(d.percentage) : y(d.label);
                         })
                         .attr("height", function(d) {
-                            return scope.orientation === "horizontal" ? height - y(d.value) : y.rangeBand();
+                            return scope.orientation === "horizontal" ? height - y(d.percentage) : y.rangeBand();
                         });
 
                     if (scope.average) {
@@ -115,7 +116,7 @@ directive('bar', ['$window',
                             .data([scope.average])
                             .enter().append("rect")
                             .attr("class", "natl-average")
-                            .attr("fill", '#d6604d')
+                            .attr("fill", '#b2182b')
                             .attr("x", function(d) {
                                 return x(d) + x.rangeBand() / 2;
                             })
@@ -123,21 +124,24 @@ directive('bar', ['$window',
                             .attr("y", function(d) {
                                 return 0;
                             })
+                            .attr("dy", function(d) {
+                                return -5;
+                            })
                             .attr("height", function(d) {
-                                return height;
+                                return height + 5;
                             });
 
                         var setAverage = d3.sum(data, function(d) {
-                            return d.label * d.value;
+                            return d.label * d.percentage;
                         }) / d3.sum(data, function(d) {
-                            return d.value;
+                            return d.percentage;
                         });
 
                         svg.selectAll(".co-average")
                             .data([setAverage])
                             .enter().append("rect")
                             .attr("class", "co-average")
-                            .attr("fill", 'green')
+                            .attr("fill", '#2166ac')
                             .attr("x", function(d) {
                                 return x(Math.floor(d)) + x.rangeBand() / 2;
                             })
@@ -145,8 +149,11 @@ directive('bar', ['$window',
                             .attr("y", function(d) {
                                 return 0;
                             })
+                            .attr("dy", function(d) {
+                                return -5;
+                            })
                             .attr("height", function(d) {
-                                return height;
+                                return height + 5;
                             });
                     }
                 }

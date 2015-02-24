@@ -36,27 +36,27 @@ Switch between: mess || company || national avg
 
 -----------------
 
-AGE
+AGE bar
 
 -----------------
 
-HEIGHT
+HEIGHT bar
 
 ------------------
 
-COMPLEXION
+COMPLEXION circle
+
+-----------------
+ 
+EYE COLOR circle
 
 -----------------
 
-EYE COLOR
+HAIR COLOR circle
 
 -----------------
 
-HAIR COLOR
-
------------------
-
-OCCUPATION
+OCCUPATION horizontal bar?
 
 -----------------
 
@@ -66,11 +66,11 @@ Company and regimental officers tried to record the manner in which their men le
 
 -----------------
 
-OUT METHOD
+OUT METHOD bar
 
 -----------------
 
-DATE OUT (COMPANY)
+DATE OUT (COMPANY) timeseries
 
 -----------------
 
