@@ -1,39 +1,26 @@
 angular.module('modelCompanyApp').
-directive('horizontalBar', ['$window',
-    function($window) {
+directive('nationalBar', ['$window', 'ObjectService',
+    function($window, ObjectService) {
         return {
             restrict: 'A',
             scope: {
                 data: "=",
                 attribute: "@",
-                average: "=",
-                format: "@", 
-                label: "@",
-                mess: "@"
+                label: "@"
             },
             link: function(scope, element, attrs) {
 
-                // var d3colors = d3.scale.ordinal().range([
-                //                 '#b2182b',
-                //                 '#d6604d',
-                //                 '#f4a582',
-                //                 '#fddbc7',
-                //                 '#f7f7f7',
-                //                 '#d1e5f0',
-                //                 '#92c5de',
-                //                 '#4393c3',
-                //                 '#2166ac']);
-
                 var d3colors = d3.scale.ordinal().range([
-                            '#fff7fb',
-                            '#ece2f0',
-                            '#d0d1e6',
-                            '#a6bddb',
-                           '#67a9cf',
-                            '#3690c0',
-                            '#02818a',
-                            '#016c59',
-                            '#014636'])
+                    '#b2182b',
+                    '#d6604d',
+                    '#f4a582',
+                    '#fddbc7',
+                    '#f7f7f7',
+                    '#d1e5f0',
+                    '#92c5de',
+                    '#4393c3',
+                    '#2166ac'
+                ]);
 
                 scope.$watch('data', function(newVal) {
                     if (newVal)
@@ -41,20 +28,21 @@ directive('horizontalBar', ['$window',
                 });
 
                 function render(data) {
+
                     data = _.sortBy(data, function(d) {
                         return d.label;
                     });
-                    var margin = {
-                            top: 25,
-                            right: 20,
-                            bottom: 30,
-                            left: 20
-                        },
-                        width, height, x, y;
+                    var margin, width, height, x, y;
+                    margin = {
+                        top: 2,
+                        right: 2,
+                        bottom: 25,
+                        left: 70
+                    };
 
-                    var barHeight = 35;
+                    var barHeight = 50;
                     var elemWidth = $('.container').width();
-                    var elemHeight = 100;
+                    var elemHeight = barHeight + 25;
                     width = elemWidth - margin.left - margin.right;
                     height = elemHeight - margin.top - margin.bottom;
 
@@ -78,8 +66,12 @@ directive('horizontalBar', ['$window',
                     svg.append("text")
                         .attr("x", 0)
                         .attr("y", 0)
-                        .attr("dy", "-5px")
+                        .attr("dy", function(d) {
+                            return barHeight/2 + 2;
+                        })
+                        .attr("dx", -5)
                         .attr("font-size", 14)
+                        .attr("text-anchor", "end")
                         .text(scope.label);
 
                     var runner = 0;
@@ -88,7 +80,7 @@ directive('horizontalBar', ['$window',
                         .attr("transform", function(d) {
                             var value = angular.copy(runner);
                             runner += d.value;
-                            return "translate("+ value + "," + 0 + ")";
+                            return "translate(" + value + "," + 0 + ")";
                         })
                     item.append("rect")
                         .attr("class", "bar")
@@ -102,16 +94,18 @@ directive('horizontalBar', ['$window',
                         .attr("y", 0)
                         .attr("height", barHeight);
 
-                    item.append("text")
-                        .attr("x", function(d) {
-                            return d.value / 2
-                        })
-                        .attr("y", barHeight * 1.5)
-                        .attr("font-size", 14)
-                        .attr("text-align", "middle")
-                        .text(function(d) {
-                            return d.label;
-                        });
+                    if (!scope.mess) {
+                        item.append("text")
+                            .attr("x", function(d) {
+                                return d.value / 2
+                            })
+                            .attr("y", barHeight + 18)
+                            .attr("font-size", 14)
+                            .attr("text-anchor", "middle")
+                            .text(function(d) {
+                                return d.label;
+                            });
+                    }
                 }
             }
         }

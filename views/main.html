@@ -16,16 +16,26 @@
   <div class="text">
     <div class="left recruits"><p>    On enlistement, recruits were asked certain personal information - one of which was residence. Most of the members of Company D were from the various Townships of Dauphin County, Pennsylvania.</p>
     <p>In addition, they were asked for their occupation and, for identification purposes, their age, height, complexion, eye color, and hair color.</p></div>
-    <div map id="map" class="right" data="companyData.data"></div>
+    <!-- <div map id="map" class="right" data="companyData"></div> -->
+    <div map id="map1" class="map-mess" data="companyData" mess="1"></div>
+    <div map id="map2" class="map-mess" data="companyData" mess="2"></div>
+    <div map id="map3" class="map-mess" data="companyData" mess="3"></div>
+    <div map id="map4" class="map-mess" data="companyData" mess="4"></div>
+    <div map id="map5" class="map-mess" data="companyData" mess="5"></div>
   </div>
 <div class="visual">
     <div class="lbl">eye color</div>
     <div class="item">
-        <div horizontal-bar data="nationalAverages.eyes" attribute="national-avg-eyes" label="National"></div>
-        <div horizontal-bar data="companyData.eyes" attribute="eyes" label="Company"></div>
+        <div national-bar data="nationalAverages.eyes" attribute="eyes" label="National"></div>
+        <div company-bar data="companyData" attribute="eyes" label="Company"></div>
+        <div company-bar data="companyData" attribute="eyes" label="Mess 1" mess="1"></div>
+        <div company-bar data="companyData" attribute="eyes" label="Mess 2" mess="2"></div>
+        <div company-bar data="companyData" attribute="eyes" label="Mess 3" mess="3"></div>
+        <div company-bar data="companyData" attribute="eyes" label="Mess 4" mess="4"></div>
+        <div company-bar data="companyData" attribute="eyes" label="Mess 5" mess="5"></div>
     </div>
 </div>
-<div class="visual">
+<!-- <div class="visual">
     <div class="lbl">hair color</div>
     <div horizontal-bar data="nationalAverages.hair" attribute="national-avg-eyes" label="National"></div>
     <div horizontal-bar data="companyData.hair" attribute="national-avg-eyes" label="Company"></div>
@@ -34,34 +44,39 @@
     <div class="lbl">complexion</div>
     <div horizontal-bar data="nationalAverages.complexion" label="National"></div>
     <div horizontal-bar data="companyData.complexion" label="Company"></div>
-</div>
+</div> -->
 <div class="visual">
   <div class="item bar">
     <div class="lbl">age</div>
-    <div bar data="companyData.age" attribute="age" class="age" average="nationalAverages.age"></div>
+    <div bar data="companyData" attribute="age" class="age" average="nationalAverages.age"></div>
   </div>
   <div class="item bar">
     <div class="lbl">height</div>
-    <div bar data="companyData.height" attribute="heightft" class="heightft" average="nationalAverages.height"></div>
+    <div bar data="companyData" attribute="heightin" class="heightft" average="nationalAverages.height"></div>
   </div>
   <div class="item bar">
     <div class="lbl">occupation</div>
-    <div bar data="companyData.occupation" attribute="occupation" class="occupation" orientation="vertical"></div>
+    <div bar data="companyData" attribute="occupation" class="occupation" orientation="vertical"></div>
   </div>
   <div class="item bar">
     <div class="lbl">occupation</div>
-    <div bar data="nationalAverages.occupation" attribute="nationalAverages.occupation" class="nationalAverages.occupation" orientation="vertical"></div>
+    <div bar data="nationalAverages.occupation" attribute="nationalAverages.occupation" national=true orientation="vertical"></div>
   </div>
 </div>
-<div class="visual">
+<!-- <div class="visual">
     <div class="lbl">out method</div>
     <div horizontal-bar data="companyData.out_reason" label="Company"></div>
-   <!--  <div horizontal-bar data="companyData.out_reason" label="Company" mess="1"></div> -->
-</div>
+
+</div> -->
 <div class="visual">
     <div class="lbl">out date</div>
     <div class="item">
-        <div timeseries data="companyData.out_date" events="events" attribute="dateout" format="true"></div>
+        <div timeseries data="companyData" events="events" attribute="dateout" format="true"></div>
+        <div timeseries data="companyData" events="events" attribute="dateout" format="true" mess="1"></div>
+        <div timeseries data="companyData" events="events" attribute="dateout" format="true" mess="2"></div>
+        <div timeseries data="companyData" events="events" attribute="dateout" format="true" mess="3"></div>
+        <div timeseries data="companyData" events="events" attribute="dateout" format="true" mess="4"></div>
+        <div timeseries data="companyData" events="events" attribute="dateout" format="true" mess="5"></div>
     </div>
 </div>
 

@@ -86,43 +86,8 @@ angular.module('modelCompanyApp')
           //   d.dateout = date.valueOf();
           // }
         })
-        // Eyes
-        dataObj['eyes'] = constructObj(data, 'eyes');
-        dataObj['hair'] = constructObj(data, 'hair');
-        dataObj['complexion'] = constructObj(data, 'complexion');
-        dataObj['age'] = constructObj(data, 'age');
-        dataObj['height'] = constructObj(data, 'heightin');
-        dataObj['occupation'] = constructObj(data, 'occupation');
-        dataObj['date_in'] = constructObj(data, 'datein');
-        dataObj['out_reason'] = constructObj(data, 'cause');
-        dataObj['out_date'] = constructObj(data, 'dateout');
-        dataObj['out_place'] = constructObj(data, 'place');
-        dataObj['data'] = data;
-        console.log(dataObj['occupation'])
-        $scope.companyData = dataObj;
+        $scope.companyData = data;
         $scope.$apply();
       })
     })
-
-    function constructObj(data, attr, mess) {
-        if (mess)
-          data = _.reject(data, function(d) { return d.mess !== mess; });
-        var attrs = _.pluck(data, attr);
-        var obj = {};
-        _.each(attrs, function(a) {
-            a = a.trim();
-            (obj[a] === undefined) ? obj[a] = 1: obj[a] ++;
-        });
-        var set = [];
-        _.each(obj, function(o, key) {
-            var per = Math.round((parseInt(o) / data.length) * 100);
-            set.push({
-                'label': key,
-                'value': parseInt(o),
-                'percentage': per
-            })
-        })
-        return set;
-    }
-
   });

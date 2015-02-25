@@ -1,6 +1,6 @@
 angular.module('modelCompanyApp').
-directive('timeseries', ['$window',
-    function($window) {
+directive('timeseries', ['$window', 'ObjectService',
+    function($window, ObjectService) {
         return {
             restrict: 'A',
             scope: {
@@ -17,7 +17,7 @@ directive('timeseries', ['$window',
                 });
 
                 function render(data) {
-
+                    data = ObjectService.construct(data, scope.attribute, scope.mess);
                     // if (scope.format === "true")
                     //     data = _.pluck(data, 'dateout');
 
@@ -82,6 +82,9 @@ directive('timeseries', ['$window',
                         })
                         .attr("r", function(d) {
                             return Math.min(50, Math.max(10, 20 * Math.log(d.value)));
+                        })
+                        .append("svg:title").text(function(d) {
+                            return d.value;
                         })
 
                     var textGr = ev.append("g")

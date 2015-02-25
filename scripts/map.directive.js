@@ -1,10 +1,11 @@
 angular.module('modelCompanyApp').
-directive('map', ['$window',
-    function($window) {
+directive('map', ['$window', 'ObjectService',
+    function($window, ObjectService) {
         return {
             restrict: 'A',
             scope: {
-                data: "="
+                data: "=",
+                mess: "@"
             },
             link: function(scope, element, attrs) {
                 var map, heat, markers, heatmapShowing = true,
@@ -17,7 +18,9 @@ directive('map', ['$window',
                 });
                 
                 // Create the map
-                map = L.map('map', {
+                var mapId = scope.mess? 'map'+scope.mess : 'map';
+
+                map = L.map(mapId, {
                     minZoom: 5,
                     maxZoom: 12,
                     zoomControl: false
@@ -28,6 +31,12 @@ directive('map', ['$window',
 
                 // Draw the map
                 function draw(data) {
+
+                    if (scope.mess)
+                        data = _.reject(data, function(d) {
+                            return d.mess !== scope.mess;
+                        })
+
                     var latLngs = [];
                     
                     _.each(data, function(d) {

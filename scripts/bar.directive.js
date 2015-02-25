@@ -1,14 +1,15 @@
 angular.module('modelCompanyApp').
-directive('bar', ['$window',
-    function($window) {
+directive('bar', ['$window', 'ObjectService',
+    function($window, ObjectService) {
         return {
             restrict: 'A',
             scope: {
                 data: "=",
                 attribute: "@",
+                mess: "@",
                 average: "=",
                 orientation: "@",
-                format: "@"
+                national: "@"
             },
             link: function(scope, element, attrs) {
 
@@ -21,6 +22,9 @@ directive('bar', ['$window',
                 });
 
                 function render(data) {
+                    
+                    if (!scope.national)
+                        data = ObjectService.construct(data, scope.attribute, scope.mess);
 
                     var margin = {
                             top: 20,
@@ -132,7 +136,7 @@ directive('bar', ['$window',
                             });
 
                         var setAverage = d3.sum(data, function(d) {
-                            return d.label * d.percentage;
+                            return parseInt(d.label) * d.percentage;
                         }) / d3.sum(data, function(d) {
                             return d.percentage;
                         });
