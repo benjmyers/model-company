@@ -1,6 +1,6 @@
 angular.module('modelCompanyApp').
-directive('nationalBar', ['$window', 'ObjectService',
-    function($window, ObjectService) {
+directive('nationalBar', ['$window', 'ObjectService', 'ColorService',
+    function($window, ObjectService, ColorService) {
         return {
             restrict: 'A',
             scope: {
@@ -9,18 +9,6 @@ directive('nationalBar', ['$window', 'ObjectService',
                 label: "@"
             },
             link: function(scope, element, attrs) {
-
-                var d3colors = d3.scale.ordinal().range([
-                    '#b2182b',
-                    '#d6604d',
-                    '#f4a582',
-                    '#fddbc7',
-                    '#f7f7f7',
-                    '#d1e5f0',
-                    '#92c5de',
-                    '#4393c3',
-                    '#2166ac'
-                ]);
 
                 scope.$watch('data', function(newVal) {
                     if (newVal)
@@ -85,7 +73,8 @@ directive('nationalBar', ['$window', 'ObjectService',
                     item.append("rect")
                         .attr("class", "bar")
                         .attr("fill", function(d, i) {
-                            return d3colors(i);
+                            console.log(ColorService.getColor(scope.attribute, d.label))
+                            return ColorService.getColor(scope.attribute, d.label);
                         })
                         .attr("x", 0)
                         .attr("width", function(d) {

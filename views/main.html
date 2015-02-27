@@ -1,83 +1,95 @@
 <div class="container">
 
-  <div class="header">
-    <div class="header-title">Model Company</div>
-    <p class="header-sub">An uncommon look at the common Civil War solider.</p>
-  </div>
-
-  <div class="text">
-    <p>    On September 1st, 1861, 102 men reported to Camp Curtain, Harrisburg, to enlist in Company D of the 46th Pennslyvania Volunteer Infantry. Some had just returned from service in regiments who served for three months over the summer - the amount of time the government had felt necesary to quelch the Southern rebellion which had started in April with the firing on Fort Sumpter, SC. But the Union Army's defeat at the Battle of First Manassas in July had proved that it would not be a short or easy process. The government called for the enlistement of [xxx] more soldiers, and the men of Company D were some of the first to respond.</p>
-    <p>    On paper the original 102 members of Company D, 46th Regiment Pennsylvania Volunteers looks ordinary. They were farmers, laborers, students and carpenters. Most were young. Through four years of service, they proved themselves to be brave, competent soldiers who withstood some of the most horrifying battles during a war that took the lives 600,000 Americans. Many of the original 102 would return home maimed or not at all. And they lacked the uniqueness, wealth, and political connections to propel them into fame in the decades to follow.</p>
-    <p>After that war, historians researched and documented what they thought to be the "average" Civil War soldier. As recorded in <a href="https://archive.org/details/reglossescivilwar00foxwrich" target="_blank">Fox's Regimental Losses</a>, the soldier was most likely to be a 5'8 twenty-five year old with dark hair and blue eyes. He was most often a farmer with light complexion. If Company D appears to be a normal company, how do they compare to the national average? Are they the Model of a Civil War soldier - a model company?</p>
-  </div>
-  <div class="section-header">
-    Recruits
-  </div>
-  <div class="text">
-    <div class="left recruits"><p>    On enlistement, recruits were asked certain personal information - one of which was residence. Most of the members of Company D were from the various Townships of Dauphin County, Pennsylvania.</p>
-    <p>In addition, they were asked for their occupation and, for identification purposes, their age, height, complexion, eye color, and hair color.</p></div>
-    <!-- <div map id="map" class="right" data="companyData"></div> -->
-    <div map id="map1" class="map-mess" data="companyData" mess="1"></div>
-    <div map id="map2" class="map-mess" data="companyData" mess="2"></div>
-    <div map id="map3" class="map-mess" data="companyData" mess="3"></div>
-    <div map id="map4" class="map-mess" data="companyData" mess="4"></div>
-    <div map id="map5" class="map-mess" data="companyData" mess="5"></div>
-  </div>
-<div class="visual">
-    <div class="lbl">eye color</div>
-    <div class="item">
-        <div national-bar data="nationalAverages.eyes" attribute="eyes" label="National"></div>
-        <div company-bar data="companyData" attribute="eyes" label="Company"></div>
-        <div company-bar data="companyData" attribute="eyes" label="Mess 1" mess="1"></div>
-        <div company-bar data="companyData" attribute="eyes" label="Mess 2" mess="2"></div>
-        <div company-bar data="companyData" attribute="eyes" label="Mess 3" mess="3"></div>
-        <div company-bar data="companyData" attribute="eyes" label="Mess 4" mess="4"></div>
-        <div company-bar data="companyData" attribute="eyes" label="Mess 5" mess="5"></div>
+    <div class="header">
+        <div class="header-title">Model Company</div>
+        <p class="header-sub">An uncommon look at the common Civil War solider.</p>
     </div>
-</div>
-<!-- <div class="visual">
-    <div class="lbl">hair color</div>
-    <div horizontal-bar data="nationalAverages.hair" attribute="national-avg-eyes" label="National"></div>
-    <div horizontal-bar data="companyData.hair" attribute="national-avg-eyes" label="Company"></div>
-</div>
-<div class="visual">
-    <div class="lbl">complexion</div>
-    <div horizontal-bar data="nationalAverages.complexion" label="National"></div>
-    <div horizontal-bar data="companyData.complexion" label="Company"></div>
-</div> -->
-<div class="visual">
-  <div class="item bar">
-    <div class="lbl">age</div>
-    <div bar data="companyData" attribute="age" class="age" average="nationalAverages.age"></div>
-  </div>
-  <div class="item bar">
-    <div class="lbl">height</div>
-    <div bar data="companyData" attribute="heightin" class="heightft" average="nationalAverages.height"></div>
-  </div>
-  <div class="item bar">
-    <div class="lbl">occupation</div>
-    <div bar data="companyData" attribute="occupation" class="occupation" orientation="vertical"></div>
-  </div>
-  <div class="item bar">
-    <div class="lbl">occupation</div>
-    <div bar data="nationalAverages.occupation" attribute="nationalAverages.occupation" national=true orientation="vertical"></div>
-  </div>
-</div>
-<!-- <div class="visual">
+
+    <div class="text">
+        <p> On September 1st, 1861, 102 men reported to Camp Curtain, Harrisburg, to enlist in Company D of the 46th Pennslyvania Volunteer Infantry. Some had just returned from service in regiments who served for three months over the summer - the amount of time the government had felt necesary to quelch the Southern rebellion which had started in April with the firing on Fort Sumpter, SC. But the Union Army's defeat at the Battle of First Manassas in July had proved that it would not be a short or easy process. The government called for the enlistement of [xxx] more soldiers, and the men of Company D were some of the first to respond.</p>
+        <p> On paper the original 102 members of Company D, 46th Regiment Pennsylvania Volunteers looks ordinary. They were farmers, laborers, students and carpenters. Most were young. Through four years of service, they proved themselves to be brave, competent soldiers who withstood some of the most horrifying battles during a war that took the lives 600,000 Americans. Many of the original 102 would return home maimed or not at all. And they lacked the uniqueness, wealth, and political connections to propel them into fame in the decades to follow.</p>
+        <p>After that war, historians researched and documented what they thought to be the "average" Civil War soldier. As recorded in <a href="https://archive.org/details/reglossescivilwar00foxwrich" target="_blank">Fox's Regimental Losses</a>, the soldier was most likely to be a 5'8 twenty-five year old with dark hair and blue eyes. He was most often a farmer with light complexion. If Company D appears to be a normal company, how do they compare to the national average? Are they the Model of a Civil War soldier - a model company?</p>
+    </div>
+    <div class="section-header">
+        Recruits
+    </div>
+    <div class="text">
+        <div class="left recruits">
+            <p> On enlistement, recruits were asked certain personal information - one of which was residence. Most of the members of Company D were from the various Townships of Dauphin County, Pennsylvania.</p>
+            <p>In addition, they were asked for their occupation and, for identification purposes, their age, height, complexion, eye color, and hair color.</p>
+        </div>
+        <!-- <div map id="map" class="right" data="companyData"></div> -->
+        <div map id="map1" class="map-mess" data="companyData" mess="1"></div>
+        <div map id="map2" class="map-mess" data="companyData" mess="2"></div>
+        <div map id="map3" class="map-mess" data="companyData" mess="3"></div>
+        <div map id="map4" class="map-mess" data="companyData" mess="4"></div>
+        <div map id="map5" class="map-mess" data="companyData" mess="5"></div>
+    </div>
+    <div class="visual">
+        <div class="lbl">eye color</div>
+        <div class="item">
+            <div national-bar data="nationalAverages.eyes" attribute="eyes" label="National"></div>
+            <div company-bar data="companyData" attribute="eyes" label="Company"></div>
+            <div company-bar data="companyData" attribute="eyes" label="Mess 1" mess="1"></div>
+            <div company-bar data="companyData" attribute="eyes" label="Mess 2" mess="2"></div>
+            <div company-bar data="companyData" attribute="eyes" label="Mess 3" mess="3"></div>
+            <div company-bar data="companyData" attribute="eyes" label="Mess 4" mess="4"></div>
+            <div company-bar data="companyData" attribute="eyes" label="Mess 5" mess="5"></div>
+        </div>
+    </div>
+    <div class="visual">
+        <div class="lbl">hair color</div>
+        <div national-bar data="nationalAverages.hair" attribute="hair" label="National"></div>
+        <div company-bar data="companyData" attribute="hair" label="Company"></div>
+        <div company-bar data="companyData" attribute="hair" label="Mess 1" mess="1"></div>
+        <div company-bar data="companyData" attribute="hair" label="Mess 2" mess="2"></div>
+        <div company-bar data="companyData" attribute="hair" label="Mess 3" mess="3"></div>
+        <div company-bar data="companyData" attribute="hair" label="Mess 4" mess="4"></div>
+        <div company-bar data="companyData" attribute="hair" label="Mess 5" mess="5"></div>
+    </div>
+    <div class="visual">
+        <div class="lbl">complexion</div>
+         <div national-bar data="nationalAverages.complexion" attribute="complexion" label="National"></div>
+        <div company-bar data="companyData" attribute="complexion" label="Company"></div>
+        <div company-bar data="companyData" attribute="complexion" label="Mess 1" mess="1"></div>
+        <div company-bar data="companyData" attribute="complexion" label="Mess 2" mess="2"></div>
+        <div company-bar data="companyData" attribute="complexion" label="Mess 3" mess="3"></div>
+        <div company-bar data="companyData" attribute="complexion" label="Mess 4" mess="4"></div>
+        <div company-bar data="companyData" attribute="complexion" label="Mess 5" mess="5"></div>
+    </div>
+    <div class="visual">
+        <div class="item bar">
+            <div class="lbl">age</div>
+            <div bar data="companyData" attribute="age" class="age" average="nationalAverages.age"></div>
+        </div>
+        <div class="item bar">
+            <div class="lbl">height</div>
+            <div bar data="companyData" attribute="heightin" class="heightft" average="nationalAverages.height"></div>
+        </div>
+        <div class="item bar">
+            <div class="lbl">occupation</div>
+            <div bar data="companyData" attribute="occupation" class="occupation" orientation="vertical"></div>
+        </div>
+        <div class="item bar">
+            <div class="lbl">occupation</div>
+            <div bar data="nationalAverages.occupation" attribute="nationalAverages.occupation" national=true orientation="vertical"></div>
+        </div>
+    </div>
+    <!-- <div class="visual">
     <div class="lbl">out method</div>
     <div horizontal-bar data="companyData.out_reason" label="Company"></div>
 
 </div> -->
-<div class="visual">
-    <div class="lbl">out date</div>
-    <div class="item">
-        <div timeseries data="companyData" events="events" attribute="dateout" format="true"></div>
-        <div timeseries data="companyData" events="events" attribute="dateout" format="true" mess="1"></div>
-        <div timeseries data="companyData" events="events" attribute="dateout" format="true" mess="2"></div>
-        <div timeseries data="companyData" events="events" attribute="dateout" format="true" mess="3"></div>
-        <div timeseries data="companyData" events="events" attribute="dateout" format="true" mess="4"></div>
-        <div timeseries data="companyData" events="events" attribute="dateout" format="true" mess="5"></div>
+    <div class="visual">
+        <div class="lbl">out date</div>
+        <div class="item">
+            <div timeseries data="companyData" events="events" attribute="dateout" format="true"></div>
+            <div timeseries data="companyData" events="events" attribute="dateout" format="true" mess="1"></div>
+            <div timeseries data="companyData" events="events" attribute="dateout" format="true" mess="2"></div>
+            <div timeseries data="companyData" events="events" attribute="dateout" format="true" mess="3"></div>
+            <div timeseries data="companyData" events="events" attribute="dateout" format="true" mess="4"></div>
+            <div timeseries data="companyData" events="events" attribute="dateout" format="true" mess="5"></div>
+        </div>
     </div>
-</div>
 
 </div>

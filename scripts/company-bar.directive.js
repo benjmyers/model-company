@@ -13,18 +13,6 @@ directive('companyBar', ['$window', 'ObjectService',
             },
             link: function(scope, element, attrs) {
 
-                var d3colors = d3.scale.ordinal().range([
-                    '#b2182b',
-                    '#d6604d',
-                    '#f4a582',
-                    '#fddbc7',
-                    '#f7f7f7',
-                    '#d1e5f0',
-                    '#92c5de',
-                    '#4393c3',
-                    '#2166ac'
-                ]);
-
                 scope.$watch('data', function(newVal) {
                     if (newVal)
                         render(newVal);
@@ -32,7 +20,7 @@ directive('companyBar', ['$window', 'ObjectService',
 
                 function render(data) {
                     data = ObjectService.construct(data, scope.attribute, scope.mess);
-
+                    console.log(scope.attribute,_.uniq(_.pluck(data, 'label')))
                     data = _.sortBy(data, function(d) {
                         return d.label;
                     });
@@ -71,7 +59,7 @@ directive('companyBar', ['$window', 'ObjectService',
                         .attr("x", 0)
                         .attr("y", 0)
                         .attr("dy", function(d) {
-                            return barHeight/2 + 2;
+                            return barHeight / 2 + 2;
                         })
                         .attr("dx", -5)
                         .attr("font-size", 14)
@@ -89,7 +77,8 @@ directive('companyBar', ['$window', 'ObjectService',
                     item.append("rect")
                         .attr("class", "bar")
                         .attr("fill", function(d, i) {
-                            return d3colors(i);
+                            console.log(d)
+                            return d.color;
                         })
                         .attr("x", 0)
                         .attr("width", function(d) {
@@ -97,22 +86,9 @@ directive('companyBar', ['$window', 'ObjectService',
                         })
                         .attr("y", 0)
                         .attr("height", barHeight)
-                                                .append("svg:title").text(function(d) {
+                        .append("svg:title").text(function(d) {
                             return d.label;
                         })
-
-                    // if (!scope.mess) {
-                    //     item.append("text")
-                    //         .attr("x", function(d) {
-                    //             return d.value / 2
-                    //         })
-                    //         .attr("y", barHeight * 1.5)
-                    //         .attr("font-size", 14)
-                    //         .attr("text-anchor", "middle")
-                    //         .text(function(d) {
-                    //             return d.label;
-                    //         });
-                    // }
                 }
             }
         }

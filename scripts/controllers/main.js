@@ -8,14 +8,13 @@
  * Controller of the modelCompanyApp
  */
 angular.module('modelCompanyApp')
-  .controller('MainCtrl', function ($scope, $http) {
+  .controller('MainCtrl', function ($scope, $http, ColorService) {
 
     $scope.nationalAverages = {
       'age': 25,
       'height': 68,
       'hair': [{'label': 'black', 'value': .13, 'percentage': 13},
-              {'label': 'dark', 'value': .25, 'percentage': 25},
-              {'label': 'brown', 'value': .3, 'percentage': 30},
+              {'label': 'brown', 'value': .55, 'percentage': 55},
               {'label': 'light', 'value': .24, 'percentage': 24},
               {'label': 'sandy', 'value': .04, 'percentage': 4},
               {'label': 'red', 'value': .03, 'percentage': 3},
@@ -85,6 +84,7 @@ angular.module('modelCompanyApp')
           //   var date = moment(d.dateout.trim(), "MM/DD/YYYY");
           //   d.dateout = date.valueOf();
           // }
+
         })
         $scope.companyData = data;
         $scope.$apply();

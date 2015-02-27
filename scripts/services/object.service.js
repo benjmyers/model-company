@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('modelCompanyApp')
-    .service('ObjectService', function() {
+    .service('ObjectService', function(ColorService) {
         this.construct = function(data, attr, mess) {
             if (mess)
                 data = _.reject(data, function(d) {
@@ -15,11 +15,13 @@ angular.module('modelCompanyApp')
             });
             var set = [];
             _.each(obj, function(o, key) {
+                var color = ColorService.getColor(attr, key);
                 var per = Math.round((parseInt(o) / data.length) * 100);
                 set.push({
                     'label': key,
                     'value': parseInt(o),
-                    'percentage': per
+                    'percentage': per,
+                    'color': color
                 })
             })
             return set;
