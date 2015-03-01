@@ -20,7 +20,6 @@ directive('companyBar', ['$window', 'ObjectService',
 
                 function render(data) {
                     data = ObjectService.construct(data, scope.attribute, scope.mess);
-                    console.log(scope.attribute,_.uniq(_.pluck(data, 'label')))
                     data = _.sortBy(data, function(d) {
                         return d.label;
                     });
@@ -77,7 +76,6 @@ directive('companyBar', ['$window', 'ObjectService',
                     item.append("rect")
                         .attr("class", "bar")
                         .attr("fill", function(d, i) {
-                            console.log(d)
                             return d.color;
                         })
                         .attr("x", 0)

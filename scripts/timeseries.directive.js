@@ -7,19 +7,82 @@ directive('timeseries', ['$window', 'ObjectService',
                 data: "=",
                 events: "=",
                 attribute: "@",
-                format: "@",
+                filter: "=",
                 mess: "@"
             },
             link: function(scope, element, attrs) {
+
+                var context, x;
+                var circleSize = 12;
+
                 scope.$watch('data', function(newVal) {
                     if (newVal)
                         render(newVal);
                 });
 
+                scope.$watch('filter', function(newVal) {
+                    if (context && newVal)
+                        update(newVal)
+                }, true)
+
+                function update(filter) {
+
+                    var data = ObjectService.constructWithFilter(scope.data, scope.attribute, filter);
+
+                    // DATA JOIN
+                    var circ = context.selectAll(".circ")
+                        .data(data);
+
+                    // UPDATE
+                    circ.transition().duration(500)
+                        .attr("r", function(d) {
+                            return Math.min(50, Math.max(10, 20 * Math.log(d.value)));
+                        })
+
+                    circ.attr("cx", function(d) {
+                            return x(getDate(d.label));
+                        })
+                        .attr("cy", function(d, i) {
+                            return circleSize * 2;
+                        }).on('click', function(d) {
+                            console.log(d)
+                        })
+
+                    circ.selectAll('title')
+                        .text(function(d) {
+                            return d.value;
+                        })
+
+                    // ENTER
+                    var enterCirc = circ.enter().append("circle")
+                        .attr("class", "circ")
+                        .attr("cx", function(d) {
+                            return x(getDate(d.label));
+                        })
+                        .attr("r", 0)
+                        .attr("cy", function(d, i) {
+                            return circleSize * 2;
+                        })
+
+                    enterCirc.transition().duration(500)
+                        .attr("r", function(d) {
+                            console.log(d)
+                            return Math.min(50, Math.max(10, 20 * Math.log(d.value)));
+                        })
+
+                    circ.append("svg:title").text(function(d) {
+                        return d.value;
+                    })
+
+                    // EXIT
+                    var exitCirc = circ.exit();
+                    exitCirc.transition().duration(250)
+                        .attr("r", 0);
+
+                }
+
                 function render(data) {
                     data = ObjectService.construct(data, scope.attribute, scope.mess);
-                    // if (scope.format === "true")
-                    //     data = _.pluck(data, 'dateout');
 
                     data = _.reject(data, function(d) {
                         return d.label === "NA";
@@ -34,8 +97,8 @@ directive('timeseries', ['$window', 'ObjectService',
                         width = 1200 - margin.left - margin.right,
                         height = 200 - margin.top - margin.bottom;
                     var parseDate = d3.time.format("%b %Y").parse;
-                    var circleSize = 12;
-                    var x = d3.time.scale().range([0, width - margin.left - margin.right])
+
+                    x = d3.time.scale().range([0, width - margin.left - margin.right])
 
                     var xAxis = d3.svg.axis().scale(x).orient("bottom")
                         .ticks(10)
@@ -50,20 +113,20 @@ directive('timeseries', ['$window', 'ObjectService',
                         .attr("width", width + margin.left + margin.right)
                         .attr("height", height + margin.top + margin.bottom);
 
-                    var context = svg.append("g")
+                    context = svg.append("g")
                         .attr("class", "context")
-                        .attr("transform", "translate(" + (margin.left + 50) + "," + (height/2) + ")");
+                        .attr("transform", "translate(" + (margin.left + 50) + "," + (height / 2) + ")");
 
                     var ev = context.selectAll(".event")
                         .data(scope.events)
                         .enter().append("g")
                         .attr("transform", function(d) {
-                            return d.date ? "translate("+ x(getDate(d.date)) +","+ margin.top +")" : "translate("+ x(getDate(d.daterange[0])) +","+ margin.top +")"
+                            return d.date ? "translate(" + x(getDate(d.date)) + "," + margin.top + ")" : "translate(" + x(getDate(d.daterange[0])) + "," + margin.top + ")"
                         })
-                    
+
                     ev.append("rect")
                         .attr("class", "timeline-event")
-                        .attr("y", -(height/2) + margin.top)
+                        .attr("y", -(height / 2) + margin.top)
                         .attr("height", height - 50)
                         .attr("width", 1);
 
@@ -88,9 +151,9 @@ directive('timeseries', ['$window', 'ObjectService',
                         })
 
                     var textGr = ev.append("g")
-                        .attr("transform",  function(d, i) {
-                            var dy = (i%2)? height/2 : -height/2;
-                            return "translate(0,"+dy+")";
+                        .attr("transform", function(d, i) {
+                            var dy = (i % 2) ? height / 2 : -height / 2;
+                            return "translate(0," + dy + ")";
                         })
 
                     textGr.append("text")
@@ -111,6 +174,7 @@ directive('timeseries', ['$window', 'ObjectService',
                         })
 
                 }
+
                 function getDate(date) {
                     return moment(date.trim(), "MM/DD/YYYY").valueOf();
                 }

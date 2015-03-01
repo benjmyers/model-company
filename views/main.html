@@ -19,11 +19,11 @@
             <p>In addition, they were asked for their occupation and, for identification purposes, their age, height, complexion, eye color, and hair color.</p>
         </div>
         <!-- <div map id="map" class="right" data="companyData"></div> -->
-        <div map id="map1" class="map-mess" data="companyData" mess="1"></div>
+        <!-- <div map id="map1" class="map-mess" data="companyData" mess="1"></div>
         <div map id="map2" class="map-mess" data="companyData" mess="2"></div>
         <div map id="map3" class="map-mess" data="companyData" mess="3"></div>
         <div map id="map4" class="map-mess" data="companyData" mess="4"></div>
-        <div map id="map5" class="map-mess" data="companyData" mess="5"></div>
+        <div map id="map5" class="map-mess" data="companyData" mess="5"></div> -->
     </div>
     <div class="visual">
         <div class="lbl">eye color</div>
@@ -83,13 +83,14 @@
     <div class="visual">
         <div class="lbl">out date</div>
         <div class="item">
-            <div timeseries data="companyData" events="events" attribute="dateout" format="true"></div>
-            <div timeseries data="companyData" events="events" attribute="dateout" format="true" mess="1"></div>
-            <div timeseries data="companyData" events="events" attribute="dateout" format="true" mess="2"></div>
-            <div timeseries data="companyData" events="events" attribute="dateout" format="true" mess="3"></div>
-            <div timeseries data="companyData" events="events" attribute="dateout" format="true" mess="4"></div>
-            <div timeseries data="companyData" events="events" attribute="dateout" format="true" mess="5"></div>
+            <div timeseries data="companyData" events="events" attribute="dateout" filter="timeseriesDisplay"></div>
+            <div class="timeseries-buttons">
+                <button class="btn btn-default" ng-click="timeseriesFilter(1)" ng-class="{'showing' : timeseriesDisplay[1]}">1</button>
+                <button class="btn btn-default" ng-click="timeseriesFilter(2)"  ng-class="{'showing' : timeseriesDisplay[2]}">2</button>
+                <button class="btn btn-default" ng-click="timeseriesFilter(3)"  ng-class="{'showing' : timeseriesDisplay[3]}">3</button>
+                <button class="btn btn-default" ng-click="timeseriesFilter(4)"  ng-class="{'showing' : timeseriesDisplay[4]}">4</button>
+                <button class="btn btn-default" ng-click="timeseriesFilter(5)"  ng-class="{'showing' : timeseriesDisplay[5]}">5</button>
+                <button class="btn btn-default" ng-click="timeseriesFilter(6)"  ng-class="{'showing' : timeseriesDisplay[6]}">6</button>
+            </div>
         </div>
-    </div>
-
 </div>

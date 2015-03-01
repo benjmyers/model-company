@@ -69,6 +69,18 @@ angular.module('modelCompanyApp')
         'type': 'event'
     }]
 
+    $scope.timeseriesDisplay = {
+      1: true,
+      2: true,
+      3: true,
+      4: true,
+      5: true,
+      6: true
+    }
+    $scope.timeseriesFilter = function(mess) {
+      $scope.timeseriesDisplay[mess] = !$scope.timeseriesDisplay[mess];
+    }
+
     d3.csv('data/formatted-messes.csv', function(err, data) {
       d3.csv('data/locations.csv', function(err, locations) {
         var dataObj = {};

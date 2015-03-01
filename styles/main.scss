@@ -66,7 +66,7 @@ body {
   width: 100%;
   clear: both;
   text-align: center;
-  margin: 2% 0;
+  margin: 10% 0;
   .lbl {
     font-family: "League Gothic";
     font-size: 1.2em;
@@ -114,7 +114,15 @@ path.domain {
   font-size: 15px;
   font-weight: 300;
 }
-
+.timeseries-buttons {
+  margin: .5%;
+  .btn.showing {
+    color: $brown;
+  }
+  .btn {
+    color: $concrete;
+  }
+}
 /* Custom page footer */
 .footer {
   padding-top: 19px;

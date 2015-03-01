@@ -73,7 +73,6 @@ directive('nationalBar', ['$window', 'ObjectService', 'ColorService',
                     item.append("rect")
                         .attr("class", "bar")
                         .attr("fill", function(d, i) {
-                            console.log(ColorService.getColor(scope.attribute, d.label))
                             return ColorService.getColor(scope.attribute, d.label);
                         })
                         .attr("x", 0)
