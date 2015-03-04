@@ -26,6 +26,8 @@ directive('bar', ['$window', 'ObjectService',
                     if (!scope.national)
                         data = ObjectService.construct(data, scope.attribute, scope.mess);
 
+                    if (scope.attribute === "occupation")
+                        console.log(_.pluck(data, 'label'));
                     var margin = {
                             top: 20,
                             right: 20,

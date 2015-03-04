@@ -123,6 +123,22 @@ path.domain {
     color: $concrete;
   }
 }
+/* Circle Pack*/
+circle {
+  fill: rgb(31, 119, 180);
+  fill-opacity: .25;
+  stroke: rgb(31, 119, 180);
+  stroke-width: 1px;
+}
+
+.leaf circle {
+  fill: #ff7f0e;
+  fill-opacity: 1;
+}
+
+text {
+  font: 10px sans-serif;
+}
 /* Custom page footer */
 .footer {
   padding-top: 19px;

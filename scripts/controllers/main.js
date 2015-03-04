@@ -27,12 +27,12 @@ angular.module('modelCompanyApp')
       'complexion': [{'label': 'light', 'value': .6, 'percentage':  60},
               {'label': 'dark', 'value': .33, 'percentage': 33},
               {'label': 'medium', 'value': .7, 'percentage': 70}],
-      'occupation': [{'label': 'farmer', 'value': .48, 'percentage': 48},
-              {'label': 'mechanic', 'value': .24, 'percentage': 24},
-              {'label': 'laborer', 'value': .16, 'percentage': 16},
-              {'label': 'commercial', 'value': .05, 'percentage': 5},
-              {'label': 'professional', 'value': .03, 'percentage': 3},
-              {'label': 'misc', 'value': .04, 'percentage': 4}]
+      'occupation': [{'label': 'farmer', 'value': .48, 'percentage': 48, 'children' : []},
+              {'label': 'mechanic', 'value': .24, 'percentage': 24, 'children' : []},
+              {'label': 'laborer', 'value': .16, 'percentage': 16, 'children' : []},
+              {'label': 'commercial', 'value': .05, 'percentage': 5, 'children' : []},
+              {'label': 'professional', 'value': .03, 'percentage': 3, 'children' : []},
+              {'label': 'misc', 'value': .04, 'percentage': 4, 'children' : []}]
     }
     $scope.events = [{
         'name': 'Winchester',
@@ -69,6 +69,56 @@ angular.module('modelCompanyApp')
         'type': 'event'
     }]
 
+
+
+    $scope.sampleCircle = {
+            "name": "flare",
+            "children": [{
+                        "name": "analytics",
+                        "children": [{
+                            "name": "cluster",
+                            "children": [{
+                                "name": "AgglomerativeCluster",
+                                "size": 3938
+                            }, {
+                                "name": "CommunityStructure",
+                                "size": 3812
+                            }, {
+                                "name": "HierarchicalCluster",
+                                "size": 6714
+                            }, {
+                                "name": "MergeEdge",
+                                "size": 743
+                            }]
+                        }, {
+                            "name": "graph",
+                            "children": [{
+                                "name": "BetweennessCentrality",
+                                "size": 3534
+                            }, {
+                                "name": "LinkDistance",
+                                "size": 5731
+                            }, {
+                                "name": "MaxFlowMinCut",
+                                "size": 7840
+                            }, {
+                                "name": "ShortestPaths",
+                                "size": 5914
+                            }, {
+                                "name": "SpanningTree",
+                                "size": 3416
+                            }]
+                        }, {
+                            "name": "optimization",
+                            "children": [{
+                                "name": "AspectRatioBanker",
+                                "size": 7074
+                            }]
+                        }]
+                    }]
+                  }
+                  console.log($scope.sampleCircle)
+
     $scope.timeseriesDisplay = {
       1: true,
       2: true,
@@ -80,6 +130,8 @@ angular.module('modelCompanyApp')
     $scope.timeseriesFilter = function(mess) {
       $scope.timeseriesDisplay[mess] = !$scope.timeseriesDisplay[mess];
     }
+
+    var root = angular.copy($scope.nationalAverages.occupation);
 
     d3.csv('data/formatted-messes.csv', function(err, data) {
       d3.csv('data/locations.csv', function(err, locations) {
