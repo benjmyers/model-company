@@ -124,15 +124,13 @@ path.domain {
   }
 }
 /* Circle Pack*/
-circle {
-  fill: rgb(31, 119, 180);
-  fill-opacity: .25;
-  stroke: rgb(31, 119, 180);
-  stroke-width: 1px;
+.occupation-circle {
+  fill: $blue;
+  fill-opacity: .5;
 }
 
 .leaf circle {
-  fill: #ff7f0e;
+  fill: $blue;
   fill-opacity: 1;
 }
 

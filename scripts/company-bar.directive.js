@@ -33,7 +33,7 @@ directive('companyBar', ['$window', 'ObjectService',
 
 
                     var barHeight = (scope.mess) ? 18 : 35;
-                    var elemWidth = $('.container').width();
+                    var elemWidth = $(window).width();
                     var elemHeight = barHeight;
                     width = elemWidth - margin.left - margin.right;
                     height = elemHeight - margin.top - margin.bottom;

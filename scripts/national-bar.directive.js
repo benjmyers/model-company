@@ -29,7 +29,7 @@ directive('nationalBar', ['$window', 'ObjectService', 'ColorService',
                     };
 
                     var barHeight = 50;
-                    var elemWidth = $('.container').width();
+                    var elemWidth = $(window).width();
                     var elemHeight = barHeight + 25;
                     width = elemWidth - margin.left - margin.right;
                     height = elemHeight - margin.top - margin.bottom;
