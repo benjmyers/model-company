@@ -204,10 +204,6 @@ angular.module('modelCompanyApp')
                             'color': color
                         })
                     })
-                    var set = {
-                        'name': 'flare',
-                        'children': tree
-                    };
-                    return set;
+                    return tree;
                 }
             });

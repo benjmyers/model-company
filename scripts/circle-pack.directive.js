@@ -13,12 +13,14 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
             link: function(scope, element, attrs) {
 
                 var pack, svg, node;
-                    var width = $(window).width() - 20,
-                        height = 500,
-                        scaler = 5,
-                        padding = 25,
-                        format = d3.format(",d"),
-                        color = d3.scale.category20();
+                var width = $(window).width() - 20,
+                    height = 500,
+                    diameter = 200,
+                    scaler = 2.5,
+                    padding = 25,
+                    format = d3.format(",d"),
+                    color = d3.scale.category20();
+
                 scope.$watch('data', function(newVal) {
                     if (newVal)
                         render(newVal);
@@ -35,55 +37,24 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
                     if (scope.format !== "false")
                         data = ObjectService.makeOccupationTree(scope.data, scope.attribute, scope.filter);
 
-                    var runner = 0;
-                    _.each(data.children, function(category) {
+                    // BIND
+                    svgctr.data(data);
 
-                        var companyPercent = Math.ceil((d3.sum(_.pluck(category.children, 'percentage')) / companyCt) * 100);
+                    // UPDATE
+                    svgctr.select('.co-circle')
+                        .transition().duration(200)
+                        .attr("r", function(d) {
+                            return getCoPercent(d, companyCt) * scaler;
+                        });
 
-                        var categoryDiameter = Math.max(category.percentage * scaler, companyPercent * scaler);
+                    svgctr.select('.co-text')
+                        .text(function(d) {
+                            return getCoPercent(d, companyCt) + "%";
+                        });
+                }
 
-                        svg.selectAll('.svg-ctr') 
-                            .transition().duration(100)
-                            .attr("width", categoryDiameter)
-                            .attr("height", categoryDiameter)
-                            .attr("transform", "translate(" + (runner) + "," + (height / 2) + ")");
-
-                        var circleCtr = svg.selectAll(".natl-node")
-                            .transition().duration(100)
-                            .attr("transform", "translate(" + categoryDiameter / 2 + "," + 20 + ")");
-
-                        circleCtr.select(".natl-circle")
-                        .transition().duration(100)
-                            .attr("r", (category.percentage * scaler) / 2)
-
-                        circleCtr.select(".co-circle")
-                        .transition().duration(100)
-                            .attr("r", (companyPercent * scaler) / 2)
-
-                        circleCtr.select(".natl-text")
-                            .attr("y", -height / 3)
-                            .text(function(d) {
-                                return d.label;
-                            });
-
-                        circleCtr.select(".co-text")
-                            .attr("dy", -((companyPercent * scaler) / 2) - 5)
-                            .text(function(d) {
-                                return companyPercent + "%";
-                            });
-
-                        runner += categoryDiameter + padding;
-
-                    })
-
-
-
-                    var exit = circleCtr.exit();
-                    exit.transition().duration(250)
-                        .attr("r", 0);
-                    exit.remove();
-
-
+                function getCoPercent(category, length) {
+                    return Math.ceil((d3.sum(_.pluck(category.children, 'percentage')) / length) * 100);
                 }
 
                 function render(data) {
@@ -99,73 +70,82 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
                         .append("g")
                         .attr("transform", "translate(" + 20 + "," + 20 + ")");
 
-                    var runner = 0;
-                    _.each(data.children, function(category) {
+                    svgctr = svg.selectAll(".occupation")
+                        .data(data).enter()
+                        .append("g")
+                        .attr("width", diameter)
+                        .attr("height", diameter)
+                        .attr("class", "svg-ctr")
+                        .attr("transform", "translate(" + (diameter / 2) + "," + (height / 2) + ")");
 
-                        var companyPercent = Math.ceil((d3.sum(_.pluck(category.children, 'percentage')) / companyCt) * 100);
+                    svgctr.append("text")
+                        .attr("y", -height / 3)
+                        .attr("x", function(d, i) {
+                            return (diameter * i + (diameter / 2));
+                        })
+                        .style("text-anchor", "middle")
+                        .attr("class", "category-text")
+                        .text(function(d) {
+                            return d.label;
+                        });
 
-                        var categoryDiameter = Math.max(category.percentage * scaler, companyPercent * scaler);
+                    var natlCtr = svgctr.append("g")
+                        .attr("class", "national")
+                        .attr("transform", function(d, i) {
+                            return "translate(" + (diameter * i + (diameter / 2)) + "," + 20 + ")"
+                        });
 
-                        pack = d3.layout.pack()
-                            .size([categoryDiameter, categoryDiameter])
-                            .padding(1.5)
-                            .sort(d3.descending)
-                            .value(function(d) {
-                                return d.percentage * scaler;
-                            });
+                    natlCtr.append("circle")
+                        .attr("r", function(d) {
+                            return (d.percentage * scaler);
+                        })
+                        .attr("class", "natl-circle")
+                        .on("click", function(d) {
+                            console.log(d.percentage)
+                        })
+                        .style("fill", 'none')
+                        .style("stroke", '#d6604d')
+                        .style("stroke-width", "6px")
 
-                        svgctr = svg.append("g")
-                            .attr("width", categoryDiameter)
-                            .attr("height", categoryDiameter)
-                            .attr("class", "svg-ctr")
-                            .attr("transform", "translate(" + (runner) + "," + (height / 2) + ")");
+                    natlCtr.append("text")
+                        .attr("y", function(d) {
+                            return - (height / 3) + 20;
+                        })
+                        .style("text-anchor", "middle")
+                        .style("fill", "#d6604d")
+                        .attr("class", "natl-text")
+                        .text(function(d) {
+                            return d.percentage + "%";
+                        });
 
-                        var circleCtr = svgctr.selectAll(".natl-node")
-                            .data([category])
-                            .enter()
-                            .append("g")
-                            .attr("transform", "translate(" + categoryDiameter / 2 + "," + 20 + ")");
+                    var coCtr = svgctr.append("g")
+                        .attr("class", "company")
+                        .attr("transform", function(d, i) {
+                            return "translate(" + (diameter * i + (diameter / 2)) + "," + 20 + ")"
+                        });
 
-                        circleCtr.append("circle")
-                            .attr("r", (category.percentage * scaler) / 2)
-                            .attr("class", "natl-circle")
-                            .style("fill", 'none')
-                            .style("stroke", 'steelblue')
-                            .style("stroke-width", "6px")
+                    coCtr.append("circle")
+                        .attr("r", function(d) {
+                            return getCoPercent(d, companyCt) * scaler;
+                        })
+                        .on("click", function(d) {
+                            console.log(getCoPercent(d, companyCt))
+                        })
+                        .attr("class", "co-circle")
+                        .style("fill", 'none')
+                        .style("stroke", '#4393c3')
+                        .style("stroke-width", "6px")
 
-                        circleCtr.append("circle")
-                            .attr("r", (companyPercent * scaler) / 2)
-                            .attr("class", "co-circle")
-                            .style("fill", 'none')
-                            .style("stroke", 'red')
-                            .style("stroke-width", "6px")
-
-                        circleCtr.append("text")
-                            .attr("dy", -((category.percentage * scaler) / 2) - 5)
-                            .style("text-anchor", "middle")
-                            .text(function(d) {
-                                return d.percentage + "%";
-                            });
-
-                        circleCtr.append("text")
-                            .attr("y", -height / 3)
-                            .style("text-anchor", "middle")
-                            .attr("class", "natl-text")
-                            .text(function(d) {
-                                return d.label;
-                            });
-
-                        circleCtr.append("text")
-                            .attr("dy", -((companyPercent * scaler) / 2) - 5)
-                            .style("text-anchor", "middle")
-                            .attr("class", "co-text")
-                            .text(function(d) {
-                                return companyPercent + "%";
-                            });
-
-                        runner += categoryDiameter + padding;
-
-                    })
+                    coCtr.append("text")
+                        .attr("y", function(d) {
+                            return - (height / 3) + 35;
+                        })
+                        .style("text-anchor", "middle")
+                        .style("fill", "#4393c3")
+                        .attr("class", "co-text")
+                        .text(function(d) {
+                            return getCoPercent(d, companyCt) + "%";
+                        });
                 }
             }
         }

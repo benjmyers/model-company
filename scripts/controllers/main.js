@@ -69,56 +69,6 @@ angular.module('modelCompanyApp')
         'type': 'event'
     }]
 
-
-
-    $scope.sampleCircle = {
-            "name": "flare",
-            "children": [{
-                        "name": "analytics",
-                        "children": [{
-                            "name": "cluster",
-                            "children": [{
-                                "name": "AgglomerativeCluster",
-                                "size": 3938
-                            }, {
-                                "name": "CommunityStructure",
-                                "size": 3812
-                            }, {
-                                "name": "HierarchicalCluster",
-                                "size": 6714
-                            }, {
-                                "name": "MergeEdge",
-                                "size": 743
-                            }]
-                        }, {
-                            "name": "graph",
-                            "children": [{
-                                "name": "BetweennessCentrality",
-                                "size": 3534
-                            }, {
-                                "name": "LinkDistance",
-                                "size": 5731
-                            }, {
-                                "name": "MaxFlowMinCut",
-                                "size": 7840
-                            }, {
-                                "name": "ShortestPaths",
-                                "size": 5914
-                            }, {
-                                "name": "SpanningTree",
-                                "size": 3416
-                            }]
-                        }, {
-                            "name": "optimization",
-                            "children": [{
-                                "name": "AspectRatioBanker",
-                                "size": 7074
-                            }]
-                        }]
-                    }]
-                  }
-                  console.log($scope.sampleCircle)
-
     $scope.timeseriesDisplay = {
       1: true,
       2: true,
@@ -141,7 +91,6 @@ angular.module('modelCompanyApp')
     }
     $scope.occupationFilter = function(mess) {
       $scope.occupationDisplay[mess] = !$scope.occupationDisplay[mess];
-      console.log($scope.occupationDisplay[mess])
     }
 
     var root = angular.copy($scope.nationalAverages.occupation);
