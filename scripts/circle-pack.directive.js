@@ -12,55 +12,73 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
             },
             link: function(scope, element, attrs) {
 
-                var pack, svgctr, node;
-
+                var pack, svg, node;
+                    var width = $(window).width() - 20,
+                        height = 500,
+                        scaler = 5,
+                        padding = 25,
+                        format = d3.format(",d"),
+                        color = d3.scale.category20();
                 scope.$watch('data', function(newVal) {
                     if (newVal)
                         render(newVal);
                 });
 
                 scope.$watch('filter', function(newVal) {
-                    if (svgctr && newVal)
+                    if (svg && newVal)
                         update(newVal)
                 }, true)
 
                 function update(filter) {
-                    var data;
-                    data = ObjectService.makeOccupationTree(scope.data, scope.attribute, filter);
-                    console.log(data)
-                    _.each(data, function(category) {
-                        console.log(category)
+                    var companyCt = scope.data.length;
+
+                    if (scope.format !== "false")
+                        data = ObjectService.makeOccupationTree(scope.data, scope.attribute, scope.filter);
+
+                    var runner = 0;
+                    _.each(data.children, function(category) {
+
+                        var companyPercent = Math.ceil((d3.sum(_.pluck(category.children, 'percentage')) / companyCt) * 100);
+
+                        var categoryDiameter = Math.max(category.percentage * scaler, companyPercent * scaler);
+
+                        svg.selectAll('.svg-ctr') 
+                            .transition().duration(100)
+                            .attr("width", categoryDiameter)
+                            .attr("height", categoryDiameter)
+                            .attr("transform", "translate(" + (runner) + "," + (height / 2) + ")");
+
+                        var circleCtr = svg.selectAll(".natl-node")
+                            .transition().duration(100)
+                            .attr("transform", "translate(" + categoryDiameter / 2 + "," + 20 + ")");
+
+                        circleCtr.select(".natl-circle")
+                        .transition().duration(100)
+                            .attr("r", (category.percentage * scaler) / 2)
+
+                        circleCtr.select(".co-circle")
+                        .transition().duration(100)
+                            .attr("r", (companyPercent * scaler) / 2)
+
+                        circleCtr.select(".natl-text")
+                            .attr("y", -height / 3)
+                            .text(function(d) {
+                                return d.label;
+                            });
+
+                        circleCtr.select(".co-text")
+                            .attr("dy", -((companyPercent * scaler) / 2) - 5)
+                            .text(function(d) {
+                                return companyPercent + "%";
+                            });
+
+                        runner += categoryDiameter + padding;
+
                     })
 
-                    var ctr = svgctr.selectAll("g")
-                        .data(pack.nodes({
-                            'children': data
-                        }).filter(function(d) {
-                            return !d.children;
-                        }))
-                        // .attr("transform", function(d) {
-                        //     return "translate(" + (d.x) + "," + d.y + ")";
-                        // })
 
-                    ctr.select("circle")
-                        .attr("r", function(d) {
-                            return d.r;
-                        });
 
-                    ctr.select("title")
-                        .text(function(d) {
-                            if (d.children)
-                                return "National: " + d.label + " " + d.percentage + "%";
-                            else
-                                return d.label + " " + d.percentage + "%";
-                        });
-
-                    ctr.select("text")
-                        .text(function(d) {
-                            return d.label.substring(0, d.r / 3);
-                        });
-
-                    var exit = ctr.exit();
+                    var exit = circleCtr.exit();
                     exit.transition().duration(250)
                         .attr("r", 0);
                     exit.remove();
@@ -74,15 +92,9 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
                     if (scope.format !== "false")
                         data = ObjectService.makeOccupationTree(scope.data, scope.attribute, scope.filter);
 
-                    var diameter = $(window).width() - 20,
-                        scaler = 5,
-                        padding = 5,
-                        format = d3.format(",d"),
-                        color = d3.scale.category20();
-
-                    var svg = d3.select(element[0]).append("svg")
-                        .attr("width", diameter)
-                        .attr("height", diameter)
+                    svg = d3.select(element[0]).append("svg")
+                        .attr("width", width)
+                        .attr("height", height)
                         .style("text-align", "left")
                         .append("g")
                         .attr("transform", "translate(" + 20 + "," + 20 + ")");
@@ -90,7 +102,9 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
                     var runner = 0;
                     _.each(data.children, function(category) {
 
-                        var categoryDiameter = 200//category.percentage * scaler;
+                        var companyPercent = Math.ceil((d3.sum(_.pluck(category.children, 'percentage')) / companyCt) * 100);
+
+                        var categoryDiameter = Math.max(category.percentage * scaler, companyPercent * scaler);
 
                         pack = d3.layout.pack()
                             .size([categoryDiameter, categoryDiameter])
@@ -100,74 +114,54 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
                                 return d.percentage * scaler;
                             });
 
-
-
                         svgctr = svg.append("g")
                             .attr("width", categoryDiameter)
-                            .attr("height", categoryDiameter)   
-                            .attr("transform", "translate(" + (runner) + "," + (categoryDiameter/2) + ")");
+                            .attr("height", categoryDiameter)
+                            .attr("class", "svg-ctr")
+                            .attr("transform", "translate(" + (runner) + "," + (height / 2) + ")");
 
-                        var natlctr = svgctr.selectAll(".natl-node")
+                        var circleCtr = svgctr.selectAll(".natl-node")
                             .data([category])
                             .enter()
                             .append("g")
-                            .attr("transform", "translate(" + categoryDiameter/2 + "," + 20 + ")");
+                            .attr("transform", "translate(" + categoryDiameter / 2 + "," + 20 + ")");
 
-                        natlctr.append("circle")
-                            .attr("r", (category.percentage * scaler)/2)
+                        circleCtr.append("circle")
+                            .attr("r", (category.percentage * scaler) / 2)
+                            .attr("class", "natl-circle")
                             .style("fill", 'none')
                             .style("stroke", 'steelblue')
-                            .style("stroke-width", "4px")
+                            .style("stroke-width", "6px")
 
-                        natlctr.append("text")
-                            .attr("dy", - ((category.percentage * scaler)/2) - 5)
+                        circleCtr.append("circle")
+                            .attr("r", (companyPercent * scaler) / 2)
+                            .attr("class", "co-circle")
+                            .style("fill", 'none')
+                            .style("stroke", 'red')
+                            .style("stroke-width", "6px")
+
+                        circleCtr.append("text")
+                            .attr("dy", -((category.percentage * scaler) / 2) - 5)
                             .style("text-anchor", "middle")
                             .text(function(d) {
-                                return d.label + " " + d.percentage + "%";
+                                return d.percentage + "%";
                             });
 
-                        var companyPercent = d3.sum(_.pluck(category.children, 'percentage')) / companyCt;
+                        circleCtr.append("text")
+                            .attr("y", -height / 3)
+                            .style("text-anchor", "middle")
+                            .attr("class", "natl-text")
+                            .text(function(d) {
+                                return d.label;
+                            });
 
-
-                        // node = svgctr.selectAll(".node")
-                        //     .data(pack.nodes({
-                        //         'children': category.children
-                        //     }).filter(function(d) {
-                        //         return !d.children;
-                        //     }))
-
-                        // node.enter().append("g")
-                        //     .attr("class", function(d) {
-                        //         return d.children ? "node" : "leaf node";
-                        //     })
-                        //     .attr("transform", function(d) {
-                        //         return "translate(" + (d.x) + "," + (d.y) + ")";
-                        //     });
-
-                        // node.append("title")
-                        //     .text(function(d) {
-                        //             return d.label + " " + d.percentage + "%";
-                        //     });
-
-                        // node.append("circle")
-                        //     .attr("class", "occupation-circle")
-                        //     .style("fill", function(d) {
-                        //         if (scope.format !== "false") {
-                        //             return ColorService.getColor('occupation', ObjectService.occupationCategories[d.label]);
-                        //         } else {
-                        //             return ColorService.getColor('occupation', d.label);
-                        //         }
-                        //     })
-                        //     .attr("r", function(d) {
-                        //         return d.r;
-                        //     });
-
-                        // node.append("text")
-                        //     .attr("dy", ".3em")
-                        //     .style("text-anchor", "middle")
-                        //     .text(function(d) {
-                        //         return d.label.substring(0, d.r / 3);
-                        //     });
+                        circleCtr.append("text")
+                            .attr("dy", -((companyPercent * scaler) / 2) - 5)
+                            .style("text-anchor", "middle")
+                            .attr("class", "co-text")
+                            .text(function(d) {
+                                return companyPercent + "%";
+                            });
 
                         runner += categoryDiameter + padding;
 
