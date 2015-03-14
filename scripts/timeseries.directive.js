@@ -39,40 +39,10 @@ directive('timeseries', ['$window', 'ObjectService',
                             return Math.min(50, Math.max(10, 20 * Math.log(d.value)));
                         })
 
-                    circ.attr("cx", function(d) {
-                            return x(getDate(d.label));
-                        })
-                        .attr("cy", function(d, i) {
-                            return circleSize * 2;
-                        }).on('click', function(d) {
-                            console.log(d)
-                        })
-
                     circ.selectAll('title')
                         .text(function(d) {
                             return d.value;
                         })
-
-                    // ENTER
-                    var enterCirc = circ.enter().append("circle")
-                        .attr("class", "circ")
-                        .attr("cx", function(d) {
-                            return x(getDate(d.label));
-                        })
-                        .attr("r", 0)
-                        .attr("cy", function(d, i) {
-                            return circleSize * 2;
-                        })
-
-                    enterCirc.transition().duration(500)
-                        .attr("r", function(d) {
-                            console.log(d)
-                            return Math.min(50, Math.max(10, 20 * Math.log(d.value)));
-                        })
-
-                    circ.append("svg:title").text(function(d) {
-                        return d.value;
-                    })
 
                     // EXIT
                     var exitCirc = circ.exit();
@@ -128,7 +98,7 @@ directive('timeseries', ['$window', 'ObjectService',
                         .attr("class", "timeline-event")
                         .attr("y", -(height / 2) + margin.top)
                         .attr("height", height - 50)
-                        .attr("width", 1);
+                        .attr("width", "1px");
 
                     context.selectAll(".circ")
                         .data(data)
