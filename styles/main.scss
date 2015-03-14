@@ -99,6 +99,9 @@ body {
 .bar {
   margin: 1%;
 }
+.occupation {
+  width: 100%;
+}
 /* Time series */
 .circ {
   fill: $blue;
@@ -114,7 +117,7 @@ path.domain {
   font-size: 15px;
   font-weight: 300;
 }
-.timeseries-buttons {
+.timeseries-buttons, .occupation-buttons {
   margin: .5%;
   .btn.showing {
     color: $brown;
@@ -131,11 +134,11 @@ path.domain {
 
 .leaf circle {
   fill: $blue;
-  fill-opacity: 1;
+  fill-opacity: .8;
 }
 
 text {
-  font: 10px sans-serif;
+  font: 12px sans-serif;
 }
 /* Custom page footer */
 .footer {

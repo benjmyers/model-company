@@ -23,6 +23,7 @@ directive('companyBar', ['$window', 'ObjectService',
                     data = _.sortBy(data, function(d) {
                         return d.label;
                     });
+
                     var margin, width, height, x, y;
                     margin = {
                         top: 2,

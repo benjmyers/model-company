@@ -27,12 +27,12 @@ angular.module('modelCompanyApp')
       'complexion': [{'label': 'light', 'value': .6, 'percentage':  60},
               {'label': 'dark', 'value': .33, 'percentage': 33},
               {'label': 'medium', 'value': .7, 'percentage': 70}],
-      'occupation': [{'label': 'farmer', 'value': .48, 'percentage': 48, 'children' : []},
-              {'label': 'mechanic', 'value': .24, 'percentage': 24, 'children' : []},
-              {'label': 'laborer', 'value': .16, 'percentage': 16, 'children' : []},
-              {'label': 'commercial', 'value': .05, 'percentage': 5, 'children' : []},
-              {'label': 'professional', 'value': .03, 'percentage': 3, 'children' : []},
-              {'label': 'misc', 'value': .04, 'percentage': 4, 'children' : []}]
+      'occupation': [{'label': 'farmer', 'value': .48, 'percentage': 48},
+              {'label': 'mechanic', 'value': .24, 'percentage': 24},
+              {'label': 'laborer', 'value': .16, 'percentage': 16},
+              {'label': 'commercial', 'value': .05, 'percentage': 5},
+              {'label': 'professional', 'value': .03, 'percentage': 3},
+              {'label': 'misc', 'value': .04, 'percentage': 4}]
     }
     $scope.events = [{
         'name': 'Winchester',
@@ -129,6 +129,19 @@ angular.module('modelCompanyApp')
     }
     $scope.timeseriesFilter = function(mess) {
       $scope.timeseriesDisplay[mess] = !$scope.timeseriesDisplay[mess];
+    }
+
+    $scope.occupationDisplay = {
+      1: true,
+      2: true,
+      3: true,
+      4: true,
+      5: true,
+      6: true
+    }
+    $scope.occupationFilter = function(mess) {
+      $scope.occupationDisplay[mess] = !$scope.occupationDisplay[mess];
+      console.log($scope.occupationDisplay[mess])
     }
 
     var root = angular.copy($scope.nationalAverages.occupation);

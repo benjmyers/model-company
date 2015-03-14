@@ -1,6 +1,6 @@
 angular.module('modelCompanyApp').
-directive('circlePack', ['$window', 'ObjectService',
-    function($window, ObjectService) {
+directive('circlePack', ['$window', 'ObjectService', 'ColorService',
+    function($window, ObjectService, ColorService) {
         return {
             restrict: 'A',
             scope: {
@@ -8,86 +8,170 @@ directive('circlePack', ['$window', 'ObjectService',
                 attribute: "@",
                 filter: "=",
                 mess: "@",
+                format: "@"
             },
             link: function(scope, element, attrs) {
+
+                var pack, svgctr, node;
+
                 scope.$watch('data', function(newVal) {
                     if (newVal)
                         render(newVal);
                 });
 
+                scope.$watch('filter', function(newVal) {
+                    if (svgctr && newVal)
+                        update(newVal)
+                }, true)
+
+                function update(filter) {
+                    var data;
+                    data = ObjectService.makeOccupationTree(scope.data, scope.attribute, filter);
+                    console.log(data)
+                    _.each(data, function(category) {
+                        console.log(category)
+                    })
+
+                    var ctr = svgctr.selectAll("g")
+                        .data(pack.nodes({
+                            'children': data
+                        }).filter(function(d) {
+                            return !d.children;
+                        }))
+                        // .attr("transform", function(d) {
+                        //     return "translate(" + (d.x) + "," + d.y + ")";
+                        // })
+
+                    ctr.select("circle")
+                        .attr("r", function(d) {
+                            return d.r;
+                        });
+
+                    ctr.select("title")
+                        .text(function(d) {
+                            if (d.children)
+                                return "National: " + d.label + " " + d.percentage + "%";
+                            else
+                                return d.label + " " + d.percentage + "%";
+                        });
+
+                    ctr.select("text")
+                        .text(function(d) {
+                            return d.label.substring(0, d.r / 3);
+                        });
+
+                    var exit = ctr.exit();
+                    exit.transition().duration(250)
+                        .attr("r", 0);
+                    exit.remove();
+
+
+                }
+
                 function render(data) {
+                    var companyCt = data.length;
 
-                    data = ObjectService.makeOccupationTree(data, scope.attribute, scope.filter);
+                    if (scope.format !== "false")
+                        data = ObjectService.makeOccupationTree(scope.data, scope.attribute, scope.filter);
 
-
-                    var diameter = 200,
-                        format = d3.format(",d");
+                    var diameter = $(window).width() - 20,
+                        scaler = 5,
+                        padding = 5,
+                        format = d3.format(",d"),
+                        color = d3.scale.category20();
 
                     var svg = d3.select(element[0]).append("svg")
-                        .attr("width", $(window).width())
-                        .attr("height", diameter * 2)
+                        .attr("width", diameter)
+                        .attr("height", diameter)
+                        .style("text-align", "left")
                         .append("g")
                         .attr("transform", "translate(" + 20 + "," + 20 + ")");
 
                     var runner = 0;
                     _.each(data.children, function(category) {
-                        console.log(category)
-                        if (!category.percentage)
-                            return;
 
-                        var categoryDiameter = 120+category.percentage;
+                        var categoryDiameter = 200//category.percentage * scaler;
 
-                        var pack = d3.layout.pack()
+                        pack = d3.layout.pack()
                             .size([categoryDiameter, categoryDiameter])
                             .padding(1.5)
                             .sort(d3.descending)
                             .value(function(d) {
-                                return d.percentage;
+                                return d.percentage * scaler;
                             });
 
-                        var svgctr = svg.append("g")
+
+
+                        svgctr = svg.append("g")
                             .attr("width", categoryDiameter)
-                            .attr("height",categoryDiameter)
-                            .attr("transform", "translate(" + ((diameter/2) - (categoryDiameter/2)) + "," + ((diameter/2) - (categoryDiameter/2)) + ")");
+                            .attr("height", categoryDiameter)   
+                            .attr("transform", "translate(" + (runner) + "," + (categoryDiameter/2) + ")");
 
-                        var node = svgctr.datum(category).selectAll(".node")
-                            .data(pack)
-                            .enter().append("g")
-                            .attr("class", function(d) {
-                                return d.children ? "node" : "leaf node";
-                            })
-                            .attr("transform", function(d) {
-                                return "translate(" + (runner + d.x) + "," + d.y + ")";
-                            });
+                        var natlctr = svgctr.selectAll(".natl-node")
+                            .data([category])
+                            .enter()
+                            .append("g")
+                            .attr("transform", "translate(" + categoryDiameter/2 + "," + 20 + ")");
 
-                        node.append("title")
-                            .text(function(d) {
-                                if (d.children)
-                                    return "National: " + d.label + " " + d.percentage + "%";
-                                else
-                                    return d.label + " " + d.percentage + "%";
-                            });
+                        natlctr.append("circle")
+                            .attr("r", (category.percentage * scaler)/2)
+                            .style("fill", 'none')
+                            .style("stroke", 'steelblue')
+                            .style("stroke-width", "4px")
 
-                        node.append("circle")
-                            .attr("class", "occupation-circle")
-                            .attr("r", function(d) {
-                                if (d.parent && d.parent.children.length === 1)
-                                    return d.r * 2;
-                                else
-                                    return d.r;
-                            });
-
-                        node.filter(function(d) {
-                                return !d.children;
-                            }).append("text")
-                            .attr("dy", ".3em")
+                        natlctr.append("text")
+                            .attr("dy", - ((category.percentage * scaler)/2) - 5)
                             .style("text-anchor", "middle")
                             .text(function(d) {
-                                return d.label.substring(0, d.r / 3);
+                                return d.label + " " + d.percentage + "%";
                             });
-                        runner += (diameter);
-                    })
 
+                        var companyPercent = d3.sum(_.pluck(category.children, 'percentage')) / companyCt;
+
+
+                        // node = svgctr.selectAll(".node")
+                        //     .data(pack.nodes({
+                        //         'children': category.children
+                        //     }).filter(function(d) {
+                        //         return !d.children;
+                        //     }))
+
+                        // node.enter().append("g")
+                        //     .attr("class", function(d) {
+                        //         return d.children ? "node" : "leaf node";
+                        //     })
+                        //     .attr("transform", function(d) {
+                        //         return "translate(" + (d.x) + "," + (d.y) + ")";
+                        //     });
+
+                        // node.append("title")
+                        //     .text(function(d) {
+                        //             return d.label + " " + d.percentage + "%";
+                        //     });
+
+                        // node.append("circle")
+                        //     .attr("class", "occupation-circle")
+                        //     .style("fill", function(d) {
+                        //         if (scope.format !== "false") {
+                        //             return ColorService.getColor('occupation', ObjectService.occupationCategories[d.label]);
+                        //         } else {
+                        //             return ColorService.getColor('occupation', d.label);
+                        //         }
+                        //     })
+                        //     .attr("r", function(d) {
+                        //         return d.r;
+                        //     });
+
+                        // node.append("text")
+                        //     .attr("dy", ".3em")
+                        //     .style("text-anchor", "middle")
+                        //     .text(function(d) {
+                        //         return d.label.substring(0, d.r / 3);
+                        //     });
+
+                        runner += categoryDiameter + padding;
+
+                    })
                 }
             }
         }

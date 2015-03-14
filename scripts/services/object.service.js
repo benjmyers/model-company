@@ -2,16 +2,17 @@
 
 angular.module('modelCompanyApp')
     .service('ObjectService', function(ColorService) {
-            var occupationCategories = {
-                "clerk & machinist": "professional",
+            var self = this;
+            self.occupationCategories = {
+                "clerk & machinist": "mechanic",
                 "farmer": "farmer",
                 "boatman": "laborer",
                 "carpenter": "laborer",
                 "clerk": "professional",
                 "bricklayer": "laborer",
                 "shoemaker": "commercial",
-                "moulder": "laborer",
-                "collier": "commercial",
+                "moulder": "mechanic",
+                "collier": "laborer",
                 "saddler": "commercial",
                 "blacksmith": "commercial",
                 "cabinet maker": "commercial",
@@ -192,7 +193,7 @@ angular.module('modelCompanyApp')
                     var tree = angular.copy(nationalAverages[attr]);
                     _.each(obj, function(o, key) {
                         var parent = _.find(tree, function(d) {
-                            return d.label === occupationCategories[key];
+                            return d.label === self.occupationCategories[key];
                         })
                         var color = ColorService.getColor(attr, key);
                         var per = Math.round((parseInt(o) / dataCopy.length) * 100);

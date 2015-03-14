@@ -25,7 +25,7 @@
         <div map id="map4" class="map-mess" data="companyData" mess="4"></div>
         <div map id="map5" class="map-mess" data="companyData" mess="5"></div> -->
     </div>
-    <div class="visual">
+<!--     <div class="visual">
         <div class="lbl">eye color</div>
         <div class="item">
             <div national-bar data="nationalAverages.eyes" attribute="eyes" label="National"></div>
@@ -66,9 +66,20 @@
             <div class="lbl">height</div>
             <div bar data="companyData" attribute="heightin" class="heightft" average="nationalAverages.height"></div>
         </div>
+    </div> -->
+    <div class="visual">
         <div class="item bar">
             <div class="lbl">occupation</div>
-            <div circle-pack data="companyData" attribute="occupation"></div>
+<!--             <div circle-pack class="occupation" data="nationalAverages.occupation" format="false"></div>
+ -->            <div circle-pack class="occupation" data="companyData" attribute="occupation" filter="occupationDisplay"></div>
+            <div class="occupation-buttons">
+                <button class="btn btn-default" ng-click="occupationFilter(1)" ng-class="{'showing' : occupationDisplay[1]}">1</button>
+                <button class="btn btn-default" ng-click="occupationFilter(2)"  ng-class="{'showing' : occupationDisplay[2]}">2</button>
+                <button class="btn btn-default" ng-click="occupationFilter(3)"  ng-class="{'showing' : occupationDisplay[3]}">3</button>
+                <button class="btn btn-default" ng-click="occupationFilter(4)"  ng-class="{'showing' : occupationDisplay[4]}">4</button>
+                <button class="btn btn-default" ng-click="occupationFilter(5)"  ng-class="{'showing' : occupationDisplay[5]}">5</button>
+                <button class="btn btn-default" ng-click="occupationFilter(6)"  ng-class="{'showing' : occupationDisplay[6]}">6</button>
+            </div>
             <!-- <div bar data="companyData" attribute="occupation" class="occupation" orientation="vertical"></div> -->
         </div>
         <!-- <div class="item bar">
@@ -76,11 +87,16 @@
             <div bar data="nationalAverages.occupation" attribute="nationalAverages.occupation" national=true orientation="vertical"></div>
         </div> -->
     </div>
-    <!-- <div class="visual">
-    <div class="lbl">out method</div>
-    <div horizontal-bar data="companyData.out_reason" label="Company"></div>
+    <div class="visual">
+        <div class="lbl">out method</div>
+        <div company-bar data="companyData" attribute="cause" label="Company"></div>
+        <div company-bar data="companyData" attribute="cause" label="Mess 1" mess="1"></div>
+        <div company-bar data="companyData" attribute="cause" label="Mess 2" mess="2"></div>
+        <div company-bar data="companyData" attribute="cause" label="Mess 3" mess="3"></div>
+        <div company-bar data="companyData" attribute="cause" label="Mess 4" mess="4"></div>
+        <div company-bar data="companyData" attribute="cause" label="Mess 5" mess="5"></div>
 
-</div> -->
+    </div>
     <div class="visual">
         <div class="lbl">out date</div>
         <div class="item">
