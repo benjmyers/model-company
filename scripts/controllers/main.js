@@ -93,6 +93,19 @@ angular.module('modelCompanyApp')
       $scope.occupationDisplay[mess] = !$scope.occupationDisplay[mess];
     }
 
+    $scope.mapDisplay = {
+      1: true,
+      2: true,
+      3: true,
+      4: true,
+      5: true,
+      6: true
+    }
+    $scope.mapFilter = function(mess) {
+      $scope.mapDisplay[mess] = !$scope.mapDisplay[mess];
+    }
+
+
     var root = angular.copy($scope.nationalAverages.occupation);
 
     d3.csv('data/formatted-messes.csv', function(err, data) {

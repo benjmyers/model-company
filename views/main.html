@@ -14,17 +14,22 @@
         Recruits
     </div>
     <div class="text">
-        <div class="left recruits">
-            <p> On enlistement, recruits were asked certain personal information - one of which was residence. Most of the members of Company D were from the various Townships of Dauphin County, Pennsylvania.</p>
-            <p>In addition, they were asked for their occupation and, for identification purposes, their age, height, complexion, eye color, and hair color.</p>
-        </div>
-        <!-- <div map id="map" class="right" data="companyData"></div> -->
-        <!-- <div map id="map1" class="map-mess" data="companyData" mess="1"></div>
-        <div map id="map2" class="map-mess" data="companyData" mess="2"></div>
-        <div map id="map3" class="map-mess" data="companyData" mess="3"></div>
-        <div map id="map4" class="map-mess" data="companyData" mess="4"></div>
-        <div map id="map5" class="map-mess" data="companyData" mess="5"></div> -->
+        <!--         <div class="recruits">
+                <p> On enlistement, recruits were asked certain personal information - one of which was residence. Most of the members of Company D were from the various Townships of Dauphin County, Pennsylvania.</p>
+                <p>In addition, they were asked for their occupation and, for identification purposes, their age, height, complexion, eye color, and hair color.</p>
+            </div> -->
     </div>
+            <div class="visual">
+        <div map id="map" data="companyData" filter="mapDisplay"></div>
+        <div class="map-buttons">
+            <button class="btn btn-default" ng-click="mapFilter(1)" ng-class="{'showing' : mapDisplay[1]}">1</button>
+            <button class="btn btn-default" ng-click="mapFilter(2)" ng-class="{'showing' : mapDisplay[2]}">2</button>
+            <button class="btn btn-default" ng-click="mapFilter(3)" ng-class="{'showing' : mapDisplay[3]}">3</button>
+            <button class="btn btn-default" ng-click="mapFilter(4)" ng-class="{'showing' : mapDisplay[4]}">4</button>
+            <button class="btn btn-default" ng-click="mapFilter(5)" ng-class="{'showing' : mapDisplay[5]}">5</button>
+            <button class="btn btn-default" ng-click="mapFilter(6)" ng-class="{'showing' : mapDisplay[6]}">6</button>
+        </div>
+        </div>
 <!--     <div class="visual">
         <div class="lbl">eye color</div>
         <div class="item">

@@ -62,6 +62,9 @@ body {
   text-align: center;
   margin: 2% 0;
 }
+.text {
+  padding: 1em 2em;
+}
 .visual {
   width: 100%;
   clear: both;
@@ -81,16 +84,9 @@ body {
   width: 64%;
 }
 #map {
-  height: 300px;
-  width: 400px;
-}
-#map1, #map2, #map3, #map4, #map5 {
-  height: 200px;
-  width: 250px;
-}
-.map-mess {
-  display: inline-block;
-  margin: .5%;
+  height: 400px;
+  width: 90vw;
+  margin: auto;
 }
 .pie {
   height: 300px;
@@ -117,7 +113,7 @@ path.domain {
   font-size: 15px;
   font-weight: 300;
 }
-.timeseries-buttons, .occupation-buttons {
+.timeseries-buttons, .occupation-buttons, .map-buttons {
   margin: .5%;
   .btn.showing {
     color: $brown;
@@ -127,6 +123,7 @@ path.domain {
   }
 }
 /* Circle Pack*/
+
 .occupation-circle {
   fill: $blue;
   fill-opacity: .5;
@@ -138,7 +135,7 @@ path.domain {
 }
 
 text {
-  font: 12px sans-serif;
+  font: 14px sans-serif;
 }
 /* Custom page footer */
 .footer {

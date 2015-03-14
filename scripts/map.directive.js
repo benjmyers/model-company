@@ -5,18 +5,26 @@ directive('map', ['$window', 'ObjectService',
             restrict: 'A',
             scope: {
                 data: "=",
-                mess: "@"
+                filter: "="
             },
             link: function(scope, element, attrs) {
-                var map, heat, markers, heatmapShowing = true,
-                    markersShowing = true;
+                var map, dataLayer;
+
+                var colors = d3.scale.category10();
 
                 // Watch for model data changes
                 scope.$watch('data', function(newVal) {
                     if (newVal)
-                        draw(newVal);
+                        draw();
                 });
-                
+
+                scope.$watch('filter', function(newVal) {
+                    if (map && scope.data && newVal) {
+                        map.removeLayer(dataLayer);
+                        draw()
+                    }
+                }, true)
+
                 // Create the map
                 var mapId = scope.mess? 'map'+scope.mess : 'map';
 
@@ -30,35 +38,35 @@ directive('map', ['$window', 'ObjectService',
                 L.esri.basemapLayer('GrayLabels').addTo(map);
 
                 // Draw the map
-                function draw(data) {
+                function draw() {
 
-                    if (scope.mess)
-                        data = _.reject(data, function(d) {
-                            return d.mess !== scope.mess;
-                        })
+                    var data = scope.data;
+
+                    data = _.reject(data, function(d) {
+                        return !scope.filter[parseInt(d.mess)];
+                    });
 
                     var latLngs = [];
-                    
+                    var pts = [];
                     _.each(data, function(d) {
                         if (d.latitude && d.longitude) {
                             // Create the array of lat lngs for the heatlayer
                             latLngs.push([parseFloat(d.latitude), parseFloat(d.longitude)]);
+                            var fillColor = colors(parseInt(d.mess));
+                            var random = Math.random()/100;
+                            var circle = L.circle([parseFloat(d.latitude) + random, parseFloat(d.longitude) + random], 3000, {
+                                stroke: false,
+                                fillColor: fillColor,
+                                fillOpacity: 0.3
+                            });
+                            pts.push(circle);
                         }
                     });
 
-                    // Create the heatmap
-                    heat = L.heatLayer(latLngs, {
-                        radius: 16,
-                        minOpacity: 0.3,
-                        gradient: {
-                            0.4: '#4393c3',
-                            0.65: '#f4a582',
-                            1: '#b2182b'
-                        }
-                    });
+                    dataLayer = new L.LayerGroup(pts).addTo(map);
 
-                    map.addLayer(heat);
-                    map.fitBounds(latLngs);
+                    if (latLngs.length)
+                        map.fitBounds(latLngs);
 
                 }
             }

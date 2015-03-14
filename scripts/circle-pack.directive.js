@@ -11,10 +11,9 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
                 format: "@"
             },
             link: function(scope, element, attrs) {
-
                 var pack, svg, node;
                 var width = $(window).width() - 20,
-                    height = 500,
+                    height = 400,
                     diameter = 200,
                     scaler = 2.5,
                     padding = 25,
@@ -79,7 +78,7 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
                         .attr("transform", "translate(" + (diameter / 2) + "," + (height / 2) + ")");
 
                     svgctr.append("text")
-                        .attr("y", -height / 3)
+                        .attr("y", -height/2 + 5)
                         .attr("x", function(d, i) {
                             return (diameter * i + (diameter / 2));
                         })
@@ -88,6 +87,18 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
                         .text(function(d) {
                             return d.label;
                         });
+
+                    svgctr.append("text")
+                        .attr("y", -height/2 + 35)
+                        .attr("x", 20)
+                        .style("text-anchor", "end")
+                        .text("National");
+
+                    svgctr.append("text")
+                        .attr("y", -height/2 + 50)
+                        .attr("x", 20)
+                        .style("text-anchor", "end")
+                        .text("Company");
 
                     var natlCtr = svgctr.append("g")
                         .attr("class", "national")
@@ -109,7 +120,7 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
 
                     natlCtr.append("text")
                         .attr("y", function(d) {
-                            return - (height / 3) + 20;
+                            return - (height / 2) + 15;
                         })
                         .style("text-anchor", "middle")
                         .style("fill", "#d6604d")
@@ -138,7 +149,7 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
 
                     coCtr.append("text")
                         .attr("y", function(d) {
-                            return - (height / 3) + 35;
+                            return - (height / 2) + 30;
                         })
                         .style("text-anchor", "middle")
                         .style("fill", "#4393c3")
@@ -146,6 +157,13 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
                         .text(function(d) {
                             return getCoPercent(d, companyCt) + "%";
                         });
+
+                    // var barCtr = svgctr.append("g")
+                    //     .attr("class", "occupation-summary")
+                    //     .attr("transform", function(d, i) {
+                    //         return "translate(" + (diameter * i + (diameter / 2)) + "," + diameter + ")"
+                    //     });
+
                 }
             }
         }
