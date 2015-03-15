@@ -34,11 +34,11 @@ directive('companyBar', ['$window', 'ObjectService',
 
 
                     var barHeight = (scope.mess) ? 18 : 35;
-                    var elemWidth = $(window).width();
+                    var elemWidth = $('.ctr').width();
                     var elemHeight = barHeight;
                     width = elemWidth - margin.left - margin.right;
                     height = elemHeight - margin.top - margin.bottom;
-
+x
                     var calcdWidth = 0;
                     _.each(data, function(d) {
                         calcdWidth += d.value;
@@ -54,6 +54,12 @@ directive('companyBar', ['$window', 'ObjectService',
                         .attr("height", height + margin.top + margin.bottom)
                         .append("g")
                         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+                    var tip = d3.tip()
+                        .attr('class', 'd3-tip')
+                        .offset([2, 0])
+                        .html(function(d) { return d.percentage+"%"; });
+                    svg.call(tip);
 
                     svg.append("text")
                         .attr("x", 0)
@@ -74,6 +80,7 @@ directive('companyBar', ['$window', 'ObjectService',
                             runner += d.value;
                             return "translate(" + value + "," + 0 + ")";
                         })
+
                     item.append("rect")
                         .attr("class", "bar")
                         .attr("fill", function(d, i) {
@@ -85,9 +92,8 @@ directive('companyBar', ['$window', 'ObjectService',
                         })
                         .attr("y", 0)
                         .attr("height", barHeight)
-                        .append("svg:title").text(function(d) {
-                            return d.label;
-                        })
+                        .on('mouseover', tip.show)
+                        .on('mouseout', tip.hide);
                 }
             }
         }

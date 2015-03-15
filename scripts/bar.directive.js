@@ -1,6 +1,6 @@
 angular.module('modelCompanyApp').
-directive('bar', ['$window', 'ObjectService',
-    function($window, ObjectService) {
+directive('bar', ['$window', 'ObjectService', 'ColorService',
+    function($window, ObjectService, ColorService) {
         return {
             restrict: 'A',
             scope: {
@@ -21,23 +21,26 @@ directive('bar', ['$window', 'ObjectService',
                         render(newVal);
                 });
 
+                function convertHeight(inches) {
+                    return (Math.round((inches/12)*10)/10 + "").replace(".", "\'");
+                }
+
                 function render(data) {
                     
                     if (!scope.national)
                         data = ObjectService.construct(data, scope.attribute, scope.mess);
 
-                    if (scope.attribute === "occupation")
-                        console.log(_.pluck(data, 'label'));
                     var margin = {
-                            top: 20,
+                            top: 10,
                             right: 20,
-                            bottom: 30,
-                            left: 150
+                            bottom: 40,
+                            left: 40
                         },
                         width, height, x, y;
+
                     if (scope.orientation === "horizontal") {
-                        var elemWidth = 800 || element[0].clientWidth;
-                        var elemHeight = 300 || element[0].clientHeight;
+                        var elemWidth = $('.ctr').width()/2 || 800;
+                        var elemHeight = 300;
                         width = elemWidth - margin.left - margin.right;
                         height = elemHeight - margin.top - margin.bottom;
                         x = d3.scale.ordinal()
@@ -47,21 +50,17 @@ directive('bar', ['$window', 'ObjectService',
                         x.domain(data.map(function(d) {
                             return d.label;
                         }));
-                        y.domain([0, d3.max(data.map(function(d) {
-                            return d.percentage;
-                        }))]);
+                        y.domain([0, 21]);
                     } else {
                         var elemWidth = 400 || element[0].clientWidth;
                         var elemHeight = 500 || element[0].clientHeight;
                         width = elemWidth - margin.left - margin.right;
                         height = elemHeight - margin.top - margin.bottom;
-                        x = d3.scale.linear()
+                        x = d3.scale.ordinal()
                             .range([0, width]);
                         y = d3.scale.ordinal()
                             .rangeRoundBands([0, height], .1);
-                        x.domain([0, d3.max(data.map(function(d) {
-                            return d.percentage;
-                        }))]);
+                        x.domain([0, 21]); // 21 is the max val for height and age. hard coding for ease.
                         y.domain(data.map(function(d) {
                             return d.label;
                         }));
@@ -70,13 +69,17 @@ directive('bar', ['$window', 'ObjectService',
                     var xAxis = d3.svg.axis()
                         .scale(x)
                         .orient("bottom")
+                        .tickFormat(function(d) {
+                            return (scope.attribute === "heightin") ? convertHeight(d) : d;
+                        })
                         .ticks(6);
 
                     var yAxis = d3.svg.axis()
                         .scale(y)
                         .orient("left")
-                        .ticks(5)
-                        // .tickFormat(d3.format("d"));
+                        .innerTickSize([-width])
+                        .outerTickSize([-width])
+                        .ticks(5);
 
                     var svg = d3.select(element[0]).append("svg")
                         .attr("width", width + margin.left + margin.right)
@@ -84,26 +87,33 @@ directive('bar', ['$window', 'ObjectService',
                         .append("g")
                         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-                    svg.append("g")
+                    svg.append("g")                                                                                                                                                                                                                                                                                       
                         .attr("class", "x axis")
                         .attr("transform", "translate(0," + height + ")")
-                        .call(xAxis);
+                        .call(xAxis)
+                         .append("text")
+                          .attr("x", width/2)
+                          .attr("y", 35)
+                          .style("text-anchor", "middle")
+                          .text(function(d) {
+                            return scope.attribute === "heightin"? "Height" : "Age";
+                          });
 
                     svg.append("g")
                         .attr("class", "y axis")
                         .call(yAxis)
-                        // .append("text")
-                        // .attr("transform", "rotate(-90)")
-                        // .attr("y", 6)
-                        // .attr("dy", ".71em")
-                        // .style("text-anchor", "end")
-                        // .text(scope.attribute.toUpperCase());
+                        .append("text")
+                          .attr("transform", "rotate(-90)")
+                          .attr("x", -height/2)
+                          .attr("dy", "-25")
+                          .style("text-anchor", "middle")
+                          .text("Soldiers");
 
                     svg.selectAll(".bar")
                         .data(data)
                         .enter().append("rect")
                         .attr("class", "bar")
-                        .attr("fill", '#7792a8')
+                        .attr("fill", ColorService.company)
                         .attr("x", function(d) {
                             return scope.orientation === "horizontal" ? x(d.label) : 0;
                         })
@@ -122,11 +132,11 @@ directive('bar', ['$window', 'ObjectService',
                             .data([scope.average])
                             .enter().append("rect")
                             .attr("class", "natl-average")
-                            .attr("fill", '#b2182b')
+                            .attr("fill", ColorService.national)
                             .attr("x", function(d) {
                                 return x(d) + x.rangeBand() / 2;
                             })
-                            .attr("width", 2)
+                            .attr("width", 4)
                             .attr("y", function(d) {
                                 return 0;
                             })
@@ -147,7 +157,7 @@ directive('bar', ['$window', 'ObjectService',
                             .data([setAverage])
                             .enter().append("rect")
                             .attr("class", "co-average")
-                            .attr("fill", '#2166ac')
+                            .attr("fill", ColorService.company)
                             .attr("x", function(d) {
                                 return x(Math.floor(d)) + x.rangeBand() / 2;
                             })

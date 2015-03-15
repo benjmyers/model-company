@@ -1,6 +1,7 @@
 // bower:scss
 // endbower
-//@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300,700);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300,700);
+@import url(http://rawgithub.com/Caged/d3-tip/master/examples/example-styles.css);
 @import 'colors';
 
 .browsehappy {
@@ -65,24 +66,25 @@ body {
 .text {
   padding: 1em 2em;
 }
+.section {
+  margin: 2em 0em;
+  padding: 1em 0em;
+}
 .visual {
   width: 100%;
   clear: both;
   text-align: center;
-  margin: 10% 0;
   .lbl {
     font-family: "League Gothic";
     font-size: 1.2em;
     text-transform: uppercase;
+    margin: 0 0 2em 0;
   }
   .item {
     display: inline-block;
   }
 }
-/* RECRUITS */
-.recruits {
-  width: 64%;
-}
+
 #map {
   height: 400px;
   width: 90vw;
@@ -93,50 +95,70 @@ body {
   width: 300px;
 }
 .bar {
-  margin: 1%;
+  width: 100%;
+}
+.bar-half {
+  display: inline-block;
+  width: 50%;
+  float: left;
 }
 .occupation {
   width: 100%;
 }
 /* Time series */
-.circ {
-  fill: $blue;
-  opacity: 0.8;
-}
 path.domain {
   stroke: none;
 }
 .timeline-event {
   stroke: lighten($asbestos, 30%);
 }
-.tick text {
-  font-size: 15px;
-  font-weight: 300;
-}
-.timeseries-buttons, .occupation-buttons, .map-buttons {
+
+.filter-buttons {
   margin: .5%;
-  .btn.showing {
-    color: $brown;
+  .mess-check {
+    display: inline-block;
+  }
+  .mess-label {
+    font-size: 14px;
+    font-weight: 300;
+    padding: 0 3px 0 8px;
   }
   .btn {
-    color: $concrete;
+    margin: 0 0 2px 0;
+  }
+  .btn:focus {
+    outline: none;
+  }
+
+  .filter-label {
+    display: inline-block;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 300;
   }
 }
-/* Circle Pack*/
 
-.occupation-circle {
-  fill: $blue;
-  fill-opacity: .5;
-}
-
-.leaf circle {
-  fill: $blue;
-  fill-opacity: .8;
+.d3-tip {
+  font-size: 14px;
+  padding: 5px;
+  border-radius: 0px;
+  font-weight: 300;
 }
 
 text {
-  font: 14px sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  font-family: 'Open Sans';
 }
+.tick text {
+  font-weight: 300;
+}
+.tick line {
+    fill: none;
+    stroke: $gray;
+    shape-rendering: crispEdges;
+}
+
 /* Custom page footer */
 .footer {
   padding-top: 19px;
@@ -170,8 +192,9 @@ text {
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
-  .container {
-    max-width: 90%;
+  .ctr {
+    width: 95%;
+    margin: auto;
   }
 
   /* Remove the padding we set earlier */

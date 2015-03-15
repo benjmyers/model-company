@@ -5,10 +5,10 @@ angular.module('modelCompanyApp')
         var colors = {
             'hair' : {
                 'brown': '#8a6f5b',
-                'light': '#fef7ef',
+                'light': '#fee0ba',
                 'black': '#4c4c4c',
                 'gray': '#d8dddf',
-                'sandy': '#fcecd8',
+                'sandy': '#bd986a',
                 'red': '#b67966'
             }, 
             'eyes' : {
@@ -19,9 +19,9 @@ angular.module('modelCompanyApp')
                 'brown': '#8a6f5b'
             },
             'complexion' : {
-                'light': '#fef7ef',
-                'medium': '#fcecd8',
-                'dark': '#fcdeba'
+                'light': '#fee0ba',
+                'medium': '#fccb8d',
+                'dark': '#bd986a'
             },
             'occupation': {
                 'farmer': '#b2182b',
@@ -52,15 +52,19 @@ angular.module('modelCompanyApp')
                 '#b2182b',
                 '#d6604d',
                 '#f4a582',
-                '#fddbc7',
-                '#f7f7f7',
-                '#d1e5f0',
                 '#92c5de',
                 '#4393c3',
                 '#2166ac',
                 '#053061'
             ]);
-
+            /* $blue: #7792a8;
+$gray: #e5e8ec;
+$white: #ffffff;
+$red: #eb2a2e;
+$brown: #503a25;
+*/
+        this.national = '#d6604d';
+        this.company = '#4393c3';
         //["Deserted", "Died", "Discharged", "In hosp.", "Killed", "MIA", "Mustered Out", "NA", "Transferred", "Wounded", "died wounds"]
         this.getColor = function(type, color) {
             if (type === 'hair' || type === 'eyes' || type === 'complexion' || type === 'occupation' || type === 'cause')

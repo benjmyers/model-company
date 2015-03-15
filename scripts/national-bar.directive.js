@@ -29,7 +29,7 @@ directive('nationalBar', ['$window', 'ObjectService', 'ColorService',
                     };
 
                     var barHeight = 50;
-                    var elemWidth = $(window).width();
+                    var elemWidth = $('.ctr').width();
                     var elemHeight = barHeight + 25;
                     width = elemWidth - margin.left - margin.right;
                     height = elemHeight - margin.top - margin.bottom;
@@ -49,7 +49,12 @@ directive('nationalBar', ['$window', 'ObjectService', 'ColorService',
                         .attr("height", height + margin.top + margin.bottom)
                         .append("g")
                         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
+                    
+                    var tip = d3.tip()
+                        .attr('class', 'd3-tip')
+                        .offset([2, 0])
+                        .html(function(d) { return d.percentage+"%"; });
+                    svg.call(tip);
 
                     svg.append("text")
                         .attr("x", 0)
@@ -80,7 +85,9 @@ directive('nationalBar', ['$window', 'ObjectService', 'ColorService',
                             return d.value;
                         })
                         .attr("y", 0)
-                        .attr("height", barHeight);
+                        .attr("height", barHeight)
+                        .on('mouseover', tip.show)
+                        .on('mouseout', tip.hide);
 
                     if (!scope.mess) {
                         item.append("text")

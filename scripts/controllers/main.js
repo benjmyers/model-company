@@ -69,6 +69,8 @@ angular.module('modelCompanyApp')
         'type': 'event'
     }]
 
+    $scope.messes = [1, 2, 3, 4, 5, 6];
+
     $scope.timeseriesDisplay = {
       1: true,
       2: true,
@@ -101,10 +103,6 @@ angular.module('modelCompanyApp')
       5: true,
       6: true
     }
-    $scope.mapFilter = function(mess) {
-      $scope.mapDisplay[mess] = !$scope.mapDisplay[mess];
-    }
-
 
     var root = angular.copy($scope.nationalAverages.occupation);
 
@@ -118,12 +116,6 @@ angular.module('modelCompanyApp')
             d.latitude = geocode.lat;
             d.longitude = geocode.lon;
           }
-          // Dates
-          // if (d.dateout !== "NA") {
-          //   var date = moment(d.dateout.trim(), "MM/DD/YYYY");
-          //   d.dateout = date.valueOf();
-          // }
-
         })
         $scope.companyData = data;
         $scope.$apply();

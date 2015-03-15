@@ -1,6 +1,6 @@
 angular.module('modelCompanyApp').
-directive('map', ['$window', 'ObjectService',
-    function($window, ObjectService) {
+directive('map', ['$window', 'ObjectService', 'ColorService',
+    function($window, ObjectService, ColorService) {
         return {
             restrict: 'A',
             scope: {
@@ -9,8 +9,6 @@ directive('map', ['$window', 'ObjectService',
             },
             link: function(scope, element, attrs) {
                 var map, dataLayer;
-
-                var colors = d3.scale.category10();
 
                 // Watch for model data changes
                 scope.$watch('data', function(newVal) {
@@ -52,7 +50,7 @@ directive('map', ['$window', 'ObjectService',
                         if (d.latitude && d.longitude) {
                             // Create the array of lat lngs for the heatlayer
                             latLngs.push([parseFloat(d.latitude), parseFloat(d.longitude)]);
-                            var fillColor = colors(parseInt(d.mess));
+                            var fillColor = ColorService.defaultScale(parseInt(d.mess));
                             var random = Math.random()/100;
                             var circle = L.circle([parseFloat(d.latitude) + random, parseFloat(d.longitude) + random], 3000, {
                                 stroke: false,
@@ -65,8 +63,8 @@ directive('map', ['$window', 'ObjectService',
 
                     dataLayer = new L.LayerGroup(pts).addTo(map);
 
-                    if (latLngs.length)
-                        map.fitBounds(latLngs);
+                    // if (latLngs.length)
+                    //     map.fitBounds(latLngs);
 
                 }
             }

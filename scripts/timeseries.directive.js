@@ -1,6 +1,6 @@
 angular.module('modelCompanyApp').
-directive('timeseries', ['$window', 'ObjectService',
-    function($window, ObjectService) {
+directive('timeseries', ['$window', 'ObjectService', 'ColorService',
+    function($window, ObjectService, ColorService) {
         return {
             restrict: 'A',
             scope: {
@@ -64,7 +64,7 @@ directive('timeseries', ['$window', 'ObjectService',
                             bottom: 50,
                             left: 25
                         },
-                        width = 1200 - margin.left - margin.right,
+                        width = $('.ctr').width() - margin.left - margin.right,
                         height = 200 - margin.top - margin.bottom;
                     var parseDate = d3.time.format("%b %Y").parse;
 
@@ -82,6 +82,11 @@ directive('timeseries', ['$window', 'ObjectService',
                     var svg = d3.select(element[0]).append("svg")
                         .attr("width", width + margin.left + margin.right)
                         .attr("height", height + margin.top + margin.bottom);
+
+                    var tip = d3.tip()
+                        .attr('class', 'd3-tip')
+                        .html(function(d) { return d.percentage+"%"; });
+                    svg.call(tip);
 
                     context = svg.append("g")
                         .attr("class", "context")
@@ -110,15 +115,13 @@ directive('timeseries', ['$window', 'ObjectService',
                         .attr("cy", function(d, i) {
                             return circleSize * 2;
                         })
-                        .on('click', function(d) {
-                            console.log(d)
-                        })
+                        .style("fill", ColorService.company)
+                        .style("opacity", "0.8")
                         .attr("r", function(d) {
                             return Math.min(50, Math.max(10, 20 * Math.log(d.value)));
                         })
-                        .append("svg:title").text(function(d) {
-                            return d.value;
-                        })
+                        .on('mouseover', tip.show)
+                        .on('mouseout', tip.hide);
 
                     var textGr = ev.append("g")
                         .attr("transform", function(d, i) {
@@ -127,7 +130,6 @@ directive('timeseries', ['$window', 'ObjectService',
                         })
 
                     textGr.append("text")
-                        .attr("font-size", 10)
                         .style("font-weight", 700)
                         .style("text-anchor", "middle")
                         .text(function(d) {
@@ -135,8 +137,7 @@ directive('timeseries', ['$window', 'ObjectService',
                         })
 
                     textGr.append("text")
-                        .attr("font-size", 10)
-                        .attr("dy", 12)
+                        .attr("dy", 14)
                         .style("text-anchor", "middle")
                         .text(function(d) {
                             var date = (d.date) ? d.date : d.daterange[0];

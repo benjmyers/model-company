@@ -12,7 +12,7 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
             },
             link: function(scope, element, attrs) {
                 var pack, svg, node;
-                var width = $(window).width() - 20,
+                var width = $('.ctr').width() - 20,
                     height = 400,
                     diameter = 200,
                     scaler = 2.5,
@@ -83,6 +83,7 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
                             return (diameter * i + (diameter / 2));
                         })
                         .style("text-anchor", "middle")
+                        .style("font-weight", 700)
                         .attr("class", "category-text")
                         .text(function(d) {
                             return d.label;
@@ -90,15 +91,29 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
 
                     svgctr.append("text")
                         .attr("y", -height/2 + 35)
-                        .attr("x", 20)
+                        .attr("x", 25)
                         .style("text-anchor", "end")
                         .text("National");
 
+                    svgctr.append("line")
+                        .attr("x1", -30)
+                        .attr("y1",  -height/2 + 35 + 4)
+                        .attr("x2", width - 200)
+                        .attr("y2", -height/2 + 35 + 4)
+                        .style("stroke", "#e5e8ec")
+
                     svgctr.append("text")
-                        .attr("y", -height/2 + 50)
-                        .attr("x", 20)
+                        .attr("y", -height/2 + 55)
+                        .attr("x", 25)
                         .style("text-anchor", "end")
                         .text("Company");
+
+                    svgctr.append("line")
+                        .attr("x1", -30)
+                        .attr("y1",  -height/2 + 55 + 4)
+                        .attr("x2", width - 200)
+                        .attr("y2", -height/2 + 55 + 4)
+                        .style("stroke", "#e5e8ec")
 
                     var natlCtr = svgctr.append("g")
                         .attr("class", "national")
@@ -111,11 +126,8 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
                             return (d.percentage * scaler);
                         })
                         .attr("class", "natl-circle")
-                        .on("click", function(d) {
-                            console.log(d.percentage)
-                        })
                         .style("fill", 'none')
-                        .style("stroke", '#d6604d')
+                        .style("stroke", ColorService.national)
                         .style("stroke-width", "6px")
 
                     natlCtr.append("text")
@@ -123,7 +135,7 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
                             return - (height / 2) + 15;
                         })
                         .style("text-anchor", "middle")
-                        .style("fill", "#d6604d")
+                        .style("fill", ColorService.national)
                         .attr("class", "natl-text")
                         .text(function(d) {
                             return d.percentage + "%";
@@ -139,20 +151,17 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
                         .attr("r", function(d) {
                             return getCoPercent(d, companyCt) * scaler;
                         })
-                        .on("click", function(d) {
-                            console.log(getCoPercent(d, companyCt))
-                        })
                         .attr("class", "co-circle")
                         .style("fill", 'none')
-                        .style("stroke", '#4393c3')
+                        .style("stroke", ColorService.company)
                         .style("stroke-width", "6px")
 
                     coCtr.append("text")
                         .attr("y", function(d) {
-                            return - (height / 2) + 30;
+                            return - (height / 2) + 35;
                         })
                         .style("text-anchor", "middle")
-                        .style("fill", "#4393c3")
+                        .style("fill", ColorService.company)
                         .attr("class", "co-text")
                         .text(function(d) {
                             return getCoPercent(d, companyCt) + "%";

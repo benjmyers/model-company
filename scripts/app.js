@@ -15,7 +15,8 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'ui.checkbox'
   ])
   .config(function ($routeProvider) {
     $routeProvider

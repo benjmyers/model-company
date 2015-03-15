@@ -1,36 +1,32 @@
-<div class="dcontainer">
+<div class="ctr">
 
     <div class="header">
         <div class="header-title">Model Company</div>
         <p class="header-sub">An uncommon look at the common Civil War solider.</p>
     </div>
 
-    <div class="text">
+    <div class="section text">
         <p> On September 1st, 1861, 102 men reported to Camp Curtain, Harrisburg, to enlist in Company D of the 46th Pennslyvania Volunteer Infantry. Some had just returned from service in regiments who served for three months over the summer - the amount of time the government had felt necesary to quelch the Southern rebellion which had started in April with the firing on Fort Sumpter, SC. But the Union Army's defeat at the Battle of First Manassas in July had proved that it would not be a short or easy process. The government called for the enlistement of [xxx] more soldiers, and the men of Company D were some of the first to respond.</p>
         <p> On paper the original 102 members of Company D, 46th Regiment Pennsylvania Volunteers looks ordinary. They were farmers, laborers, students and carpenters. Most were young. Through four years of service, they proved themselves to be brave, competent soldiers who withstood some of the most horrifying battles during a war that took the lives 600,000 Americans. Many of the original 102 would return home maimed or not at all. And they lacked the uniqueness, wealth, and political connections to propel them into fame in the decades to follow.</p>
         <p>After that war, historians researched and documented what they thought to be the "average" Civil War soldier. As recorded in <a href="https://archive.org/details/reglossescivilwar00foxwrich" target="_blank">Fox's Regimental Losses</a>, the soldier was most likely to be a 5'8 twenty-five year old with dark hair and blue eyes. He was most often a farmer with light complexion. If Company D appears to be a normal company, how do they compare to the national average? Are they the Model of a Civil War soldier - a model company?</p>
     </div>
-    <div class="section-header">
-        Recruits
+    <div class="section text">
+        <div class="recruits">
+            <p> On enlistement, recruits were asked certain personal information - one of which was residence. Most of the members of Company D were from the various Townships of Dauphin County, Pennsylvania.</p>
+            <p>In addition, they were asked for their occupation and, for identification purposes, their age, height, complexion, eye color, and hair color.</p>
+        </div>
     </div>
-    <div class="text">
-        <!--         <div class="recruits">
-                <p> On enlistement, recruits were asked certain personal information - one of which was residence. Most of the members of Company D were from the various Townships of Dauphin County, Pennsylvania.</p>
-                <p>In addition, they were asked for their occupation and, for identification purposes, their age, height, complexion, eye color, and hair color.</p>
-            </div> -->
-    </div>
-            <div class="visual">
+    <div class="section visual">
         <div map id="map" data="companyData" filter="mapDisplay"></div>
-        <div class="map-buttons">
-            <button class="btn btn-default" ng-click="mapFilter(1)" ng-class="{'showing' : mapDisplay[1]}">1</button>
-            <button class="btn btn-default" ng-click="mapFilter(2)" ng-class="{'showing' : mapDisplay[2]}">2</button>
-            <button class="btn btn-default" ng-click="mapFilter(3)" ng-class="{'showing' : mapDisplay[3]}">3</button>
-            <button class="btn btn-default" ng-click="mapFilter(4)" ng-class="{'showing' : mapDisplay[4]}">4</button>
-            <button class="btn btn-default" ng-click="mapFilter(5)" ng-class="{'showing' : mapDisplay[5]}">5</button>
-            <button class="btn btn-default" ng-click="mapFilter(6)" ng-class="{'showing' : mapDisplay[6]}">6</button>
+        <div class="filter-buttons">
+            <div class="filter-label">mess filter</div>
+            <div class="mess-check" ng-repeat="mess in messes">
+                <label class="mess-label">{{mess}}</label>
+                <checkbox ng-model="mapDisplay[mess]"></checkbox>
+            </div>
         </div>
-        </div>
-<!--     <div class="visual">
+    </div>
+    <div class="section visual">
         <div class="lbl">eye color</div>
         <div class="item">
             <div national-bar data="nationalAverages.eyes" attribute="eyes" label="National"></div>
@@ -42,7 +38,7 @@
             <div company-bar data="companyData" attribute="eyes" label="Mess 5" mess="5"></div>
         </div>
     </div>
-    <div class="visual">
+    <div class="section visual">
         <div class="lbl">hair color</div>
         <div national-bar data="nationalAverages.hair" attribute="hair" label="National"></div>
         <div company-bar data="companyData" attribute="hair" label="Company"></div>
@@ -52,9 +48,9 @@
         <div company-bar data="companyData" attribute="hair" label="Mess 4" mess="4"></div>
         <div company-bar data="companyData" attribute="hair" label="Mess 5" mess="5"></div>
     </div>
-    <div class="visual">
+    <div class="section visual">
         <div class="lbl">complexion</div>
-         <div national-bar data="nationalAverages.complexion" attribute="complexion" label="National"></div>
+        <div national-bar data="nationalAverages.complexion" attribute="complexion" label="National"></div>
         <div company-bar data="companyData" attribute="complexion" label="Company"></div>
         <div company-bar data="companyData" attribute="complexion" label="Mess 1" mess="1"></div>
         <div company-bar data="companyData" attribute="complexion" label="Mess 2" mess="2"></div>
@@ -62,37 +58,30 @@
         <div company-bar data="companyData" attribute="complexion" label="Mess 4" mess="4"></div>
         <div company-bar data="companyData" attribute="complexion" label="Mess 5" mess="5"></div>
     </div>
-    <div class="visual">
-        <div class="item bar">
+    <div class="section visual">
+        <div class="item bar-half">
             <div class="lbl">age</div>
             <div bar data="companyData" attribute="age" class="age" average="nationalAverages.age"></div>
         </div>
-        <div class="item bar">
+        <div class="item bar-half">
             <div class="lbl">height</div>
             <div bar data="companyData" attribute="heightin" class="heightft" average="nationalAverages.height"></div>
         </div>
-    </div> -->
-    <div class="visual">
+    </div>
+    <div class="section visual">
         <div class="item bar">
             <div class="lbl">occupation</div>
-<!--             <div circle-pack class="occupation" data="nationalAverages.occupation" format="false"></div>
- -->            <div circle-pack class="occupation" data="companyData" attribute="occupation" filter="occupationDisplay"></div>
-            <div class="occupation-buttons">
-                <button class="btn btn-default" ng-click="occupationFilter(1)" ng-class="{'showing' : occupationDisplay[1]}">1</button>
-                <button class="btn btn-default" ng-click="occupationFilter(2)"  ng-class="{'showing' : occupationDisplay[2]}">2</button>
-                <button class="btn btn-default" ng-click="occupationFilter(3)"  ng-class="{'showing' : occupationDisplay[3]}">3</button>
-                <button class="btn btn-default" ng-click="occupationFilter(4)"  ng-class="{'showing' : occupationDisplay[4]}">4</button>
-                <button class="btn btn-default" ng-click="occupationFilter(5)"  ng-class="{'showing' : occupationDisplay[5]}">5</button>
-                <button class="btn btn-default" ng-click="occupationFilter(6)"  ng-class="{'showing' : occupationDisplay[6]}">6</button>
+            <div circle-pack class="occupation" data="companyData" attribute="occupation" filter="occupationDisplay"></div>
+            <div class="filter-buttons">
+                <div class="filter-label">mess filter</div>
+                <div class="mess-check" ng-repeat="mess in messes">
+                    <label class="mess-label">{{mess}}</label>
+                    <checkbox ng-model="occupationDisplay[mess]"></checkbox>
+                </div>
             </div>
-            <!-- <div bar data="companyData" attribute="occupation" class="occupation" orientation="vertical"></div> -->
         </div>
-        <!-- <div class="item bar">
-            <div class="lbl">occupation</div>
-            <div bar data="nationalAverages.occupation" attribute="nationalAverages.occupation" national=true orientation="vertical"></div>
-        </div> -->
     </div>
-    <div class="visual">
+    <div class="section visual">
         <div class="lbl">out method</div>
         <div company-bar data="companyData" attribute="cause" label="Company"></div>
         <div company-bar data="companyData" attribute="cause" label="Mess 1" mess="1"></div>
@@ -100,19 +89,17 @@
         <div company-bar data="companyData" attribute="cause" label="Mess 3" mess="3"></div>
         <div company-bar data="companyData" attribute="cause" label="Mess 4" mess="4"></div>
         <div company-bar data="companyData" attribute="cause" label="Mess 5" mess="5"></div>
-
     </div>
-    <div class="visual">
+    <div class="section visual">
         <div class="lbl">out date</div>
         <div class="item">
             <div timeseries data="companyData" events="events" attribute="dateout" filter="timeseriesDisplay"></div>
-            <div class="timeseries-buttons">
-                <button class="btn btn-default" ng-click="timeseriesFilter(1)" ng-class="{'showing' : timeseriesDisplay[1]}">1</button>
-                <button class="btn btn-default" ng-click="timeseriesFilter(2)"  ng-class="{'showing' : timeseriesDisplay[2]}">2</button>
-                <button class="btn btn-default" ng-click="timeseriesFilter(3)"  ng-class="{'showing' : timeseriesDisplay[3]}">3</button>
-                <button class="btn btn-default" ng-click="timeseriesFilter(4)"  ng-class="{'showing' : timeseriesDisplay[4]}">4</button>
-                <button class="btn btn-default" ng-click="timeseriesFilter(5)"  ng-class="{'showing' : timeseriesDisplay[5]}">5</button>
-                <button class="btn btn-default" ng-click="timeseriesFilter(6)"  ng-class="{'showing' : timeseriesDisplay[6]}">6</button>
+            <div class="filter-buttons">
+                <div class="filter-label">mess filter</div>
+                <div class="mess-check" ng-repeat="mess in messes">
+                    <label class="mess-label">{{mess}}</label>
+                    <checkbox ng-model="timeseriesDisplay[mess]"></checkbox>
+                </div>
             </div>
         </div>
-</div>
+    </div>
