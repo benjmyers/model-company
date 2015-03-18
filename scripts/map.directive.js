@@ -63,8 +63,8 @@ directive('map', ['$window', 'ObjectService', 'ColorService',
 
                     dataLayer = new L.LayerGroup(pts).addTo(map);
 
-                    // if (latLngs.length)
-                    //     map.fitBounds(latLngs);
+                    if (latLngs.length)
+                        map.fitBounds(latLngs);
 
                 }
             }
