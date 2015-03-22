@@ -20,7 +20,7 @@
         <div map id="map" data="companyData" filter="mapDisplay"></div>
         <div class="filter-buttons">
             <div class="filter-label">mess filter</div>
-            <div class="mess-check" ng-repeat="mess in messes">
+            <div class="mess-check" ng-repeat="mess in messes" ng-class="getBorderStyle(mess)">
                 <label class="mess-label">{{mess}}</label>
                 <checkbox ng-model="mapDisplay[mess]"></checkbox>
             </div>

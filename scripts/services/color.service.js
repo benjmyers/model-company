@@ -45,9 +45,7 @@ angular.module('modelCompanyApp')
                 'died wounds': '#67001f'
             }
         };
-
-        this.defaultScale = d3.scale.ordinal()
-            .range([
+        this.defaultColors = [
                 '#67001f',
                 '#b2182b',
                 '#d6604d',
@@ -56,7 +54,9 @@ angular.module('modelCompanyApp')
                 '#4393c3',
                 '#2166ac',
                 '#053061'
-            ]);
+            ];
+        this.defaultScale = d3.scale.ordinal()
+            .range(this.defaultColors);
             /* $blue: #7792a8;
 $gray: #e5e8ec;
 $white: #ffffff;

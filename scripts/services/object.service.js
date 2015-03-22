@@ -141,7 +141,7 @@ angular.module('modelCompanyApp')
                     var set = [];
                     _.each(obj, function(o, key) {
                         var color = ColorService.getColor(attr, key);
-                        var per = Math.round((parseInt(o) / data.length) * 100);
+                        var per = (parseInt(o) / data.length) * 100;
                         set.push({
                             'label': key,
                             'value': parseInt(o),
@@ -167,7 +167,7 @@ angular.module('modelCompanyApp')
                     var set = [];
                     _.each(obj, function(o, key) {
                         var color = ColorService.getColor(attr, key);
-                        var per = Math.round((parseInt(o) / dataCopy.length) * 100);
+                        var per = (parseInt(o) / dataCopy.length) * 100;
                         set.push({
                             'label': key,
                             'value': parseInt(o),
@@ -196,7 +196,7 @@ angular.module('modelCompanyApp')
                             return d.label === self.occupationCategories[key];
                         })
                         var color = ColorService.getColor(attr, key);
-                        var per = Math.round((parseInt(o) / dataCopy.length) * 100);
+                        var per = (parseInt(o) / dataCopy.length) * 100;
                         parent.children.push({
                             'label': key,
                             'value': parseInt(o),

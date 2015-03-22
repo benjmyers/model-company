@@ -9,7 +9,10 @@
  */
 angular.module('modelCompanyApp')
   .controller('MainCtrl', function ($scope, $http, ColorService) {
-
+    $scope.defaultColors = ColorService.defaultColors.slice(0,6);
+    $scope.getBorderStyle = function(mess) {
+      return "m" + mess;
+    }
     $scope.nationalAverages = {
       'age': 25,
       'height': 68,

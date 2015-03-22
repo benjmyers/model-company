@@ -117,11 +117,37 @@ path.domain {
   margin: .5%;
   .mess-check {
     display: inline-block;
+    margin: 0 5px;
+  }
+  .m1 {
+    border-bottom: 4px solid #67001f;
+  }
+  .m2 {
+    border-bottom: 4px solid #b2182b;
+  }
+  .m3 {
+    border-bottom: 4px solid #d6604d;
+  }
+  .m4 {
+    border-bottom: 4px solid #92c5de;
+  }
+  .m5 {
+    border-bottom: 4px solid #4393c3;
+  }
+  .m6 {
+    border-bottom: 4px solid #053061;
   }
   .mess-label {
     font-size: 14px;
     font-weight: 300;
-    padding: 0 3px 0 8px;
+    padding: 0 3px;
+    margin-bottom: 0;
+  }
+  .color-key {
+      display: inline-block;
+      height: 25px;
+      width: 25px;
+      vertical-align: middle;
   }
   .btn {
     margin: 0 0 2px 0;
