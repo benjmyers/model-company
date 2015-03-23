@@ -85,7 +85,10 @@ directive('timeseries', ['$window', 'ObjectService', 'ColorService',
 
                     var tip = d3.tip()
                         .attr('class', 'd3-tip')
-                        .html(function(d) { return d.percentage+"%"; });
+                        .html(function(d) { 
+                          var m = Math.round(d.value) === 1 ? " man, " : " men, ";
+                          return Math.round(d.value) + m + Math.round(d.percentage)+"%"; 
+                        });
                     svg.call(tip);
 
                     context = svg.append("g")

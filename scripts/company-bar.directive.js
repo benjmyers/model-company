@@ -58,7 +58,10 @@ x
                     var tip = d3.tip()
                         .attr('class', 'd3-tip')
                         .offset([2, 0])
-                        .html(function(d) { return d.percentage+"%"; });
+                        .html(function(d) { 
+                            var m = Math.round(d.value/scaler) === 1 ? " man, " : " men, ";
+                            return Math.round(d.value/scaler) + m + Math.round(d.percentage)+"%"; 
+                        });
                     svg.call(tip);
 
                     svg.append("text")

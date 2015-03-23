@@ -25,7 +25,6 @@ directive('map', ['$window', 'ObjectService', 'ColorService',
                 }, true)
 
                 scope.$watch('interaction', function(newVal) {
-                    console.log(newVal)
                     if (map && newVal) 
                         enableInteraction();
                     else if (map && !newVal)
