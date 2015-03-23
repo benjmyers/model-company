@@ -39,7 +39,7 @@ directive('bar', ['$window', 'ObjectService', 'ColorService',
                         width, height, x, y;
 
                     if (scope.orientation === "horizontal") {
-                        var elemWidth = $('.ctr').width()/2 || 800;
+                        var elemWidth = $('.container-fluid').width()/2 || 800;
                         var elemHeight = 300;
                         width = elemWidth - margin.left - margin.right;
                         height = elemHeight - margin.top - margin.bottom;

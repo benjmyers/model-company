@@ -64,7 +64,7 @@ directive('timeseries', ['$window', 'ObjectService', 'ColorService',
                             bottom: 50,
                             left: 25
                         },
-                        width = $('.ctr').width() - margin.left - margin.right,
+                        width = $('.container-fluid').width() - margin.left - margin.right,
                         height = 200 - margin.top - margin.bottom;
                     var parseDate = d3.time.format("%b %Y").parse;
 

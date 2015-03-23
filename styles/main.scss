@@ -64,21 +64,22 @@ body {
   margin: 2% 0;
 }
 .text {
-  padding: 1em 2em;
-}
-.section {
-  margin: 2em 0em;
-  padding: 1em 0em;
+  padding: 2em 4em;
 }
 .visual {
-  width: 100%;
-  clear: both;
-  text-align: center;
+   margin: 1em 0em;
+   padding: 1em 0em;
   .lbl {
     font-family: "League Gothic";
-    font-size: 1.2em;
+    font-size: 1.3em;
     text-transform: uppercase;
-    margin: 0 0 2em 0;
+    margin-bottom: 0.5em;
+  }
+  .lbl-sm {
+    font-size: 14px;
+    font-weight: 300;
+    text-transform: uppercase;
+    text-align: center;
   }
   .item {
     display: inline-block;
@@ -125,6 +126,7 @@ path.domain {
 }
 
 .filter-buttons {
+  text-align: center;
   margin: .5%;
   .mess-check {
     display: inline-block;
@@ -198,9 +200,10 @@ text {
 
 /* Custom page footer */
 .footer {
-  padding-top: 19px;
-  color: #777;
+  margin: 1em 0em;
+  padding: 1em 0em;
   border-top: 1px solid #e5e5e5;
+  text-align: center;
 }
 
 .container-narrow > hr {

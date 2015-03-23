@@ -76,145 +76,146 @@ body {
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\0000366}}
 .text {
-  padding: 1em 2em;
+  padding: 2em 4em;
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\0000369}}
-.section {
-  margin: 2em 0em;
+.visual {
+  margin: 1em 0em;
   padding: 1em 0em;
 }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\0000373}}
-.visual {
-  width: 100%;
-  clear: both;
-  text-align: center;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\0000377}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\0000372}}
 .visual .lbl {
   font-family: "League Gothic";
-  font-size: 1.2em;
+  font-size: 1.3em;
   text-transform: uppercase;
-  margin: 0 0 2em 0;
+  margin-bottom: 0.5em;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\0000383}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\0000378}}
+.visual .lbl-sm {
+  font-size: 14px;
+  font-weight: 300;
+  text-transform: uppercase;
+  text-align: center;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\0000384}}
 .visual .item {
   display: inline-block;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\0000388}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\0000389}}
 #map {
   height: 400px;
   width: 90vw;
   margin: auto;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\0000393}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\0000394}}
 .map-interaction {
   display: inline-block;
   background-color: #fff;
   margin-right: 20px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\0000397}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\0000398}}
 .map-interaction .btn {
   width: 43px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003100}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003101}}
 .map-interaction .off {
   background-color: #ccc;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003104}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003105}}
 .pie {
   height: 300px;
   width: 300px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003108}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003109}}
 .bar {
   width: 100%;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003111}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003112}}
 .bar-half {
   display: inline-block;
   width: 50%;
   float: left;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003116}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003117}}
 .occupation {
   width: 100%;
 }
 
 /* Time series */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003120}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003121}}
 path.domain {
   stroke: none;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003123}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003124}}
 .timeline-event {
   stroke: #d0d5d5;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003127}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003128}}
 .filter-buttons {
+  text-align: center;
   margin: .5%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003129}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003131}}
 .filter-buttons .mess-check {
   display: inline-block;
   margin: 0 5px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003133}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003135}}
 .filter-buttons .m1 {
   border-bottom: 4px solid #67001f;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003136}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003138}}
 .filter-buttons .m2 {
   border-bottom: 4px solid #b2182b;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003139}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003141}}
 .filter-buttons .m3 {
   border-bottom: 4px solid #d6604d;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003142}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003144}}
 .filter-buttons .m4 {
   border-bottom: 4px solid #92c5de;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003145}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003147}}
 .filter-buttons .m5 {
   border-bottom: 4px solid #4393c3;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003148}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003150}}
 .filter-buttons .m6 {
   border-bottom: 4px solid #053061;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003151}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003153}}
 .filter-buttons .mess-label {
   font-size: 14px;
   font-weight: 300;
   padding: 0 3px;
   margin-bottom: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003157}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003159}}
 .filter-buttons .color-key {
   display: inline-block;
   height: 25px;
   width: 25px;
   vertical-align: middle;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003163}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003165}}
 .filter-buttons .btn {
   margin: 0 0 2px 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003166}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003168}}
 .filter-buttons .btn:focus {
   outline: none;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003170}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003172}}
 .filter-buttons .filter-label {
   display: inline-block;
   font-size: 14px;
@@ -222,7 +223,7 @@ path.domain {
   font-weight: 300;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003178}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003180}}
 .d3-tip {
   font-size: 14px;
   padding: 5px;
@@ -230,19 +231,19 @@ path.domain {
   font-weight: 300;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003185}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003187}}
 text {
   font-size: 14px;
   font-weight: 300;
   font-family: 'Open Sans';
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003190}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003192}}
 .tick text {
   font-weight: 300;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003193}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003195}}
 .tick line {
   fill: none;
   stroke: #e5e8ec;
@@ -250,50 +251,51 @@ text {
 }
 
 /* Custom page footer */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003200}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003202}}
 .footer {
-  padding-top: 19px;
-  color: #777;
+  margin: 1em 0em;
+  padding: 1em 0em;
   border-top: 1px solid #e5e5e5;
+  text-align: center;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003206}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003209}}
 .container-narrow > hr {
   margin: 30px 0;
 }
 
 /* Main marketing message and sign up button */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003211}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003214}}
 .jumbotron {
   text-align: center;
   border-bottom: 1px solid #e5e5e5;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003215}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003218}}
 .jumbotron .btn {
   font-size: 21px;
   padding: 14px 24px;
 }
 
 /* Supporting marketing content */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003222}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003225}}
 .marketing {
   margin: 40px 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003225}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003228}}
 .marketing p + h4 {
   margin-top: 28px;
 }
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003232}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003235}}
   .ctr {
     width: 95%;
     margin: auto;
   }
 
   /* Remove the padding we set earlier */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003240}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003243}}
   .header,
   .marketing,
   .footer {
@@ -302,13 +304,13 @@ text {
   }
 
   /* Space out the masthead */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003245}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003248}}
   .header {
     margin-bottom: 30px;
   }
 
   /* Remove the bottom border on the jumbotron for visual effect */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003249}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/myers\/Projects\/model-company\/styles\/main\.scss}line{font-family:\00003252}}
   .jumbotron {
     border-bottom: 0;
   }

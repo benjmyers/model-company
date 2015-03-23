@@ -13,7 +13,7 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
             link: function(scope, element, attrs) {
                 var pack, svg, node, x, y, occupationBars;
 
-                var width = $('.ctr').width() - 20,
+                var width = $('.container-fluid').width() - 20,
                     diameter = width/6, // width divided by number of messes
                     height = diameter * 2.25,
                     scaler = 1.5,

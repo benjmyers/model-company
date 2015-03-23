@@ -16,6 +16,8 @@ On enlistement, recruits were asked certain personal information - one of which 
 -----------------
 Map of homes
 
+
+
 -----------------
 
 ## The Messes
@@ -25,6 +27,8 @@ When the Company was formed, the men were instructed to organize themselves in g
 -----------------
 Map of messes
 Switch between messes on map
+
+- Were messes from the same location?
 
 -----------------
 
@@ -38,25 +42,37 @@ Switch between: mess || company || national avg
 
 AGE bar
 
+- How average was the company?
+
 -----------------
 
 HEIGHT bar
+
+- How average was the company?
 
 ------------------
 
 COMPLEXION circle
 
+- How average?
+
 -----------------
  
 EYE COLOR circle
+
+- How average?
 
 -----------------
 
 HAIR COLOR circle
 
+- How average?
+
 -----------------
 
 OCCUPATION horizontal bar?
+
+- Did mess mates have the same occupations?
 
 -----------------
 
@@ -68,9 +84,13 @@ Company and regimental officers tried to record the manner in which their men le
 
 OUT METHOD bar
 
+- Compare to national. How average was the company?
+
 -----------------
 
 DATE OUT (COMPANY) timeseries
+
+- Did messes have similar events at the same time? Casualties, muster out, etc.
 
 -----------------
 
