@@ -14,9 +14,9 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
                 var pack, svg, node, x, y, occupationBars;
 
                 var width = $('.ctr').width() - 20,
-                    height = 700,
-                    diameter = 200,
-                    scaler = 2.5,
+                    diameter = width/6, // width divided by number of messes
+                    height = diameter * 2.25,
+                    scaler = 1.5,
                     padding = 25,
                     format = d3.format(",d"),
                     color = d3.scale.category20();
@@ -98,13 +98,16 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
                         .attr("width", diameter)
                         .attr("height", diameter + 50)
                         .attr("class", "svg-ctr")
-                        .attr("transform", "translate(" + (diameter / 2) + "," + ((diameter / 2) + 50) + ")");
+                        .attr("transform", function(d, i) {
+                            return "translate(" + (20) + "," + ((diameter / 2) + 50) + ")";
+                        })
 
-                    var natlOffset =  -diameter / 2 - 40;
-                    var companyOffset = -diameter / 2 - 20;
+                    var spacing = 25;
+                    var natlOffset =  -diameter/2;
+                    var companyOffset = -diameter/2 + spacing;
 
                     svgctr.append("text")
-                        .attr("y", -diameter/2 - 60)
+                        .attr("y", -diameter/2 - spacing - 5)
                         .attr("x", function(d, i) {
                             return (diameter * i + (diameter / 2));
                         })
@@ -124,7 +127,7 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
                     svgctr.append("line")
                         .attr("x1", -30)
                         .attr("y1", natlOffset + 4)
-                        .attr("x2", width - 200)
+                        .attr("x2", width)
                         .attr("y2", natlOffset + 4)
                         .style("stroke", "#e5e8ec")
 
@@ -137,7 +140,7 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
                     svgctr.append("line")
                         .attr("x1", -30)
                         .attr("y1", companyOffset + 4)
-                        .attr("x2", width - 200)
+                        .attr("x2", width)
                         .attr("y2", companyOffset + 4)
                         .style("stroke", "#e5e8ec")
 
@@ -196,7 +199,7 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
                     var barCtr = svgctr.append("g")
                         .attr("class", "occupation-summary")
                         .attr("transform", function(d, i) {
-                            return "translate(" + diameter*i + "," + diameter + ")"
+                            return "translate(" + diameter*i + "," + diameter/2 + ")"
                         });
 
                     x = d3.scale.linear()

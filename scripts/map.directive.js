@@ -5,7 +5,8 @@ directive('map', ['$window', 'ObjectService', 'ColorService',
             restrict: 'A',
             scope: {
                 data: "=",
-                filter: "="
+                filter: "=",
+                interaction: "="
             },
             link: function(scope, element, attrs) {
                 var map, dataLayer;
@@ -23,6 +24,14 @@ directive('map', ['$window', 'ObjectService', 'ColorService',
                     }
                 }, true)
 
+                scope.$watch('interaction', function(newVal) {
+                    console.log(newVal)
+                    if (map && newVal) 
+                        enableInteraction();
+                    else if (map && !newVal)
+                        disableInteraction();
+                }, true)
+
                 // Create the map
                 var mapId = scope.mess? 'map'+scope.mess : 'map';
 
@@ -31,9 +40,30 @@ directive('map', ['$window', 'ObjectService', 'ColorService',
                     maxZoom: 12,
                     zoomControl: false
                 }).setView([40.398036,-76.811517], 6);
+                
+                disableInteraction();
 
                 L.esri.basemapLayer('Gray').addTo(map);
                 L.esri.basemapLayer('GrayLabels').addTo(map);
+
+
+                function disableInteraction() {
+                    map.dragging.disable();
+                    map.touchZoom.disable();
+                    map.doubleClickZoom.disable();
+                    map.scrollWheelZoom.disable();
+                    map.boxZoom.disable();
+                    map.keyboard.disable();
+                }
+
+                function enableInteraction() {
+                    map.dragging.enable();
+                    map.touchZoom.enable();
+                    map.doubleClickZoom.enable();
+                    map.scrollWheelZoom.enable();
+                    map.boxZoom.enable();
+                    map.keyboard.enable();
+                }
 
                 // Draw the map
                 function draw() {

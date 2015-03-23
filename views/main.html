@@ -17,14 +17,22 @@
         </div>
     </div>
     <div class="section visual">
-        <div map id="map" data="companyData" filter="mapDisplay"></div>
+        <div map id="map" data="companyData" filter="mapDisplay" interaction="interaction"></div>
         <div class="filter-buttons">
             <div class="filter-label">mess filter</div>
             <div class="mess-check" ng-repeat="mess in messes" ng-class="getBorderStyle(mess)">
                 <label class="mess-label">{{mess}}</label>
                 <checkbox ng-model="mapDisplay[mess]"></checkbox>
             </div>
+            <div class="map-interaction pull-right">
+                <div class="filter-label">map interaction</div>
+                <div class="btn btn-default btn-sm" ng-click="interaction = !interaction;" ng-class="{'off': !interaction}">
+                    <span ng-show="interaction">ON</span>
+                    <span ng-hide="interaction">OFF</span>
+                </div>
+            </div>
         </div>
+        
     </div>
     <div class="section visual">
         <div class="lbl">eye color</div>

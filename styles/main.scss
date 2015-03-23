@@ -90,6 +90,17 @@ body {
   width: 90vw;
   margin: auto;
 }
+.map-interaction {
+  display: inline-block;
+  background-color: #fff;
+  margin-right: 20px;
+  .btn {
+    width: 43px;
+  }
+  .off {
+    background-color: #ccc;
+  }
+}
 .pie {
   height: 300px;
   width: 300px;
