@@ -19,7 +19,8 @@ directive('nationalBar', ['$window', 'ObjectService', 'ColorService',
 
                     data = _.sortBy(data, function(d) {
                         return d.label;
-                    });
+                    }).filter(function(d) { return d.value !== undefined;});
+
                     var margin, width, height, x, y;
                     margin = {
                         top: 2,

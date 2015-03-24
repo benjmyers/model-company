@@ -35,7 +35,17 @@ angular.module('modelCompanyApp')
               {'label': 'laborer', 'value': .16, 'percentage': 16},
               {'label': 'commercial', 'value': .05, 'percentage': 5},
               {'label': 'professional', 'value': .03, 'percentage': 3},
-              {'label': 'misc', 'value': .04, 'percentage': 4}]
+              {'label': 'misc', 'value': .04, 'percentage': 4}],
+      'casualties': [{'label': 'Deserted', 'value':0.044, 'percentage': 4.4},
+              {'label': 'Died', 'value': 0.0545, 'percentage': 5.45},
+              {'label': 'Discharged', 'value': 0.0533, 'percentage': 5.33},
+              {'label': 'In hospital', 'value': undefined, 'percentage': undefined},
+              {'label': 'Killed in action', 'value': 0.0287, 'percentage': 2.87},
+              {'label': 'Missing in action', 'value': undefined, 'percentage': undefined},
+              {'label': 'Mustered Out', 'value': 0.2873, 'percentage': 28.73},
+              {'label': 'Transferred', 'value': 0.0479, 'percentage': 4.79},
+              {'label': 'Wounded', 'value': 0.0508, 'percentage': 5.08},
+              {'label': 'died wounds', 'value': undefined, 'percentage': undefined}]
     }
     $scope.events = [{
         'name': 'Winchester',

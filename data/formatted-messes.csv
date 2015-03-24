@@ -3,17 +3,17 @@ Lyne T,9/2/1861, 08/12/1862 ,1,died wounds,NA,27,5'9,69,medium,blue,brown,cler
 Lidick C,9/2/1861, 07/16/1865 ,1,Mustered Out,Alexandria VA,21,5'5,65,dark,gray,brown,farmer,New Buffalo
 Shannon J,9/2/1861, 09/18/1864 ,1,Mustered Out,NA,19,5'7,67,light,blue,light,boatman,New Buffalo
 Wells E,9/2/1861, 07/16/1865 ,1,Mustered Out,Alexandria VA,32,5'9,69,dark,gray,brown,carpenter,New Buffalo
-Bachman W,9/2/1861,NA,1,In hosp.,NA,21,5'6,66,dark,blue,brown,clerk,New Buffalo
+Bachman W,9/2/1861,NA,1,In hospital,NA,21,5'6,66,dark,blue,brown,clerk,New Buffalo
 McCanal H,9/2/1861,NA,1,NA,NA,30,5'3,63,dark,black,black,bricklayer,Harrisburg
 Sullenberger J,9/2/1861, 05/25/1863 ,1,Discharged,NA,46,5'4,64,dark,hazel,brown,shoemaker,Harrisburg
 Griffin A,9/2/1861, 07/05/1865 ,1,Mustered Out,NA,46,5'8,68,dark,hazel,gray,moulder,Millersburg
 Albert J,9/2/1861, 01/04/1864 ,1,Discharged,NA,24,5'8,68,light,blue,light,collier,Millersburg
-Sarber F,9/2/1861, 07/20/1864 ,1,Killed,Peach Tree Creek GA,21,5'5,65,dark,gray,brown,farmer,Plainville
+Sarber F,9/2/1861, 07/20/1864 ,1,Killed in action,Peach Tree Creek GA,21,5'5,65,dark,gray,brown,farmer,Plainville
 Martz W,9/2/1861, 05/27/1865 ,1,Wounded,Pittsburgh PA,19,5'6,66,light ,gray ,light,farmer,Millersburg
 Kopenhafer D,9/2/1861, 08/26/1864 ,1,Died,NA,19,5'8,68,light,blue,light,saddler,Millersburg
 Johnson W,9/2/1861, 06/02/1865 ,1,Discharged,NA,20,6'0,72,dark,hazel,black,farmer,Plainville
-Wolf S,9/2/1861, 07/20/1864 ,1,Killed,Peach Tree Creek GA,33,6'2,74,dark,hazel,black,blacksmith,Duncannon
-Nace S,9/2/1861,08/09/1862,2,MIA,Cedar Mountain VA,19,5'4,64,light,gray,light,cabinet maker,Halifax
+Wolf S,9/2/1861, 07/20/1864 ,1,Killed in action,Peach Tree Creek GA,33,6'2,74,dark,hazel,black,blacksmith,Duncannon
+Nace S,9/2/1861,08/09/1862,2,Missing in action,Cedar Mountain VA,19,5'4,64,light,gray,light,cabinet maker,Halifax
 Pottiger S,9/2/1861, 06/14/1862 ,2,Discharged,NA,45,5'9,69,dark,blue,brown,carpenter,Reading
 Renard C,9/2/1861, 07/16/1865 ,2,Mustered Out,Alexandria VA,23,5'7,67,light,gray,brown,NA,Kingston
 Novinger T,9/2/1861, 07/16/1865 ,2,Mustered Out,Alexandria VA,21,5'9,69,light,blue,light,carpenter,Halifax
@@ -28,23 +28,23 @@ Good,9/2/1861, 10/12/1864 ,2,Mustered Out,NA,21,5'4,64,medium,hazel,black,carp
 Long J,9/2/1861, 07/16/1865 ,2,Mustered Out,Alexandria VA,28,5'11,71,dark,hazel,black,carpenter,Halifax
 Bernheisel S,9/2/1861, 09/25/1862 ,2,Died,Alexandria VA,24,5'7,67,dark,gray,black,carpenter,Harrisburg
 Taylor M,9/2/1861, 09/18/1864 ,2,Mustered Out,NA,20,5'9,69,light,gray,black,farmer,Halifax
-Durell,9/2/1861, 08/09/1862 ,3,Killed,Cedar Mountain VA,41,5'10,70,dark,hazel,black,tailor,Halifax
+Durell,9/2/1861, 08/09/1862 ,3,Killed in action,Cedar Mountain VA,41,5'10,70,dark,hazel,black,tailor,Halifax
 Shepler Jb,9/2/1861, 07/16/1865 ,3,Mustered Out,Alexandria VA,21,5'6,66,light,blue,sandy,carpenter,East Hanover
 Rhoades A,9/2/1861, 02/05/1863 ,3,Discharged,NA,21,5'6,66,light,gray,brown,shoemaker,West Hanover
-Wenrich J,9/2/1861, 07/03/1863 ,3,Killed,Gettysburg PA,21,5'6,66,medium,blue,sandy,miller,West Hanover
+Wenrich J,9/2/1861, 07/03/1863 ,3,Killed in action,Gettysburg PA,21,5'6,66,medium,blue,sandy,miller,West Hanover
 Powley S,9/2/1861, 10/15/1864 ,3,Mustered Out,NA,22,5'9,69,light,blue,brown,carpenter,West Hanover
 Yeager J,9/2/1861, 09/18/1864 ,3,Mustered Out,NA,25,5'4,64,dark,gray,brown,blacksmith,West Hanover
 Zieger C,9/2/1861, 07/16/1865 ,3,Mustered Out,Alexandria VA,25,5'10,70,medium,hazel,black,teamster,NA
 Frantz D,9/2/1861, 07/16/1865 ,3,Mustered Out,Alexandria VA,23,6'0,72,light,blue,brown,laborer,West Hanover
 Boyer E,9/2/1861, 07/16/1865 ,3,Mustered Out,Alexandria VA,22,5'7,67,dark,gray,brown,farmer,East Hanover
 Helmerich A,9/2/1861, 07/16/1865 ,3,Mustered Out,Alexandria VA,39,5'9,69,light,blue,light,laborer,Nassau Germany
-Downey B,9/2/1861, 08/09/1862 ,3,Killed,Cedar Mountain VA,37,5'9,69,dark,hazel,black,Lime burner,Georgetown
+Downey B,9/2/1861, 08/09/1862 ,3,Killed in action,Cedar Mountain VA,37,5'9,69,dark,hazel,black,Lime burner,Georgetown
 Shepler Jn,9/2/1861, 09/18/1864 ,3,Mustered Out,NA,23,5'4,64,light,blue,brown,farmer,West Hanover
 Early E,9/2/1861, 10/17/1864 ,3,Died,Atlanta GA,21,5'11,71,dark,blue,light,carpenter,West Hanover
 Killinger J,9/2/1861, 11/18/1862 ,4,Discharged,NA,20,5'8,68,medium,blue,light,farmer,West Hanover
 Early J,9/2/1861, 11/18/1864 ,4,Mustered Out,NA,20,5'8,68,medium,gray ,light,carpenter,West Hanover
 Rhodes E,9/2/1861, 07/16/1865 ,4,Mustered Out,Alexandria VA,19,5'10,70,medium,gray ,light,laborer,West Hanover
-Kreiser J,9/2/1861,NA,4,MIA,NA,25,5'10,70,dark,blue,black,laborer,West Hanover
+Kreiser J,9/2/1861,NA,4,Missing in action,NA,25,5'10,70,dark,blue,black,laborer,West Hanover
 Powley J,9/2/1861, 07/16/1865 ,4,Mustered Out,Alexandria VA,20,5'8,68,medium,blue,light,railroader,Dauphin County
 Reigle W,9/2/1861, 07/16/1865 ,4,Mustered Out,Alexandria VA,22,5'6,66,light,blue,light,tailor,West Hanover
 Mease W,9/2/1861, 07/16/1865 ,4,Mustered Out,Alexandria VA,21,5'6,66,dark,hazel,brown,shoemaker,West Hanover
@@ -67,7 +67,7 @@ Weidensaul H,9/2/1861, 07/16/1865 ,5,Mustered Out,Alexandria VA,19,5'3,63,ligh
 Cassel J,9/2/1861, 10/22/1862 ,5,Transferred,NA,20,5'4,64,light,gray,sandy,miller,East Hanover
 Seigfried W,9/2/1861, 07/16/1865 ,5,Mustered Out,Alexandria VA,19,5'4,64,dark,hazel,black,shoemaker,Birdsboro
 Frantz H,9/2/1861, 07/16/1865 ,5,Mustered Out,Alexandria VA,20,5'9,69,light,hazel,brown,laborer,West Hanover
-Wanisher S,9/2/1861, 06/19/1864 ,5,Killed,NA,21,5'6,66,medium,gray,brown,farmer,Birdsboro
+Wanisher S,9/2/1861, 06/19/1864 ,5,Killed in action,NA,21,5'6,66,medium,gray,brown,farmer,Birdsboro
 Noonen J,9/2/1861, 12/24/1862 ,5,Discharged,NA,38,5'9,69,light,hazel,brown,laborer,Harrisburg
 Weaver G,9/2/1861, 07/16/1865 ,5,Mustered Out,Alexandria VA,24,5'7,67,dark,hazel,black,blacksmith,West Hanover
 Geiger Jo,9/2/1861, 07/31/1864 ,5,Died,NA,31,5'6,66,medium,hazel,sandy,farmer,West Hanover
@@ -75,7 +75,7 @@ Beddleyoung W,9/2/1861, 11/10/1862 ,6,Discharged,NA,43,5'9,69,light,hazel,red,
 Chubb P,9/2/1861, 07/16/1865 ,6,Mustered Out,Alexandria VA,34,5'4,64,dark,hazel,brown,clerk,Halifax
 Deafenbaugh S,9/2/1861, 07/16/1865 ,6,Mustered Out,Alexandria VA,29,5'6,66,dark,gray,brown,painter,Harrisburg
 Donley W,9/2/1861, 11/08/1864 ,6,Mustered Out,NA,23,5'7,67,dark,hazel,black,teamster,East Hanover
-Ebersole J,9/2/1861, 07/20/1864 ,6,Killed,Peach Tree Creek GA,20,5'7,67,dark,gray,brown,farmer,West Fairview
+Ebersole J,9/2/1861, 07/20/1864 ,6,Killed in action,Peach Tree Creek GA,20,5'7,67,dark,gray,brown,farmer,West Fairview
 Flickner P,9/2/1861, 07/16/1865 ,6,Mustered Out,Alexandria VA,32,5'8,68,medium,blue,light,tailor,Millersburg
 Hamilton W,9/2/1861, 07/16/1865 ,6,Mustered Out,Alexandria VA,33,5'5,65,dark,black,brown,blacksmith,Harrisburg
 Kocher J,9/2/1861, 12/12/1862 ,6,Discharged,NA,35,5'9,69,dark,blue,brown,shoemaker,West Hanover
