@@ -11,22 +11,13 @@
   padding: 0.2em 0;
 }
 
-/* Space out content a bit */
 body {
   font-size: 16px;
   font-family: "Open Sans", "san serif", "Ariel";
   color: $brown;
 }
 
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.marketing,
-.footer {
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-/* Custom page header */
+/* Header */
 .header {
   border-bottom: 1px solid #e5e5e5;
   text-align: center;
@@ -36,35 +27,20 @@ body {
     text-transform: uppercase;
   }
   .header-sub {
-    font-family: "LindenHill";
+    font-size: 1em;
   }
+}
 
-  /* Make the masthead heading the same height as the navigation */
-  h3 {
-    margin-top: 0;
-    margin-bottom: 0;
-    line-height: 40px;
-    padding-bottom: 19px;
-  }
-}
-.left, .right {
-  display: inline-block;
-}
-.left {
-  float: left;
-}
-.right {
-  float: right;
-}
-.section-header {
-  font-size: 2em;
-  font-family: "League Gothic";
-  width: 100%;
-  text-align: center;
-  margin: 2% 0;
-}
+/** General styling for information display sections */
 .text {
   padding: 2em 4em;
+  .section-header {
+    font-size: 2em;
+    font-family: "League Gothic";
+    width: 100%;
+    text-align: center;
+    margin: 2% 0;
+  }
 }
 .visual {
    margin: 1em 0em;
@@ -86,6 +62,24 @@ body {
   }
 }
 
+/** Visualization specific styles */
+
+/** General Overrides */
+text {
+  font-size: 14px;
+  font-weight: 300;
+  font-family: 'Open Sans';
+}
+.tick text {
+  font-weight: 300;
+}
+.tick line {
+    fill: none;
+    stroke: $gray;
+    shape-rendering: crispEdges;
+}
+
+/** Map */
 #map {
   height: 400px;
   width: 90vw;
@@ -102,29 +96,18 @@ body {
     background-color: #ccc;
   }
 }
-.pie {
-  height: 300px;
-  width: 300px;
-}
-.bar {
-  width: 100%;
-}
+
+/** Age & height display bar charts */
 .bar-half {
   display: inline-block;
   width: 50%;
   float: left;
-}
-.occupation {
-  width: 100%;
-}
-/* Time series */
-path.domain {
-  stroke: none;
-}
-.timeline-event {
-  stroke: lighten($asbestos, 30%);
+  path.domain {
+    stroke: none;
+  }
 }
 
+/** Mess filter for visualizations */
 .filter-buttons {
   text-align: center;
   margin: .5%;
@@ -168,7 +151,6 @@ path.domain {
   .btn:focus {
     outline: none;
   }
-
   .filter-label {
     display: inline-block;
     font-size: 14px;
@@ -177,6 +159,7 @@ path.domain {
   }
 }
 
+/** D3 tip overrides */
 .d3-tip {
   font-size: 14px;
   padding: 5px;
@@ -184,72 +167,20 @@ path.domain {
   font-weight: 300;
 }
 
-text {
-  font-size: 14px;
-  font-weight: 300;
-  font-family: 'Open Sans';
-}
-.tick text {
-  font-weight: 300;
-}
-.tick line {
-    fill: none;
-    stroke: $gray;
-    shape-rendering: crispEdges;
+.d3-tip.n:after {
+  margin: -3px 0 0 0;
 }
 
-/* Custom page footer */
+/** Footer */
 .footer {
   margin: 1em 0em;
   padding: 1em 0em;
-  border-top: 1px solid #e5e5e5;
   text-align: center;
-}
-
-.container-narrow > hr {
-  margin: 30px 0;
-}
-
-/* Main marketing message and sign up button */
-.jumbotron {
-  text-align: center;
-  border-bottom: 1px solid #e5e5e5;
-
-  .btn {
-    font-size: 21px;
-    padding: 14px 24px;
-  }
-}
-
-/* Supporting marketing content */
-.marketing {
-  margin: 40px 0;
-
-  p + h4 {
-    margin-top: 28px;
-  }
+  display: block;
+  clear: both;
 }
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
-  .ctr {
-    width: 95%;
-    margin: auto;
-  }
-
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
-  }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
-  }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
-  }
+ 
 }
