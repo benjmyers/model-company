@@ -69,9 +69,11 @@ directive('map', ['$window', 'ObjectService', 'ColorService',
 
                     var data = scope.data;
 
-                    data = _.reject(data, function(d) {
-                        return !scope.filter[parseInt(d.mess)];
-                    });
+                    if (scope.filter.value && scope.filter.value !== "Company") {
+                        data = _.reject(data, function(d) {
+                            return parseInt(scope.filter.value.split("Mess ")[1]) !== parseInt(d.mess);;
+                        });
+                    }
 
                     var latLngs = [];
                     var pts = [];

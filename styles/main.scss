@@ -57,6 +57,12 @@ body {
     text-transform: uppercase;
     text-align: center;
   }
+  .lbl-xs {
+    font-size: 12px;
+    font-weight: 300;
+    text-transform: uppercase;
+    text-align: center;
+  }
   .item {
     display: inline-block;
   }
@@ -105,6 +111,11 @@ text {
   path.domain {
     stroke: none;
   }
+}
+
+/** Company and National Bars */
+.bar-item {
+  margin: 1em 0em;
 }
 
 /** Mess filter for visualizations */

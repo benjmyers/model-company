@@ -82,39 +82,18 @@ angular.module('modelCompanyApp')
         'type': 'event'
     }]
 
-    $scope.messes = [1, 2, 3, 4, 5, 6];
+    $scope.messes = ['Company', "Mess 1", "Mess 2", "Mess 3", "Mess 4", "Mess 5", "Mess 6"];
 
     $scope.timeseriesDisplay = {
-      1: true,
-      2: true,
-      3: true,
-      4: true,
-      5: true,
-      6: true
-    }
-    $scope.timeseriesFilter = function(mess) {
-      $scope.timeseriesDisplay[mess] = !$scope.timeseriesDisplay[mess];
-    }
+      'value': 'Company'
+    };
 
     $scope.occupationDisplay = {
-      1: true,
-      2: true,
-      3: true,
-      4: true,
-      5: true,
-      6: true
-    }
-    $scope.occupationFilter = function(mess) {
-      $scope.occupationDisplay[mess] = !$scope.occupationDisplay[mess];
+      'value': 'Company'
     }
 
     $scope.mapDisplay = {
-      1: true,
-      2: true,
-      3: true,
-      4: true,
-      5: true,
-      6: true
+      'value': 'Company'
     }
 
     var root = angular.copy($scope.nationalAverages.occupation);

@@ -24,12 +24,12 @@ directive('nationalBar', ['$window', 'ObjectService', 'ColorService',
                     var margin, width, height, x, y;
                     margin = {
                         top: 2,
-                        right: 2,
+                        right: 10,
                         bottom: 25,
                         left: 70
                     };
 
-                    var barHeight = 50;
+                    var barHeight = 30;
                     var elemWidth = $('.container-fluid').width();
                     var elemHeight = barHeight + 25;
                     width = elemWidth - margin.left - margin.right;
@@ -61,10 +61,10 @@ directive('nationalBar', ['$window', 'ObjectService', 'ColorService',
                         .attr("x", 0)
                         .attr("y", 0)
                         .attr("dy", function(d) {
-                            return barHeight/2 + 2;
+                            return barHeight + 12;
                         })
-                        .attr("dx", -5)
-                        .attr("font-size", 14)
+                        .attr("dx", -10)
+                        .attr("class", "lbl-xs")
                         .attr("text-anchor", "end")
                         .text(scope.label);
 
@@ -85,7 +85,7 @@ directive('nationalBar', ['$window', 'ObjectService', 'ColorService',
                         .attr("width", function(d) {
                             return d.value;
                         })
-                        .attr("y", 0)
+                        .attr("y", 23)
                         .attr("height", barHeight)
                         .on('mouseover', tip.show)
                         .on('mouseout', tip.hide);
@@ -95,8 +95,8 @@ directive('nationalBar', ['$window', 'ObjectService', 'ColorService',
                             .attr("x", function(d) {
                                 return d.value / 2
                             })
-                            .attr("y", barHeight + 18)
-                            .attr("font-size", 14)
+                            .attr("y", 14)
+                            .attr("class", "lbl-xs")
                             .attr("text-anchor", "middle")
                             .text(function(d) {
                                 return d.label;

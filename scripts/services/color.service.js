@@ -35,9 +35,9 @@ angular.module('modelCompanyApp')
                 'Deserted': '#b2182b',
                 'Died': '#d6604d',
                 'Discharged': '#f4a582',
-                'In hosp.': '#fddbc7',
-                'Killed': '#f7f7f7',
-                'MIA': '#d1e5f0',
+                'In hospital': '#fddbc7',
+                'Killed in action': '#f7f7f7',
+                'Missing in action': '#d1e5f0',
                 'Mustered Out': '#92c5de',
                 'NA': '#4393c3',
                 'Transferred': '#2166ac',
@@ -65,6 +65,7 @@ $brown: #503a25;
 */
         this.national = '#d6604d';
         this.company = '#4393c3';
+        this.mess = '#92c5de';
         //["Deserted", "Died", "Discharged", "In hosp.", "Killed", "MIA", "Mustered Out", "NA", "Transferred", "Wounded", "died wounds"]
         this.getColor = function(type, color) {
             if (type === 'hair' || type === 'eyes' || type === 'complexion' || type === 'occupation' || type === 'cause')

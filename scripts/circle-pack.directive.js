@@ -15,7 +15,7 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
 
                 var width = $('.container-fluid').width() - 20,
                     diameter = width/6, // width divided by number of messes
-                    height = diameter * 2.25,
+                    height = diameter * 2.5,
                     scaler = 1.5,
                     padding = 25,
                     format = d3.format(",d"),
@@ -41,15 +41,10 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
                     svgctr.data(data);
 
                     // UPDATE
-                    svgctr.select('.co-circle')
+                    svgctr.select('.mess-circle')
                         .transition().duration(200)
                         .attr("r", function(d) {
-                            return getCoPercent(d, companyCt) * scaler;
-                        });
-
-                    svgctr.select('.co-text')
-                        .text(function(d) {
-                            return getCoPercent(d, companyCt) + "%";
+                            return scope.filter.value === 'Company' ? 0 : getCoPercent(d, companyCt) * scaler;
                         });
 
                     var occupationBars = svgctr.selectAll(".bar")
@@ -89,8 +84,80 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
 
                     var tip = d3.tip()
                         .attr('class', 'd3-tip')
-                        .html(function(d) { return d.percentage+"%"; });
+                        .html(function(d) { 
+                            var m = Math.round(d.value) === 1 ? " man, " : " men, ";
+                            return Math.round(d.value) + m + Math.round(d.percentage)+"%";  
+                        });
                     svg.call(tip);
+
+                    var spacing = 25;
+                    var natlOffset =  -diameter/2;
+                    var companyOffset = -diameter/2 + spacing;
+
+                    var headerCtr = svg
+                        .append("g")
+                        .attr("transform", "translate(20, 0)");
+
+                    var header = headerCtr.selectAll(".labels")
+                        .data(data).enter()
+                        .append("g")
+                        .attr("transform", function(d, i) {
+                            return "translate(" + (diameter * i + (diameter / 2)) + ",0)";
+                        })
+                    
+                    header.append("text")
+                        .attr("y", 0)
+                        .style("text-anchor", "middle")
+                        .attr("class", "lbl-sm")
+                        .text(function(d) {
+                            return d.label;
+                        });
+
+                    header.append("text")
+                        .attr("y", spacing * 3)
+                        .style("text-anchor", "middle")
+                        .style("fill", ColorService.company)
+                        .attr("class", "lbl-xs")
+                        .text(function(d) {
+                            return getCoPercent(d, companyCt) + "%";
+                        });
+
+                    headerCtr.append("text")
+                        .attr("y", spacing * 2)
+                        .attr("x", 25)
+                        .style("text-anchor", "end")
+                        .attr("class", "lbl-sm")
+                        .text("National");
+
+                    headerCtr.append("line")
+                        .attr("x1", -30)
+                        .attr("y1", spacing * 2 + 4)
+                        .attr("x2", width)
+                        .attr("y2", spacing * 2 + 4)
+                        .style("stroke", "#e5e8ec")
+
+                    headerCtr.append("text")
+                        .attr("y", spacing * 3)
+                        .attr("x", 25)
+                        .style("text-anchor", "end")
+                        .attr("class", "lbl-sm")
+                        .text("Company");
+
+                    headerCtr.append("line")
+                        .attr("x1", -30)
+                        .attr("y1", spacing * 3 + 4)
+                        .attr("x2", width)
+                        .attr("y2", spacing * 3 + 4)
+                        .style("stroke", "#e5e8ec")
+
+                    header.append("text")
+                        .attr("y", spacing * 2)
+                        .style("text-anchor", "middle")
+                        .style("fill", ColorService.national)
+                        .attr("class", "lbl-xs natl-lbl")
+                        .text(function(d) {
+                            return d.percentage + "%";
+                        });
 
                     svgctr = svg.selectAll(".occupation")
                         .data(data).enter()
@@ -99,50 +166,8 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
                         .attr("height", diameter + 50)
                         .attr("class", "svg-ctr")
                         .attr("transform", function(d, i) {
-                            return "translate(" + (20) + "," + ((diameter / 2) + 50) + ")";
+                            return "translate(" + (20) + "," + ((diameter / 2) + spacing * 3) + ")";
                         })
-
-                    var spacing = 25;
-                    var natlOffset =  -diameter/2;
-                    var companyOffset = -diameter/2 + spacing;
-
-                    svgctr.append("text")
-                        .attr("y", -diameter/2 - spacing - 5)
-                        .attr("x", function(d, i) {
-                            return (diameter * i + (diameter / 2));
-                        })
-                        .style("text-anchor", "middle")
-                        .style("font-weight", 700)
-                        .attr("class", "category-text")
-                        .text(function(d) {
-                            return d.label;
-                        });
-
-                    svgctr.append("text")
-                        .attr("y", natlOffset)
-                        .attr("x", 25)
-                        .style("text-anchor", "end")
-                        .text("National");
-
-                    svgctr.append("line")
-                        .attr("x1", -30)
-                        .attr("y1", natlOffset + 4)
-                        .attr("x2", width)
-                        .attr("y2", natlOffset + 4)
-                        .style("stroke", "#e5e8ec")
-
-                    svgctr.append("text")
-                        .attr("y", companyOffset)
-                        .attr("x", 25)
-                        .style("text-anchor", "end")
-                        .text("Company");
-
-                    svgctr.append("line")
-                        .attr("x1", -30)
-                        .attr("y1", companyOffset + 4)
-                        .attr("x2", width)
-                        .attr("y2", companyOffset + 4)
-                        .style("stroke", "#e5e8ec")
 
                     var natlCtr = svgctr.append("g")
                         .attr("class", "national")
@@ -155,20 +180,9 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
                             return (d.percentage * scaler);
                         })
                         .attr("class", "natl-circle")
-                        .style("fill", 'none')
+                        .style("fill", "none")
                         .style("stroke", ColorService.national)
-                        .style("stroke-width", "6px")
-
-                    natlCtr.append("text")
-                        .attr("y", function(d) {
-                            return natlOffset - 20;
-                        })
-                        .style("text-anchor", "middle")
-                        .style("fill", ColorService.national)
-                        .attr("class", "natl-text")
-                        .text(function(d) {
-                            return d.percentage + "%";
-                        });
+                        .style("stroke-width", "2px")
 
                     var coCtr = svgctr.append("g")
                         .attr("class", "company")
@@ -181,30 +195,44 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
                             return getCoPercent(d, companyCt) * scaler;
                         })
                         .attr("class", "co-circle")
-                        .style("fill", 'none')
+                        .style("fill", "none")
                         .style("stroke", ColorService.company)
-                        .style("stroke-width", "6px")
+                        .style("stroke-width", "2px")
 
-                    coCtr.append("text")
-                        .attr("y", function(d) {
-                            return companyOffset - 20;
-                        })
-                        .style("text-anchor", "middle")
-                        .style("fill", ColorService.company)
-                        .attr("class", "co-text")
-                        .text(function(d) {
-                            return getCoPercent(d, companyCt) + "%";
+                    var circleTip = d3.tip()
+                        .attr('class', 'd3-tip')
+                        .html(function(d) { 
+                            return getCoPercent(d, companyCt) + "%"; 
                         });
+
+                    var messCtr = svgctr.append("g")
+                        .attr("class", "mess")
+                        .attr("transform", function(d, i) {
+                            return "translate(" + (diameter * i + (diameter / 2)) + "," + 20 + ")"
+                        });
+
+                    messCtr.call(circleTip);
+                    messCtr.append("circle")
+                        .attr("r", function(d) {
+                            return 0;
+                        })
+                        .attr("class", "mess-circle")
+                        .style("fill", ColorService.mess)
+                        .style("fill-opacity", 0.3)
+                        .style("stroke", ColorService.mess)
+                        .style("stroke-width", "3px")
+                        .on('mouseover', circleTip.show)
+                        .on('mouseout', circleTip.hide);
 
                     var barCtr = svgctr.append("g")
                         .attr("class", "occupation-summary")
                         .attr("transform", function(d, i) {
-                            return "translate(" + diameter*i + "," + diameter/2 + ")"
+                            return "translate(" + diameter*i + "," + (diameter/2 + 50) + ")"
                         });
 
                     x = d3.scale.linear()
                             .range([0, diameter/2])
-                            .domain([0, 20])
+                            .domain([0, 30]); // this is the maximum value from observation
 
                     y = d3.scale.ordinal()
                             .rangeRoundBands([0, diameter], .1)
@@ -240,6 +268,7 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
                         })
                         .attr("dy", 14)
                         .style("text-anchor", "end")
+                        .style("font-size", "12px")
                         .text(function(d) {
                             return d.label;
                         })

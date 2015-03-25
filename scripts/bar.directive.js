@@ -95,6 +95,7 @@ directive('bar', ['$window', 'ObjectService', 'ColorService',
                           .attr("x", width/2)
                           .attr("y", 35)
                           .style("text-anchor", "middle")
+                          .attr("class", "lbl-xs")
                           .text(function(d) {
                             return scope.attribute === "heightin"? "Height" : "Age";
                           });
@@ -107,6 +108,7 @@ directive('bar', ['$window', 'ObjectService', 'ColorService',
                           .attr("x", -height/2)
                           .attr("dy", "-25")
                           .style("text-anchor", "middle")
+                          .attr("class", "lbl-xs")
                           .text("Soldiers");
 
                     svg.selectAll(".bar")

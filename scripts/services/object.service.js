@@ -153,9 +153,9 @@ angular.module('modelCompanyApp')
                 }
                 this.constructWithFilter = function(data, attr, filter) {
                     var dataCopy = angular.copy(data);
-                    if (filter) {
+                    if (filter.value && filter.value != "Company") {
                         dataCopy = _.reject(dataCopy, function(d) {
-                            return !filter[parseInt(d.mess)];
+                            return parseInt(filter.value.split("Mess ")[1]) !== parseInt(d.mess);
                         });
                     }
                     var attrs = _.pluck(dataCopy, attr);
@@ -179,9 +179,9 @@ angular.module('modelCompanyApp')
                 }
                 this.makeOccupationTree = function(data, attr, filter) {
                     var dataCopy = angular.copy(data);
-                    if (filter) {
+                    if (filter.value && filter.value != "Company") {
                         dataCopy = _.reject(dataCopy, function(d) {
-                            return !filter[parseInt(d.mess)];
+                            return parseInt(filter.value.split("Mess ")[1]) !== parseInt(d.mess);
                         });
                     }
                     var attrs = _.pluck(dataCopy, attr);

@@ -27,18 +27,18 @@ directive('companyBar', ['$window', 'ObjectService',
                     var margin, width, height, x, y;
                     margin = {
                         top: 2,
-                        right: 2,
+                        right: 10,
                         bottom: 2,
                         left: 70
                     }
 
 
-                    var barHeight = (scope.mess) ? 18 : 35;
+                    var barHeight = 30;
                     var elemWidth = $('.container-fluid').width();
                     var elemHeight = barHeight;
                     width = elemWidth - margin.left - margin.right;
                     height = elemHeight - margin.top - margin.bottom;
-x
+
                     var calcdWidth = 0;
                     _.each(data, function(d) {
                         calcdWidth += d.value;
@@ -70,8 +70,8 @@ x
                         .attr("dy", function(d) {
                             return barHeight / 2 + 2;
                         })
-                        .attr("dx", -5)
-                        .attr("font-size", 14)
+                        .attr("dx", -10)
+                        .attr("class", "lbl-xs")
                         .attr("text-anchor", "end")
                         .text(scope.label);
 

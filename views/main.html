@@ -12,10 +12,10 @@
         </div>
         <div map id="map" data="companyData" filter="mapDisplay" interaction="interaction"></div>
         <div class="filter-buttons">
-            <div class="filter-label">mess filter</div>
+            <div class="filter-label">filter</div>
             <div class="mess-check" ng-repeat="mess in messes" ng-class="getBorderStyle(mess)">
-                <label class="mess-label">{{mess}}</label>
-                <checkbox ng-model="mapDisplay[mess]"></checkbox>
+                <label class="lbl-xs">{{mess}}</label>
+                <input type="radio" ng-model="mapDisplay.value" ng-value="mess">
             </div>
             <div class="map-interaction pull-right">
                 <div class="filter-label">map interaction</div>
@@ -34,13 +34,13 @@
         </div>
         <div class="item">
             <div national-bar data="nationalAverages.eyes" attribute="eyes" label="National"></div>
-            <div company-bar data="companyData" attribute="eyes" label="Company"></div>
-            <div company-bar data="companyData" attribute="eyes" label="Mess 1" mess="1"></div>
-            <div company-bar data="companyData" attribute="eyes" label="Mess 2" mess="2"></div>
-            <div company-bar data="companyData" attribute="eyes" label="Mess 3" mess="3"></div>
-            <div company-bar data="companyData" attribute="eyes" label="Mess 4" mess="4"></div>
-            <div company-bar data="companyData" attribute="eyes" label="Mess 5" mess="5"></div>
-            <div company-bar data="companyData" attribute="eyes" label="Mess 6" mess="6"></div>
+            <div company-bar class="bar-item" data="companyData" attribute="eyes" label="Company"></div>
+            <div company-bar class="bar-item" data="companyData" attribute="eyes" label="Mess 1" mess="1"></div>
+            <div company-bar class="bar-item" data="companyData" attribute="eyes" label="Mess 2" mess="2"></div>
+            <div company-bar class="bar-item" data="companyData" attribute="eyes" label="Mess 3" mess="3"></div>
+            <div company-bar class="bar-item" data="companyData" attribute="eyes" label="Mess 4" mess="4"></div>
+            <div company-bar class="bar-item" data="companyData" attribute="eyes" label="Mess 5" mess="5"></div>
+            <div company-bar class="bar-item" data="companyData" attribute="eyes" label="Mess 6" mess="6"></div>
         </div>
     </div>
     <div class="row visual col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -49,13 +49,13 @@
             <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
         </div>
         <div national-bar data="nationalAverages.hair" attribute="hair" label="National"></div>
-        <div company-bar data="companyData" attribute="hair" label="Company"></div>
-        <div company-bar data="companyData" attribute="hair" label="Mess 1" mess="1"></div>
-        <div company-bar data="companyData" attribute="hair" label="Mess 2" mess="2"></div>
-        <div company-bar data="companyData" attribute="hair" label="Mess 3" mess="3"></div>
-        <div company-bar data="companyData" attribute="hair" label="Mess 4" mess="4"></div>
-        <div company-bar data="companyData" attribute="hair" label="Mess 5" mess="5"></div>
-        <div company-bar data="companyData" attribute="hair" label="Mess 6" mess="6"></div>
+        <div company-bar class="bar-item" data="companyData" attribute="hair" label="Company"></div>
+        <div company-bar class="bar-item" data="companyData" attribute="hair" label="Mess 1" mess="1"></div>
+        <div company-bar class="bar-item" data="companyData" attribute="hair" label="Mess 2" mess="2"></div>
+        <div company-bar class="bar-item" data="companyData" attribute="hair" label="Mess 3" mess="3"></div>
+        <div company-bar class="bar-item" data="companyData" attribute="hair" label="Mess 4" mess="4"></div>
+        <div company-bar class="bar-item" data="companyData" attribute="hair" label="Mess 5" mess="5"></div>
+        <div company-bar class="bar-item" data="companyData" attribute="hair" label="Mess 6" mess="6"></div>
     </div>
     <div class="row visual col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <div class="text">
@@ -63,13 +63,13 @@
             <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
         </div>
         <div national-bar data="nationalAverages.complexion" attribute="complexion" label="National"></div>
-        <div company-bar data="companyData" attribute="complexion" label="Company"></div>
-        <div company-bar data="companyData" attribute="complexion" label="Mess 1" mess="1"></div>
-        <div company-bar data="companyData" attribute="complexion" label="Mess 2" mess="2"></div>
-        <div company-bar data="companyData" attribute="complexion" label="Mess 3" mess="3"></div>
-        <div company-bar data="companyData" attribute="complexion" label="Mess 4" mess="4"></div>
-        <div company-bar data="companyData" attribute="complexion" label="Mess 5" mess="5"></div>
-        <div company-bar data="companyData" attribute="complexion" label="Mess 6" mess="6"></div>
+        <div company-bar class="bar-item" data="companyData" attribute="complexion" label="Company"></div>
+        <div company-bar class="bar-item" data="companyData" attribute="complexion" label="Mess 1" mess="1"></div>
+        <div company-bar class="bar-item" data="companyData" attribute="complexion" label="Mess 2" mess="2"></div>
+        <div company-bar class="bar-item" data="companyData" attribute="complexion" label="Mess 3" mess="3"></div>
+        <div company-bar class="bar-item" data="companyData" attribute="complexion" label="Mess 4" mess="4"></div>
+        <div company-bar class="bar-item" data="companyData" attribute="complexion" label="Mess 5" mess="5"></div>
+        <div company-bar class="bar-item" data="companyData" attribute="complexion" label="Mess 6" mess="6"></div>
     </div>
     <div class="row visual col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <div class="text">
@@ -77,11 +77,9 @@
             <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
         </div>
         <div class="item bar-half">
-            <div class="lbl-sm">age</div>
             <div bar data="companyData" attribute="age" class="age" average="nationalAverages.age"></div>
         </div>
         <div class="item bar-half">
-            <div class="lbl-sm">height</div>
             <div bar data="companyData" attribute="heightin" class="heightft" average="nationalAverages.height"></div>
         </div>
     </div>
@@ -93,10 +91,10 @@
             </div>
             <div circle-pack class="occupation" data="companyData" attribute="occupation" filter="occupationDisplay"></div>
             <div class="filter-buttons">
-                <div class="filter-label">mess filter</div>
+                <div class="filter-label">filter</div>
                 <div class="mess-check" ng-repeat="mess in messes">
-                    <label class="mess-label">{{mess}}</label>
-                    <checkbox ng-model="occupationDisplay[mess]"></checkbox>
+                    <label class="lbl-xs">{{mess}}</label>
+                    <input type="radio" ng-model="occupationDisplay.value" ng-value="mess">
                 </div>
             </div>
         </div>
@@ -109,10 +107,10 @@
         <div class="item">
             <div timeseries data="companyData" events="events" attribute="dateout" filter="timeseriesDisplay"></div>
             <div class="filter-buttons">
-                <div class="filter-label">mess filter</div>
+                <div class="filter-label">filter</div>
                 <div class="mess-check" ng-repeat="mess in messes">
-                    <label class="mess-label">{{mess}}</label>
-                    <checkbox ng-model="timeseriesDisplay[mess]"></checkbox>
+                    <label class="lbl-xs">{{mess}}</label>
+                    <input type="radio" ng-model="timeseriesDisplay.value" ng-value="mess">
                 </div>
             </div>
         </div>
@@ -123,13 +121,13 @@
             <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
         </div>
         <div national-bar data="nationalAverages.casualties" attribute="casualties" label="National"></div>
-        <div company-bar data="companyData" attribute="cause" label="Company"></div>
-        <div company-bar data="companyData" attribute="cause" label="Mess 1" mess="1"></div>
-        <div company-bar data="companyData" attribute="cause" label="Mess 2" mess="2"></div>
-        <div company-bar data="companyData" attribute="cause" label="Mess 3" mess="3"></div>
-        <div company-bar data="companyData" attribute="cause" label="Mess 4" mess="4"></div>
-        <div company-bar data="companyData" attribute="cause" label="Mess 5" mess="5"></div>
-        <div company-bar data="companyData" attribute="cause" label="Mess 6" mess="6"></div>
+        <div company-bar class="bar-item" data="companyData" attribute="cause" label="Company"></div>
+        <div company-bar class="bar-item" data="companyData" attribute="cause" label="Mess 1" mess="1"></div>
+        <div company-bar class="bar-item" data="companyData" attribute="cause" label="Mess 2" mess="2"></div>
+        <div company-bar class="bar-item" data="companyData" attribute="cause" label="Mess 3" mess="3"></div>
+        <div company-bar class="bar-item" data="companyData" attribute="cause" label="Mess 4" mess="4"></div>
+        <div company-bar class="bar-item" data="companyData" attribute="cause" label="Mess 5" mess="5"></div>
+        <div company-bar class="bar-item" data="companyData" attribute="cause" label="Mess 6" mess="6"></div>
     </div>
     <div class="footer">
     <span>Made by <a href="http://meredithmmyers.com">Meredith M Myers</a> | <a href="https://twitter.com/meredithmmyers">@meredithmmyers</a> | 2015</span>

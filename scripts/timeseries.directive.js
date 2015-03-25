@@ -133,7 +133,7 @@ directive('timeseries', ['$window', 'ObjectService', 'ColorService',
                         })
 
                     textGr.append("text")
-                        .style("font-weight", 700)
+                        .style("font-weight", "300")
                         .style("text-anchor", "middle")
                         .text(function(d) {
                             return d.name;
@@ -141,6 +141,7 @@ directive('timeseries', ['$window', 'ObjectService', 'ColorService',
 
                     textGr.append("text")
                         .attr("dy", 14)
+                        .attr("class", "lbl-xs")
                         .style("text-anchor", "middle")
                         .text(function(d) {
                             var date = (d.date) ? d.date : d.daterange[0];
