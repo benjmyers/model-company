@@ -28,13 +28,19 @@ directive('timeseries', ['$window', 'ObjectService', 'ColorService',
                 function update(filter) {
 
                     var data = ObjectService.constructWithFilter(scope.data, scope.attribute, filter);
+                    data = _.reject(data, function(d) {
+                        return d.label === "NA";
+                    });
 
                     // DATA JOIN
                     var circ = context.selectAll(".circ")
-                        .data(data);
+                        .data(data, function(d) { return d.label; });
 
                     // UPDATE
                     circ.transition().duration(500)
+                        .attr("cx", function(d) {
+                            return x(getDate(d.label));
+                        })
                         .attr("r", function(d) {
                             return Math.min(50, Math.max(10, 20 * Math.log(d.value)));
                         })
@@ -53,7 +59,6 @@ directive('timeseries', ['$window', 'ObjectService', 'ColorService',
 
                 function render(data) {
                     data = ObjectService.construct(data, scope.attribute, scope.mess);
-
                     data = _.reject(data, function(d) {
                         return d.label === "NA";
                     });
@@ -102,14 +107,15 @@ directive('timeseries', ['$window', 'ObjectService', 'ColorService',
                             return d.date ? "translate(" + x(getDate(d.date)) + "," + margin.top + ")" : "translate(" + x(getDate(d.daterange[0])) + "," + margin.top + ")"
                         })
 
-                    ev.append("rect")
-                        .attr("class", "timeline-event")
-                        .attr("y", -(height / 2) + margin.top)
-                        .attr("height", height - 50)
-                        .attr("width", "1px");
+                    ev.append("line")
+                        .attr("x1", 0)
+                        .attr("y1", -(height / 2) + margin.top)
+                        .attr("x2", 1)
+                        .attr("y2", height/2 - margin.bottom + margin.top)
+                        .style("stroke", "#ccc");
 
                     context.selectAll(".circ")
-                        .data(data)
+                        .data(data, function(d) { return d.label; })
                         .enter().append("circle")
                         .attr("class", "circ")
                         .attr("cx", function(d) {
@@ -119,7 +125,7 @@ directive('timeseries', ['$window', 'ObjectService', 'ColorService',
                             return circleSize * 2;
                         })
                         .style("fill", ColorService.company)
-                        .style("opacity", "0.8")
+                        .style("opacity", 0.8)
                         .attr("r", function(d) {
                             return Math.min(50, Math.max(10, 20 * Math.log(d.value)));
                         })
@@ -151,7 +157,8 @@ directive('timeseries', ['$window', 'ObjectService', 'ColorService',
                 }
 
                 function getDate(date) {
-                    return moment(date.trim(), "MM/DD/YYYY").valueOf();
+                    var d = moment(date.trim(), "MM/DD/YYYY").valueOf()
+                    return d;
                 }
             }
         }
