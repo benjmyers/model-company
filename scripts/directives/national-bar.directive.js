@@ -6,7 +6,8 @@ directive('nationalBar', ['$window', 'ObjectService', 'ColorService',
             scope: {
                 data: "=",
                 attribute: "@",
-                label: "@"
+                label: "@",
+                sort: "@"
             },
             link: function(scope, element, attrs) {
 
@@ -18,7 +19,7 @@ directive('nationalBar', ['$window', 'ObjectService', 'ColorService',
                 function render(data) {
 
                     data = _.sortBy(data, function(d) {
-                        return d.label;
+                        return scope.sort === "order" ? d[scope.sort] : d.label;
                     }).filter(function(d) { return d.value !== undefined;});
 
                     var margin, width, height, x, y;
@@ -98,6 +99,9 @@ directive('nationalBar', ['$window', 'ObjectService', 'ColorService',
                             .attr("y", 14)
                             .attr("class", "lbl-xs")
                             .attr("text-anchor", "middle")
+                            // .attr("transform", function(d) {
+                            //     return (d.value < 70) ? "rotate(-70)" : "rotate(0)";
+                            // })
                             .text(function(d) {
                                 return d.label;
                             });

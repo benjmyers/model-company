@@ -9,19 +9,28 @@ directive('companyBar', ['$window', 'ObjectService',
                 average: "=",
                 format: "@",
                 label: "@",
-                mess: "@"
+                mess: "@",
+                national: "=",
+                sort: "@"
             },
             link: function(scope, element, attrs) {
 
                 scope.$watch('data', function(newVal) {
-                    if (newVal)
+                    if (newVal && scope.sort !== "order") {
+                        render(newVal);
+                    }
+                    else if (newVal && scope.national && scope.sort)
                         render(newVal);
                 });
 
                 function render(data) {
                     data = ObjectService.construct(data, scope.attribute, scope.mess);
+                    data = _.reject(data, function(d) {
+                        return d.label === "NA";
+                    });
+
                     data = _.sortBy(data, function(d) {
-                        return d.label;
+                        return scope.sort === "order" ? _.find(scope.national, function(e) { return e.label === d.label; }).order : d.label;
                     });
 
                     var margin, width, height, x, y;
@@ -82,6 +91,9 @@ directive('companyBar', ['$window', 'ObjectService',
                             var value = angular.copy(runner);
                             runner += d.value;
                             return "translate(" + value + "," + 0 + ")";
+                        })
+                        .on("click", function(d) {
+                            console.log(d)
                         })
 
                     item.append("rect")

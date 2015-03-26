@@ -36,16 +36,15 @@ angular.module('modelCompanyApp')
               {'label': 'commercial', 'value': .05, 'percentage': 5},
               {'label': 'professional', 'value': .03, 'percentage': 3},
               {'label': 'misc', 'value': .04, 'percentage': 4}],
-      'casualties': [{'label': 'Deserted', 'value':0.044, 'percentage': 4.4},
-              {'label': 'Died', 'value': 0.0545, 'percentage': 5.45},
-              {'label': 'Discharged', 'value': 0.0533, 'percentage': 5.33},
-              {'label': 'In hospital', 'value': undefined, 'percentage': undefined},
-              {'label': 'Killed in action', 'value': 0.0287, 'percentage': 2.87},
-              {'label': 'Missing in action', 'value': undefined, 'percentage': undefined},
-              {'label': 'Mustered Out', 'value': 0.2873, 'percentage': 28.73},
-              {'label': 'Transferred', 'value': 0.0479, 'percentage': 4.79},
-              {'label': 'Wounded', 'value': 0.0508, 'percentage': 5.08},
-              {'label': 'died wounds', 'value': undefined, 'percentage': undefined}]
+      'casualties': [
+              {'label': 'Mustered Out', 'value': 0.4436, 'percentage': 44.36, 'order': 1},
+              {'label': 'Transferred', 'value': 0.0587, 'percentage': 5.87, 'order': 0},
+              {'label': 'Discharged', 'value': 0.0712, 'percentage': 7.12, 'order': 2},
+              {'label': 'Deserted', 'value':0.0579, 'percentage': 5.79, 'order': 3},
+              {'label': 'Wounded', 'value': 0.1967, 'percentage': 19.67, 'order': 7},
+              {'label': 'MIA/Unknown', 'value': 0.2089, 'percentage': 20.89, 'order': 5},
+              {'label': 'Died', 'value': 0.0612, 'percentage': 6.12, 'order': 4},
+              {'label': 'KIA/Died Wounds', 'value': 0.0287, 'percentage': 2.87, 'order': 6}]
     }
     $scope.events = [{
         'name': 'Winchester',

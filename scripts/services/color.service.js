@@ -32,17 +32,15 @@ angular.module('modelCompanyApp')
                 'misc': '#2166ac'
             },
             'cause' : {
-                'Deserted': '#b2182b',
-                'Died': '#d6604d',
-                'Discharged': '#f4a582',
-                'In hospital': '#fddbc7',
-                'Killed in action': '#f7f7f7',
-                'Missing in action': '#d1e5f0',
-                'Mustered Out': '#92c5de',
-                'NA': '#4393c3',
-                'Transferred': '#2166ac',
-                'Wounded': '#053061',
-                'died wounds': '#67001f'
+                'Mustered Out': '#2166ac',
+                'Transferred': '#053061',
+                'Discharged': '#4393c3',
+                'Deserted': '#92c5de',
+                'Wounded': '#67001f',
+                'MIA/Unknown': '#f4a582',
+                'Died POW': '#d6604d',
+                'Died': '#fddbc7',
+                'KIA/Died Wounds': '#b2182b'
             }
         };
         this.defaultColors = [
