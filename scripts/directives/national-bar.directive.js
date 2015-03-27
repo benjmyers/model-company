@@ -23,16 +23,26 @@ directive('nationalBar', ['$window', 'ObjectService', 'ColorService',
                     }).filter(function(d) { return d.value !== undefined;});
 
                     var margin, width, height, x, y;
-                    margin = {
-                        top: 2,
-                        right: 10,
-                        bottom: 25,
-                        left: 70
-                    };
+                    if ($(window).width() < 786) {
+                        margin = {
+                            top: 55,
+                            right: 10,
+                            bottom: 2,
+                            left: 50
+                        }     
+                    }
+                    else {
+                        margin = {
+                            top: 2,
+                            right: 10,
+                            bottom: 2,
+                            left: 70
+                        }
+                    }
 
                     var barHeight = 30;
                     var elemWidth = $('.container-fluid').width();
-                    var elemHeight = barHeight + 25;
+                    var elemHeight = barHeight + margin.top + 25;
                     width = elemWidth - margin.left - margin.right;
                     height = elemHeight - margin.top - margin.bottom;
 
@@ -64,7 +74,9 @@ directive('nationalBar', ['$window', 'ObjectService', 'ColorService',
                         .attr("dy", function(d) {
                             return barHeight + 12;
                         })
-                        .attr("dx", -10)
+                        .attr("dx", function(d) {
+                            return $(window).width() < 786 ? -3 : -10
+                        })
                         .attr("class", "lbl-xs")
                         .attr("text-anchor", "end")
                         .text(scope.label);
@@ -91,21 +103,23 @@ directive('nationalBar', ['$window', 'ObjectService', 'ColorService',
                         .on('mouseover', tip.show)
                         .on('mouseout', tip.hide);
 
-                    if (!scope.mess) {
-                        item.append("text")
-                            .attr("x", function(d) {
-                                return d.value / 2
-                            })
-                            .attr("y", 14)
-                            .attr("class", "lbl-xs")
-                            .attr("text-anchor", "middle")
-                            // .attr("transform", function(d) {
-                            //     return (d.value < 70) ? "rotate(-70)" : "rotate(0)";
-                            // })
-                            .text(function(d) {
-                                return d.label;
-                            });
-                    }
+                    item.append("text")
+                        .attr("x", function(d) {
+                            return $(window).width() < 786 ? -20 : d.value / 2;
+                        })
+                        .attr("y", function(d) {
+                            return $(window).width() < 786 ? (d.value/2 + 4) : 14;
+                        })
+                        .attr("class", "lbl-xs")
+                        .attr("text-anchor", function() {
+                            return $(window).width() < 786 ? "beginning" : "middle";
+                        })
+                        .attr("transform", function(d) {
+                            return $(window).width() < 786 ? "rotate(-90)" : "rotate(0)";
+                        })
+                        .text(function(d) {
+                            return d.label;
+                        });
                 }
             }
         }

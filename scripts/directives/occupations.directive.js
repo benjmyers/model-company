@@ -14,11 +14,9 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
                 var pack, svg, node, x, y, occupationBars;
 
                 var width = $('.container-fluid').width() - 20,
-                    diameter = width/6, // width divided by number of messes
-                    height = diameter * 2.5,
-                    scaler = 1.5,
-                    padding = 25,
-                    format = d3.format(",d"),
+                    diameter = width / 6, // width divided by number of messes
+                    height = $(window).width() < 786 ? 200 : $(window).height() * 0.75,
+                    scaler = $(window).width() < 786 ? 0.8 : 1.5,
                     color = d3.scale.category20();
 
                 scope.$watch('data', function(newVal) {
@@ -84,15 +82,15 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
 
                     var tip = d3.tip()
                         .attr('class', 'd3-tip')
-                        .html(function(d) { 
+                        .html(function(d) {
                             var m = Math.round(d.value) === 1 ? " man, " : " men, ";
-                            return Math.round(d.value) + m + Math.round(d.percentage)+"%";  
+                            return Math.round(d.value) + m + Math.round(d.percentage) + "%";
                         });
                     svg.call(tip);
 
                     var spacing = 25;
-                    var natlOffset =  -diameter/2;
-                    var companyOffset = -diameter/2 + spacing;
+                    var natlOffset = -diameter / 2;
+                    var companyOffset = -diameter / 2 + spacing;
 
                     var headerCtr = svg
                         .append("g")
@@ -104,11 +102,11 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
                         .attr("transform", function(d, i) {
                             return "translate(" + (diameter * i + (diameter / 2)) + ",0)";
                         })
-                    
+
                     header.append("text")
                         .attr("y", 0)
                         .style("text-anchor", "middle")
-                        .attr("class", "lbl-sm")
+                        .attr("class", "lbl-xs")
                         .text(function(d) {
                             return d.label;
                         });
@@ -126,7 +124,7 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
                         .attr("y", spacing * 2)
                         .attr("x", 25)
                         .style("text-anchor", "end")
-                        .attr("class", "lbl-sm")
+                        .attr("class", "lbl-xs")
                         .text("National");
 
                     headerCtr.append("line")
@@ -140,7 +138,7 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
                         .attr("y", spacing * 3)
                         .attr("x", 25)
                         .style("text-anchor", "end")
-                        .attr("class", "lbl-sm")
+                        .attr("class", "lbl-xs")
                         .text("Company");
 
                     headerCtr.append("line")
@@ -201,8 +199,8 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
 
                     var circleTip = d3.tip()
                         .attr('class', 'd3-tip')
-                        .html(function(d) { 
-                            return getCoPercent(d, companyCt) + "%"; 
+                        .html(function(d) {
+                            return getCoPercent(d, companyCt) + "%";
                         });
 
                     var messCtr = svgctr.append("g")
@@ -224,54 +222,56 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
                         .on('mouseover', circleTip.show)
                         .on('mouseout', circleTip.hide);
 
-                    var barCtr = svgctr.append("g")
-                        .attr("class", "occupation-summary")
-                        .attr("transform", function(d, i) {
-                            return "translate(" + diameter*i + "," + (diameter/2 + 50) + ")"
-                        });
+                    if ($(window).width() >= 786) {
+                        var barCtr = svgctr.append("g")
+                            .attr("class", "occupation-summary")
+                            .attr("transform", function(d, i) {
+                                return "translate(" + diameter * i + "," + (diameter / 2 + 50) + ")"
+                            });
 
-                    x = d3.scale.linear()
-                            .range([0, diameter/2])
+                        x = d3.scale.linear()
+                            .range([0, diameter / 2])
                             .domain([0, 30]); // this is the maximum value from observation
 
-                    y = d3.scale.ordinal()
+                        y = d3.scale.ordinal()
                             .rangeRoundBands([0, diameter], .1)
                             .domain([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
 
-                    occupationBars = barCtr.selectAll(".bar")
-                        .data(function(d) {
-                            return d.children;
-                        }).enter()
-                        .append("g")
-                        .attr("class", "bar");
+                        occupationBars = barCtr.selectAll(".bar")
+                            .data(function(d) {
+                                return d.children;
+                            }).enter()
+                            .append("g")
+                            .attr("class", "bar");
 
-                    occupationBars.append("rect")
-                        .attr("class", "occ-bar")
-                        .attr("fill", "steelblue")
-                        .attr("x", diameter/2)
-                        .attr("width", function(d) {
-                            return x(d.percentage);
-                        })
-                        .attr("y", function(d, i) {
-                            return y(i);
-                        })
-                        .attr("height", function(d) {
-                            return y.rangeBand();
-                        })
-                        .on('mouseover', tip.show)
-                        .on('mouseout', tip.hide);
+                        occupationBars.append("rect")
+                            .attr("class", "occ-bar")
+                            .attr("fill", "steelblue")
+                            .attr("x", diameter / 2)
+                            .attr("width", function(d) {
+                                return x(d.percentage);
+                            })
+                            .attr("y", function(d, i) {
+                                return y(i);
+                            })
+                            .attr("height", function(d) {
+                                return y.rangeBand();
+                            })
+                            .on('mouseover', tip.show)
+                            .on('mouseout', tip.hide);
 
-                    occupationBars.append("text")
-                        .attr("x", diameter/2 - 5)
-                        .attr("y", function(d, i) {
-                            return y(i);
-                        })
-                        .attr("dy", 14)
-                        .style("text-anchor", "end")
-                        .style("font-size", "12px")
-                        .text(function(d) {
-                            return d.label;
-                        })
+                        occupationBars.append("text")
+                            .attr("x", diameter / 2 - 5)
+                            .attr("y", function(d, i) {
+                                return y(i);
+                            })
+                            .attr("dy", 14)
+                            .style("text-anchor", "end")
+                            .attr("class", "lbl-xs")
+                            .text(function(d) {
+                                return d.label;
+                            })
+                    }
                 }
             }
         }

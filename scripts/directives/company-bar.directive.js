@@ -34,11 +34,21 @@ directive('companyBar', ['$window', 'ObjectService',
                     });
 
                     var margin, width, height, x, y;
-                    margin = {
-                        top: 2,
-                        right: 10,
-                        bottom: 2,
-                        left: 70
+                    if ($(window).width() < 786) {
+                        margin = {
+                            top: 2,
+                            right: 10,
+                            bottom: 2,
+                            left: 50
+                        }     
+                    }
+                    else {
+                        margin = {
+                            top: 2,
+                            right: 10,
+                            bottom: 2,
+                            left: 70
+                        }
                     }
 
 
@@ -79,7 +89,9 @@ directive('companyBar', ['$window', 'ObjectService',
                         .attr("dy", function(d) {
                             return barHeight / 2 + 2;
                         })
-                        .attr("dx", -10)
+                        .attr("dx", function(d) {
+                            return $(window).width() < 786 ? -3 : -10
+                        })
                         .attr("class", "lbl-xs")
                         .attr("text-anchor", "end")
                         .text(scope.label);
@@ -91,10 +103,7 @@ directive('companyBar', ['$window', 'ObjectService',
                             var value = angular.copy(runner);
                             runner += d.value;
                             return "translate(" + value + "," + 0 + ")";
-                        })
-                        .on("click", function(d) {
-                            console.log(d)
-                        })
+                        });
 
                     item.append("rect")
                         .attr("class", "bar")
