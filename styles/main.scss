@@ -17,14 +17,21 @@ body {
   color: #424242;
 }
 
+.splash {
+  width: 100%;
+}
+
 .container-fluid {
   padding-left: 2px;
   padding-right: 2px;
 }
 
-/* Header */
+/* Header http://www.loc.gov/pictures/resource/ppmsca.34552/?co=cwp */
 .header {
-  border-bottom: 1px solid #e5e5e5;
+  position: absolute;
+  top: 17vh;
+  left: 0;
+  right: 0;
   text-align: center;
   .header-title {
     font-family: "League Gothic", "Ariel", "san serif";

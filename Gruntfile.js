@@ -101,6 +101,10 @@ module.exports = function (grunt) {
                 '/fonts',
                 connect.static('./fonts')
               ),
+              connect().use(
+                '/img',
+                connect.static('./img')
+              ),
               connect.static('./'),
             ];
           }
