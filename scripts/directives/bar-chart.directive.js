@@ -33,14 +33,18 @@ directive('bar', ['$window', 'ObjectService', 'ColorService',
                     var margin = {
                             top: 10,
                             right: 20,
-                            bottom: 40,
+                            bottom: 60,
                             left: 40
                         },
                         width, height, x, y;
 
                     if (scope.orientation === "horizontal") {
-                        var elemWidth = $('.container-fluid').width()/2 || 800;
-                        var elemHeight = 300;
+                        var elemWidth;
+                        if ($(window).width() < 786)
+                            elemWidth = $(window).width();
+                        else
+                            elemWidth = $(window).width()/2;
+                        var elemHeight = $(window).height()/2;
                         width = elemWidth - margin.left - margin.right;
                         height = elemHeight - margin.top - margin.bottom;
                         x = d3.scale.ordinal()
@@ -93,7 +97,9 @@ directive('bar', ['$window', 'ObjectService', 'ColorService',
                         .call(xAxis)
                          .append("text")
                           .attr("x", width/2)
-                          .attr("y", 35)
+                          .attr("y", function(d) {
+                            return ($(window).width() < 786) ? 40 : 35;
+                          })
                           .style("text-anchor", "middle")
                           .attr("class", "lbl-xs")
                           .text(function(d) {
@@ -128,6 +134,15 @@ directive('bar', ['$window', 'ObjectService', 'ColorService',
                         .attr("height", function(d) {
                             return scope.orientation === "horizontal" ? height - y(d.percentage) : y.rangeBand();
                         });
+
+                    svg.selectAll('.tick text')
+                        .attr("y", function(d, i) {
+                            if ($(window).width() < 786) {
+                                return (i % 2) ? 9 : 19;
+                            }
+                            else
+                                return 9;
+                        })
 
                     if (scope.average) {
                         svg.selectAll(".natl-average")

@@ -17,6 +17,11 @@ body {
   color: #424242;
 }
 
+.container-fluid {
+  padding-left: 2px;
+  padding-right: 2px;
+}
+
 /* Header */
 .header {
   border-bottom: 1px solid #e5e5e5;
@@ -33,7 +38,7 @@ body {
 
 /** General styling for information display sections */
 .text {
-  padding: 2em 4em;
+  padding: 0.5em;
   .section-header {
     font-size: 2em;
     font-family: "League Gothic";
@@ -43,8 +48,8 @@ body {
   }
 }
 .visual {
-   margin: 1em 0em;
-   padding: 1em 0em;
+   margin: 0.5em 0em;
+   padding: 0em 0em;
   .lbl {
     font-family: "League Gothic";
     font-size: 1.6em;
@@ -53,13 +58,13 @@ body {
     text-align: center;
   }
   .lbl-sm {
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 300;
     text-transform: uppercase;
     text-align: center;
   }
   .lbl-xs {
-    font-size: 12px;
+    font-size: 10px;
     font-weight: 300;
     text-transform: uppercase;
     text-align: center;
@@ -73,7 +78,7 @@ body {
 
 /** General Overrides */
 text {
-  font-size: 14px;
+  font-size: 10px;
   font-weight: 300;
   font-family: 'Open Sans';
 }
@@ -106,9 +111,9 @@ text {
 
 /** Age & height display bar charts */
 .bar-half {
-  display: inline-block;
-  width: 50%;
-  float: left;
+  display: block;
+  width: 100%;
+  float: none;
   path.domain {
     stroke: none;
   }
@@ -122,7 +127,7 @@ text {
 /** Mess filter for visualizations */
 .filter-buttons {
   text-align: center;
-  margin: .5%;
+  margin: 1em;
   .mess-check {
     display: inline-block;
     margin: 0 5px;
@@ -194,5 +199,38 @@ text {
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
- 
+
+  /** General Overrides */
+  text {
+    font-size: 14px;
+  }
+
+  .container-fluid {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  /** General styling for information display sections */
+ .text {
+    padding: 2em 4em;
+  }
+  .visual {
+     margin: 1em 0em;
+     padding: 1em 0em;
+    .lbl-sm {
+      font-size: 14px;
+    }
+    .lbl-xs {
+      font-size: 12px;
+    }
+  }
+  .filter-buttons {
+    margin: .5%;
+  }
+  /** Age & height display bar charts */
+  .bar-half {
+    display: inline-block;
+    width: 50%;
+    float: left;
+  }
 }

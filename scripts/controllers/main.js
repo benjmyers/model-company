@@ -61,18 +61,18 @@ angular.module('modelCompanyApp')
         'type': 'battle'
     }, {
         'name': 'Chancellorsville',
-        'daterange': ['05/01/1863', '05/03/1863'],
+        'date': '05/01/1863',
         'type': 'battle'
     }, {
         'name': 'Gettysburg',
-        'daterange': ['07/01/1863', '07/03/1863'],
+        'date': '07/01/1863',
         'type': 'battle'
     }, {
         'name': 'Peachtree Creek',
         'date': '07/20/1864',
         'type': 'battle'
     },{
-        'name': 'Expiration of 3 years enlistment',
+        'name': 'Exp. of 3 yrs enlistment',
         'date': '09/18/1864',
         'type': 'event'
     },  {

@@ -13,7 +13,7 @@ directive('timeseries', ['$window', 'ObjectService', 'ColorService',
             link: function(scope, element, attrs) {
 
                 var context, x;
-                var circleSize = 12;
+                var circleSize = $(window).width() < 786 ? 8 : 12;
 
                 scope.$watch('data', function(newVal) {
                     if (newVal)
@@ -42,7 +42,7 @@ directive('timeseries', ['$window', 'ObjectService', 'ColorService',
                             return x(getDate(d.label));
                         })
                         .attr("r", function(d) {
-                            return Math.min(50, Math.max(10, 20 * Math.log(d.value)));
+                            return Math.min(50, Math.max(circleSize, 20 * Math.log(d.value)));
                         })
 
                     circ.selectAll('title')
@@ -63,14 +63,26 @@ directive('timeseries', ['$window', 'ObjectService', 'ColorService',
                         return d.label === "NA";
                     });
 
-                    var margin = {
-                            top: 25,
-                            right: 50,
+                    var margin;
+                    if ($(window).width() < 786) {
+                        margin = {
+                            top: 50,
+                            right: 15,
                             bottom: 50,
-                            left: 25
-                        },
-                        width = $('.container-fluid').width() - margin.left - margin.right,
-                        height = 200 - margin.top - margin.bottom;
+                            left: 15
+                        };
+                    }
+                    else {
+                        margin = {
+                            top: 25,
+                            right: 15,
+                            bottom: 50,
+                            left: 60
+                        };
+                    }
+                    var width = $('.container-fluid').width() - margin.left - margin.right;
+                    var height = ($(window).width() < 786) ? 300 - margin.top - margin.bottom : 200 - margin.top - margin.bottom;
+
                     var parseDate = d3.time.format("%b %Y").parse;
 
                     x = d3.time.scale().range([0, width - margin.left - margin.right])
@@ -98,20 +110,22 @@ directive('timeseries', ['$window', 'ObjectService', 'ColorService',
 
                     context = svg.append("g")
                         .attr("class", "context")
-                        .attr("transform", "translate(" + (margin.left + 50) + "," + (height / 2) + ")");
+                        .attr("transform", "translate(" + (margin.left) + "," + (height / 2) + ")");
 
                     var ev = context.selectAll(".event")
                         .data(scope.events)
                         .enter().append("g")
                         .attr("transform", function(d) {
-                            return d.date ? "translate(" + x(getDate(d.date)) + "," + margin.top + ")" : "translate(" + x(getDate(d.daterange[0])) + "," + margin.top + ")"
+                            return "translate(" + x(getDate(d.date)) + "," + (margin.top/2) + ")";
                         })
 
                     ev.append("line")
                         .attr("x1", 0)
-                        .attr("y1", -(height / 2) + margin.top)
+                        .attr("y1", function(d) {
+                            return $(window).width() < 786 ? 0 : -30
+                        })
                         .attr("x2", 1)
-                        .attr("y2", height/2 - margin.bottom + margin.top)
+                        .attr("y2", 50)
                         .style("stroke", "#ccc");
 
                     context.selectAll(".circ")
@@ -122,25 +136,35 @@ directive('timeseries', ['$window', 'ObjectService', 'ColorService',
                             return x(getDate(d.label));
                         })
                         .attr("cy", function(d, i) {
-                            return circleSize * 2;
+                            return (height - margin.top - margin.bottom)/2;
                         })
                         .style("fill", ColorService.company)
                         .style("opacity", 0.8)
                         .attr("r", function(d) {
-                            return Math.min(50, Math.max(10, 20 * Math.log(d.value)));
+                            return Math.min(50, Math.max(circleSize, 20 * Math.log(d.value)));
                         })
                         .on('mouseover', tip.show)
                         .on('mouseout', tip.hide);
 
                     var textGr = ev.append("g")
                         .attr("transform", function(d, i) {
-                            var dy = (i % 2) ? height / 2 : -height / 2;
-                            return "translate(0," + dy + ")";
+                            if ($(window).width() < 786) {
+                                var dy = (i % 2) ? -10 : 55;
+                                var rotate = "rotate(-90)";
+                                return "translate(" + 5 + "," + dy + ")" + rotate;
+                            }
+                            else {
+                                var dy = (i % 2) ? (height / 2) + 20 : -height / 2;
+                                return "translate(0," + dy + ")";
+                            }
+                            
                         })
 
                     textGr.append("text")
                         .style("font-weight", "300")
-                        .style("text-anchor", "middle")
+                        .style("text-anchor", function(d, i) {
+                            return textAnchor(d, i);
+                        })
                         .text(function(d) {
                             return d.name;
                         })
@@ -148,12 +172,20 @@ directive('timeseries', ['$window', 'ObjectService', 'ColorService',
                     textGr.append("text")
                         .attr("dy", 14)
                         .attr("class", "lbl-xs")
-                        .style("text-anchor", "middle")
+                        .style("text-anchor", function(d, i) {
+                           return textAnchor(d, i);
+                        })
                         .text(function(d) {
-                            var date = (d.date) ? d.date : d.daterange[0];
-                            return date;
+                            return ($(window).width() < 786) ? "" : d.date;
                         })
 
+                }
+
+                function textAnchor(d, i) {
+                    if ($(window).width() < 786)
+                        return (i % 2) ? "beginning" : "end";
+                    else
+                        return "middle";
                 }
 
                 function getDate(date) {
