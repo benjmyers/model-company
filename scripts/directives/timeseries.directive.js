@@ -145,7 +145,7 @@ directive('timeseries', ['$window', 'ObjectService', 'ColorService',
                         .attr("cy", function(d, i) {
                             return (height - margin.top - margin.bottom)/2;
                         })
-                        .style("fill", ColorService.company)
+                        .style("fill", ColorService.visualization)
                         .style("opacity", 0.8)
                         .attr("r", function(d) {
                             return Math.min(50, Math.max(circleSize, 20 * Math.log(d.value)));

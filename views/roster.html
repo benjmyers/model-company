@@ -1,0 +1,40 @@
+<div class="text roster">
+    <div class="lbl">roster</div> 
+    <p>
+    	<div class="lbl-sm"> Mess No. 1</div>
+    	<div ng-repeat="soldier in getMess(1)" class="soldier" ng-class="getOutClass(soldier.cause)">
+    		<div class="name">{{soldier.name}}, {{soldier.occupation}}</div> 
+    		<div class="out">{{soldier.dateout}} {{soldier.cause}}</div>
+    	</div>
+    	
+    	<div class="lbl-sm"> Mess No. 2</div>
+    	<div ng-repeat="soldier in getMess(2)" class="soldier" ng-class="getOutClass(soldier.cause)">
+    		<div class="name">{{soldier.name}}, {{soldier.occupation}}</div> 
+    		<div class="out">{{soldier.dateout}} {{soldier.cause}}</div>
+    	</div>
+
+    	<div class="lbl-sm"> Mess No. 3</div>
+    	<div ng-repeat="soldier in getMess(3)" class="soldier" ng-class="getOutClass(soldier.cause)">
+    		<div class="name">{{soldier.name}}, {{soldier.occupation}}</div> 
+    		<div class="out">{{soldier.dateout}} {{soldier.cause}}</div>
+    	</div>
+
+    	<div class="lbl-sm"> Mess No. 4</div>
+    	<div ng-repeat="soldier in getMess(4)" class="soldier" ng-class="getOutClass(soldier.cause)">
+    		<div class="name">{{soldier.name}}, {{soldier.occupation}}</div> 
+    		<div class="out">{{soldier.dateout}} {{soldier.cause}}</div>
+    	</div>
+
+    	<div class="lbl-sm"> Mess No. 5</div>
+    	<div ng-repeat="soldier in getMess(5)" class="soldier" ng-class="getOutClass(soldier.cause)">
+    		<div class="name">{{soldier.name}}, {{soldier.occupation}}</div> 
+    		<div class="out">{{soldier.dateout}} {{soldier.cause}}</div>
+    	</div>
+
+    	<div class="lbl-sm"> Mess No. 6</div>
+    	<div ng-repeat="soldier in getMess(6)" class="soldier" ng-class="getOutClass(soldier.cause)">
+    		<div class="name">{{soldier.name}}, {{soldier.occupation}}</div> 
+    		<div class="out">{{soldier.dateout}} {{soldier.cause}}</div>
+    	</div>
+    </p>
+</div>

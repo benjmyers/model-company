@@ -95,6 +95,25 @@ angular.module('modelCompanyApp')
       'value': 'Company'
     }
 
+
+    $scope.getMess = function(messNo) {
+      return _.reject($scope.companyData, function(d) {
+        return d.mess != messNo;
+      })
+    }
+    $scope.getOutClass = function(outMethod) {
+      switch (outMethod) {
+        case "KIA/Died Wounds":
+          return "kia";
+        case "Died":
+          return "died";
+        case "Wounded":
+          return "wounded";
+        case "MIA/Unknown":
+          return "missing";
+      }
+    }
+
     var root = angular.copy($scope.nationalAverages.occupation);
 
     d3.csv('data/formatted-messes.csv', function(err, data) {

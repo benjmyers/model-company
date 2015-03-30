@@ -17,6 +17,10 @@ body {
   color: #424242;
 }
 
+a {
+  color: #64889C;
+}
+
 .splash {
   width: 100%;
 }
@@ -132,6 +136,36 @@ text {
 /** Company and National Bars */
 .bar-item {
   margin: 1em 0em;
+}
+
+/** Roster section */
+.roster {
+  text-align: center;
+  .lbl-sm {
+    padding: 3em 0em;
+  }
+  .soldier {
+    padding: 0.5em;
+  }
+  .kia {
+    color: #67001f;
+    font-weight: 700;
+  }
+  .died {
+    color: #b2182b;
+  }
+  .wounded {
+    color: #d6604d;
+  }
+  .missing {
+    color: #f4a582;
+  }
+  .name {
+
+  }
+  .out {
+    font-size: 0.8em;
+  }
 }
 
 /** Mess filter for visualizations */

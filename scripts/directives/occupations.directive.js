@@ -303,7 +303,7 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
 
                         occupationBars.append("rect")
                             .attr("class", "occ-bar")
-                            .attr("fill", "steelblue")
+                            .attr("fill", ColorService.visualization)
                             .attr("x", diameter / 2)
                             .attr("width", function(d) {
                                 return x(d.percentage);

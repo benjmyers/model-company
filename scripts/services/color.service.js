@@ -58,6 +58,7 @@ angular.module('modelCompanyApp')
         this.national = '#053061';
         this.company = '#4393c3';
         this.mess = '#d6604d';
+        this.visualization = '#64889C';
 
         this.getColor = function(type, color) {
             if (type === 'hair' || type === 'eyes' || type === 'complexion' || type === 'occupation' || type === 'cause')

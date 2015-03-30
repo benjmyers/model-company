@@ -129,7 +129,7 @@ directive('bar', ['$window', 'ObjectService', 'ColorService',
                         .data(data)
                         .enter().append("rect")
                         .attr("class", "bar")
-                        .attr("fill", ColorService.company)
+                        .attr("fill", ColorService.visualization)
                         .attr("x", function(d) {
                             return scope.orientation === "horizontal" ? x(d.label) : 0;
                         })
@@ -145,9 +145,8 @@ directive('bar', ['$window', 'ObjectService', 'ColorService',
 
                     svg.selectAll('.tick text')
                         .attr("y", function(d, i) {
-                            if ($(window).width() < 786) {
+                            if ($(window).width() < 786)
                                 return (i % 2) ? 9 : 19;
-                            }
                             else
                                 return 9;
                         })
@@ -186,7 +185,7 @@ directive('bar', ['$window', 'ObjectService', 'ColorService',
                             .attr("x", function(d) {
                                 return x(Math.floor(d)) + x.rangeBand() / 2;
                             })
-                            .attr("width", 2)
+                            .attr("width", 4)
                             .attr("y", function(d) {
                                 return 0;
                             })
