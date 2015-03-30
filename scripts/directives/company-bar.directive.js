@@ -14,6 +14,7 @@ directive('companyBar', ['$window', 'ObjectService',
                 sort: "@"
             },
             link: function(scope, element, attrs) {
+                var svg;
 
                 scope.$watch('data', function(newVal) {
                     if (newVal && scope.sort !== "order") {
@@ -22,6 +23,14 @@ directive('companyBar', ['$window', 'ObjectService',
                     else if (newVal && scope.national && scope.sort)
                         render(newVal);
                 });
+
+
+                angular.element($window).bind('resize', function() {
+                    if (svg && scope.data) {
+                        element.empty();
+                        render(scope.data);
+                    }
+                })
 
                 function render(data) {
                     data = ObjectService.construct(data, scope.attribute, scope.mess);
@@ -68,7 +77,7 @@ directive('companyBar', ['$window', 'ObjectService',
                         d.value = d.value * scaler;
                     })
 
-                    var svg = d3.select(element[0]).append("svg")
+                    svg = d3.select(element[0]).append("svg")
                         .attr("width", width + margin.left + margin.right)
                         .attr("height", height + margin.top + margin.bottom)
                         .append("g")

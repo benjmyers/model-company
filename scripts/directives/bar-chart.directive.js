@@ -12,6 +12,7 @@ directive('bar', ['$window', 'ObjectService', 'ColorService',
                 national: "@"
             },
             link: function(scope, element, attrs) {
+                var svg;
 
                 if (!scope.orientation)
                     scope.orientation = "horizontal";
@@ -20,6 +21,13 @@ directive('bar', ['$window', 'ObjectService', 'ColorService',
                     if (newVal)
                         render(newVal);
                 });
+
+                angular.element($window).bind('resize', function() {
+                    if (svg && scope.data) {
+                        element.empty();
+                        render(scope.data);
+                    }
+                })
 
                 function convertHeight(inches) {
                     return (Math.round((inches/12)*10)/10 + "").replace(".", "\'");
@@ -85,7 +93,7 @@ directive('bar', ['$window', 'ObjectService', 'ColorService',
                         .outerTickSize([-width])
                         .ticks(5);
 
-                    var svg = d3.select(element[0]).append("svg")
+                    svg = d3.select(element[0]).append("svg")
                         .attr("width", width + margin.left + margin.right)
                         .attr("height", height + margin.top + margin.bottom)
                         .append("g")

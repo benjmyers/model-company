@@ -55,16 +55,10 @@ angular.module('modelCompanyApp')
             ];
         this.defaultScale = d3.scale.ordinal()
             .range(this.defaultColors);
-            /* $blue: #7792a8;
-$gray: #e5e8ec;
-$white: #ffffff;
-$red: #eb2a2e;
-$brown: #503a25;
-*/
-        this.national = '#d6604d';
+        this.national = '#053061';
         this.company = '#4393c3';
-        this.mess = '#92c5de';
-        //["Deserted", "Died", "Discharged", "In hosp.", "Killed", "MIA", "Mustered Out", "NA", "Transferred", "Wounded", "died wounds"]
+        this.mess = '#d6604d';
+
         this.getColor = function(type, color) {
             if (type === 'hair' || type === 'eyes' || type === 'complexion' || type === 'occupation' || type === 'cause')
                 return colors[type][color];

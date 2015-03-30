@@ -25,6 +25,13 @@ directive('timeseries', ['$window', 'ObjectService', 'ColorService',
                         update(newVal)
                 }, true)
 
+                angular.element($window).bind('resize', function() {
+                    if (context && scope.data) {
+                        $(element[0]).empty();
+                        render(scope.data);
+                    }
+                })
+
                 function update(filter) {
 
                     var data = ObjectService.constructWithFilter(scope.data, scope.attribute, filter);

@@ -29,17 +29,17 @@ body {
 /* Header http://www.loc.gov/pictures/resource/ppmsca.34552/?co=cwp */
 .header {
   position: absolute;
-  top: 17vh;
+  top: 0;
   left: 0;
   right: 0;
   text-align: center;
   .header-title {
     font-family: "League Gothic", "Ariel", "san serif";
-    font-size: 4em;
+    font-size: 2em;
     text-transform: uppercase;
   }
   .header-sub {
-    font-size: 1em;
+    font-size: 0.7em;
   }
 }
 
@@ -75,6 +75,9 @@ body {
     font-weight: 300;
     text-transform: uppercase;
     text-align: center;
+  }
+  .lower {
+    text-transform: none;
   }
   .item {
     display: inline-block;
@@ -206,6 +209,16 @@ text {
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
+
+.header {
+  top: 17vh;
+  .header-title {
+    font-size: 4em;
+  }
+  .header-sub {
+    font-size: 1em;
+  }
+}
 
   /** General Overrides */
   text {

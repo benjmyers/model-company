@@ -11,13 +11,7 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
                 format: "@"
             },
             link: function(scope, element, attrs) {
-                var pack, svg, node, x, y, occupationBars;
-
-                var width = $('.container-fluid').width() - 20,
-                    diameter = width / 6, // width divided by number of messes
-                    height = $(window).width() < 786 ? 200 : $(window).height() * 0.75,
-                    scaler = $(window).width() < 786 ? 0.8 : 1.5,
-                    color = d3.scale.category20();
+                var pack, svg, node, x, y, occupationBars, header, scaler;
 
                 scope.$watch('data', function(newVal) {
                     if (newVal)
@@ -28,6 +22,14 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
                     if (svg && newVal)
                         update(newVal)
                 }, true)
+
+
+                angular.element($window).bind('resize', function() {
+                    if (svg && scope.data) {
+                        element.empty();
+                        render(scope.data);
+                    }
+                })
 
                 function update(filter) {
                     var companyCt = scope.data.length;
@@ -43,6 +45,19 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
                         .transition().duration(200)
                         .attr("r", function(d) {
                             return scope.filter.value === 'Company' ? 0 : getCoPercent(d, companyCt) * scaler;
+                        });
+
+                    header.data(data);
+
+                    header.select('.mess-lbl')
+                        .transition()
+                        .text(function(d) {
+                            return getCoPercent(d, companyCt) + "%";
+                        });
+
+                    d3.selectAll(".mess-row")
+                        .attr("display", function(d) {
+                            return filter.value !== "Company" ? "block" : "none";
                         });
 
                     var occupationBars = svgctr.selectAll(".bar")
@@ -73,6 +88,11 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
                     if (scope.format !== "false")
                         data = ObjectService.makeOccupationTree(scope.data, scope.attribute, scope.filter);
 
+                    var width = $('.container-fluid').width(),
+                        diameter = width / 6, // width divided by number of messes
+                        height = $(window).width() < 786 ? 200 : 570;
+                    scaler = $(window).width() < 786 ? 0.5 : 1.5;
+
                     svg = d3.select(element[0]).append("svg")
                         .attr("width", width)
                         .attr("height", height)
@@ -91,40 +111,44 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
                     var spacing = 25;
                     var natlOffset = -diameter / 2;
                     var companyOffset = -diameter / 2 + spacing;
+                    var labelx = $(window).width() >= 786 ? 25 : 5;
 
                     var headerCtr = svg
                         .append("g")
                         .attr("transform", "translate(20, 0)");
 
-                    var header = headerCtr.selectAll(".labels")
+                    header = headerCtr.selectAll(".occupation-row")
                         .data(data).enter()
                         .append("g")
+                        .attr("class", "occupation-row")
                         .attr("transform", function(d, i) {
                             return "translate(" + (diameter * i + (diameter / 2)) + ",0)";
                         })
 
                     header.append("text")
                         .attr("y", 0)
-                        .style("text-anchor", "middle")
-                        .attr("class", "lbl-xs")
+                        .style("text-anchor", function(d) {
+                            return $(window).width() >= 786 ? "middle" : "start"
+                        })
+                        .attr("class", "lbl-xs lower")
+                        .attr("transform", function(d) {
+                            return $(window).width() >= 786 ? "rotate(0)" : "rotate(-90)";
+                        })
+                        .attr("dy", function(d) {
+                            return $(window).width() >= 786 ? "0" : "4px";
+                        })
+                        .attr("dx", function(d) {
+                            return $(window).width() >= 786 ? "0" : -(spacing + 10);
+                        })
                         .text(function(d) {
                             return d.label;
                         });
 
-                    header.append("text")
-                        .attr("y", spacing * 3)
-                        .style("text-anchor", "middle")
-                        .style("fill", ColorService.company)
-                        .attr("class", "lbl-xs")
-                        .text(function(d) {
-                            return getCoPercent(d, companyCt) + "%";
-                        });
-
                     headerCtr.append("text")
                         .attr("y", spacing * 2)
-                        .attr("x", 25)
+                        .attr("x", labelx)
                         .style("text-anchor", "end")
-                        .attr("class", "lbl-xs")
+                        .attr("class", "lbl-xs lower")
                         .text("National");
 
                     headerCtr.append("line")
@@ -134,11 +158,20 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
                         .attr("y2", spacing * 2 + 4)
                         .style("stroke", "#e5e8ec")
 
+                    header.append("text")
+                        .attr("y", spacing * 2)
+                        .style("text-anchor", "middle")
+                        .style("fill", ColorService.national)
+                        .attr("class", "lbl-xs lower natl-lbl")
+                        .text(function(d) {
+                            return d.percentage + "%";
+                        });
+
                     headerCtr.append("text")
                         .attr("y", spacing * 3)
-                        .attr("x", 25)
+                        .attr("x", labelx)
                         .style("text-anchor", "end")
-                        .attr("class", "lbl-xs")
+                        .attr("class", "lbl-xs lower")
                         .text("Company");
 
                     headerCtr.append("line")
@@ -149,13 +182,37 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
                         .style("stroke", "#e5e8ec")
 
                     header.append("text")
-                        .attr("y", spacing * 2)
+                        .attr("y", spacing * 3)
                         .style("text-anchor", "middle")
-                        .style("fill", ColorService.national)
-                        .attr("class", "lbl-xs natl-lbl")
+                        .style("fill", ColorService.company)
+                        .attr("class", "lbl-xs lower")
                         .text(function(d) {
-                            return d.percentage + "%";
+                            return getCoPercent(d, companyCt) + "%";
                         });
+
+                    headerCtr.append("text")
+                        .attr("y", spacing * 4)
+                        .attr("x", labelx)
+                        .style("text-anchor", "end")
+                        .attr("class", "mess-row lbl-xs lower")
+                        .text("Mess");
+
+                    headerCtr.append("line")
+                        .attr("class", "mess-row")
+                        .attr("x1", -30)
+                        .attr("y1", spacing * 4 + 4)
+                        .attr("x2", width)
+                        .attr("y2", spacing * 4 + 4)
+                        .style("stroke", '#e5e8ec')
+
+                    header.append("text")
+                        .attr("y", spacing * 4)
+                        .style("text-anchor", "middle")
+                        .style("fill", ColorService.mess)
+                        .attr("class", "lbl-xs lower mess-lbl mess-row");
+
+                    d3.selectAll(".mess-row")
+                        .attr("display", "none");
 
                     svgctr = svg.selectAll(".occupation")
                         .data(data).enter()
@@ -164,7 +221,7 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
                         .attr("height", diameter + 50)
                         .attr("class", "svg-ctr")
                         .attr("transform", function(d, i) {
-                            return "translate(" + (20) + "," + ((diameter / 2) + spacing * 3) + ")";
+                            return "translate(" + (20) + "," + ((diameter / 2) + spacing * 4) + ")";
                         })
 
                     var natlCtr = svgctr.append("g")
@@ -267,7 +324,7 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
                             })
                             .attr("dy", 14)
                             .style("text-anchor", "end")
-                            .attr("class", "lbl-xs")
+                            .attr("class", "lbl-xs lower")
                             .text(function(d) {
                                 return d.label;
                             })

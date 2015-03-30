@@ -10,11 +10,19 @@ directive('nationalBar', ['$window', 'ObjectService', 'ColorService',
                 sort: "@"
             },
             link: function(scope, element, attrs) {
+                var svg;
 
                 scope.$watch('data', function(newVal) {
                     if (newVal)
                         render(newVal);
                 });
+
+                angular.element($window).bind('resize', function() {
+                    if (svg && scope.data) {
+                        element.empty();
+                        render(scope.data);
+                    }
+                })
 
                 function render(data) {
 
@@ -56,7 +64,7 @@ directive('nationalBar', ['$window', 'ObjectService', 'ColorService',
                         d.value = d.value * scaler;
                     })
 
-                    var svg = d3.select(element[0]).append("svg")
+                    svg = d3.select(element[0]).append("svg")
                         .attr("width", width + margin.left + margin.right)
                         .attr("height", height + margin.top + margin.bottom)
                         .append("g")
