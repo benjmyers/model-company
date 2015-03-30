@@ -27,6 +27,8 @@ angular.module('modelCompanyApp')
                 "railroader": "laborer",
                 "schoolboy": "misc",
                 "schoolmaster": "professional",
+                "printer": "professional",
+                "druggist": "professional",
                 "painter": "commercial",
                 "hustler": "commercial",
                 "plasterer": "laborer",

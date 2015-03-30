@@ -38,6 +38,10 @@ directive('bar', ['$window', 'ObjectService', 'ColorService',
                     if (!scope.national)
                         data = ObjectService.construct(data, scope.attribute, scope.mess);
 
+                    data = _.reject(data, function(d) {
+                        return d.label === "NA";
+                    });
+
                     var margin = {
                             top: 10,
                             right: 20,
@@ -160,7 +164,7 @@ directive('bar', ['$window', 'ObjectService', 'ColorService',
                             .attr("x", function(d) {
                                 return x(d) + x.rangeBand() / 2;
                             })
-                            .attr("width", 4)
+                            .attr("width", 3)
                             .attr("y", function(d) {
                                 return 0;
                             })
@@ -185,7 +189,7 @@ directive('bar', ['$window', 'ObjectService', 'ColorService',
                             .attr("x", function(d) {
                                 return x(Math.floor(d)) + x.rangeBand() / 2;
                             })
-                            .attr("width", 4)
+                            .attr("width", 2)
                             .attr("y", function(d) {
                                 return 0;
                             })

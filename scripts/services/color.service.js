@@ -56,7 +56,7 @@ angular.module('modelCompanyApp')
         this.defaultScale = d3.scale.ordinal()
             .range(this.defaultColors);
         this.national = '#053061';
-        this.company = '#4393c3';
+        this.company = '#b2182b';
         this.mess = '#d6604d';
         this.visualization = '#64889C';
 

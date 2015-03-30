@@ -36,5 +36,11 @@
     		<div class="name">{{soldier.name}}, {{soldier.occupation}}</div> 
     		<div class="out">{{soldier.dateout}} {{soldier.cause}}</div>
     	</div>
+
+    	<div class="lbl-sm"> Officers</div>
+    	<div ng-repeat="soldier in getMess(7)" class="soldier" ng-class="getOutClass(soldier.cause)">
+    		<div class="name">{{soldier.name}}, {{soldier.occupation}}</div> 
+    		<div class="out">{{soldier.dateout}} {{soldier.cause}}</div>
+    	</div>
     </p>
 </div>
