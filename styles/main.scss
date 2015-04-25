@@ -180,9 +180,9 @@ text {
 
 /** Roster section */
 .roster {
-  text-align: center;
   .lbl-sm {
-    padding: 3em 0em;
+    padding: 8px;
+    text-align: left;
   }
   .soldier {
     padding: 0.5em;
@@ -205,6 +205,17 @@ text {
   }
   .out {
     font-size: 0.8em;
+  }
+  .st-sort-ascent:after{
+    content: '\25B2';
+    font-size: 10px;
+    padding-left: 5px;
+  }
+
+  .st-sort-descent:after{
+      content: '\25BC';
+      font-size: 10px;
+      padding-left: 5px;
   }
 }
 

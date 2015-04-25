@@ -16,7 +16,8 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'ui.checkbox'
+    'ui.checkbox',
+    'smart-table'
   ])
   .config(function ($routeProvider) {
     $routeProvider

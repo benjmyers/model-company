@@ -128,6 +128,7 @@ angular.module('modelCompanyApp')
           }
         })
         $scope.companyData = data;
+        $scope.disaplyedData = angular.copy(data);
         $scope.$apply();
       })
     })
