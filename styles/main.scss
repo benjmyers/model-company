@@ -29,9 +29,6 @@ a {
   padding-left: 0px;
   padding-right: 0px;
 }
-.row {
-  padding: 0px 2px;
-}
 
 /* Header http://www.loc.gov/pictures/resource/ppmsca.34552/?co=cwp */
 .header {
@@ -51,8 +48,14 @@ a {
 }
 
 /** General styling for information display sections */
+.intro {
+  margin: 7% auto 0 auto;
+}
 .text {
-  padding: 0.5em;
+  padding: 0;
+  width: 100%;
+  margin: 1% auto;
+  max-width: 800px;
   .section-header {
     font-size: 2em;
     font-family: "League Gothic";
@@ -62,13 +65,12 @@ a {
   }
 }
 .visual {
-   margin: 0.5em 0em;
-   padding: 0em 0em;
   .lbl {
     font-family: "League Gothic";
     font-size: 1.6em;
     text-transform: uppercase;
-    margin-bottom: 0.5em;
+    margin-bottom: 7%;
+
     text-align: center;
   }
   .lbl-sm {
@@ -100,12 +102,24 @@ a {
 }
 .picture-caption {
   width: 100%;
-  text-align: center;
-  padding: 5px 0;
+  text-align: left;
+  padding: 5px;
   font-size: 0.8em;
   .source {
     font-weight: 300;
+    float: right;
   }
+  &.centered {
+    text-align: center;
+    .source {
+      display: block;
+      float: none;
+    }
+  }
+}
+.roster {
+  width: 95%;
+  margin: 7% auto;
 }
 
 /** Visualization specific styles */
@@ -310,17 +324,13 @@ text {
     font-size: 14px;
   }
 
-  .row {
-    padding: 0px 15px;
-  }
-
   /** General styling for information display sections */
  .text {
-    padding: 2em 4em;
+      width: 95%;
+      margin: 7% auto;
+      max-width: 800px;
   }
   .visual {
-     margin: 1em 0em;
-     padding: 1em 0em;
     .lbl-sm {
       font-size: 14px;
     }

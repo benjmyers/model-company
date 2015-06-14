@@ -6,7 +6,8 @@ directive('map', ['$window', 'ObjectService', 'ColorService',
             scope: {
                 data: "=",
                 filter: "=",
-                interaction: "="
+                interaction: "=",
+                geocoder: "="
             },
             link: function(scope, element, attrs) {
                 var map, dataLayer;
@@ -64,6 +65,10 @@ directive('map', ['$window', 'ObjectService', 'ColorService',
                     map.keyboard.enable();
                 }
 
+                function getLocation(lat, lon) {
+                    return _.find(scope.geocoder, function(e) { return e.lat === lat && e.lon === lon;});
+                }
+
                 // Draw the map
                 function draw() {
 
@@ -75,21 +80,30 @@ directive('map', ['$window', 'ObjectService', 'ColorService',
                         });
                     }
 
+                    var mapObj = {};
                     var latLngs = [];
-                    var pts = [];
                     _.each(data, function(d) {
                         if (d.latitude && d.longitude) {
-                            // Create the array of lat lngs for the heatlayer
                             latLngs.push([parseFloat(d.latitude), parseFloat(d.longitude)]);
-                            var fillColor = ColorService.defaultScale(parseInt(d.mess));
-                            var random = Math.random()/100;
-                            var circle = L.circle([parseFloat(d.latitude) + random, parseFloat(d.longitude) + random], 3000, {
-                                stroke: false,
-                                fillColor: fillColor,
-                                fillOpacity: 0.3
-                            });
-                            pts.push(circle);
+                            if (!mapObj[d.latitude + "," + d.longitude + "," + d.mess])
+                                mapObj[d.latitude + "," + d.longitude + "," + d.mess] = 1;
+                            else
+                                mapObj[d.latitude + "," + d.longitude + "," + d.mess]++;
                         }
+                    })
+
+                    var pts = [];
+                    _.each(mapObj, function(v, k) {
+                        var d = k.split(",");
+                        var fillColor = ColorService.defaultScale(parseInt(d[2]));
+                        var circle = L.circle([parseFloat(d[0]), parseFloat(d[1])], v * 1500, {
+                            stroke: false,
+                            fillColor: fillColor,
+                            fillOpacity: 0.5
+                        });
+                        var loc = getLocation(d[0], d[1])
+                        circle.bindPopup("<b>" + loc.town + "</b><div>" + v + " men</div>");
+                        pts.push(circle);
                     });
 
                     dataLayer = new L.LayerGroup(pts).addTo(map);

@@ -118,7 +118,6 @@ angular.module('modelCompanyApp')
 
     d3.csv('data/formatted-messes.csv', function(err, data) {
       d3.csv('data/locations.csv', function(err, locations) {
-        var dataObj = {};
         _.each(data, function(d) {
           // GeoCode homes
           var geocode = _.find(locations, function(e) { return e.town === d.home;});
@@ -127,6 +126,7 @@ angular.module('modelCompanyApp')
             d.longitude = geocode.lon;
           }
         })
+        $scope.geocoder = locations;
         $scope.companyData = data;
         $scope.disaplyedData = angular.copy(data);
         $scope.$apply();
