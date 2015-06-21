@@ -9,19 +9,22 @@ angular.module('modelCompanyApp')
                 'black': '#4c4c4c',
                 'gray': '#d8dddf',
                 'sandy': '#bd986a',
-                'red': '#b67966'
+                'red': '#b67966',
+                'NA': '#eee'
             }, 
             'eyes' : {
                 'blue': '#92c5de',
                 'gray': '#d8dddf',
                 'black': '#4c4c4c',
                 'hazel': '#b98a67',
-                'brown': '#8a6f5b'
+                'brown': '#8a6f5b',
+                'NA': '#eee'
             },
             'complexion' : {
                 'light': '#fee0ba',
                 'medium': '#fccb8d',
-                'dark': '#bd986a'
+                'dark': '#bd986a',
+                'NA': '#eee'
             },
             'occupation': {
                 'farmer': '#b2182b',
@@ -29,7 +32,8 @@ angular.module('modelCompanyApp')
                 'laborer': '#fddbc7',
                 'commercial': '#d1e5f0',
                 'professional': '#67a9cf',
-                'misc': '#2166ac'
+                'misc': '#2166ac',
+                'NA': '#eee'
             },
             'cause' : {
                 'Mustered Out': '#2166ac',
@@ -40,7 +44,8 @@ angular.module('modelCompanyApp')
                 'MIA/Unknown': '#f4a582',
                 'Died POW': '#d6604d',
                 'Died': '#fddbc7',
-                'KIA/Died Wounds': '#b2182b'
+                'KIA/Died Wounds': '#b2182b',
+                'NA': '#eee'
             }
         };
         this.defaultColors = [

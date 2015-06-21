@@ -21,21 +21,25 @@ angular.module('modelCompanyApp')
               {'label': 'light', 'value': .24, 'percentage': 24},
               {'label': 'sandy', 'value': .04, 'percentage': 4},
               {'label': 'red', 'value': .03, 'percentage': 3},
-              {'label': 'gray', 'value': .01, 'percentage': 1}],
+              {'label': 'gray', 'value': .01, 'percentage': 1},
+              {'label': 'NA', 'value': 0, 'percentage': 0 }],
       'eyes': [{'label': 'blue', 'value': .45, 'percentage': 45},
               {'label': 'gray', 'value': .24, 'percentage': 24},
               {'label': 'hazel', 'value': .13, 'percentage': 13},
               {'label': 'brown', 'value': .1, 'percentage': 10},
-              {'label': 'black', 'value': .08, 'percentage': 8}],
+              {'label': 'black', 'value': .08, 'percentage': 8},
+              {'label': 'NA', 'value': 0, 'percentage': 0 }],
       'complexion': [{'label': 'light', 'value': .6, 'percentage':  60},
               {'label': 'dark', 'value': .33, 'percentage': 33},
-              {'label': 'medium', 'value': .7, 'percentage': 70}],
+              {'label': 'medium', 'value': .7, 'percentage': 70},
+              {'label': 'NA', 'value': 0, 'percentage': 0 }],
       'occupation': [{'label': 'farmer', 'value': .48, 'percentage': 48},
               {'label': 'mechanic', 'value': .24, 'percentage': 24},
               {'label': 'laborer', 'value': .16, 'percentage': 16},
               {'label': 'commercial', 'value': .05, 'percentage': 5},
               {'label': 'professional', 'value': .03, 'percentage': 3},
-              {'label': 'misc', 'value': .04, 'percentage': 4}],
+              {'label': 'misc', 'value': .04, 'percentage': 4},
+              {'label': 'NA', 'value': 0, 'percentage': 0 }],
       'casualties': [
               {'label': 'Mustered Out', 'value': 0.4436, 'percentage': 44.36, 'order': 1},
               {'label': 'Transferred', 'value': 0.0587, 'percentage': 5.87, 'order': 0},
@@ -44,7 +48,8 @@ angular.module('modelCompanyApp')
               {'label': 'Wounded', 'value': 0.1967, 'percentage': 19.67, 'order': 7},
               {'label': 'MIA/Unknown', 'value': 0.2089, 'percentage': 20.89, 'order': 5},
               {'label': 'Died', 'value': 0.0612, 'percentage': 6.12, 'order': 4},
-              {'label': 'KIA/Died Wounds', 'value': 0.0287, 'percentage': 2.87, 'order': 6}]
+              {'label': 'KIA/Died Wounds', 'value': 0.0287, 'percentage': 2.87, 'order': 6},
+              {'label': 'NA', 'value': 0, 'percentage': 0 }]
     }
     $scope.events = [{
         'name': 'Winchester',
@@ -81,7 +86,7 @@ angular.module('modelCompanyApp')
         'type': 'event'
     }]
 
-    $scope.messes = ['Company', "Mess 1", "Mess 2", "Mess 3", "Mess 4", "Mess 5", "Mess 6"];
+    $scope.messes = ['Company', "Mess 1", "Mess 2", "Mess 3", "Mess 4", "Mess 5", "Mess 6", "Officers"];
 
     $scope.timeseriesDisplay = {
       'value': 'Company'

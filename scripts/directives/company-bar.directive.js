@@ -34,9 +34,9 @@ directive('companyBar', ['$window', 'ObjectService',
 
                 function render(data) {
                     data = ObjectService.construct(data, scope.attribute, scope.mess);
-                    data = _.reject(data, function(d) {
-                        return d.label === "NA";
-                    });
+                    // data = _.reject(data, function(d) {
+                    //     return d.label === "NA";
+                    // });
 
                     data = _.sortBy(data, function(d) {
                         return scope.sort === "order" ? _.find(scope.national, function(e) { return e.label === d.label; }).order : d.label;
@@ -88,7 +88,8 @@ directive('companyBar', ['$window', 'ObjectService',
                         .offset([2, 0])
                         .html(function(d) { 
                             var m = Math.round(d.value/scaler) === 1 ? " man, " : " men, ";
-                            return Math.round(d.value/scaler) + m + Math.round(d.percentage)+"%"; 
+                            return d.label.toUpperCase() + " | " +
+                                Math.round(d.value/scaler) + m + Math.round(d.percentage)+"%"; 
                         });
                     svg.call(tip);
 

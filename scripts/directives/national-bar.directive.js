@@ -126,7 +126,7 @@ directive('nationalBar', ['$window', 'ObjectService', 'ColorService',
                             return $(window).width() < 786 ? "rotate(-90)" : "rotate(0)";
                         })
                         .text(function(d) {
-                            return d.label;
+                            return d.label !== "NA" ? d.label : "";
                         });
                 }
             }

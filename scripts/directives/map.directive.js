@@ -73,10 +73,13 @@ directive('map', ['$window', 'ObjectService', 'ColorService',
                 function draw() {
 
                     var data = scope.data;
+                    var value = scope.filter.value;
+                    if (value === "Officers")
+                        value = "Mess 7";
 
-                    if (scope.filter.value && scope.filter.value !== "Company") {
+                    if (value && value !== "Company") {
                         data = _.reject(data, function(d) {
-                            return parseInt(scope.filter.value.split("Mess ")[1]) !== parseInt(d.mess);;
+                            return parseInt(value.split("Mess ")[1]) !== parseInt(d.mess);;
                         });
                     }
 
