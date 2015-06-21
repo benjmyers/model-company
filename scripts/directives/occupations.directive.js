@@ -67,14 +67,16 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
 
                     occupationBars.select(".occ-bar")
                         .transition().duration(200)
-                        .attr("width", function(d) {
+                        .attr("width", function(d, i) {
+                            console.log(d, i)
                             return x(d.percentage);
-                        })
+                        });
 
                     var occExit = occupationBars.exit()
                     occExit.select(".occ-bar")
                         .transition().duration(250)
-                        .attr("width", 0)
+                        .attr("fill", "red")
+                        //.attr("width", 0);
 
                 }
 

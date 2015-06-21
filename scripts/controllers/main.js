@@ -31,7 +31,7 @@ angular.module('modelCompanyApp')
               {'label': 'NA', 'value': 0, 'percentage': 0 }],
       'complexion': [{'label': 'light', 'value': .6, 'percentage':  60},
               {'label': 'dark', 'value': .33, 'percentage': 33},
-              {'label': 'medium', 'value': .7, 'percentage': 70},
+              {'label': 'medium', 'value': .07, 'percentage': 7},
               {'label': 'NA', 'value': 0, 'percentage': 0 }],
       'occupation': [{'label': 'farmer', 'value': .48, 'percentage': 48},
               {'label': 'mechanic', 'value': .24, 'percentage': 24},

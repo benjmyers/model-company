@@ -188,24 +188,35 @@ angular.module('modelCompanyApp')
                     var value = filter.value;
                     if (value === "Officers")
                         value = "Mess 7";
+                    var include;
+                    var length = dataCopy.length;
                     if (value && value != "Company") {
-                        dataCopy = _.reject(dataCopy, function(d) {
-                            return parseInt(value.split("Mess ")[1]) !== parseInt(d.mess);
-                        });
+                        include = parseInt(value.split("Mess ")[1]);
+                        length = _.reject(dataCopy, function(d) { return parseInt(d.mess) !== include;}).length;
                     }
-                    var attrs = _.pluck(dataCopy, attr);
+                    console.log(length)
                     var obj = {};
-                    _.each(attrs, function(a) {
-                        a = a.trim();
-                        (obj[a] === undefined) ? obj[a] = 1: obj[a] ++;
+                    _.each(dataCopy, function(d) {
+                        var a = d[attr].trim();
+                        if (include && parseInt(d.mess) !== include) {
+                            if (obj[a] === undefined) 
+                                obj[a] = 0;
+                        }
+                        else  {
+                            if (obj[a] === undefined)
+                                obj[a] = 1
+                            else
+                                obj[a] ++;
+                        }
                     });
                     var tree = angular.copy(nationalAverages[attr]);
+                    console.log(length)
                     _.each(obj, function(o, key) {
                         var parent = _.find(tree, function(d) {
                             return d.label === self.occupationCategories[key];
                         })
                         var color = ColorService.getColor(attr, key);
-                        var per = (parseInt(o) / dataCopy.length) * 100;
+                        var per = (parseInt(o) / length) * 100;
                         parent.children.push({
                             'label': key,
                             'value': parseInt(o),
