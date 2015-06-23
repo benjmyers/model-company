@@ -95,10 +95,13 @@ a {
 .picture {
   width: 100%;
   overflow: hidden;
+  padding-top: 7%;
 }
 .picture-centered {
+  clear: both;
   text-align: center;
   width: 100%;
+  padding-top: 7%;
   img {
     width: 90%;
   }
@@ -107,7 +110,9 @@ a {
   }
 }
 .picture-caption {
-  width: 100%;
+  clear: both;
+  width: 99%;
+  margin: 0 auto;
   text-align: left;
   padding: 5px;
   font-size: 0.8em;
@@ -119,7 +124,7 @@ a {
     text-align: center;
     .source {
       display: block;
-      float: none;
+      //float: none;
     }
   }
   &.sm {
