@@ -1,7 +1,7 @@
 // bower:scss
 // endbower
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300,700);
-@import url(http://rawgithub.com/Caged/d3-tip/master/examples/example-styles.css);
+// @import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300,700);
+// @import url(http://rawgithub.com/Caged/d3-tip/master/examples/example-styles.css);
 @import 'colors';
 
 .browsehappy {
@@ -11,14 +11,24 @@
   padding: 0.2em 0;
 }
 
+html {
+  width: 100%;
+}
+
 body {
   font-size: 16px;
   font-family: "Open Sans", "san serif", "Ariel";
   color: #424242;
+  width: 100%;
 }
 
 a {
   color: #64889C;
+}
+
+.row {
+  margin: 0;
+  width: 100%;
 }
 
 .splash {
@@ -33,7 +43,7 @@ a {
 /* Header http://www.loc.gov/pictures/resource/ppmsca.34552/?co=cwp */
 .header {
   position: absolute;
-  top: 0;
+  top: 5%;
   left: 0;
   right: 0;
   text-align: center;
@@ -49,12 +59,13 @@ a {
 
 /** General styling for information display sections */
 .intro {
-  margin: 7% auto 0 auto;
+  margin: 7% auto 0 auto !important;
 }
 .text {
-  padding: 0;
+  padding: 0 10px;
+  font-size: 14px;
   width: 100%;
-  margin: 1% auto;
+  margin: 7% auto;
   max-width: 800px;
   .section-header {
     font-size: 2em;
@@ -65,6 +76,7 @@ a {
   }
 }
 .visual {
+  padding: 0 !important;
   .lbl {
     font-family: "League Gothic";
     font-size: 1.6em;
@@ -74,7 +86,7 @@ a {
     text-align: center;
   }
   .lbl-sm {
-    font-size: 12px;
+    font-size: 10px;
     font-weight: 300;
     text-transform: uppercase;
     text-align: center;
@@ -104,9 +116,11 @@ a {
   padding-top: 7%;
   img {
     width: 90%;
+    padding: 2% 0;
   }
   .sm {
-    width: 75%;
+    width: 90%;
+    padding: 2% 0;
   }
 }
 .picture-caption {
@@ -115,7 +129,7 @@ a {
   margin: 0 auto;
   text-align: left;
   padding: 5px;
-  font-size: 0.8em;
+  font-size: 10px;
   .source {
     font-weight: 300;
     float: right;
@@ -124,13 +138,16 @@ a {
     text-align: center;
     .source {
       display: block;
-      //float: none;
     }
   }
-  &.sm {
+  &.desktop {
+    display: none;
     width: 75%;
     margin-left: 11%;
     margin-top: 5%;
+  }
+  &.mobile {
+    display: block;
   }
 }
 .roster {
@@ -178,7 +195,7 @@ text {
 /** Map */
 #map {
   height: 400px;
-  width: 90vw;
+  width: 100vw;
   margin: auto;
 }
 .map-interaction {
@@ -210,12 +227,23 @@ text {
 
 /** Roster section */
 .roster {
+  .table {
+    width: 100%;
+    font-size: 10px;
+  }
+  .table-desktop {
+    display: none;
+  }
+  .table-mobile {
+    display: block;
+  }
   .lbl-sm {
     padding: 8px;
     text-align: left;
   }
   .soldier {
     padding: 0.5em;
+    width: 100vw;
   }
   .kia {
     color: #67001f;
@@ -347,13 +375,34 @@ text {
       max-width: 800px;
   }
   .visual {
-    padding: 0;
+    padding: 0 !important;
     .lbl-sm {
       font-size: 14px;
     }
     .lbl-xs {
       font-size: 12px;
     }
+  }
+  .picture-centered {
+    .sm {
+      width: 75%;
+      padding: 0;
+    }
+  }
+  .picture-caption {
+    font-size: 0.8em;
+    &.desktop {
+      display: block;
+    }
+    &.mobile {
+      display: none;
+    }
+  }
+  .table-desktop {
+    display: block;
+  }
+  .table-mobile {
+    display: none;
   }
   .filter-buttons {
     margin: .5%;
@@ -363,5 +412,8 @@ text {
     display: inline-block;
     width: 50%;
     float: left;
+  }
+  #map {
+    width: 90vw;
   }
 }

@@ -68,7 +68,6 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
                     occupationBars.select(".occ-bar")
                         .transition().duration(200)
                         .attr("width", function(d, i) {
-                            console.log(d, i)
                             return x(d.percentage);
                         });
 
