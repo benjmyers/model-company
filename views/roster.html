@@ -1,41 +1,45 @@
 <div class="roster">
     <div class="lbl">roster</div>
-    <table st-table="displayedData" class="table table-striped table-desktop" st-safe-src="companyData">
-        <thead>
-            <tr>
-                <th st-sort="mess" class="lbl-sm" st-sort-default="true">mess</th>
-                <th st-sort="name" class="lbl-sm">name</th>
-                <th st-sort="occupation" class="lbl-sm">occupation</th>
-                <th st-sort="dateout" class="lbl-sm">date out</th>
-                <th st-sort="cause" class="lbl-sm">cause</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="soldier in displayedData" class="soldier" ng-class="getOutClass(soldier.cause)">
-                <td>{{soldier.mess}}</td>
-                <td class="name">{{soldier.name}}</td>
-                <td>{{soldier.occupation}}</td>
-                <td>{{soldier.dateout | date}}</td>
-                <td>{{soldier.cause}}</td>
-            </tr>
-        </tbody>
-    </table>
-    <table st-table="displayedData" class="table table-striped table-mobile" st-safe-src="companyData">
-        <thead>
-            <tr>
-                <th st-sort="mess" class="lbl-sm" st-sort-default="true">mess</th>
-                <th st-sort="name" class="lbl-sm">name</th>
-                <th st-sort="occupation" class="lbl-sm">occupation</th>
-                <th st-sort="cause" class="lbl-sm">cause</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="soldier in displayedData" class="soldier" ng-class="getOutClass(soldier.cause)">
-                <td>{{soldier.mess}}</td>
-                <td class="name">{{soldier.name}}</td>
-                <td>{{soldier.occupation}}</td>
-                <td>{{soldier.cause}}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="table-desktop">
+        <table st-table="displayedData" class="table table-striped" st-safe-src="companyData">
+            <thead>
+                <tr>
+                    <th st-sort="mess" class="lbl-sm" st-sort-default="true">mess</th>
+                    <th st-sort="name" class="lbl-sm">name</th>
+                    <th st-sort="occupation" class="lbl-sm">occupation</th>
+                    <th st-sort="dateout" class="lbl-sm">date out</th>
+                    <th st-sort="cause" class="lbl-sm">cause</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="soldier in displayedData" class="soldier" ng-class="getOutClass(soldier.cause)">
+                    <td>{{soldier.mess}}</td>
+                    <td class="name">{{soldier.name}}</td>
+                    <td>{{soldier.occupation}}</td>
+                    <td>{{soldier.dateout | date}}</td>
+                    <td>{{soldier.cause}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="table-mobile">
+        <table st-table="displayedData" class="table table-striped" st-safe-src="companyData">
+            <thead>
+                <tr>
+                    <th st-sort="mess" class="lbl-sm" st-sort-default="true">mess</th>
+                    <th st-sort="name" class="lbl-sm">name</th>
+                    <th st-sort="occupation" class="lbl-sm">occupation</th>
+                    <th st-sort="cause" class="lbl-sm">cause</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="soldier in displayedData" class="soldier" ng-class="getOutClass(soldier.cause)">
+                    <td>{{soldier.mess}}</td>
+                    <td class="name">{{soldier.name}}</td>
+                    <td>{{soldier.occupation}}</td>
+                    <td>{{soldier.cause}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>

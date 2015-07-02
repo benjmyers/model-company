@@ -85,6 +85,7 @@ directive('companyBar', ['$window', 'ObjectService',
 
                     var tip = d3.tip()
                         .attr('class', 'd3-tip')
+                        .direction('n')
                         .offset([2, 0])
                         .html(function(d) { 
                             var m = Math.round(d.value/scaler) === 1 ? " man, " : " men, ";
