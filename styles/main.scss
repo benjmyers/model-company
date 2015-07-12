@@ -108,6 +108,10 @@ a {
   }
   .item {
     display: inline-block;
+    .lbl {
+      margin-bottom: 2%;
+      font: 800 1em "Open Sans";
+    }
   }
 }
 .picture {
@@ -188,7 +192,14 @@ text {
     stroke: $gray;
     shape-rendering: crispEdges;
 }
-
+.sources p {
+  margin: 0 0 10px;
+}
+.quote {
+  font-size: 0.8em;
+  margin: 1em auto;
+  width: 70%;
+}
 .key {
   padding: 0.5em 0;
   text-align: center;
