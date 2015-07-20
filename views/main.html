@@ -1,7 +1,12 @@
-<img class="splash" src="img/139th.png"/>
-<div class="header">
-    <div class="header-title">Model Company</div>
-    <p class="header-sub">An uncommon look at the common Civil War soldier.</p>
+<div class="header-section">
+    <img class="splash" src="img/139th.png" />
+    <div class="header">
+        <div class="header-title">Model Company</div>
+        <p class="header-sub">An uncommon look at the common Civil War soldier.</p>
+    </div>
+    <div class="scroll-arrow">
+        <div class="arrow"></div>
+    </div>
 </div>
 <div class="container-fluid">
     <div class="row">
@@ -21,13 +26,13 @@
 
     <div class="row picture-centered">
         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-            <img src="img/renard_rusche.jpg"/>
+            <img class="lazy" data-original="img/renard_rusche.jpg"/>
         </div>
         <div class="col-xs-12 col-sm-12   col-md-4 col-lg-4">
-            <img src="img/brooks.jpg"/>
+            <img class="lazy" data-original="img/brooks.jpg"/>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-            <img src="img/ney_levi.jpg"/>
+            <img class="lazy" data-original="img/ney_levi.jpg"/>
         </div>
         <div class="picture-caption desktop">Charles Renard, far left, of Mess 2 poses with a friend from the 53rd Pennsylvania Infantry. Captain George A. Brooks, center, was killed in action at Antietam on Sept. 16th, 1862. Private Levi Ney, right, killed in action at Peach Tree Creek on July 21st, 1864.<span class="source"> SOURCE: Private collection.</span></div>
         <div class="picture-caption mobile">From top to bottom: Charles Renard, far left, of Mess 2 poses with a friend from the 53rd Pennsylvania Infantry. Captain George A. Brooks was killed in action at Antietam on Sept. 16th, 1862. Private Levi Ney was killed in action at Peach Tree Creek on July 21st, 1864.<span class="source"> SOURCE: Private collection.</span></div>
@@ -41,10 +46,10 @@
     </div>
     <div class="row picture-centered">
         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">
-            <img src="img/awenrich.jpg"/>
+            <img class="lazy" data-original="img/awenrich.jpg"/>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-            <img class = "sm" src="img/wenrich_j.jpg"/>
+            <img class = "lazy sm" data-original="img/wenrich_j.jpg"/>
             <div class="picture-caption sm desktop">Brothers Amos Wenrich, left, age 19, and John Wenrich, above, age 23, served in Mess 3. Amos drowned Jan. 31st, 1862 while guarding Dam. No. 6 outside of Hancock, MD. John was killed in action at Gettysburg, July 3rd, 1863.<span class="source"> SOURCE: Private collection.</span></div>
             <div class="picture-caption mobile">Brothers Amos Wenrich, age 19, and John Wenrich,age 23, in order from top to bottom, served in Mess 3. Amos drowned Jan. 31st, 1862 while guarding Dam. No. 6 outside of Hancock, MD. John was killed in action at Gettysburg, July 3rd, 1863.<span class="source"> SOURCE: Private collection.</span></div>
         </div>
@@ -61,10 +66,10 @@
 
      <div class="row picture-centered">
         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">
-            <img src="img/frantz_david.jpg"/>
+            <img class="lazy" data-original="img/frantz_david.jpg"/>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-            <img src="img/frantz_henry.jpg"/>
+            <img class="lazy" data-original="img/frantz_henry.jpg"/>
         </div>
         <div class="picture-caption sm desktop">Brothers David and Henry Frantz (left and above respectively) served in Mess 3 for all four years of the war and returned to their homes in West Hanover Township outside of Harrisburg, PA.<span class="source"> SOURCE: Private collection.</span></div>
         <div class="picture-caption mobile">Brothers David and Henry Frantz (in order from top to bottom) served in Mess 3 for all four years of the war and returned to their homes in West Hanover Township outside of Harrisburg, PA.<span class="source"> SOURCE: Private collection.</span></div>
@@ -75,58 +80,19 @@
     </div>
 
     <div class="row">
-        <img class="picture" src="img/reunion.jpg"/>
-        <div class="picture-caption">Veterans of the 46th Pennsylvania gather for a reunion in 1894.<span class="source"> SOURCE: The collection of K. Dickersin.</span></div>
+        <div class="visual" ng-include="'views/conclusion.html'"></div>
+    
+        <img class="lazy picture" data-original="img/reunion.jpg"/>
+        <div class="lazy picture-caption">Veterans of the 46th Pennsylvania gather for a reunion in 1894.<span class="source"> SOURCE: The collection of K. Dickersin.</span></div>
     </div>
     <div class="row footer">
-        <span>Made by <a href="http://meredithmmyers.com">Meredith M Myers</a> | <a href="https://twitter.com/meredithmmyers">@meredithmmyers</a> | 2015</span>
-    </div>
-    <div class="row footnotes">
-        <div class="visual col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <div class="text sources">
-                <div class="lbl">sources</div>
-                
-                <p id="footnote-1">
-                   1. Family Search <a href="https://familysearch.org/learn/wiki/en/46th_Regiment,_Pennsylvania_Infantry">https://familysearch.org/learn/wiki/en/46th_Regiment,_Pennsylvania_Infantry</a>
-                      <a href="#footnote-1-ref" title="return to text">&#8617</a>
-                </p>
-                <p id="footnote-2">
-                   2. City-Data.com <a href="http://www.city-data.com/us-cities/The-Northeast/Harrisburg-History.html">http://www.city-data.com/us-cities/The-Northeast/Harrisburg-History.html</a>
-                      <a href="#footnote-2-ref" title="return to text">&#8617</a>
-                </p>
-                <p id="footnote-3">
-                   3. Camp Curtain Historical Society. <a href="http://www.campcurtin.org/id5.html">http://www.campcurtin.org/id5.html</a>
-                      <a href="#footnote-3-ref" title="return to text">&#8617</a> 
-                </p>
-                <p id="footnote-4">
-                   4. The Diary of Captain George A Brooks. <a href="http://www2.lib.unc.edu/mss/inv/b/Brooks,George_A.html">http://www2.lib.unc.edu/mss/inv/b/Brooks,George_A.html</a>
-                      <a href="#footnote-4-ref" title="return to text">&#8617</a> 
-                </p>
-                <p id="footnote-5">
-                   5. Civil War Trust. <a href="http://www.civilwar.org/battlefields/cedar-mountain.html?tab=home">http://www.civilwar.org/battlefields/cedar-mountain.html?tab=home</a>
-                      <a href="#footnote-5-ref" title="return to text">&#8617</a> 
-                </p>
-                <p id="footnote-6">
-                   6. Civil War Trust. <a href="http://www.civilwar.org/battlefields/antietam.html?tab=facts">http://www.civilwar.org/battlefields/antietam.html?tab=facts</a>
-                      <a href="#footnote-6-ref" title="return to text">&#8617</a> 
-                </p>
-                <p id="footnote-7">
-                   7. Massachusetts 150. <a href="http://www.ma150.org/day-by-day/1863-01-20/mud-march-begins">http://www.ma150.org/day-by-day/1863-01-20/mud-march-begins</a>
-                      <a href="#footnote-7-ref" title="return to text">&#8617</a> 
-                </p>
-                <p id="footnote-8">
-                   8. Williams, Alpheus S. (1995). <i>From the Cannon's Mouth.</i> p. 192.
-                      <a href="#footnote-8-ref" title="return to text">&#8617</a> 
-                </p>
-                <p id="footnote-9">
-                   9. Civil War Trust. <a href="http://www.civilwar.org/battlefields/chancellorsville.html?tab=facts">http://www.civilwar.org/battlefields/chancellorsville.html?tab=facts</a>
-                      <a href="#footnote-9-ref" title="return to text">&#8617</a> 
-                </p>
-                <p id="footnote-10">
-                   10. Machette, John. Gettysburg Monument Dedication (1889).
-                      <a href="#footnote-10-ref" title="return to text">&#8617</a> 
-                </p>
-            </div>
+        <div class="text">
+            <div>Made by <a href="http://meredithmmyers.com">Meredith M Myers</a> | <a href="https://twitter.com/meredithmmyers">@meredithmmyers</a></div>
+            <div>Special thanks to <a href="https://twitter.com/alissascheller">@alissascheller</a> for editing and listening to me talk about the Civil War endlessly.</div>
         </div>
+    </div>
+
+    <div class="row footnotes">
+        <div class="visual col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-include="'views/credits.html'"></div>
     </div>
 </div>

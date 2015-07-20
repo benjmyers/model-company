@@ -13,6 +13,8 @@ angular.module('modelCompanyApp')
     $scope.getBorderStyle = function(mess) {
       return "m" + mess;
     }
+    $("img.lazy").lazyload({threshold : 200});
+
     $scope.nationalAverages = {
       'age': 25,
       'height': 68,

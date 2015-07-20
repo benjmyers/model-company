@@ -194,7 +194,6 @@ angular.module('modelCompanyApp')
                         include = parseInt(value.split("Mess ")[1]);
                         length = _.reject(dataCopy, function(d) { return parseInt(d.mess) !== include;}).length;
                     }
-                    console.log(length)
                     var obj = {};
                     _.each(dataCopy, function(d) {
                         var a = d[attr].trim();
@@ -210,7 +209,6 @@ angular.module('modelCompanyApp')
                         }
                     });
                     var tree = angular.copy(nationalAverages[attr]);
-                    console.log(length)
                     _.each(obj, function(o, key) {
                         var parent = _.find(tree, function(d) {
                             return d.label === self.occupationCategories[key];

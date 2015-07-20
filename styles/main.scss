@@ -1,7 +1,6 @@
 // bower:scss
 // endbower
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300,700);
-@import url(http://rawgithub.com/Caged/d3-tip/master/examples/example-styles.css);
 @import 'colors';
 
 .browsehappy {
@@ -62,6 +61,28 @@ a {
   }
 }
 
+.header-section {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  margin: auto;
+  top: auto;
+  bottom: 10%;
+  .scroll-arrow {
+    display: none;
+    width: 100%;
+    position: absolute;
+    bottom: 18%;
+      .arrow {
+          background-image: url('../img/arrow.svg');
+          background-repeat: no-repeat;
+          background-position: top center;
+          height: 35px;
+          width: 70px;
+          margin: auto;
+      }
+  }
+}
 /** General styling for information display sections */
 .intro {
   margin: 7% auto 0 auto !important;
@@ -116,6 +137,7 @@ a {
 }
 .picture {
   width: 100%;
+  height: 100%;
   overflow: hidden;
   padding-top: 7%;
 }
@@ -123,6 +145,7 @@ a {
   clear: both;
   text-align: center;
   width: 100%;
+  height: 100%;
   padding-top: 7%;
   img {
     width: 90%;
@@ -193,6 +216,7 @@ text {
     shape-rendering: crispEdges;
 }
 .sources p {
+  font-size: 0.9em;
   margin: 0 0 10px;
 }
 .quote {
@@ -245,6 +269,7 @@ text {
   float: none;
   path.domain {
     stroke: none;
+    fill: none;
   }
 }
 
@@ -389,6 +414,12 @@ text {
             font-size: 1em;
         }
     }
+    .header-section {
+        .scroll-arrow {
+            display: block;
+        }
+    }
+
     /** General Overrides */
     
     text {
@@ -456,5 +487,61 @@ text {
     #map {
         width: 90vw;
     }
+}
+
+.d3-tip {
+  line-height: 1;
+  font-weight: 300;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  pointer-events: none;
+}
+
+/* Northward tooltips */
+.d3-tip.n:after {
+  content: "\25BC";
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+  text-align: center;
+}
+
+/* Eastward tooltips */
+.d3-tip.e:after {
+  content: "\25C0";
+  margin: -4px 0 0 0;
+  top: 50%;
+  left: -8px;
+}
+
+/* Southward tooltips */
+.d3-tip.s:after {
+  content: "\25B2";
+  margin: 0 0 1px 0;
+  top: -8px;
+  left: 0;
+  text-align: center;
+}
+
+/* Westward tooltips */
+.d3-tip.w:after {
+  content: "\25B6";
+  margin: -4px 0 0 -1px;
+  top: 50%;
+  left: 100%;
 }
 

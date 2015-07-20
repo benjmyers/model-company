@@ -41,11 +41,11 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
                     svgctr.data(data);
 
                     // UPDATE
-                    svgctr.select('.mess-circle')
-                        .transition().duration(200)
-                        .attr("r", function(d) {
-                            return scope.filter.value === 'Company' ? 0 : getCoPercent(d, companyCt) * scaler;
-                        });
+                    // svgctr.select('.mess-circle')
+                    //     .transition().duration(200)
+                    //     .attr("r", function(d) {
+                    //         return scope.filter.value === 'Company' ? 0 : getCoPercent(d, companyCt) * scaler;
+                    //     });
 
                     header.data(data);
 
@@ -90,8 +90,8 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
                         data = ObjectService.makeOccupationTree(scope.data, scope.attribute, scope.filter);
 
                     var width = $('.container-fluid').width(),
-                        diameter = width / 6, // width divided by number of messes
-                        height = $(window).width() < 786 ? 200 : 570;
+                        diameter = $(window).width() < 786 ? width / 7 : width / 6, // width divided by number of messes
+                        height = $(window).width() < 786 ? 125 : 400;
                     scaler = $(window).width() < 786 ? 0.5 : 1.5;
 
                     svg = d3.select(element[0]).append("svg")
@@ -131,7 +131,7 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
                         .style("text-anchor", function(d) {
                             return $(window).width() >= 786 ? "middle" : "start"
                         })
-                        .attr("class", "lbl-xs lower")
+                        .attr("class", "lbl-sm lower")
                         .attr("transform", function(d) {
                             return $(window).width() >= 786 ? "rotate(0)" : "rotate(-90)";
                         })
@@ -149,7 +149,7 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
                         .attr("y", spacing * 2)
                         .attr("x", labelx)
                         .style("text-anchor", "end")
-                        .attr("class", "lbl-xs lower")
+                        .attr("class", "lbl-sm lower")
                         .text("National");
 
                     headerCtr.append("line")
@@ -163,7 +163,7 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
                         .attr("y", spacing * 2)
                         .style("text-anchor", "middle")
                         .style("fill", ColorService.national)
-                        .attr("class", "lbl-xs lower natl-lbl")
+                        .attr("class", "lbl-sm lower natl-lbl")
                         .text(function(d) {
                             return d.percentage + "%";
                         });
@@ -172,7 +172,7 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
                         .attr("y", spacing * 3)
                         .attr("x", labelx)
                         .style("text-anchor", "end")
-                        .attr("class", "lbl-xs lower")
+                        .attr("class", "lbl-sm lower")
                         .text("Company");
 
                     headerCtr.append("line")
@@ -186,7 +186,7 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
                         .attr("y", spacing * 3)
                         .style("text-anchor", "middle")
                         .style("fill", ColorService.company)
-                        .attr("class", "lbl-xs lower")
+                        .attr("class", "lbl-sm lower")
                         .text(function(d) {
                             return getCoPercent(d, companyCt) + "%";
                         });
@@ -195,7 +195,7 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
                         .attr("y", spacing * 4)
                         .attr("x", labelx)
                         .style("text-anchor", "end")
-                        .attr("class", "mess-row lbl-xs lower")
+                        .attr("class", "mess-row lbl-sm lower")
                         .text("Mess");
 
                     headerCtr.append("line")
@@ -210,7 +210,7 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
                         .attr("y", spacing * 4)
                         .style("text-anchor", "middle")
                         .style("fill", ColorService.mess)
-                        .attr("class", "lbl-xs lower mess-lbl mess-row");
+                        .attr("class", "lbl-sm lower mess-lbl mess-row");
 
                     d3.selectAll(".mess-row")
                         .attr("display", "none");
@@ -222,63 +222,63 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
                         .attr("height", diameter + 50)
                         .attr("class", "svg-ctr")
                         .attr("transform", function(d, i) {
-                            return "translate(" + (20) + "," + ((diameter / 2) + spacing * 4) + ")";
+                            return "translate(" + (20) + "," + (0) + ")";
                         })
 
-                    var natlCtr = svgctr.append("g")
-                        .attr("class", "national")
-                        .attr("transform", function(d, i) {
-                            return "translate(" + (diameter * i + (diameter / 2)) + "," + 20 + ")"
-                        });
+                    // var natlCtr = svgctr.append("g")
+                    //     .attr("class", "national")
+                    //     .attr("transform", function(d, i) {
+                    //         return "translate(" + (diameter * i + (diameter / 2)) + "," + 20 + ")"
+                    //     });
 
-                    natlCtr.append("circle")
-                        .attr("r", function(d) {
-                            return (d.percentage * scaler);
-                        })
-                        .attr("class", "natl-circle")
-                        .style("fill", "none")
-                        .style("stroke", ColorService.national)
-                        .style("stroke-width", "2px")
+                    // natlCtr.append("circle")
+                    //     .attr("r", function(d) {
+                    //         return (d.percentage * scaler);
+                    //     })
+                    //     .attr("class", "natl-circle")
+                    //     .style("fill", "none")
+                    //     .style("stroke", ColorService.national)
+                    //     .style("stroke-width", "2px")
 
-                    var coCtr = svgctr.append("g")
-                        .attr("class", "company")
-                        .attr("transform", function(d, i) {
-                            return "translate(" + (diameter * i + (diameter / 2)) + "," + 20 + ")"
-                        });
+                    // var coCtr = svgctr.append("g")
+                    //     .attr("class", "company")
+                    //     .attr("transform", function(d, i) {
+                    //         return "translate(" + (diameter * i + (diameter / 2)) + "," + 20 + ")"
+                    //     });
 
-                    coCtr.append("circle")
-                        .attr("r", function(d) {
-                            return getCoPercent(d, companyCt) * scaler;
-                        })
-                        .attr("class", "co-circle")
-                        .style("fill", "none")
-                        .style("stroke", ColorService.company)
-                        .style("stroke-width", "2px")
+                    // coCtr.append("circle")
+                    //     .attr("r", function(d) {
+                    //         return getCoPercent(d, companyCt) * scaler;
+                    //     })
+                    //     .attr("class", "co-circle")
+                    //     .style("fill", "none")
+                    //     .style("stroke", ColorService.company)
+                    //     .style("stroke-width", "2px")
 
-                    var circleTip = d3.tip()
-                        .attr('class', 'd3-tip')
-                        .html(function(d) {
-                            return getCoPercent(d, companyCt) + "%";
-                        });
+                    // var circleTip = d3.tip()
+                    //     .attr('class', 'd3-tip')
+                    //     .html(function(d) {
+                    //         return getCoPercent(d, companyCt) + "%";
+                    //     });
 
-                    var messCtr = svgctr.append("g")
-                        .attr("class", "mess")
-                        .attr("transform", function(d, i) {
-                            return "translate(" + (diameter * i + (diameter / 2)) + "," + 20 + ")"
-                        });
+                    // var messCtr = svgctr.append("g")
+                    //     .attr("class", "mess")
+                    //     .attr("transform", function(d, i) {
+                    //         return "translate(" + (diameter * i + (diameter / 2)) + "," + 20 + ")"
+                    //     });
 
-                    messCtr.call(circleTip);
-                    messCtr.append("circle")
-                        .attr("r", function(d) {
-                            return 0;
-                        })
-                        .attr("class", "mess-circle")
-                        .style("fill", ColorService.mess)
-                        .style("fill-opacity", 0.3)
-                        .style("stroke", ColorService.mess)
-                        .style("stroke-width", "3px")
-                        .on('mouseover', circleTip.show)
-                        .on('mouseout', circleTip.hide);
+                    // messCtr.call(circleTip);
+                    // messCtr.append("circle")
+                    //     .attr("r", function(d) {
+                    //         return 0;
+                    //     })
+                    //     .attr("class", "mess-circle")
+                    //     .style("fill", ColorService.mess)
+                    //     .style("fill-opacity", 0.3)
+                    //     .style("stroke", ColorService.mess)
+                    //     .style("stroke-width", "3px")
+                    //     .on('mouseover', circleTip.show)
+                    //     .on('mouseout', circleTip.hide);
 
                     if ($(window).width() >= 786) {
                         var barCtr = svgctr.append("g")
@@ -325,7 +325,7 @@ directive('circlePack', ['$window', 'ObjectService', 'ColorService',
                             })
                             .attr("dy", 14)
                             .style("text-anchor", "end")
-                            .attr("class", "lbl-xs lower")
+                            .attr("class", "lbl-sm lower")
                             .text(function(d) {
                                 return d.label;
                             })
