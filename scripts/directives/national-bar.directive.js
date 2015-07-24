@@ -33,7 +33,7 @@ directive('nationalBar', ['$window', 'ObjectService', 'ColorService',
                     var margin, width, height, x, y;
                     if ($(window).width() < 786) {
                         margin = {
-                            top: 55,
+                            top: 65,
                             right: 10,
                             bottom: 2,
                             left: 60

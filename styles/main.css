@@ -310,7 +310,7 @@ text {
 /** Map */
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003256}}
 #map {
-  height: 400px;
+  height: 50vh;
   width: 100vw;
   margin: auto;
 }
