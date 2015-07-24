@@ -36,6 +36,14 @@ a {
 
 .splash {
   width: 100%;
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url('../img/139th_2.jpg');
+  background-position: center center;
+  @media screen and (max-width: 768px) {
+      background-image: url('../img/139th_2_mobile.jpg');
+  }
 }
 
 .container-fluid {
@@ -46,18 +54,18 @@ a {
 /* Header http://www.loc.gov/pictures/resource/ppmsca.34552/?co=cwp */
 .header {
   position: absolute;
-  top: 5%;
+  top: 16%;
   left: 0;
   right: 0;
   text-align: center;
   .header-title {
     font-family: "League Gothic", "Ariel", "san serif";
-    font-size: 2em;
+    font-size: 3em;
     text-transform: uppercase;
   }
   .header-sub {
     margin: 0 !important;
-    font-size: 0.7em;
+    font-size: 0.8em;
   }
 }
 
@@ -69,10 +77,10 @@ a {
   top: auto;
   bottom: 10%;
   .scroll-arrow {
-    display: none;
+    display: block;
     width: 100%;
     position: absolute;
-    bottom: 18%;
+    bottom: 10%;
       .arrow {
           background-image: url('../img/arrow.svg');
           background-repeat: no-repeat;
@@ -412,11 +420,6 @@ text {
         }
         .header-sub {
             font-size: 1em;
-        }
-    }
-    .header-section {
-        .scroll-arrow {
-            display: block;
         }
     }
 
