@@ -172,7 +172,7 @@ a {
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003146}}
 .picture {
   width: 100%;
-  height: 100%;
+  height: auto;
   overflow: hidden;
   padding-top: 7%;
 }
@@ -182,7 +182,7 @@ a {
   clear: both;
   text-align: center;
   width: 100%;
-  height: 100%;
+  height: auto;
   padding-top: 7%;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003158}}
