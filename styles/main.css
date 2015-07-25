@@ -204,37 +204,38 @@ a {
   text-align: left;
   padding: 5px;
   font-size: 10px;
+  line-height: 1.42857143 !important;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003174}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003175}}
 .picture-caption .source {
   font-weight: 300;
   float: right;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003178}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003179}}
 .picture-caption.centered {
   text-align: center;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003180}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003181}}
 .picture-caption.centered .source {
   display: block;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003184}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003185}}
 .picture-caption.desktop {
   display: none;
   margin-top: 5%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003188}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003189}}
 .picture-caption.mobile {
   display: block;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003192}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003193}}
 .roster {
   width: 95%;
   margin: 7% auto;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003197}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003198}}
 .dropcap {
   display: block;
   color: #5c5c5c;
@@ -248,56 +249,56 @@ a {
 
 /** Visualization specific styles */
 /** General Overrides */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003211}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003212}}
 text {
   font-size: 10px;
   font-weight: 300;
   font-family: 'Open Sans';
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003216}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003217}}
 .tick text {
   font-weight: 300;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003219}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003220}}
 .tick line {
   fill: none;
   stroke: #e5e8ec;
   shape-rendering: crispEdges;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003224}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003225}}
 .sources p {
   font-size: 0.9em;
   margin: 0 0 10px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003228}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003229}}
 .quote {
   font-size: 0.8em;
   margin: 1em auto;
   width: 70%;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003233}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003234}}
 .key {
   padding: 0.5em 0;
   text-align: center;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003236}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003237}}
 .key div {
   display: inline-block;
   vertical-align: middle;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003240}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003241}}
 .key .national {
   width: 20px;
   height: 20px;
   margin: 0px 5px;
   background: #053061;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003246}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003247}}
 .key .company {
   width: 20px;
   height: 20px;
@@ -306,99 +307,99 @@ text {
 }
 
 /** Map */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003254}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003255}}
 #map {
   height: 50vh;
   width: 100vw;
   margin: auto;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003259}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003260}}
 .map-interaction {
   display: inline-block;
   background-color: #fff;
   margin-right: 20px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003263}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003264}}
 .map-interaction .btn {
   width: 43px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003266}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003267}}
 .map-interaction .off {
   background-color: #ccc;
 }
 
 /** Age & height display bar charts */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003272}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003273}}
 .bar-half {
   display: block;
   width: 100%;
   float: none;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003276}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003277}}
 .bar-half path.domain {
   stroke: none;
   fill: none;
 }
 
 /** Company and National Bars */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003283}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003284}}
 .bar-item {
   margin: 1em 0em;
 }
 
 /** Roster section */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003289}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003290}}
 .roster .table {
   width: 100%;
   font-size: 10px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003293}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003294}}
 .roster .table-desktop {
   display: none;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003296}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003297}}
 .roster .table-mobile {
   display: block;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003299}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003300}}
 .roster .lbl-sm {
   padding: 8px;
   text-align: left;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003303}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003304}}
 .roster .soldier {
   padding: 0.5em;
   width: 100vw;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003307}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003308}}
 .roster .kia {
   color: #67001f;
   font-weight: 700;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003311}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003312}}
 .roster .died {
   color: #b2182b;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003314}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003315}}
 .roster .wounded {
   color: #d6604d;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003317}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003318}}
 .roster .missing {
   color: #f4a582;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003323}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003324}}
 .roster .out {
   font-size: 0.8em;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003326}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003327}}
 .roster .st-sort-ascent:after {
   content: '\25B2';
   font-size: 10px;
   padding-left: 5px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003332}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003333}}
 .roster .st-sort-descent:after {
   content: '\25BC';
   font-size: 10px;
@@ -406,63 +407,63 @@ text {
 }
 
 /** Mess filter for visualizations */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003340}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003341}}
 .filter-buttons {
   text-align: center;
   margin: 1em;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003343}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003344}}
 .filter-buttons .mess-check {
   display: inline-block;
   margin: 0 5px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003347}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003348}}
 .filter-buttons .m1 {
   border-bottom: 4px solid #67001f;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003350}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003351}}
 .filter-buttons .m2 {
   border-bottom: 4px solid #b2182b;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003353}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003354}}
 .filter-buttons .m3 {
   border-bottom: 4px solid #d6604d;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003356}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003357}}
 .filter-buttons .m4 {
   border-bottom: 4px solid #92c5de;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003359}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003360}}
 .filter-buttons .m5 {
   border-bottom: 4px solid #4393c3;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003362}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003363}}
 .filter-buttons .m6 {
   border-bottom: 4px solid #053061;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003365}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003366}}
 .filter-buttons .mess-label {
   font-size: 14px;
   font-weight: 300;
   padding: 0 3px;
   margin-bottom: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003371}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003372}}
 .filter-buttons .color-key {
   display: inline-block;
   height: 25px;
   width: 25px;
   vertical-align: middle;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003377}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003378}}
 .filter-buttons .btn {
   margin: 0 0 2px 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003380}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003381}}
 .filter-buttons .btn:focus {
   outline: none;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003383}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003384}}
 .filter-buttons .filter-label {
   display: inline-block;
   font-size: 14px;
@@ -471,7 +472,7 @@ text {
 }
 
 /** D3 tip overrides */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003392}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003393}}
 .d3-tip {
   font-size: 14px;
   padding: 5px;
@@ -479,13 +480,13 @@ text {
   font-weight: 300;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003399}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003400}}
 .d3-tip.n:after {
   margin: -3px 0 0 0;
 }
 
 /** Footer */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003404}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003405}}
 .footer {
   margin: 1em 0em;
   padding: 1em 0em;
@@ -496,26 +497,26 @@ text {
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003414}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003415}}
   .header {
     top: 17vh;
   }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003416}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003417}}
   .header .header-title {
     font-size: 4em;
   }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003419}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003420}}
   .header .header-sub {
     font-size: 1em;
   }
 
   /** General Overrides */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003426}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003427}}
   text {
     font-size: 14px;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003429}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003430}}
   .dropcap {
     font-size: 115px;
     margin-right: 6px;
@@ -524,21 +525,21 @@ text {
   }
 
   /** General styling for information display sections */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003437}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003438}}
   .roster .table {
     font-size: 14px;
     width: 100% !important;
   }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003441}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003442}}
   .roster .table-desktop {
     display: block;
   }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003444}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003445}}
   .roster .table-mobile {
     display: none;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003448}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003449}}
   .text {
     width: 95%;
     margin: 7% auto;
@@ -546,58 +547,58 @@ text {
     font-size: 16px;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003454}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003455}}
   .visual {
     padding: 0 !important;
   }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003456}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003457}}
   .visual .lbl-sm {
     font-size: 14px;
   }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003459}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003460}}
   .visual .lbl-xs {
     font-size: 12px;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003464}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003465}}
   .picture-centered .sm {
     width: 75%;
     padding: 0;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003469}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003470}}
   .picture-caption {
     font-size: 0.8em;
     line-height: 1.42857143 !important;
   }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003472}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003473}}
   .picture-caption.desktop {
     display: block;
   }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003475}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003476}}
   .picture-caption.mobile {
     display: none;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003479}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003480}}
   .filter-buttons {
     margin: .5%;
   }
 
   /** Age & height display bar charts */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003484}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003485}}
   .bar-half {
     display: inline-block;
     width: 50%;
     float: left;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003489}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003490}}
   #map {
     width: 90vw;
   }
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003494}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003495}}
 .d3-tip {
   line-height: 1;
   font-weight: 300;
@@ -609,7 +610,7 @@ text {
 }
 
 /* Creates a small triangle extender for the tooltip */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003505}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003506}}
 .d3-tip:after {
   box-sizing: border-box;
   display: inline;
@@ -622,7 +623,7 @@ text {
 }
 
 /* Northward tooltips */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003517}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003518}}
 .d3-tip.n:after {
   content: "\25BC";
   margin: -1px 0 0 0;
@@ -632,7 +633,7 @@ text {
 }
 
 /* Eastward tooltips */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003526}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003527}}
 .d3-tip.e:after {
   content: "\25C0";
   margin: -4px 0 0 0;
@@ -641,7 +642,7 @@ text {
 }
 
 /* Southward tooltips */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003534}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003535}}
 .d3-tip.s:after {
   content: "\25B2";
   margin: 0 0 1px 0;
@@ -651,7 +652,7 @@ text {
 }
 
 /* Westward tooltips */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003543}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003544}}
 .d3-tip.w:after {
   content: "\25B6";
   margin: -4px 0 0 -1px;
