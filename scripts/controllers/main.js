@@ -14,16 +14,16 @@ angular.module('modelCompanyApp')
       return "m" + mess;
     }
     
-    if ( $(window).width() < 786) {
-      $(window).bind("load", function() {
-        var timeout = setTimeout(function() {
-            $("img.lazy").trigger("sporty")
-        }, 2000);
-      });
-    }
-    else {
-      $("img.lazy").lazyload({threshold : 200});
-    }
+    // if ( $(window).width() < 786) {
+    //   $(window).bind("load", function() {
+    //     var timeout = setTimeout(function() {
+    //         $("img.lazy").trigger("sporty")
+    //     }, 2000);
+    //   });
+    // }
+    // else {
+    //   $("img.lazy").lazyload({threshold : 200});
+    // }
 
 
     $scope.nationalAverages = {
