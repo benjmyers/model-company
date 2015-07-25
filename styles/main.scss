@@ -183,8 +183,6 @@ a {
   }
   &.desktop {
     display: none;
-    width: 75%;
-    margin-left: 11%;
     margin-top: 5%;
   }
   &.mobile {
@@ -470,6 +468,7 @@ text {
     }
     .picture-caption {
         font-size: 0.8em;
+        line-height: 1.42857143;
         &.desktop {
             display: block;
         }
