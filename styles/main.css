@@ -568,7 +568,7 @@ text {
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003469}}
   .picture-caption {
     font-size: 0.8em;
-    line-height: 1.42857143;
+    line-height: 1.42857143 !important;
   }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/meredith\/Documents\/stuff\/model-company\/styles\/main\.scss}line{font-family:\00003472}}
   .picture-caption.desktop {

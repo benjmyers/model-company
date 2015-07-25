@@ -468,7 +468,7 @@ text {
     }
     .picture-caption {
         font-size: 0.8em;
-        line-height: 1.42857143;
+        line-height: 1.42857143 !important;
         &.desktop {
             display: block;
         }
