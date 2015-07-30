@@ -105,7 +105,8 @@ directive('map', ['$window', 'ObjectService', 'ColorService',
                             fillOpacity: 0.5
                         });
                         var loc = getLocation(d[0], d[1])
-                        circle.bindPopup("<b>" + loc.town + "</b><div>" + v + " men</div>");
+                        var popupTense = v > 1 ? " men" : " man";
+                        circle.bindPopup("<b>" + loc.town + "</b><div>" + v + popupTense + "</div>");
                         pts.push(circle);
                     });
 

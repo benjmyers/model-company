@@ -12,7 +12,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="soldier in displayedData" class="soldier" ng-class="getOutClass(soldier.cause)">
+                <tr ng-repeat="soldier in displayedData" class="soldier">
                     <td>{{soldier.mess}}</td>
                     <td class="name">{{soldier.name}}</td>
                     <td>{{soldier.occupation}}</td>
@@ -33,7 +33,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="soldier in displayedData" class="soldier" ng-class="getOutClass(soldier.cause)">
+                <tr ng-repeat="soldier in displayedData" class="soldier">
                     <td>{{soldier.mess}}</td>
                     <td class="name">{{soldier.name}}</td>
                     <td>{{soldier.occupation}}</td>
