@@ -48,7 +48,7 @@ directive('companyBar', ['$window', 'ObjectService',
                             top: 2,
                             right: 10,
                             bottom: 2,
-                            left: 50
+                            left: 60
                         }     
                     }
                     else {
@@ -56,7 +56,7 @@ directive('companyBar', ['$window', 'ObjectService',
                             top: 2,
                             right: 10,
                             bottom: 2,
-                            left: 70
+                            left: 80
                         }
                     }
 

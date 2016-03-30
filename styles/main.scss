@@ -29,6 +29,10 @@ a {
   color: #64889C;
 }
 
+blockquote {
+  font-family: 'LindenHill';
+}
+
 .row {
   margin: 0;
   width: 100%;
@@ -36,6 +40,14 @@ a {
 
 .splash {
   width: 100%;
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url('../img/139th_2.jpg');
+  background-position: center center;
+  @media screen and (max-width: 768px) {
+      background-image: url('../img/139th_2_mobile.jpg');
+  }
 }
 
 .container-fluid {
@@ -46,18 +58,18 @@ a {
 /* Header http://www.loc.gov/pictures/resource/ppmsca.34552/?co=cwp */
 .header {
   position: absolute;
-  top: 5%;
+  top: 16%;
   left: 0;
   right: 0;
   text-align: center;
   .header-title {
     font-family: "League Gothic", "Ariel", "san serif";
-    font-size: 2em;
+    font-size: 3em;
     text-transform: uppercase;
   }
   .header-sub {
     margin: 0 !important;
-    font-size: 0.7em;
+    font-size: 0.8em;
   }
 }
 
@@ -69,10 +81,10 @@ a {
   top: auto;
   bottom: 10%;
   .scroll-arrow {
-    display: none;
+    display: block;
     width: 100%;
     position: absolute;
-    bottom: 18%;
+    bottom: 10%;
       .arrow {
           background-image: url('../img/arrow.svg');
           background-repeat: no-repeat;
@@ -137,7 +149,7 @@ a {
 }
 .picture {
   width: 100%;
-  height: 100%;
+  height: auto;
   overflow: hidden;
   padding-top: 7%;
 }
@@ -145,7 +157,7 @@ a {
   clear: both;
   text-align: center;
   width: 100%;
-  height: 100%;
+  height: auto;
   padding-top: 7%;
   img {
     width: 90%;
@@ -163,6 +175,7 @@ a {
   text-align: left;
   padding: 5px;
   font-size: 10px;
+  line-height: 1.42857143 !important;
   .source {
     font-weight: 300;
     float: right;
@@ -175,8 +188,6 @@ a {
   }
   &.desktop {
     display: none;
-    width: 75%;
-    margin-left: 11%;
     margin-top: 5%;
   }
   &.mobile {
@@ -246,7 +257,7 @@ text {
 }
 /** Map */
 #map {
-  height: 400px;
+  height: 50vh;
   width: 100vw;
   margin: auto;
 }
@@ -378,7 +389,7 @@ text {
     display: inline-block;
     font-size: 14px;
     text-transform: uppercase;
-    font-weight: 300;
+    font-weight: 500;
   }
 }
 
@@ -398,7 +409,7 @@ text {
 .footer {
   margin: 1em 0em;
   padding: 1em 0em;
-  text-align: center;
+  text-align: left;
   display: block;
   clear: both;
 }
@@ -412,11 +423,6 @@ text {
         }
         .header-sub {
             font-size: 1em;
-        }
-    }
-    .header-section {
-        .scroll-arrow {
-            display: block;
         }
     }
 
@@ -467,6 +473,7 @@ text {
     }
     .picture-caption {
         font-size: 0.8em;
+        line-height: 1.42857143 !important;
         &.desktop {
             display: block;
         }
