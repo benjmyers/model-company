@@ -41,7 +41,7 @@ angular.module('modelCompanyApp')
                 'Discharged': '#4393c3',
                 'Deserted': '#92c5de',
                 'Wounded': '#67001f',
-                'MIA/Unknown': '#f4a582',
+                'MIA': '#f4a582',
                 'Died POW': '#d6604d',
                 'Died': '#fddbc7',
                 'KIA/Died Wounds': '#b2182b',

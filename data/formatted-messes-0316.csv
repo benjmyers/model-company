@@ -1,0 +1,92 @@
+"last","first","name","datein","dateout",mess,"cause","place",age,"heightft","heightin","complexion","eyes","hair","occupation","home",wounded,pow
+"Lyne","Thomas","Thomas Lyne","9/2/1861"," 08/12/1862 ",1,"KIA/Died Wounds","NA",27,"5'9","69","medium","blue","brown","clerk & machinist","Carlisle",1,NULL
+"Liddick","Cyrus","Cyrus Liddick","9/2/1861"," 07/16/1865 ",1,"Mustered Out","Alexandria VA",21,"5'5","65","dark","gray","brown","farmer","New Buffalo",1,NULL
+"Shannon","James","James Shannon","9/2/1861"," 09/18/1864 ",1,"Mustered Out","NA",19,"5'7","67","light","blue","light","boatman","New Buffalo",1,NULL
+"Wells","Edward","Edward Wells","9/2/1861"," 07/16/1865 ",1,"Mustered Out","Alexandria VA",32,"5'9","69","dark","gray","brown","carpenter","New Buffalo",NULL,NULL
+"Baughman","William","William Baughman","9/2/1861","07/16/1865",1,"Wounded","NA",21,"5'6","66","dark","blue","brown","clerk","New Buffalo",1,1
+"McCarrol","Hugh","Hugh McCarrol","9/2/1861","10/15/1862",1,"Died","NA",30,"5'3","63","dark","black","black","bricklayer","Harrisburg",NULL,1
+"Sullenberger","Joseph","Joseph Sullenberger","9/2/1861"," 06/02/1863 ",1,"Discharged","NA",46,"5'4","64","dark","hazel","brown","shoemaker","Harrisburg",NULL,1
+"Griffin","Archibald","Archibald Griffin","9/2/1861"," 07/05/1865 ",1,"Mustered Out","NA",46,"5'8","68","dark","hazel","gray","moulder","Millersburg",1,1
+"Albert","Joseph","Joseph Albert","9/2/1861"," 01/04/1864 ",1,"Discharged","NA",24,"5'8","68","light","blue","light","collier","Millersburg",1,NULL
+"Sorber","Frederick","Frederick Sorber","9/2/1861"," 07/20/1864 ",1,"KIA/Died Wounds","Peach Tree Creek GA",21,"5'5","65","dark","gray","brown","farmer","Plainville",1,NULL
+"Martz","William","William Martz","9/2/1861"," 05/29/1865 ",1,"Wounded","Pittsburgh PA",19,"5'6","66","light ","gray ","light","farmer","Millersburg",1,NULL
+"Coppenheffer","Daniel","Daniel Coppenheffer","9/2/1861"," 08/26/1864 ",1,"Died","NA",19,"5'8","68","light","blue","light","saddler","Millersburg",1,NULL
+"Johnson","William","William Johnson","9/2/1861"," 05/30/1865 ",1,"Discharged","NA",20,"6'0","72","dark","hazel","black","farmer","Plainville",1,1
+"Wolf","Samuel","Samuel Wolf","9/2/1861"," 07/20/1864 ",1,"KIA/Died Wounds","Peach Tree Creek GA",33,"6'2","74","dark","hazel","black","blacksmith","Duncannon",1,NULL
+"Nace","Samuel","Samuel Nace","9/2/1861","08/09/1862",2,"MIA","Cedar Mountain VA",19,"5'4","64","light","gray","light","cabinet maker","Halifax",1,1
+"Poulus","Jonathan","Jonathan Poulus","9/2/1861"," 06/14/1862 ",6,"Discharged","NA",45,"5'9","69","dark","blue","brown","carpenter","Reading",NULL,NULL
+"Renard","Charles","Charles Renard","9/2/1861"," 07/16/1865 ",2,"Mustered Out","Alexandria VA",23,"5'7","67","light","gray","brown","NA","Kingston",NULL,NULL
+"Novinger","Thomas","Thomas Novinger","9/2/1861"," 07/16/1865 ",2,"Mustered Out","Alexandria VA",21,"5'9","69","light","blue","light","carpenter","Halifax",1,1
+"Long","Leonard","Leonard Long","9/2/1861","02/15/1865",2,"Wounded","NA",21,"5'8","68","light","gray ","brown","boatman","Millersburg",1,NULL
+"Smith","Joseph","Joseph Smith","9/2/1861"," 11/19/1862 ",2,"Discharged","NA",21,"5'5","65","dark","blue","brown","tailor","Duncannon",1,1
+"Hoke","Cornelius","Cornelius Hoke","9/2/1861"," 09/18/1864 ",2,"Mustered Out","NA",20,"5'7","67","medium","blue","black","wagon maker","Halifax",1,NULL
+"Ensinger","William","William Ensinger","9/2/1861","08/09/1862",2,"MIA","NA",21,"5'5","65","light","hazel","light","farmer","Halifax",1,1
+"Hoak","John","John Hoak","9/2/1861"," 07/16/1865 ",2,"Mustered Out","Alexandria VA",21,"6'0","72","dark","gray","brown","blacksmith","Halifax",NULL,1
+"Chisholm","John","John Chisholm","9/2/1861"," 07/16/1865 ",2,"Wounded","NA",20,"5'3","63","light","gray","sandy","tailor","Duncannon",1,NULL
+"Martin","Frank","Frank Martin","9/2/1861"," 10/21/1862 ",2,"Discharged","NA",36,"5'6","66","dark","gray ","black","gentleman","Georgetown",1,NULL
+"Good","Jacob","Jacob Good","9/2/1861"," 10/12/1864 ",2,"Mustered Out","NA",21,"5'4","64","medium","hazel","black","carpenter","Halifax",1,NULL
+"Long","John","John Long","9/2/1861"," 07/16/1865 ",2,"Mustered Out","Alexandria VA",28,"5'11","71","dark","hazel","black","carpenter","Halifax",1,NULL
+"Bernheisel","Samuel","Samuel Bernheisel","9/2/1861"," 09/25/1862 ",2,"Died","Alexandria VA",24,"5'7","67","dark","gray","black","carpenter","Harrisburg",1,1
+"Taylor","Matthew","Matthew Taylor","9/2/1861"," 09/18/1864 ",2,"Mustered Out","NA",20,"5'9","69","light","gray","black","farmer","Halifax",1,NULL
+"Durell","George","George Durell","9/2/1861"," 08/09/1862 ",3,"KIA/Died Wounds","Cedar Mountain VA",41,"5'10","70","dark","hazel","black","tailor","Halifax",1,NULL
+"Shepler","Jacob","Jacob Shepler","9/2/1861"," 07/16/1865 ",3,"Mustered Out","Alexandria VA",21,"5'6","66","light","blue","sandy","carpenter","East Hanover",NULL,1
+"Rhoades","Alexander","Alexander Rhoades","9/2/1861"," 02/05/1863 ",3,"Discharged","NA",21,"5'6","66","light","gray","brown","shoemaker","West Hanover",NULL,1
+"Wenrich","Amos","Amos Wenrich","9/2/1861","01/31/1862",3,"Died","Hanover MD",19,"5'6","66","medium","brown","brown","laborer","West Hanover",NULL,NULL
+"Wenrich","John","John Wenrich","9/2/1861"," 07/03/1863 ",3,"KIA/Died Wounds","Gettysburg PA",21,"5'6","66","medium","blue","sandy","miller","West Hanover",1,NULL
+"Powley","Simon","Simon Powley","9/2/1861"," 10/01/1864 ",3,"Mustered Out","NA",22,"5'9","69","light","blue","brown","carpenter","West Hanover",1,NULL
+"Yeager","John","John Yeager","9/2/1861"," 09/18/1864 ",3,"Mustered Out","NA",25,"5'4","64","dark","gray","brown","blacksmith","West Hanover",1,NULL
+"Zeeger","Cyrus","Cyrus Zeeger","9/2/1861"," 07/16/1865 ",3,"Mustered Out","Alexandria VA",25,"5'10","70","medium","hazel","black","teamster","NA",NULL,NULL
+"Frantz","David","David Frantz","9/2/1861"," 07/16/1865 ",3,"Mustered Out","Alexandria VA",23,"6'0","72","light","blue","brown","laborer","West Hanover",1,1
+"Boyer","Elias","Elias Boyer","9/2/1861"," 07/16/1865 ",3,"Mustered Out","Alexandria VA",22,"5'7","67","dark","gray","brown","farmer","East Hanover",NULL,NULL
+"Helmerick","Anthony","Anthony Helmerick","9/2/1861"," 07/16/1865 ",3,"Mustered Out","Alexandria VA",39,"5'9","69","light","blue","light","laborer","Nassau Germany",1,1
+"Doney","Benjamin","Benjamin Doney","9/2/1861"," 08/09/1862 ",3,"KIA/Died Wounds","Cedar Mountain VA",37,"5'9","69","dark","hazel","black","Lime burner","Georgetown",1,NULL
+"Shepler","John","John Shepler","9/2/1861"," 09/18/1864 ",3,"Mustered Out","NA",23,"5'4","64","light","blue","brown","farmer","West Hanover",1,NULL
+"Early","Elias","Elias Early","9/2/1861"," 10/07/1864 ",3,"Died","Atlanta GA",21,"5'11","71","dark","blue","light","carpenter","West Hanover",NULL,NULL
+"Killinger","Jacob","Jacob Killinger","9/2/1861"," 11/22/1862 ",4,"Discharged","NA",20,"5'8","68","medium","blue","light","farmer","West Hanover",1,NULL
+"Early","Joseph","Joseph Early","9/2/1861"," 11/18/1864 ",4,"Mustered Out","NA",20,"5'8","68","medium","gray ","light","carpenter","West Hanover",1,NULL
+"Rhoads","Edward","Edward Rhoads","9/2/1861"," 07/16/1865 ",4,"Mustered Out","Alexandria VA",19,"5'10","70","medium","gray ","light","laborer","West Hanover",1,1
+"Kreiser","John","John Kreiser","9/2/1861","5/03/1863",4,"MIA","NA",25,"5'10","70","dark","blue","black","laborer","West Hanover",1,1
+"Powley","Joseph","Joseph Powley","9/2/1861"," 10/01/1864 ",4,"Mustered Out","Alexandria VA",20,"5'8","68","medium","blue","light","railroader","Dauphin County",NULL,NULL
+"Reigle","William","William Reigle","9/2/1861"," 07/16/1865 ",4,"Mustered Out","Alexandria VA",22,"5'6","66","light","blue","light","tailor","West Hanover",1,NULL
+"Mease","William","William Mease","9/2/1861"," 07/16/1865 ",4,"Mustered Out","Alexandria VA",21,"5'6","66","dark","hazel","brown","shoemaker","West Hanover",1,1
+"Reese","James","James Reese","9/2/1861"," 07/16/1865 ",4,"Mustered Out","Alexandria VA",21,"5'9","69","dark","blue","sandy","boatman","Greensburg",NULL,1
+"Ney","Levi","Levi Ney","9/2/1861"," 07/21/1864 ",4,"KIA/Died Wounds","Peach Tree Creek",21,"5'6","66","dark","gray ","brown","miller","West Hanover",1,1
+"Ney","Daniel","Daniel Ney","9/2/1861"," 07/16/1865 ",4,"Mustered Out","Alexandria VA",20,"5'8","68","dark","hazel","brown","farmer","West Hanover",NULL,NULL
+"King","Edward","Edward King","9/2/1861"," 07/16/1865 ",4,"Mustered Out","Alexandria VA",20,"5'7","67","dark","gray ","brown","laborer","West Hanover",1,1
+"Swayer","William","William Swayer","9/2/1861"," 06/27/1862 ",4,"Deserted","NA",35,"5'8","68","medium","blue","brown","laborer","West Hanover",NULL,NULL
+"Geiger","Peter","Peter Geiger","9/2/1861"," 07/16/1865 ",4,"Mustered Out","Alexandria VA",20,"5'5","65","dark","hazel","black","carpenter","West Hanover",NULL,NULL
+"James","Alexander","Alexander James","9/2/1861"," 07/16/1865 ",4,"Mustered Out","Alexandria VA",19,"5'2","62","medium","gray","brown","schoolboy","Linglestown",NULL,NULL
+"McFarland","Charles","Charles McFarland","9/2/1861"," 07/16/1865 ",5,"Mustered Out","Alexandria VA",24,"6'1","73","medium","blue","sandy","schoolmaster","Halifax",1,NULL
+"O'Donnell","James","James O'Donnell","9/2/1861"," 08/22/1862 ",5,"Discharged","NA",39,"5'10","70","light","blue","brown","bricklayer","Harrisburg",NULL,NULL
+"Geiger","Frederick","Frederick Geiger","9/2/1861"," 07/16/1865 ",5,"Mustered Out","Alexandria VA",18,"5'7","67","dark","hazel","black","farmer","Birdsboro",1,NULL
+"Orth","Alexander","Alexander Orth","9/2/1861"," 11/04/1864 ",5,"Mustered Out","NA",23,"5'3","63","dark","hazel","black","painter","Harrisburg",1,NULL
+"Brumbaugh","James","James Brumbaugh","9/2/1861"," 07/23/1862 ",5,"Discharged","NA",23,"5'5","65","light","blue","light","hustler","Harrisburg",NULL,NULL
+"Geigir","Jacob","Jacob Geigir","9/2/1861"," 05/27/1865 ",5,"Wounded","NA",22,"5'10","70","light","gray ","sandy","plasterer","Birdsboro",1,NULL
+"Reimert","William","William Reimert","9/2/1861"," 07/16/1865 ",5,"Mustered Out","Alexandria VA",20,"5'6","66","light","gray","light","plasterer","West Hanover",NULL,NULL
+"Houser","John","John Houser","9/2/1861"," 07/16/1865 ",5,"Mustered Out","Alexandria VA",20,"5'9","69","dark","blue","brown","laborer","West Hanover",1,1
+"Weidensaul","Henry","Henry Weidensaul","9/2/1861"," 07/16/1865 ",5,"Mustered Out","Alexandria VA",19,"5'3","63","light","gray","light","schoolboy","Birdsboro",1,1
+"Cassel","John","John Cassel","9/2/1861"," 10/23/1862 ",5,"Transferred","NA",20,"5'4","64","light","gray","sandy","miller","East Hanover",1,NULL
+"Seyfert","William","William Seyfert","9/2/1861"," 07/16/1865 ",5,"Mustered Out","Alexandria VA",19,"5'4","64","dark","hazel","black","shoemaker","Birdsboro",1,1
+"Frantz","Henry","Henry Frantz","9/2/1861"," 07/16/1865 ",5,"Mustered Out","Alexandria VA",20,"5'9","69","light","hazel","brown","laborer","West Hanover",1,1
+"Wamsher","Samuel","Samuel Wamsher","9/2/1861"," 06/19/1864 ",5,"KIA/Died Wounds","NA",21,"5'6","66","medium","gray","brown","farmer","Birdsboro",1,NULL
+"Noonan","John","John Noonan","9/2/1861"," 12/24/1862 ",5,"Discharged","NA",38,"5'9","69","light","hazel","brown","laborer","Harrisburg",NULL,NULL
+"Weaver","George","George Weaver","9/2/1861"," 07/16/1865 ",5,"Mustered Out","Alexandria VA",24,"5'7","67","dark","hazel","black","blacksmith","West Hanover",NULL,NULL
+"Geiger","Samuel","Samuel Geiger","9/2/1861"," 07/31/1864 ",5,"Died","NA",31,"5'6","66","medium","hazel","sandy","farmer","West Hanover",NULL,NULL
+"Bedilion","William","William Bedilion","9/2/1861","07/16/1862",6,"Mustered Out","Alexandria VA",43,"5'9","69","light","hazel","red","teamster","East Hanover",NULL,NULL
+"Chubb","Philip","Philip Chubb","9/2/1861"," 07/16/1865 ",6,"Mustered Out","Alexandria VA",34,"5'4","64","dark","hazel","brown","clerk","Halifax",1,1
+"Deafenbaugh","Samuel","Samuel Deafenbaugh","9/2/1861"," 07/16/1865 ",6,"Mustered Out","Alexandria VA",29,"5'6","66","dark","gray","brown","painter","Harrisburg",NULL,NULL
+"Donnelly","William","William Donnelly","9/2/1861","09/18/1864 ",6,"Mustered Out","NA",23,"5'7","67","dark","hazel","black","teamster","East Hanover",NULL,NULL
+"Ebersole","John","John Ebersole","9/2/1861"," 07/20/1864 ",6,"KIA/Died Wounds","Peach Tree Creek GA",20,"5'7","67","dark","gray","brown","farmer","West Fairview",1,1
+"Flickner","Peter","Peter Flickner","9/2/1861"," 07/16/1865 ",6,"Mustered Out","Alexandria VA",32,"5'8","68","medium","blue","light","tailor","Millersburg",1,1
+"Hamilton","William","William Hamilton","9/2/1861"," 07/16/1865 ",6,"Mustered Out","Alexandria VA",33,"5'5","65","dark","black","brown","blacksmith","Harrisburg",NULL,NULL
+"Kocher","John","John Kocher","9/2/1861"," 12/12/1862 ",6,"Discharged","NA",35,"5'9","69","dark","blue","brown","shoemaker","West Hanover",NULL,NULL
+"Leebrick","George","George Leebrick","9/2/1861"," 12/02/1862 ",6,"Discharged","NA",20,"5'6","66","dark","gray ","brown","schoolboy","Halifax",NULL,NULL
+"Mountz","John","John Mountz","9/2/1861"," 10/24/1862 ",6,"Discharged","NA",52,"5'11","71","dark","brown","gray","laborer","West Hanover",1,NULL
+"Pottiger","Samuel","Samuel Pottiger","9/2/1861"," 11/10/1862 ",2,"Discharged","NA",20,"5'6","66","light","brown","black","wagon maker","Halifax",1,NULL
+"Price","John","John Price","9/2/1861"," 12/18/1863 ",6,"Discharged","NA",46,"5'5","65","light","blue","brown","gardener","Harrisburg",NULL,NULL
+"Reigel","Mitchel","Mitchel Reigel","9/2/1861"," 07/16/1865 ",6,"Mustered Out","Alexandria VA",21,"5'6","66","light","blue","brown","brick maker","West Hanover",NULL,NULL
+"Shelly","John","John Shelly","9/2/1861"," 06/10/1865 ",6,"Wounded","Alexandria VA",21,"5'7","67","medium","blue","light","farmer","New Buffalo",1,1
+"Brooks","George","George Brooks","9/2/1861","9/17/1862",7,"KIA/Died Wounds","Antietam",25,"5'6","66","light","blue","sandy","printer","Harrisburg",NULL,NULL
+"Witman","Edward","Edward Witman","9/2/1861","9/26/1864",7,"Transferred","NA",24,"5'8","68","medium","gray","black","druggist","Harrisburg",1,NULL
+"Geiger","John","John Geiger","9/2/1861","7/6/1863",7,"Discharged","NA",26,"5'8","68","medium","gray","light","farmer","Berks County",NULL,1
+"Simmons","Oliver","Oliver Simmons","9/2/1861","06/05/1863",7,"Wounded","NA",20,"NA","NA","NA","NA","NA","NA","NA",1,NULL

@@ -43,14 +43,14 @@ angular.module('modelCompanyApp')
               {'label': 'misc', 'value': .04, 'percentage': 4},
               {'label': 'NA', 'value': 0, 'percentage': 0 }],
       'casualties': [
-              {'label': 'Mustered Out', 'value': 0.4436, 'percentage': 44.36, 'order': 1},
-              {'label': 'Transferred', 'value': 0.0587, 'percentage': 5.87, 'order': 0},
-              {'label': 'Discharged', 'value': 0.0712, 'percentage': 7.12, 'order': 2},
-              {'label': 'Deserted', 'value':0.0579, 'percentage': 5.79, 'order': 3},
-              {'label': 'Wounded', 'value': 0.1967, 'percentage': 19.67, 'order': 7},
-              {'label': 'MIA/Unknown', 'value': 0.2089, 'percentage': 20.89, 'order': 5},
-              {'label': 'Died', 'value': 0.0612, 'percentage': 6.12, 'order': 4},
-              {'label': 'KIA/Died Wounds', 'value': 0.0287, 'percentage': 2.87, 'order': 6},
+              {'label': 'Mustered Out', 'value': 0.44, 'percentage': 44.0, 'order': 1},
+              {'label': 'Transferred', 'value': 0.06, 'percentage': 6.0, 'order': 0},
+              {'label': 'Discharged', 'value': 0.07, 'percentage': 7.0, 'order': 2},
+              {'label': 'Deserted', 'value':0.06, 'percentage': 6.0, 'order': 3},
+              {'label': 'Wounded', 'value': 0.20, 'percentage': 20.0, 'order': 7},
+              {'label': 'MIA', 'value': 0.21, 'percentage': 21.0, 'order': 5},
+              {'label': 'Died', 'value': 0.06, 'percentage': 6.0, 'order': 4},
+              {'label': 'KIA/Died Wounds', 'value': 0.03, 'percentage': 3.0, 'order': 6},
               {'label': 'NA', 'value': 0, 'percentage': 0 }]
     }
     $scope.events = [{
@@ -116,14 +116,14 @@ angular.module('modelCompanyApp')
           return "died";
         case "Wounded":
           return "wounded";
-        case "MIA/Unknown":
+        case "MIA":
           return "missing";
       }
     }
 
     var root = angular.copy($scope.nationalAverages.occupation);
 
-    d3.csv('data/formatted-messes.csv', function(err, data) {
+    d3.csv('data/formatted-messes-0316.csv', function(err, data) {
       d3.csv('data/locations.csv', function(err, locations) {
         _.each(data, function(d) {
           // GeoCode homes
