@@ -30,7 +30,22 @@ directive('bar', ['$window', 'ObjectService', 'ColorService',
                 })
 
                 function convertHeight(inches) {
-                    return (Math.round((inches/12)*10)/10 + "").replace(".", "\'");
+                    var d = {
+                        '62': "5\'2",
+                        '63': "5\'3",
+                        '64': "5\'4",
+                        '65': "5\'5",
+                        '66': "5\'6",
+                        '67': "5\'7",
+                        '68': "5\'8",
+                        '69': "5\'9",
+                        '70': "5\'10",
+                        '71': "5\'11",
+                        '72': "6",
+                        '73': "6\'1",
+                        '74': "6\'2"
+                    }
+                    return d[inches];
                 }
 
                 function render(data) {
