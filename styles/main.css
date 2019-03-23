@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300,700);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300,700);
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -54,7 +54,7 @@ blockquote {
   padding-right: 0px;
 }
 
-/* Header http://www.loc.gov/pictures/resource/ppmsca.34552/?co=cwp */
+/* Header https://www.loc.gov/pictures/resource/ppmsca.34552/?co=cwp */
 .header {
   position: absolute;
   top: 16%;
@@ -64,8 +64,13 @@ blockquote {
 }
 .header .header-title {
   font-family: "League Gothic", "Ariel", "san serif";
-  font-size: 3em;
+  font-size: 5.3em;
   text-transform: uppercase;
+}
+@media screen and (max-width: 768px) {
+  .header .header-title {
+    font-size: 3em;
+  }
 }
 .header .header-sub {
   margin: 0 !important;
