@@ -10,4 +10,4 @@ Licensing
 =======
 Apache Version 2.0. See LICENSE for more information.
 
-Please note that the database for this project (found in /data) is covered by the ODbL 1.0. The full license is available in the /data directory, or a human readable version can be found [here](http://opendatacommons.org/licenses/odbl/summary/)
+Please note that the database for this project (found in /data) is covered by the ODbL 1.0. The full license is available in the /data directory, or a human readable version can be found [here](https://opendatacommons.org/licenses/odbl/summary/)
